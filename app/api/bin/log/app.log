@@ -1,0 +1,11 @@
+connection successful
+[0mGET / [32m200 [0m14.652 ms - 3696[0m
+[0mGET /css/bootstrap.min.css [33m404 [0m5.142 ms - 59[0m
+[0mGET /js/angular/angular.js [33m404 [0m2.841 ms - 59[0m
+[0mGET /css/styles.css [33m404 [0m2.595 ms - 59[0m
+[0mGET /js/pant.js [33m404 [0m0.573 ms - 59[0m
+[0mGET / [36m304 [0m3.100 ms - -[0m
+[0mGET /js/angular/angular.js [33m404 [0m1.560 ms - 59[0m
+[0mGET /css/styles.css [33m404 [0m1.567 ms - 59[0m
+[0mGET /js/pant.js [33m404 [0m1.614 ms - 59[0m
+[0mGET /css/bootstrap.min.css [33m404 [0m0.636 ms - 59[0m

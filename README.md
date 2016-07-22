@@ -89,14 +89,14 @@ app/                    --> all of the source files for the application
       version-directive_test.js  --> version directive tests
       interpolate-filter.js      --> custom interpolation filter
       interpolate-filter_test.js --> interpolate filter tests
-  view1/                --> the view1 view template and logic
-    view1.html            --> the partial template
-    view1.js              --> the controller logic
-    view1_test.js         --> tests of the controller
-  view2/                --> the view2 view template and logic
-    view2.html            --> the partial template
-    view2.js              --> the controller logic
-    view2_test.js         --> tests of the controller
+  view_feed/                --> the view1 view template and logic
+    feed.html            --> the partial template
+    feed.js              --> the controller logic
+    feed_test.js         --> tests of the controller
+  view_article/                --> the view2 view template and logic
+    article.html            --> the partial template
+    article.js              --> the controller logic
+    article_test.js         --> tests of the controller
   app.js                --> main application module
   index.html            --> app layout file (the main html template file of the app)
   index-async.html      --> just like index.html, but loads js files asynchronously

@@ -3,8 +3,8 @@
 angular.module('myApp.view2', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/view2', {
-    templateUrl: 'view2/view2.html',
+  $routeProvider.when('/view_article', {
+    templateUrl: 'view_article/view_article.html',
     controller: 'View2Ctrl'
   });
 }])

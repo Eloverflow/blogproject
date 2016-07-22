@@ -256,7 +256,7 @@ gulp.task('clean-build-blogproject-prod', ['clean-prod'], pipes.builtAppProd);
 gulp.task('watch-dev', ['clean-build-blogproject-dev', 'validate-devserver-scripts'], function() {
 
     // start nodemon to auto-reload the dev server
-    plugins.nodemon({ script: 'server.js', ext: 'js', watch: ['devServer/'], env: {NODE_ENV : 'development'} })
+    plugins.nodemon({ script: 'server.js', ext: 'js', watch: ['api_dev/'], env: {NODE_ENV : 'development'} })
         .on('change', ['validate-devserver-scripts'])
         .on('restart', function () {
             console.log('[nodemon] restarted dev server');
@@ -295,7 +295,7 @@ gulp.task('watch-dev', ['clean-build-blogproject-dev', 'validate-devserver-scrip
 gulp.task('watch-prod', ['clean-build-blogproject-prod', 'validate-devserver-scripts'], function() {
 
     // start nodemon to auto-reload the dev server
-    plugins.nodemon({ script: 'server.js', ext: 'js', watch: ['devServer/'], env: {NODE_ENV : 'production'} })
+    plugins.nodemon({ script: 'server.js', ext: 'js', watch: ['api/'], env: {NODE_ENV : 'production'} })
         .on('change', ['validate-devserver-scripts'])
         .on('restart', function () {
             console.log('[nodemon] restarted dev server');
