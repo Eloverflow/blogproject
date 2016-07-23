@@ -2,7 +2,7 @@
 
 
 var gulp = require('gulp');
-var sass = require('gulp-sass');
+//var sass = require('gulp-sass');
 var plugins = require('gulp-load-plugins')();
 var del = require('del');
 var es = require('event-stream');
@@ -21,7 +21,7 @@ var paths = {
     distDev: './dist.dev',
     distProd: './dist.prod',
     distScriptsProd: './dist.prod/scripts',
-    scriptsDevServer: 'devServer/**/*.js'
+    scriptsDevServer: 'api_dev/**/*.js'
 };
 
 // == PIPE SEGMENTS ========
@@ -330,17 +330,5 @@ gulp.task('watch-prod', ['clean-build-blogproject-prod', 'validate-devserver-scr
 
 });
 
-
-
-gulp.task('sass', function () {
-    return gulp.src('./app/style/**/*.scss')
-        .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest('./app/style.css'));
-});
-
-gulp.task('sass:watch', function () {
-    gulp.watch('./app/style/**/*.scss', ['sass']);
-});
-
 // default task builds for prod
-gulp.task('default', ['clean-build-blogproject-prod']);
+gulp.task('default', ['clean-build-blogproject-dev']);
