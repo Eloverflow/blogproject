@@ -7,7 +7,7 @@
     "type": "git",
     "url": "git+https://github.com/eloverflow/blogproject.git"
   },
-  "license": "WTFPL",
+  "license": "MIT",
   "devDependencies": {
     "supervisor": "*",
     "bower": "^1.7.7",
