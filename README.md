@@ -43,7 +43,7 @@ mongod
 ```
 npm run serve:api
 ```
-Now browse to blogproject API at [http://localhost:8000/](http://localhost:8000)
+Now browse to blogproject API at [localhost](http://localhost) [Debugger](http://localhost:8000)
 
 ## Content
 
