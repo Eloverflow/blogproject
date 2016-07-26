@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-var debug = require('debug')('todoApp');
+var debug = require('debug')('blogproject-api');
 var app = require('../server');
 
 app.set('port', process.env.PORT || 80);
