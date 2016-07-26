@@ -11,8 +11,8 @@ This is an opensource blog project made for Mirageflow Inc.
     > Download from [nodejs](https://nodejs.org/en/download/)
 
 * **mongodb**
-    > Download from [Mongodb](https://www.mongodb.org/downloads#production) | Instruction : from [Microsoft](https://code.msdn.microsoft.com/Mongo-Database-setup-on-6963f46f)
-    > npm install -g mongo-express;(Mongodb Admin Panel)(Optional)
+> Download from [Mongodb](https://www.mongodb.org/downloads#production) | Instruction : from [Microsoft](https://code.msdn.microsoft.com/Mongo-Database-setup-on-6963f46f)
+> npm install -g mongo-express;(Mongodb Admin Panel)(Optional)
 
 ## How to use this app
 
