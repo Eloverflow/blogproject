@@ -5,13 +5,13 @@ This is an opensource blog project made for Mirageflow Inc.
 ## Prequiriement
 
 * **git**
-   [> Download from git](https://git-scm.com/)
+   > Download from [git](https://git-scm.com/)
 
 * **nodejs/npm**
-   [> Download from nodejs](https://nodejs.org/en/download/)
+   > Download from [nodejs](https://nodejs.org/en/download/)
 
 * **mongodb**
-   [> Download from Mongodb](https://www.mongodb.org/downloads#production) | Instruction : from [Microsoft](https://code.msdn.microsoft.com/Mongo-Database-setup-on-6963f46f)
+   > Download from [Mongodb](https://www.mongodb.org/downloads#production) | Instruction : from [Microsoft](https://code.msdn.microsoft.com/Mongo-Database-setup-on-6963f46f)
    > npm install -g mongo-express;(Mongodb Admin Panel)(Optional)
 
 ## How to use this app
