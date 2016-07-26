@@ -4,14 +4,13 @@ This is an opensource blog project made for Mirageflow Inc.
 
 ## Prequiriement
 
-git
-- Download from mongodb
-[Mongodb](https://www.mongodb.org/downloads#production) | Deep instruction : from [https://code.msdn.microsoft.com/Mongo-Database-setup-on-6963f46f](Microsoft)
+* **git**
+- Download from [Mongodb](https://www.mongodb.org/downloads#production) | Deep instruction : from [Microsoft](https://code.msdn.microsoft.com/Mongo-Database-setup-on-6963f46f)
 
-nodejs/npm
+* **nodejs/npm**
 - Download from nodejs
 
-mongodb
+* **mongodb**
 - Download from mongodb
 - npm install -g mongo-express;(Mongodb Admin Panel)(Optional)
 
