@@ -5,33 +5,41 @@ This is an opensource blog project made for Mirageflow Inc.
 ## Prequiriement
 
 * **git**
-    # Download from [git](https://git-scm.com/)
+   > Download from [git](https://git-scm.com/)
 
 * **nodejs/npm**
-    # Download from [nodejs](https://nodejs.org/en/download/)
+   > Download from [nodejs](https://nodejs.org/en/download/)
 
 * **mongodb**
-    # Download from [Mongodb](https://www.mongodb.org/downloads#production) | Instruction : from [Microsoft](https://code.msdn.microsoft.com/Mongo-Database-setup-on-6963f46f)
-    # npm install -g mongo-express;(Mongodb Admin Panel)(Optional)
+   > Download from [Mongodb](https://www.mongodb.org/downloads#production) | Instruction : from [Microsoft](https://code.msdn.microsoft.com/Mongo-Database-setup-on-6963f46f)
+   > npm install -g mongo-express;(Mongodb Admin Panel)(Optional)
 
 ## How to use this app
 
 Type in windows terminal (Or linux obviously)
 
-- git clone https://github.com/Eloverflow/blogproject blogproject-folder
-- cd blogproject-folder
-- npm install
+```
+git clone https://github.com/Eloverflow/blogproject blogproject-folder
+cd blogproject-folder
+npm install
+```
 
 ## To Run blogroject
-- npm run serve
+```
+npm run serve
+```
 Now browse to blogproject at http://localhost:3000 (Browsersync: http://localhost:3001)
 
 ## To Run Database
-- mongod
+```
+mongod
+```
 
 
 ## To Run API
-- npm run serve:api
+```
+npm run serve:api
+```
 Now browse to blogproject API at http://localhost:8000
 
 ## Content
