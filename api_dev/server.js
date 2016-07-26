@@ -1,3 +1,5 @@
+'use strict';
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -6,9 +8,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-var user = require('./routes/users');
-var acticle = require('./routes/acticles');
-var comment = require('./routes/comments');
+var user = require('./routes/user');
+var article = require('./routes/article');
+var comment = require('./routes/comment');
 
 var config = require('./config/database.js');
 
@@ -21,6 +23,7 @@ mongoose.connect(config.database, function(err) {
         console.log('connection successful');
     }
 });
+
 
 
 
@@ -73,9 +76,9 @@ app.use(function(req, res, next) {
 
 //app.use('/api/sendColor', color);
 app.use('/', index);
-app.use('/api/users', user);
-app.use('/api/acticles', acticle);
-app.use('/api/comments', comment);
+app.use('/api/user', user);
+app.use('/api/article', article);
+app.use('/api/comment', comment);
 /*
  app.use('/api/cloth/pants', pants);*/
 

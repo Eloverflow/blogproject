@@ -1,20 +1,22 @@
+'use strict';
+
 var express = require('express');
 var router = express.Router();
 
 var mongoose = require('mongoose');
-var Comment = require('../models/comment.js');
+var Article = require('../models/article.js');
 
 /* GET /pantalons listing. */
 router.get('/', function(req, res, next) {
-  Comment.find(function (err, comment) {
+  Article.find(function (err, acticle) {
     if (err) return next(err);
-    res.json(comment);
+    res.json(article);
   });
 });
 
 /* POST /pantalons */
 router.post('/', function(req, res, next) {
-  Comment.create(req.body, function (err, post) {
+  Article.create(req.body, function (err, post) {
     if (err) return next(err);
     res.json(post);
   });
@@ -22,7 +24,7 @@ router.post('/', function(req, res, next) {
 
 /* GET /pantalons/id */
 router.get('/:id', function(req, res, next) {
-  Comment.findById(req.params.id, function (err, post) {
+  Article.findById(req.params.id, function (err, post) {
     if (err) return next(err);
     res.json(post);
   });
@@ -30,7 +32,7 @@ router.get('/:id', function(req, res, next) {
 
 /* PUT /pantalons/:id */
 router.put('/:id', function(req, res, next) {
-  Comment.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
+  Article.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
     if (err) return next(err);
     res.json(post);
   });
@@ -38,7 +40,7 @@ router.put('/:id', function(req, res, next) {
 
 /* DELETE /pantalons/:id */
 router.delete('/:id', function(req, res, next) {
-  Comment.findByIdAndRemove(req.params.id, req.body, function (err, post) {
+  Article.findByIdAndRemove(req.params.id, req.body, function (err, post) {
     if (err) return next(err);
     res.json(post);
   });

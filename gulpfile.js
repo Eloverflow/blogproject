@@ -1,5 +1,91 @@
-'use strict';
+var gulp = require('gulp'),
+    sass = require('gulp-sass'),
+    autoprefixer = require('gulp-autoprefixer'),
+    minifycss = require('gulp-minify-css'),
+    rename = require('gulp-rename');
+    nodemon = require('gulp-nodemon');
 
+gulp.task('express', function() {
+    var debug = require('debug')('todoApp');
+    var app = require('./api_dev/server');
+
+    app.set('port', 80);
+
+    var server = app.listen(app.get('port'), function() {
+        debug('Express server listening on port ' + server.address().port);
+    });
+
+
+
+
+/*
+
+    var express = require('express');
+    var app = express();
+    app.use(require('connect-livereload')({port: 35729}));
+    app.use(express.static(__dirname));
+    app.listen(4000, '0.0.0.0');*/
+});
+
+var tinylr;
+gulp.task('livereload', function() {
+    tinylr = require('tiny-lr')();
+    tinylr.listen(35729);
+});
+
+function notifyLiveReload(event) {
+    var fileName = require('path').relative(__dirname, event.path);
+
+    tinylr.changed({
+        body: {
+            files: [fileName]
+        }
+    });
+}
+
+gulp.task('styles', function() {
+    return sass('sass', { style: 'expanded' })
+        .pipe(gulp.dest('css'))
+        .pipe(rename({suffix: '.min'}))
+        .pipe(minifycss())
+        .pipe(gulp.dest('css'));
+});
+
+
+
+gulp.task('watch', function() {
+
+    gulp.watch('app/style/*.scss', ['styles']);
+    gulp.watch('app/style/*.css', notifyLiveReload);
+    gulp.watch('*.html', notifyLiveReload);
+
+
+
+   // gulp.watch('css/*.css', notifyLiveReload);
+});
+
+
+gulp.task('api', function() {
+    // start nodemon to auto-reload the dev server
+        nodemon({ script: 'api_dev/bin/www', ext: 'js', watch: ['api_dev/'], env: {NODE_ENV : 'development'} })
+     .on('change', ['validate-devserver-scripts'])
+     .on('restart', notifyLiveReload);
+
+});
+
+
+gulp.task('validatedDevServerScripts', function() {
+    return gulp.src('api_dev/')
+        .pipe(jshint())
+        .pipe(jshint.reporter('jshint-stylish'));
+});
+
+gulp.task('default', ['styles', 'express', 'livereload', 'watch'], function() {
+
+});
+
+
+/*
 
 var gulp = require('gulp');
 //var sass = require('gulp-sass');
@@ -13,15 +99,15 @@ var Q = require('q');
 // == PATH STRINGS ========
 
 var paths = {
-    scripts: 'app/**/*.js',
-    styles: ['./app/**/*.css', './app/**/*.scss'],
-    images: './images/**/*',
+    scripts: 'app/!**!/!*.js',
+    styles: ['./app/!**!/!*.css', './app/!**!/!*.scss'],
+    images: './images/!**!/!*',
     index: './app/index.html',
-    partials: ['app/**/*.html', '!app/index.html'],
+    partials: ['app/!**!/!*.html', '!app/index.html'],
     distDev: './dist.dev',
     distProd: './dist.prod',
     distScriptsProd: './dist.prod/scripts',
-    scriptsDevServer: 'api_dev/**/*.js'
+    scriptsDevServer: 'api_dev/!**!/!*.js'
 };
 
 // == PIPE SEGMENTS ========
@@ -72,7 +158,7 @@ pipes.builtVendorScriptsDev = function() {
 };
 
 pipes.builtVendorScriptsProd = function() {
-    return gulp.src(bowerFiles('**/*.js'))
+    return gulp.src(bowerFiles('**!/!*.js'))
         .pipe(pipes.orderedVendorScripts())
         .pipe(plugins.concat('vendor.min.js'))
         .pipe(plugins.uglify())
@@ -171,6 +257,7 @@ pipes.builtIndexProd = function() {
 };
 
 pipes.builtAppDev = function() {
+    console.log('test2')
     return es.merge(pipes.builtIndexDev(), pipes.builtPartialsDev(), pipes.processedImagesDev());
 };
 
@@ -186,6 +273,7 @@ gulp.task('clean-dev', function() {
     del(paths.distDev, function() {
         deferred.resolve();
     });
+    console.log('test')
     return deferred.promise;
 });
 
@@ -256,7 +344,7 @@ gulp.task('clean-build-blogproject-prod', ['clean-prod'], pipes.builtAppProd);
 gulp.task('watch-dev', ['clean-build-blogproject-dev', 'validate-devserver-scripts'], function() {
 
     // start nodemon to auto-reload the dev server
-    plugins.nodemon({ script: 'server.js', ext: 'js', watch: ['api_dev/'], env: {NODE_ENV : 'development'} })
+    plugins.nodemon({ script: 'api_dev/server.js', ext: 'js', watch: ['api_dev/'], env: {NODE_ENV : 'development'} })
         .on('change', ['validate-devserver-scripts'])
         .on('restart', function () {
             console.log('[nodemon] restarted dev server');
@@ -295,7 +383,7 @@ gulp.task('watch-dev', ['clean-build-blogproject-dev', 'validate-devserver-scrip
 gulp.task('watch-prod', ['clean-build-blogproject-prod', 'validate-devserver-scripts'], function() {
 
     // start nodemon to auto-reload the dev server
-    plugins.nodemon({ script: 'server.js', ext: 'js', watch: ['api/'], env: {NODE_ENV : 'production'} })
+    plugins.nodemon({ script: 'api/server.js', ext: 'js', watch: ['api/'], env: {NODE_ENV : 'production'} })
         .on('change', ['validate-devserver-scripts'])
         .on('restart', function () {
             console.log('[nodemon] restarted dev server');
@@ -331,4 +419,4 @@ gulp.task('watch-prod', ['clean-build-blogproject-prod', 'validate-devserver-scr
 });
 
 // default task builds for prod
-gulp.task('default', ['clean-build-blogproject-dev']);
+gulp.task('default', ['clean-build-blogproject-dev']);*/

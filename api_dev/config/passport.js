@@ -1,6 +1,8 @@
+'use strict';
+
 var JwtStrategy = require('passport-jwt').Strategy;
 
-var user = require('../models/User.js'),
+var user = require('../models/user.js'),
     config = require('./database');
 
 module.exports = function(passport) {

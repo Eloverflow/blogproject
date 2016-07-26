@@ -1,8 +1,10 @@
+'use strict';
+
 var express = require('express');
 var router = express.Router();
 
 var mongoose = require('mongoose');
-var User = require('../models/User.js');
+var User = require('../models/user.js');
 var jwt = require('jwt-simple');
 var passport = require('passport');
 var nodemailer = require('nodemailer');
@@ -135,7 +137,7 @@ router.get('/resetPwd/:email', function(req, res, next) {
   });
 });
 
-getToken = function (headers) {
+/*getToken = function (headers) {
   if (headers && headers.authorization) {
     var parted = headers.authorization.split(' ');
     if (parted.length === 2) {
@@ -146,7 +148,7 @@ getToken = function (headers) {
   } else {
     return null;
   }
-};
+};*/
 
 module.exports = router;
 
