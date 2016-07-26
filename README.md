@@ -225,7 +225,7 @@ along with a CI service (in Jenkins) hosted that will run unit and end to end te
 
 ## Contact
 
-For more information on AngularJS please check out http://angularjs.org/
+For more information on Blogproject please check out [http://mirageflow.com/](http://mirageflow.com/)
 
 [git]: http://git-scm.com/
 [bower]: http://bower.io
