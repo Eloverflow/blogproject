@@ -4,13 +4,13 @@ This is an opensource blog project made for Mirageflow Inc.
 
 ## Prequiriement
 
-* **git**
+* **Git (LTS)**
     > Download from [git](https://git-scm.com/)
 
-* **nodejs/npm**
+* **Nodejs/Npm**
     > Download from [nodejs](https://nodejs.org/en/download/)
 
-* **mongodb**
+* **Mongodb**
 > Download from [Mongodb](https://www.mongodb.org/downloads#production) | Instruction : from [Microsoft](https://code.msdn.microsoft.com/Mongo-Database-setup-on-6963f46f)
 
 * **mongodb (Mongodb Admin Panel)**(Optional)
@@ -28,7 +28,7 @@ cd blogproject-folder
 npm install
 ```
 
-## To Run blogroject
+## To Run Blogroject
 ```
 npm run serve
 ```
@@ -39,7 +39,7 @@ Now browse to blogproject at [http://localhost:3000/](http://localhost:3000/) (B
 mongod
 ```
 
-## To Run API
+## To Run Blogroject API
 ```
 npm run serve:api
 ```
