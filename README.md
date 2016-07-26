@@ -39,7 +39,6 @@ Now browse to blogproject at [http://localhost:3000/](http://localhost:3000/) (B
 mongod
 ```
 
-
 ## To Run API
 ```
 npm run serve:api
@@ -82,6 +81,16 @@ karma.conf.js         --> config file for running unit tests with Karma
 e2e-tests/            --> end-to-end tests
   protractor-conf.js    --> Protractor config file
   scenarios.js          --> end-to-end scenarios to be run by Protractor
+```
+
+## Full NPM Command
+```
+npm run build (to build an optimized version of your application in /dist)
+npm run serve (to launch a browser sync server on your source files)
+npm run serve:dist (to launch a server on your optimized application)
+npm run serve:api (to launch a server api on your optimized application)
+npm run test (to launch your unit tests with Karma)
+npm run test:auto (to launch your unit tests with Karma in watch mode)
 ```
 
 ## Testing
