@@ -1,28 +1,28 @@
 module.exports = {
-  templateUrl: 'app/components/TodoItem.html',
-  controller: TodoItem,
+  templateUrl: 'app/components/FeedItem.html',
+  controller: FeedItem,
   bindings: {
-    todo: '<',
+    feed: '<',
     onDestroy: '&',
     onChange: '&',
     onSave: '&'
   }
 };
 
-function TodoItem() {
+function FeedItem() {
   this.editing = false;
 }
 
-TodoItem.prototype = {
+FeedItem.prototype = {
   handleDoubleClick: function () {
     this.editing = true;
   },
 
   handleSave: function (text) {
     this.onSave({
-      todo: {
+      feed: {
         text: text,
-        id: this.todo.id
+        id: this.feed.id
       }
     });
     this.editing = false;

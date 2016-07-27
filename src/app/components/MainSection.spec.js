@@ -3,12 +3,12 @@ require('angular-mocks');
 var MainSection = require('./MainSection');
 
 describe('MainSection component', function () {
-  function MockTodoService() {}
-  MockTodoService.prototype = {
-    addTodo: function () {},
-    editTodo: function () {},
-    deleteTodo: function () {},
-    completeTodo: function () {},
+  function MockFeedService() {}
+  MockFeedService.prototype = {
+    addFeed: function () {},
+    editFeed: function () {},
+    deleteFeed: function () {},
+    completeFeed: function () {},
     completeAll: function () {},
     clearCompleted: function () {}
   };
@@ -18,7 +18,7 @@ describe('MainSection component', function () {
   beforeEach(function () {
     angular
       .module('mainSection', ['app/components/MainSection.html'])
-      .service('todoService', MockTodoService)
+      .service('feedService', MockFeedService)
       .component('mainSection', MainSection);
     angular.mock.module('mainSection');
   });
@@ -28,15 +28,15 @@ describe('MainSection component', function () {
   }));
 
   it('shoud call clearCompleted', function () {
-    spyOn(component.todoService, 'clearCompleted').and.callThrough();
+    spyOn(component.feedService, 'clearCompleted').and.callThrough();
     component.handleClearCompleted();
-    expect(component.todoService.clearCompleted).toHaveBeenCalled();
+    expect(component.feedService.clearCompleted).toHaveBeenCalled();
   });
 
   it('shoud call completeAll', function () {
-    spyOn(component.todoService, 'completeAll').and.callThrough();
+    spyOn(component.feedService, 'completeAll').and.callThrough();
     component.handleCompleteAll();
-    expect(component.todoService.completeAll).toHaveBeenCalled();
+    expect(component.feedService.completeAll).toHaveBeenCalled();
   });
 
   it('shoud set selectedFilter', function () {
@@ -45,27 +45,27 @@ describe('MainSection component', function () {
     expect(component.selectedFilter.filter({completed: true})).toEqual(true);
   });
 
-  it('shoud call completeTodo', function () {
-    spyOn(component.todoService, 'completeTodo').and.callThrough();
+  it('shoud call completeFeed', function () {
+    spyOn(component.feedService, 'completeFeed').and.callThrough();
     component.handleChange();
-    expect(component.todoService.completeTodo).toHaveBeenCalled();
+    expect(component.feedService.completeFeed).toHaveBeenCalled();
   });
 
-  it('shoud call deleteTodo', function () {
-    spyOn(component.todoService, 'deleteTodo').and.callThrough();
+  it('shoud call deleteFeed', function () {
+    spyOn(component.feedService, 'deleteFeed').and.callThrough();
     component.handleSave({text: ''});
-    expect(component.todoService.deleteTodo).toHaveBeenCalled();
+    expect(component.feedService.deleteFeed).toHaveBeenCalled();
   });
 
-  it('shoud call editTodo', function () {
-    spyOn(component.todoService, 'editTodo').and.callThrough();
+  it('shoud call editFeed', function () {
+    spyOn(component.feedService, 'editFeed').and.callThrough();
     component.handleSave({text: 'Hello'});
-    expect(component.todoService.editTodo).toHaveBeenCalled();
+    expect(component.feedService.editFeed).toHaveBeenCalled();
   });
 
-  it('shoud call deleteTodo', function () {
-    spyOn(component.todoService, 'deleteTodo').and.callThrough();
+  it('shoud call deleteFeed', function () {
+    spyOn(component.feedService, 'deleteFeed').and.callThrough();
     component.handleDestroy();
-    expect(component.todoService.deleteTodo).toHaveBeenCalled();
+    expect(component.feedService.deleteFeed).toHaveBeenCalled();
   });
 });

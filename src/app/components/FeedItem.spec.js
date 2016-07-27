@@ -1,25 +1,25 @@
 var angular = require('angular');
 require('angular-mocks');
-var TodoItem = require('./TodoItem');
+var FeedItem = require('./FeedItem');
 
-describe('TodoItem component', function () {
+describe('FeedItem component', function () {
   beforeEach(function () {
     angular
-      .module('todoItem', ['app/components/TodoItem.html'])
-      .component('todoItem', TodoItem);
-    angular.mock.module('todoItem');
+      .module('feedItem', ['app/components/FeedItem.html'])
+      .component('feedItem', FeedItem);
+    angular.mock.module('feedItem');
   });
 
   it('should render correctly', angular.mock.inject(function ($rootScope, $compile) {
     var $scope = $rootScope.$new();
-    var element = $compile('<todo-item></todo-item>')($scope);
+    var element = $compile('<feed-item></feed-item>')($scope);
     $scope.$digest();
     var li = element.find('li');
     expect(li).not.toBeNull();
   }));
 
   it('should call set editing to true', angular.mock.inject(function ($componentController) {
-    var component = $componentController('todoItem', {}, {});
+    var component = $componentController('feedItem', {}, {});
     spyOn(component, 'handleDoubleClick').and.callThrough();
     component.handleDoubleClick();
     expect(component.handleDoubleClick).toHaveBeenCalled();
@@ -28,18 +28,18 @@ describe('TodoItem component', function () {
 
   it('should call onSave', angular.mock.inject(function ($componentController) {
     var bindings = {
-      todo: {
+      feed: {
         text: 'Use ngrx/store',
         completed: false,
         id: 0
       },
       onSave: function () {}
     };
-    var component = $componentController('todoItem', {}, bindings);
+    var component = $componentController('feedItem', {}, bindings);
     spyOn(component, 'onSave').and.callThrough();
     component.handleSave('Hello');
     expect(component.onSave).toHaveBeenCalledWith({
-      todo: {text: 'Hello', id: 0}
+      feed: {text: 'Hello', id: 0}
     });
   }));
 });

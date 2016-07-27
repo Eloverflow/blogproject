@@ -1,22 +1,22 @@
 var angular = require('angular');
 require('angular-mocks');
-var TodoTextInput = require('./TodoTextInput');
+var FeedTextInput = require('./FeedTextInput');
 
-describe('TodoTextInput component', function () {
-  function MockTodoService() {
+describe('FeedTextInput component', function () {
+  function MockFeedService() {
   }
 
   beforeEach(function () {
     angular
-      .module('todoTextInput', ['app/components/TodoTextInput.html'])
-      .service('todoService', MockTodoService)
-      .component('todoTextInput', TodoTextInput);
-    angular.mock.module('todoTextInput');
+      .module('feedTextInput', ['app/components/FeedTextInput.html'])
+      .service('feedService', MockFeedService)
+      .component('feedTextInput', FeedTextInput);
+    angular.mock.module('feedTextInput');
   });
 
   it('should render correctly', angular.mock.inject(function ($rootScope, $compile) {
     var $scope = $rootScope.$new();
-    var element = $compile('<todo-text-input></todo-text-input>')($scope);
+    var element = $compile('<feed-text-input></feed-text-input>')($scope);
     $scope.$digest();
     var textInput = element.find('input');
     expect(textInput.attr('type')).toEqual('text');
@@ -26,7 +26,7 @@ describe('TodoTextInput component', function () {
     var bindings = {
       text: 'Hello'
     };
-    var component = $componentController('todoTextInput', {}, bindings);
+    var component = $componentController('feedTextInput', {}, bindings);
     expect(component.text).toEqual('Hello');
   }));
 
@@ -36,7 +36,7 @@ describe('TodoTextInput component', function () {
       text: 'Hello',
       focus: focusSpy
     };
-    var component = $componentController('todoTextInput', {}, bindings);
+    var component = $componentController('feedTextInput', {}, bindings);
     expect(component.focus).toHaveBeenCalled();
   }));
 
@@ -45,17 +45,17 @@ describe('TodoTextInput component', function () {
     var bindings = {
       focus: focusSpy
     };
-    var component = $componentController('todoTextInput', {}, bindings);
+    var component = $componentController('feedTextInput', {}, bindings);
     expect(component.focus).not.toHaveBeenCalled();
   }));
 
   it('should call onSave', angular.mock.inject(function ($componentController) {
     var bindings = {
       onSave: function () {},
-      newTodo: false,
+      newFeed: false,
       text: 'Hello'
     };
-    var component = $componentController('todoTextInput', {}, bindings);
+    var component = $componentController('feedTextInput', {}, bindings);
     spyOn(component, 'onSave').and.callThrough();
     component.handleBlur();
     expect(component.onSave).toHaveBeenCalled();
@@ -64,10 +64,10 @@ describe('TodoTextInput component', function () {
   it('should not call onSave', angular.mock.inject(function ($componentController) {
     var bindings = {
       onSave: function () {},
-      newTodo: true,
+      newFeed: true,
       text: 'Hello'
     };
-    var component = $componentController('todoTextInput', {}, bindings);
+    var component = $componentController('feedTextInput', {}, bindings);
     spyOn(component, 'onSave').and.callThrough();
     component.handleBlur();
     expect(component.onSave).not.toHaveBeenCalled();
@@ -76,10 +76,10 @@ describe('TodoTextInput component', function () {
   it('should call onSave and clear text', angular.mock.inject(function ($componentController) {
     var bindings = {
       onSave: function () {},
-      newTodo: true,
+      newFeed: true,
       text: 'Hello'
     };
-    var component = $componentController('todoTextInput', {}, bindings);
+    var component = $componentController('feedTextInput', {}, bindings);
     spyOn(component, 'onSave').and.callThrough();
     component.handleSubmit({keyCode: 13});
     expect(component.onSave).toHaveBeenCalled();

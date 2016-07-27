@@ -1,0 +1,18 @@
+<li ng-class="{'editing': $ctrl.editing, 'completed': $ctrl.feed.completed}">
+  <feed-text-input
+    ng-if="$ctrl.editing"
+    text="$ctrl.feed.text"
+    editing="$ctrl.editing"
+    on-save="$ctrl.handleSave(text)"
+    ></feed-text-input>
+  <div class="view" ng-if="!$ctrl.editing">
+    <input
+      class="toggle"
+      type="checkbox"
+      ng-checked="$ctrl.feed.completed"
+      ng-click="$ctrl.onChange({id: $ctrl.feed.id})"
+      />
+    <label ng-dblclick="$ctrl.handleDoubleClick()">{{$ctrl.feed.text}}</label>
+    <button class="destroy" ng-click="$ctrl.handleDestroy($ctrl.feed.id)"></button>
+  </div>
+</li>

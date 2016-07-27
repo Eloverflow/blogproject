@@ -2,19 +2,19 @@ module.exports = {
   templateUrl: 'app/components/Header.html',
   controller: Header,
   bindings: {
-    todos: '='
+    feeds: '='
   }
 };
 
 /** @ngInject */
-function Header(todoService) {
-  this.todoService = todoService;
+function Header(feedService) {
+  this.feedService = feedService;
 }
 
 Header.prototype = {
   handleSave: function (text) {
     if (text.length !== 0) {
-      this.todos = this.todoService.addTodo(text, this.todos);
+      this.feeds = this.feedService.addFeed(text, this.feeds);
     }
   }
 };

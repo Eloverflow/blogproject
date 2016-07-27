@@ -4,27 +4,27 @@ module.exports = {
   templateUrl: 'app/components/MainSection.html',
   controller: MainSection,
   bindings: {
-    todos: '=',
+    feed: '=',
     filter: '<'
   }
 };
 
 /** @ngInject */
-function MainSection(todoService) {
-  this.todoService = todoService;
+function MainSection(feedService) {
+  this.feedService = feedService;
   this.selectedFilter = visibilityFilters[this.filter];
-  this.completeReducer = function (count, todo) {
-    return todo.completed ? count + 1 : count;
+  this.completeReducer = function (count, feed) {
+    return feed.completed ? count + 1 : count;
   };
 }
 
 MainSection.prototype = {
   handleClearCompleted: function () {
-    this.todos = this.todoService.clearCompleted(this.todos);
+    this.feed = this.feedService.clearCompleted(this.feed);
   },
 
   handleCompleteAll: function () {
-    this.todos = this.todoService.completeAll(this.todos);
+    this.feed = this.feedService.completeAll(this.feed);
   },
 
   handleShow: function (filter) {
@@ -33,18 +33,18 @@ MainSection.prototype = {
   },
 
   handleChange: function (id) {
-    this.todos = this.todoService.completeTodo(id, this.todos);
+    this.feed = this.feedService.completeFeed(id, this.feed);
   },
 
   handleSave: function (e) {
     if (e.text.length === 0) {
-      this.todos = this.todoService.deleteTodo(e.id, this.todos);
+      this.feed = this.feedService.deleteFeed(e.id, this.feed);
     } else {
-      this.todos = this.todoService.editTodo(e.id, e.text, this.todos);
+      this.feed = this.feedService.editFeed(e.id, e.text, this.feed);
     }
   },
 
   handleDestroy: function (e) {
-    this.todos = this.todoService.deleteTodo(e, this.todos);
+    this.feed = this.feedService.deleteFeed(e, this.feed);
   }
 };

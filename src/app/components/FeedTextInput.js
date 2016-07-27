@@ -1,20 +1,20 @@
 module.exports = {
-  templateUrl: 'app/components/TodoTextInput.html',
-  controller: TodoTextInput,
+  templateUrl: 'app/components/FeedTextInput.html',
+  controller: FeedTextInput,
   bindings: {
     onSave: '&',
     placeholder: '@',
-    newTodo: '@',
+    newFeed: '@',
     editing: '@',
     text: '<'
   }
 };
 
 /** @ngInject */
-function TodoTextInput(todoService, $window, $timeout) {
+function FeedTextInput(feedService, $window, $timeout) {
   this.$timeout = $timeout;
   this.$window = $window;
-  this.todoService = todoService;
+  this.feedService = feedService;
   this.editing = this.editing || false;
   this.text = this.text || '';
   if (this.text.length) {
@@ -22,9 +22,9 @@ function TodoTextInput(todoService, $window, $timeout) {
   }
 }
 
-TodoTextInput.prototype = {
+FeedTextInput.prototype = {
   handleBlur: function () {
-    if (!this.newTodo) {
+    if (!this.newFeed) {
       this.onSave({text: this.text});
     }
   },
@@ -32,7 +32,7 @@ TodoTextInput.prototype = {
   handleSubmit: function (e) {
     if (e.keyCode === 13) {
       this.onSave({text: this.text});
-      if (this.newTodo) {
+      if (this.newFeed) {
         this.text = '';
       }
     }

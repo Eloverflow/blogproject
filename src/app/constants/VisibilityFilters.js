@@ -1,20 +1,20 @@
-var todoFilters = require('./TodoFilters');
+var feedFilters = require('./FeedFilters');
 
 function showAll() {
   return true;
 }
 
-function showCompleted(todo) {
-  return todo.completed;
+function showCompleted(feed) {
+  return feed.completed;
 }
 
-function showActive(todo) {
-  return !todo.completed;
+function showActive(feed) {
+  return !feed.completed;
 }
 
 var filters = {};
-filters[todoFilters.SHOW_ALL] = {filter: showAll, type: todoFilters.SHOW_ALL};
-filters[todoFilters.SHOW_COMPLETED] = {filter: showCompleted, type: todoFilters.SHOW_COMPLETED};
-filters[todoFilters.SHOW_ACTIVE] = {filter: showActive, type: todoFilters.SHOW_ACTIVE};
+filters[feedFilters.SHOW_ALL] = {filter: showAll, type: feedFilters.SHOW_ALL};
+filters[feedFilters.SHOW_COMPLETED] = {filter: showCompleted, type: feedFilters.SHOW_COMPLETED};
+filters[feedFilters.SHOW_ACTIVE] = {filter: showActive, type: feedFilters.SHOW_ACTIVE};
 
 module.exports = filters;

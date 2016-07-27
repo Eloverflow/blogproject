@@ -4,6 +4,7 @@ const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   module: {
@@ -16,12 +17,7 @@ module.exports = {
       },
       {
         test: /\.(css|scss)$/,
-        loaders: [
-          'style',
-          'css',
-          'sass',
-          'postcss'
-        ]
+        loader: "style-loader!css-loader"
       },
       {
         test: /\.js$/,

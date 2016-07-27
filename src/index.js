@@ -1,25 +1,26 @@
+
 var angular = require('angular');
 require('todomvc-app-css/index.css');
 
-var todos = require('./app/todos/todos');
+var feed = require('./app/feed/feed');
 var App = require('./app/containers/App');
 var Header = require('./app/components/Header');
 var MainSection = require('./app/components/MainSection');
-var TodoTextInput = require('./app/components/TodoTextInput');
-var TodoItem = require('./app/components/TodoItem');
+var FeedTextInput = require('./app/components/FeedTextInput');
+var FeedItem = require('./app/components/FeedItem');
 var Footer = require('./app/components/Footer');
 require('angular-ui-router');
 var routesConfig = require('./routes');
-
-import './index.scss';
+/*
+import './index.scss';*/
 
 angular
   .module('app', ['ui.router'])
   .config(routesConfig)
-  .service('todoService', todos.TodoService)
+  .service('feedService', feed.FeedService)
   .component('app', App)
   .component('headerComponent', Header)
   .component('footerComponent', Footer)
   .component('mainSection', MainSection)
-  .component('todoTextInput', TodoTextInput)
-  .component('todoItem', TodoItem);
+  .component('feedTextInput', FeedTextInput)
+  .component('feedItem', FeedItem)

@@ -1,5 +1,5 @@
-var todoFilters = require('../constants/TodoFilters');
-var todos = require('../todos/todos');
+var feedFilters = require('../constants/FeedFilters');
+var feed = require('../feed/feed');
 
 module.exports = {
   templateUrl: 'app/containers/App.html',
@@ -7,6 +7,6 @@ module.exports = {
 };
 
 function App() {
-  this.todos = [todos.initialTodo];
-  this.filter = todoFilters.SHOW_ALL;
+  this.feed = [feed.initialFeed];
+  this.filter = feedFilters.SHOW_ALL;
 }

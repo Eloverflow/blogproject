@@ -1,4 +1,4 @@
-var todoFilters = require('../constants/TodoFilters');
+var feedFilters = require('../constants/FeedFilters');
 
 module.exports = {
   templateUrl: 'app/components/Footer.html',
@@ -13,11 +13,11 @@ module.exports = {
 };
 
 function Footer() {
-  this.filters = [todoFilters.SHOW_ALL, todoFilters.SHOW_ACTIVE, todoFilters.SHOW_COMPLETED];
+  this.filters = [feedFilters.SHOW_ALL, feedFilters.SHOW_ACTIVE, feedFilters.SHOW_COMPLETED];
   this.filterTitles = {};
-  this.filterTitles[todoFilters.SHOW_ALL] = 'All';
-  this.filterTitles[todoFilters.SHOW_ACTIVE] = 'Active';
-  this.filterTitles[todoFilters.SHOW_COMPLETED] = 'Completed';
+  this.filterTitles[feedFilters.SHOW_ALL] = 'All';
+  this.filterTitles[feedFilters.SHOW_ACTIVE] = 'Active';
+  this.filterTitles[feedFilters.SHOW_COMPLETED] = 'Completed';
 }
 
 Footer.prototype = {
