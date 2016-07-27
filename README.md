@@ -1,6 +1,7 @@
 # Blogproject
 
 This is an opensource blog project made for Mirageflow Inc.
+[![Total Downloads](https://poser.pugx.org/eloverflow/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
 
 ## Prequiriement
 
