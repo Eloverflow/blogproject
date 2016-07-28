@@ -1,14 +1,14 @@
 # Blogproject
 
 This is an opensource blog project made for Mirageflow Inc.
-[![Total Downloads](https://poser.pugx.org/eloverflow/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
+[![Total Downloads](https://poser.pugx.org/eloverflow/blogproject/d/total.svg)](https://packagist.org/packages/eloverflow/blogproject)
 
-## Prequiriement
+## Prerequisites
 
-* **Git (LTS)**
+* **Git**
     > Download from [git](https://git-scm.com/)
 
-* **Nodejs/Npm**
+* **Nodejs(LTS)/Npm**
     > Download from [nodejs](https://nodejs.org/en/download/)
 
 * **Mongodb**

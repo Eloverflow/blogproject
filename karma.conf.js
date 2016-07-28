@@ -2,11 +2,11 @@
 module.exports = function(config) {
   config.set({
 
-    basePath: './src/app',
+    basePath: './src',
 
     files: [
       '*.js',
-      '**/*.js'
+      'app/**/*.js'
     ],
 
     autoWatch: true,
