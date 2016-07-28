@@ -5,6 +5,7 @@ module.exports = function(config) {
     basePath: './src/app',
 
     files: [
+      '*.js',
       '**/*.js'
     ],
 
