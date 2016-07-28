@@ -1,6 +1,7 @@
 
 var angular = require('angular');
 require('todomvc-app-css/index.css');
+require('events').EventEmitter.prototype._maxListeners = 100;
 
 var feed = require('./app/feed/feed');
 var App = require('./app/containers/App');
