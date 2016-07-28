@@ -6,9 +6,10 @@ module.exports = function(config) {
 
     files: [
       'lib/angular.min.js',
+      'lib/angular-ui-router.min.js',
       'lib/angular-mocks.js',
-      '*.js',
-      'app/**/*.js'
+      'app/components/**/*.js',
+      'app/view*/**/*.js'
     ],
 
     autoWatch: true,
