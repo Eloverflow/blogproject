@@ -1,7 +1,7 @@
 
 var angular = require('angular');
-require('todomvc-app-css/index.css');
-emitter.setMaxListeners(15);
+//require('todomvc-app-css/index.css');
+/*emitter.setMaxListeners(15);*/
 
 var feed = require('./app/feed/feed');
 var App = require('./app/containers/App');
@@ -25,3 +25,4 @@ angular
   .component('mainSection', MainSection)
   .component('feedTextInput', FeedTextInput)
   .component('feedItem', FeedItem)
+
