@@ -32,7 +32,7 @@ module.exports = {
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.NoErrorsPlugin(),
     new HtmlWebpackPlugin({
-      template: conf.path.src('index.html'),
+      template: conf.path.src('./app/index.html'),
       inject: true
     })
   ],
@@ -42,6 +42,5 @@ module.exports = {
   output: {
     path: path.join(process.cwd(), conf.paths.tmp),
     filename: 'index.js'
-  },
-  entry: `./${conf.path.src('index')}`
+  }
 };

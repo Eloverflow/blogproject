@@ -88,7 +88,8 @@
     "tiny-lr": "*",
     "watchify": "*",
     "webpack": "^1.13.1",
-    "webpack-split-by-path": "^0.0.10"
+    "webpack-split-by-path": "^0.0.10",
+    "gulp-webserver": "*"
   },
   "scripts": {
     "postinstall": "bower install",
