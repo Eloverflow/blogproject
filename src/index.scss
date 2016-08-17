@@ -51,6 +51,9 @@ $inputs:            email, number, password, search, tel, text, url, color, date
 @import 'modules/_type';
 @import 'modules/_utility';
 
+p{
+  color: green;
+}
 
 //
 // Bourbon + Neat Grids
