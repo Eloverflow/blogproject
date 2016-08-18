@@ -11,6 +11,7 @@ var index = require('./routes/index');
 var user = require('./routes/user');
 var article = require('./routes/article');
 var comment = require('./routes/comment');
+var vote = require('./routes/vote');
 
 var config = require('./config/database.js');
 
@@ -79,6 +80,7 @@ app.use('/', index);
 app.use('/api/user', user);
 app.use('/api/article', article);
 app.use('/api/comment', comment);
+app.use('/api/vote', vote);
 /*
  app.use('/api/cloth/pants', pants);*/
 
