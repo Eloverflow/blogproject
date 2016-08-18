@@ -7,6 +7,7 @@
   "directory" : "src/app/bower_components",
   "dependencies": {
     "jquery": "*",
+    "compass-sass-mixins": "*",
     "angular": "*"
   },
   "private": false
