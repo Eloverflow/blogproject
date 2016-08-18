@@ -8,5 +8,6 @@ var VoteSchema = new mongoose.Schema({
     comment_id: {type: mongoose.Schema.Types.ObjectId, required: false, ref: 'CommentSchema'}
 });
 
+
 module.exports = mongoose.model('Vote', VoteSchema);
 
