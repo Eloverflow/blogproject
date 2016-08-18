@@ -8,6 +8,7 @@
   "dependencies": {
     "jquery": "*",
     "compass-sass-mixins": "*",
+    "angular-route": "*",
     "angular": "*"
   },
   "private": false
