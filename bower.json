@@ -9,7 +9,10 @@
     "jquery": "*",
     "compass-sass-mixins": "*",
     "angular-route": "*",
-    "angular": "*"
-  },
+    "angular": "*",
+    "bootstrap-sass-official": "*",
+    "bootstrap-sass": "*",
+    "fontawesome": "*"
+},
   "private": false
 }

@@ -51,7 +51,31 @@ $inputs:            email, number, password, search, tel, text, url, color, date
 @import 'modules/_type';
 @import 'modules/_utility';
 
+
+@import "app/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap-sprockets";
+@import "app/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap";
+//
+//@import "app/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap-compass";
+
 @import "app/bower_components/compass-sass-mixins/lib/compass";
+
+
+
+/*$icon-font-path: 'app/bower_components/bootstrap-sass/assets/fonts/bootstrap/';
+
+@function font-path($path) {
+  @return $path;
+}*/
+
+/*@font-face{
+  font-family:'Glyphicons Halflings';
+  src: image-url("app/bower_components/bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.eot");
+  src: image-url("app/bower_components/bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"),
+  image-url("app/bower_components/bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.woff") format("woff"),
+  image-url("app/bower_components/bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.ttf") format("truetype"),
+  image-url("app/bower_components/bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg")
+}*/
+
 
 .wrapper {
   display: -webkit-box;
@@ -63,35 +87,142 @@ $inputs:            email, number, password, search, tel, text, url, color, date
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
 
-  font-weight: bold;
-  text-align: center;
+  border: 2px solid #16caa5;
 }
 
 .wrapper > * {
   padding: 10px;
   flex: 1 100%;
+  background-color: rgb(248, 248, 248);
 }
 
-.header {
-  background: tomato;
+
+.chat-msg{
+  min-height: 250px;
+  max-height: 600px;
+  list-style: none;
+  overflow-y: auto;
 }
 
-.footer {
-  background: lightgreen;
-}
+
 
 .main {
   text-align: left;
-  background: deepskyblue;
-}
 
-.aside-1 {
-  background: gold;
 }
 
 .aside-2 {
-  background: hotpink;
+
 }
+
+.chat{
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 0;
+  .chat-header{
+
+    background-color: darken(rgb(248, 248, 248), 5% );
+    padding-top: 5px;
+    height: 35px;
+    width: 100%;
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 10px;
+  }
+
+  hr{
+    margin-top: 5px!important;
+    margin-bottom: 5px!important;
+  }
+
+  .chat-bloc{
+    padding-left: 20px;
+    flex-direction: row;
+    display: flex;
+    .user-img{
+      flex-grow:1;
+    }
+    .user-img img{
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+    .user-msg-content{
+      flex-grow:80;
+      padding: 4px 20px 10px 20px;
+    }
+    .user-msg-up-down{
+      justify-content: flex-end;
+      flex-grow: 1;
+      i{
+        color: gray;
+        font-size:24px;
+        cursor: pointer;
+
+
+
+      }.fa-thumbs-down{
+         -moz-transform: scaleX(-1);
+         -o-transform: scaleX(-1);
+         -webkit-transform: scaleX(-1);
+         transform: scaleX(-1);
+       }
+      :hover{
+        color: #444;
+      }
+
+
+
+    }
+
+
+  }
+
+  .chat-foot{
+    .input-group{
+    }
+
+
+
+    input{
+      transition: none;
+      border-radius: 0;
+      border-left: 0;
+      border-bottom: 0;
+    }
+    :focus{
+     /* border: 1px solid grey;*/
+
+      border: 1px solid darken(rgb(150, 150, 150), 5% );
+      box-shadow: none;
+    }
+
+    .InputAddOn {
+      display: flex;
+    }
+
+    .InputAddOn-field {
+
+      flex: 1;
+      /* field styles */
+    }
+
+    .InputAddOn-item {
+
+      border-bottom: 0;
+      border-left: 0;
+      border-right: 0;
+      border-radius: 0;
+      /* item styles */
+    }
+
+  }
+
+}
+
+
+
+
+
 
 @media all and (min-width: 600px) {
   .aside { flex: 1 auto; }
@@ -99,18 +230,160 @@ $inputs:            email, number, password, search, tel, text, url, color, date
 
 @media all and (min-width: 800px) {
   .main    { flex: 3 0px; }
-  .aside-1 { order: 1; }
-  .main    { order: 2; }
-  .aside-2 { order: 3; }
-  .footer  { order: 4; }
+  .main    { order: 1; }
+  .aside-2 { order: 2; }
+}
+
+p{
+  display: inline;
+}
+
+
+
+/* Navigation Menu - Background */
+.navigation {
+  /* critical sizing and position styles */
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+
+  /* non-critical appearance styles */
+  list-style: none;
+  background: #2a3f54;
+}
+
+.nav-item.profile {
+  height: 65px;
+  color: white;
+  display: inline-flex;
+  flex-direction: row;
+  background-color: darken(#2a3f54, 5%);
+  border-bottom: 1px solid darken(#2a3f54, 10%);
+}
+
+.nav-item.profile .item {
+
+}
+
+.nav-item.profile .item.img {
+  flex-grow: 1;
+  line-height: 65px;
+  text-align: center;
+  font-size: 38px;
+}
+
+.nav-item.profile .item.msg {
+  flex-grow: 3;
+  margin-left: 8px;
+  padding-top: 10px;
+  h4 {
+    margin-top: 5px;
+  }
+}
+
+
+/* Navigation Menu - List items */
+.nav-item {
+  /* non-critical appearance styles */
+  width: 200px;
+}
+
+.nav-item a {
+  /* non-critical appearance styles */
+  display: block;
+  padding: 5px;
+  border-right: 4px solid #16caa5;
+  color: white;
+  font-size: 1.2em;
+  text-decoration: none;
+  transition: color 0.2s, background 0.5s;
+}
+
+.nav-item a:hover {
+
+  background-color: #35475d;
+}
+
+/* Site Wrapper - Everything that isn't navigation */
+.site-wrap {
+  /* Critical position and size styles */
+  min-height: 100%;
+  min-width: 100%;
+  background-color: white; /* Needs a background or else the nav will show through */
+  position: relative;
+  top: 0;
+  bottom: 100%;
+  left: 0;
+  z-index: 1;
+
+  /* non-critical apperance styles */
+  padding: 4em;
+
+  background-size: 200%;
+}
+
+/* Nav Trigger */
+.nav-trigger {
+  /* critical styles - hide the checkbox input */
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+}
+
+label[for="nav-trigger"] {
+  /* critical positioning styles */
+  position: fixed;
+  left: 15px; top: 15px;
+  z-index: 2;
+
+  /* non-critical apperance styles */
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' x='0px' y='0px' width='30px' height='30px' viewBox='0 0 30 30' enable-background='new 0 0 30 30' xml:space='preserve'><rect width='30' height='6'/><rect y='24' width='30' height='6'/><rect y='12' width='30' height='6'/></svg>");
+  background-size: contain;
+}
+
+/* Make the Magic Happen */
+.nav-trigger + label, .site-wrap {
+  transition: left 0.2s;
+}
+
+.nav-trigger:checked + label {
+  left: 215px;
+}
+
+.nav-trigger:checked ~ .site-wrap {
+  left: 200px;
+  box-shadow: 0 0 2px 2px rgba(0,0,0,0.2);
 }
 
 body {
-  padding: 2em;
+  /* Without this, the body has excess horizontal scroll when the menu is open */
+  overflow-x: hidden;
 }
-p{
-  color: green;
+
+/* Additional non-critical styles */
+
+h1, h3, p {
+  max-width: 600px;
+  margin: 0 auto 1em;
 }
+
+code {
+  padding: 2px;
+  background: #ddd;
+}
+
+/* Micro reset */
+*,*:before,*:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;margin:0;padding:0;}
+html, body { height: 100%; width: 100%; font-family: Helvetica, Arial, sans-serif; }
+
+
 
 //
 // Bourbon + Neat Grids
