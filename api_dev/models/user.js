@@ -7,8 +7,10 @@ var UserSchema = new mongoose.Schema({
     name : { type: String, required: false },
     password : { type: String, required: true },
     email : { type: String, required: true},
-    picture: { type: String, required: false }
+    picture: { type: String, required: false },
+    is_admin : { type: Boolean, required: false, default: false}
 });
+
 
 UserSchema.pre('save',function(next) {
     var user = this;
@@ -29,6 +31,8 @@ UserSchema.pre('save',function(next) {
         return next();
     }
 });
+
+
 
 UserSchema.methods.comparePassword = function (passw, cb) {
    // bcrypt.compare(passw, this.password, function (err, isMatch) {
