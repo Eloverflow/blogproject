@@ -88,6 +88,7 @@ $inputs:            email, number, password, search, tel, text, url, color, date
   flex-flow: row wrap;
 
   border: 2px solid #16caa5;
+  margin-top: 10px;
 }
 
 .wrapper > * {
@@ -102,6 +103,7 @@ $inputs:            email, number, password, search, tel, text, url, color, date
   max-height: 600px;
   list-style: none;
   overflow-y: auto;
+  padding-top: 10px;
 }
 
 
@@ -122,11 +124,22 @@ $inputs:            email, number, password, search, tel, text, url, color, date
   .chat-header{
 
     background-color: darken(rgb(248, 248, 248), 5% );
-    padding-top: 5px;
-    height: 35px;
+    padding-top: 4px;
+    height: 42px;
     width: 100%;
     border-bottom: 1px solid lightgray;
-    margin-bottom: 10px;
+
+
+    h3 {
+      display: inline-block;
+      margin: 0px;
+    }
+
+    i {
+      margin-left: 8px;
+      font-size: 30px;
+    }
+
   }
 
   hr{
@@ -255,6 +268,15 @@ p{
   /* non-critical appearance styles */
   list-style: none;
   background: #2a3f54;
+
+  hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid darken(#2a3f54, 10%);
+    margin: 2px 0;
+    padding: 0;
+  }
 }
 
 .nav-item.profile {
@@ -369,11 +391,6 @@ body {
 
 /* Additional non-critical styles */
 
-h1, h3, p {
-  max-width: 600px;
-  margin: 0 auto 1em;
-}
-
 code {
   padding: 2px;
   background: #ddd;
@@ -394,5 +411,15 @@ html, body { height: 100%; width: 100%; font-family: Helvetica, Arial, sans-seri
 // @import 'modules/_clearfix';
 //}
 
+// Post infos css
 
+ul.post-infos {
+  float: right;
+}
 
+ul.post-infos li{
+  display: inline;
+  list-style-type: none;
+  text-decoration: none;
+  margin: 0px 3px 0px 3px;
+}
