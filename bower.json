@@ -7,12 +7,14 @@
   "directory" : "src/app/bower_components",
   "dependencies": {
     "jquery": "*",
+    "jquery-ui": "*",
+    "angular-ui-tinymce": "*",
     "compass-sass-mixins": "*",
     "angular-route": "*",
     "angular": "*",
     "bootstrap-sass-official": "*",
     "bootstrap-sass": "*",
     "fontawesome": "*"
-},
+  },
   "private": false
 }

@@ -9,5 +9,5 @@ var ArticleSchema = new mongoose.Schema({
     tags: {type: Array, required: false}}
 });
 
-module.exports = mongoose.model('Article', ArticleSchema);
+module.exports = mongoose.model('Post', PostSchema);
 

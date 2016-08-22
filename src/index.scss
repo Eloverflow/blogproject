@@ -233,7 +233,9 @@ $inputs:            email, number, password, search, tel, text, url, color, date
 }
 
 
-
+.post-content{
+  min-height: 400px;
+}
 
 
 
@@ -245,12 +247,17 @@ $inputs:            email, number, password, search, tel, text, url, color, date
   .main    { flex: 3 0px; }
   .main    { order: 1; }
   .aside-2 { order: 2; }
+  .footer  { order: 3; }
 }
 
 p{
   display: inline;
 }
 
+/*Hide textarea editor toolbar path*/
+.mce-path {/* CSS */
+  display: none !important;
+}
 
 
 /* Navigation Menu - Background */
@@ -541,3 +548,36 @@ ul.post-infos li{
   left: 50%;
 }
 /*End nav icon*/
+
+#post-tags{
+}
+
+#btn-github{
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: row;
+  vertical-align: middle;
+  margin: 10px;
+  padding: 0;
+  height: 40px;
+  span{
+    flex: 2;
+    width: 140px;
+    font-weight: bold;
+    line-height: 36px;
+    margin-right: 15px;
+  }
+
+  i{
+    flex: 1;
+    font-size: 26px;
+    width: 18px;
+    line-height: 36px;
+  }
+}
+
+#btn-github:hover{
+   color: #16caa5;
+  text-shadow: 0px 0px 0px;
+ }

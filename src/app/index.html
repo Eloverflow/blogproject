@@ -11,6 +11,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="index.css">
   <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="js/jquery.tagsinput.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/jquery.tagsinput.min.css" />
 </head>
 <body>
   <div id="backdrop"></div>
@@ -31,6 +33,8 @@
     <li class="nav-item"><a href="#!/profile"><i class="fa fa-user" aria-hidden="true"></i>Profile</a></li>
     <li class="nav-item"><a href="#!/recent"><i class="fa fa-clock-o" aria-hidden="true"></i>Recent</a></li>
     <li class="nav-item"><a href="#!/popular"><i class="fa fa-fire" aria-hidden="true"></i>Popular</a></li>
+    <hr />
+    <li class="nav-item"><a href="#!/post/create"><i class="fa fa-plus-square" aria-hidden="true"></i>New Post</a></li>
   </ul>
 
   <input type="checkbox" id="nav-trigger" class="nav-trigger" />
@@ -49,7 +53,9 @@
 
   <div class="site-wrap">
 
-    <div id="header"></div>
+    <div id="header">
+        <button id="btn-github" class="pull-right"><i class="fa fa-github" aria-hidden="true"></i><span>View on Github</span></button>
+    </div>
 
     <div ng-view></div>
 
@@ -58,8 +64,11 @@
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
+  <script src="../bower_components/tinymce-dist/tinymce.js"></script>
   <script src="../bower_components/angular/angular.js"></script>
   <script src="../bower_components/angular-route/angular-route.js"></script>
+  <script src="js/tinymce.js"></script>
+  <!--<script src="../bower_components/angular-ui-tinymce/src/tinymce.js"></script>-->
   <script src="app.js"></script>
   <script src="post/post.js"></script>
   <script src="posts/posts.js"></script>
@@ -67,5 +76,6 @@
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>
+
 </body>
 </html>

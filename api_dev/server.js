@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var user = require('./routes/user');
-var article = require('./routes/article');
+var post = require('./routes/post');
 var comment = require('./routes/comment');
 var vote = require('./routes/vote');
 
@@ -78,7 +78,7 @@ app.use(function(req, res, next) {
 //app.use('/api/sendColor', color);
 app.use('/', index);
 app.use('/api/user', user);
-app.use('/api/article', article);
+app.use('/api/post', post);
 app.use('/api/comment', comment);
 app.use('/api/vote', vote);
 /*
