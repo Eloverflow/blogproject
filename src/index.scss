@@ -77,6 +77,12 @@ $inputs:            email, number, password, search, tel, text, url, color, date
 }*/
 
 
+.site-wrap{
+  background: url('img/sandpaper.png') repeat;
+  -webkit-background-size: 348px 500px!important;
+  background-size: 348px 500px!important;
+}
+
 .wrapper {
   display: -webkit-box;
   display: -moz-box;
@@ -86,9 +92,13 @@ $inputs:            email, number, password, search, tel, text, url, color, date
 
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
-
-  border: 2px solid #16caa5;
+  border: 1px solid #888;
+  border-radius: 2px;
   margin-top: 10px;
+
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+  -moz-box-shadow: 0 10px 6px -6px #777;
+  box-shadow: 0 10px 6px -6px #777;
 }
 
 .wrapper > * {
