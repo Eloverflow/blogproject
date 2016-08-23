@@ -77,12 +77,6 @@ $inputs:            email, number, password, search, tel, text, url, color, date
 }*/
 
 
-.site-wrap{
-  background: url('img/sandpaper.png') repeat;
-  -webkit-background-size: 348px 500px!important;
-  background-size: 348px 500px!important;
-}
-
 .wrapper {
   display: -webkit-box;
   display: -moz-box;
@@ -99,6 +93,7 @@ $inputs:            email, number, password, search, tel, text, url, color, date
   -webkit-box-shadow: 0 10px 6px -6px #777;
   -moz-box-shadow: 0 10px 6px -6px #777;
   box-shadow: 0 10px 6px -6px #777;
+
 }
 
 .wrapper > * {
@@ -118,8 +113,16 @@ $inputs:            email, number, password, search, tel, text, url, color, date
 
 
 
-.main {
+.post {
   text-align: left;
+  min-height: 300px;
+  background-color: white;
+
+}
+
+.post-content {
+  text-align: left;
+  background-color: white;
 
 }
 
@@ -129,8 +132,13 @@ $inputs:            email, number, password, search, tel, text, url, color, date
 
 .chat{
   background-color: white;
-  border: 1px solid lightgray;
-  border-radius: 0;
+  border: 1px solid #888;
+  border-radius: 2px;
+  margin-top: 10px;
+
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+  -moz-box-shadow: 0 10px 6px -6px #777;
+  box-shadow: 0 10px 6px -6px #777;
   .chat-header{
 
     background-color: darken(rgb(248, 248, 248), 5% );
@@ -159,10 +167,17 @@ $inputs:            email, number, password, search, tel, text, url, color, date
 
   .chat-bloc{
     padding-left: 20px;
-    flex-direction: row;
-    display: flex;
+    /*flex-direction: row;*/
+
+    .chat-bloc-row{
+      flex: 1 100%;
+      flex-flow: row wrap;
+      display: flex;
+    }
+
+
+
     .user-img{
-      flex-grow:1;
     }
     .user-img img{
       width: 40px;
@@ -170,20 +185,46 @@ $inputs:            email, number, password, search, tel, text, url, color, date
       border-radius: 50%;
     }
     .user-msg-content{
-      flex-grow:80;
+      word-wrap: break-word;
+      flex-grow: 80;
       padding: 4px 20px 10px 20px;
+      width: 200px;
+
+      @media (min-width: 480px) {
+        width: 300px;
+      }
     }
     .user-msg-up-down{
+      margin-right: 10px;
       justify-content: flex-end;
-      flex-grow: 1;
+      flex-grow: 5;
+      text-align: center;
+      .up-down{
+        height: 20px;
+        padding-top: 2px;
+        .up{
+          margin-left: 0;
+          color: #00AA00;
+        }
+        .down{
+          color: red;
+          margin-right: 0;
+        }
+      }
+
       i{
+        display: block;
         color: gray;
         font-size:24px;
         cursor: pointer;
+      }.fa-chevron-up{
+          vertical-align: text-top;
+       }
+      .fa-chevron-down{
+          vertical-align: text-top;
+       }
 
-
-
-      }.fa-thumbs-down{
+      /*.fa-thumbs-down{
          -moz-transform: scaleX(-1);
          -o-transform: scaleX(-1);
          -webkit-transform: scaleX(-1);
@@ -191,10 +232,45 @@ $inputs:            email, number, password, search, tel, text, url, color, date
        }
       :hover{
         color: #444;
+      }*/
+
+    }
+    .chat-bloc-footer{
+
+    }
+
+/*    .sub-com > *{
+      width: 90%;
+      }*/
+
+    .sub-com{
+      background-color: rgba(200,200,200,0.4);
+      margin-left: 10%;
+      padding: 20px;
+    }
+
+    .chat-sub-comment{
+      list-style: none;
+      border-bottom: 1px solid lightgrey;
+
+     /*
+      float: right;*/
+
+
+      .user-sub-msg-content{
+        border-bottom: 1px solid lightgrey;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-top: 1px;
       }
 
+    }
 
-
+    .sub-com-sep{
+      display: block;
+      height: 1px;
+      float: right;
+      margin-top: 5px!important;
     }
 
 
@@ -203,8 +279,6 @@ $inputs:            email, number, password, search, tel, text, url, color, date
   .chat-foot{
     .input-group{
     }
-
-
 
     input{
       transition: none;
@@ -222,13 +296,11 @@ $inputs:            email, number, password, search, tel, text, url, color, date
     .InputAddOn {
       display: flex;
     }
-
     .InputAddOn-field {
 
       flex: 1;
       /* field styles */
     }
-
     .InputAddOn-item {
 
       border-bottom: 0;
@@ -238,9 +310,29 @@ $inputs:            email, number, password, search, tel, text, url, color, date
       /* item styles */
     }
 
+
+
+  }
+
+  .InputAddOn-sub-comment {
+    display: flex;
+  }
+  .InputAddOn-field-sub-comment {
+    transition: none;
+    border-radius: 0;
+    flex: 1;
+    /* field styles */
+  }
+  .InputAddOn-item-sub-comment {
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+    /* item styles */
   }
 
 }
+
+
 
 
 .post-content{
@@ -367,7 +459,6 @@ p{
   /* Critical position and size styles */
   min-height: 100%;
   min-width: 100%;
-  background-color: white; /* Needs a background or else the nav will show through */
   position: relative;
   top: 0;
   bottom: 100%;
@@ -379,15 +470,20 @@ p{
 
   /* non-critical apperance styles */
 
-  background-size: 200%;
+  background: url('img/sandpaper.png') repeat;
+  -webkit-background-size: 348px 500px!important;
+  background-size: 348px 500px!important;
 }
 
 @media (min-width: 480px) {
 
   .site-wrap {
-    padding: 5em;
+    padding-top: 4em;
+    padding-left: 12em;
+    padding-right: 12em;
   }
 }
+
 
 /* Nav Trigger */
 .nav-trigger {
