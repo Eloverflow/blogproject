@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.posts', ['ngRoute'])
+angular.module('starter.posts', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/posts', {
@@ -9,6 +9,7 @@ angular.module('myApp.posts', ['ngRoute'])
   });
 }])
 
+    
 .controller('PostsCtrl', [function() {
 
 }]);

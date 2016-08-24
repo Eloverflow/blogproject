@@ -1,6 +1,6 @@
 'use strict';
-
-angular.module('myApp.post', ['ngRoute', 'ui.tinymce'])
+angular.module('starter.controllers')
+angular.module('starter.post', ['ngRoute', 'ui.tinymce'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/post', {
@@ -40,6 +40,32 @@ angular.module('myApp.post', ['ngRoute', 'ui.tinymce'])
         skin: 'lightgray',
         theme : 'modern'
     };
+
+
+
+    $rootScope.addCloth = function () {
+
+
+        if($rootScope.currentCloth.image === 'undefined' || $rootScope.currentCloth.image === null ){
+            console.log('No photo');
+        }
+        else{
+            $rootScope.cloth.image = $rootScope.currentCloth.image;
+
+            var $url = 'http://127.0.0.1/api/post/' + 'id';
+            var  $data = $rootScope.cloth;/*
+             $callbackPath = '/cloth/type/' + $stateParams.type;*/
+
+            var $callbackFunction = function (response) {
+                //$location.path("/");
+                $rootScope.getCloths();
+                $rootScope.updateDressroom();
+            }
+
+            //postReq.send($url, $data, null, $callbackFunction);
+        }
+    }
+
 
     /*tinymce.init({
       selector: '#post-content',
