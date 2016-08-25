@@ -1,10 +1,12 @@
 <h2>Posts</h2>
-<div ng-repeat="post in posts" class="wrapper">
+<div ng-repeat="post in posts | orderBy:'created_at':true" class="wrapper">
   <header class="header">
-    {{ post.title }}
+    <h3>{{ post.title }}</h3>
     <ul class="post-infos">
+      <li> <a href="#" ng-click="deletePost(post._id)"><i class="fa fa-trash" aria-hidden="true"></i></a></li>
+      <li> <a href="#!/post-edit/{{post._id}}"><i class="fa fa-edit" aria-hidden="true"></i></a></li>
       <li class=""><a href="#!/profile"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Isael Blais</a></li>
-      <li class=""><i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp;August, 27, 2016  {{ post.createdAt}}</li>
+      <li class=""><i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp;<!--August, 27, 2016  -->{{ post.createdAt | date:'MMM d, y'}}</li>
       <li class=""><a href="#!/post/{{post._id}}"><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;(2) Comments</a></li>
     </ul>
   </header>
@@ -13,6 +15,9 @@
       {{ post.content }}
     </p>
 
-    <a href="#!/post">READ MORE</a>
   </article>
+
+  <div class="footer">
+    <a class="pull-right" href="#!/post/{{post._id}}">READ MORE</a>
+  </div>
 </div>

@@ -14,6 +14,10 @@ angular.module('starter.post', ['ngRoute', 'ui.tinymce'])
     templateUrl: 'post/create.html',
     controller: 'PostCreateCtrl'
   });
+  $routeProvider.when('/post-edit/:id', {
+    templateUrl: 'post/edit.html',
+    controller: 'PostEditCtrl'
+  });
 }])
 
 .controller('PostCtrl', function($rootScope, $scope, getReq, $routeParams, $sce) {
@@ -42,7 +46,7 @@ angular.module('starter.post', ['ngRoute', 'ui.tinymce'])
 
 })
 
-.controller('PostCreateCtrl', function($scope, postReq, $sce) {
+.controller('PostCreateCtrl', function($scope, postReq, $sce, $location) {
 
     $scope.previewPost = {
         content: ""
@@ -56,7 +60,6 @@ angular.module('starter.post', ['ngRoute', 'ui.tinymce'])
         $scope.previewPost = $scope.post;
     };
 
-    $scope.tinymceModel = '';
 
     $scope.getContent = function() {
       console.log('Editor content:', $scope.tinymceModel);
@@ -95,9 +98,153 @@ angular.module('starter.post', ['ngRoute', 'ui.tinymce'])
                 //$rootScope.updatePostList();
                 console.log('posts')
                 console.log(response)
+                $location.path('#/posts');
             }
 
             postReq.send($url, $data, null, $callbackFunction);
+        }
+    }
+
+
+    /*tinymce.init({
+      selector: '#post-content',
+      height: 500,
+      plugins: [
+        'advlist autolink lists link image charmap print preview anchor',
+        'searchreplace visualblocks code fullscreen',
+        'insertdatetime media table contextmenu paste code'
+      ],
+      toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+      content_css: [
+        '//www.tinymce.com/css/codepen.min.css'
+      ],
+      theme_advanced_path : false
+    });*/
+
+
+
+  /* https://github.com/xoxco/jQuery-Tags-Input */
+  $('#post-tags').tagsInput({
+    'width':'100%',
+    'height':'44px',
+    'onChange': updateTags
+  });
+
+  function updateTags() {
+    var str_array = $(this).tagsInput();
+      if(typeof $scope.post != 'undefined' && $scope.post != null)
+      {
+          $scope.post.tags = (str_array.val()).split(',');
+
+
+         /* for(var i = 0; i < str_array.length; i++) {
+              // Trim the excess whitespace.
+              str_array[i] = str_array[i].replace(/^\s*!/, "").replace(/\s*$/, "");
+              // Add additional code here, such as:
+              $scope.post.tags.push(str_array[i]);
+          }
+*/
+      }
+  }
+
+
+})
+.controller('PostEditCtrl', function($scope, putReq, getReq, delReq, $sce, $routeParams, $location) {
+
+    $scope.previewPost = {
+        content: ""
+    };
+
+    $scope.toTrustedHTML = function( html ){
+        return $sce.trustAsHtml( html );
+    }
+
+    $scope.makePreviewPost = function () {
+        $scope.previewPost = $scope.post;
+    };
+
+
+    $scope.getContent = function() {
+      console.log('Editor content:', $scope.tinymceModel);
+    };
+
+    $scope.setContent = function() {
+      $scope.tinymceModel = 'Time: ' + (new Date());
+    };
+
+    $scope.tinymceOptions = {
+        height: 400,
+        plugins: ['advlist autolink lists link image charmap print preview anchor',
+        'searchreplace visualblocks code fullscreen',
+        'insertdatetime media table contextmenu paste code'
+        ],
+        toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+        skin: 'lightgray',
+        theme : 'modern'
+    };
+
+    $scope.getPost = function () {
+
+        var $url = 'http://127.0.0.1/api/post/' + $routeParams.id;
+        /*
+         $callbackPath = '/cloth/type/' + $stateParams.type;*/
+
+        var $callbackFunction = function (response) {
+            //$location.path("/");
+            //$rootScope.updatePostList();
+            console.log(response);
+            $scope.post = response;
+            $('#post-tags').importTags(response.tags.join());
+        };
+
+        getReq.send($url, null, $callbackFunction);
+    };
+    $scope.getPost();
+
+    $scope.deletePost = function () {
+
+        if($scope.post === 'undefined' ){
+            console.log('Post is empty');
+        }
+        else {
+            var $url = 'http://127.0.0.1/api/post/' + $routeParams.id;
+            var $data = $scope.post;
+            /*
+             $callbackPath = '/cloth/type/' + $stateParams.type;*/
+
+            var $callbackFunction = function (response) {
+                //$location.path("/");
+                //$rootScope.updatePostList();
+                console.log('posts')
+                console.log(response)
+                $location.path("#!/posts");
+            }
+
+            if(confirm('Are you sure you want to delete this Post ?'))
+            delReq.send($url, $data, null, $callbackFunction);
+        }
+    }
+
+    $scope.updatePost = function () {
+
+        if($scope.post === 'undefined' ){
+            console.log('Post is empty');
+        }
+        else {
+            var $url = 'http://127.0.0.1/api/post/' + $routeParams.id;
+            var $data = $scope.post;
+        /*
+             $callbackPath = '/cloth/type/' + $stateParams.type;*/
+
+            var $callbackFunction = function (response) {
+                //$location.path("/");
+                //$rootScope.updatePostList();
+                console.log('posts')
+                console.log(response)
+                $location.path("#!/posts");
+            }
+
+            putReq.send($url, $data, null, $callbackFunction);
         }
     }
 

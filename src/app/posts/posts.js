@@ -10,8 +10,33 @@ angular.module('starter.posts', ['ngRoute'])
 }])
 
     
-.controller('PostsCtrl', function($scope, getReq, $rootScope) {
+.controller('PostsCtrl', function($scope, getReq, delReq, $location) {
 
+
+  $scope.deletePost = function (id) {
+
+    if($scope.post === 'undefined' ){
+      console.log('Post is empty');
+    }
+    else {
+      var $url = 'http://127.0.0.1/api/post/' + id;
+      var $data = $scope.post;
+      /*
+       $callbackPath = '/cloth/type/' + $stateParams.type;*/
+
+      var $callbackFunction = function (response) {
+        //$location.path("/");
+        //$rootScope.updatePostList();
+        console.log('posts')
+        console.log(response)
+        $location.path("#!/posts");
+      }
+
+      if(confirm('Are you sure you want to delete this Post ?'))
+      delReq.send($url, $data, null, $callbackFunction);
+    }
+  }
+  
   $scope.getPosts = function () {
 
       var $url = 'http://127.0.0.1/api/post';
@@ -28,13 +53,7 @@ angular.module('starter.posts', ['ngRoute'])
       getReq.send($url, null, $callbackFunction);
     };
   $scope.getPosts();
-
-
-  $scope.goToPost = function (id) {
-        $rootScope.post = {
-          id: id
-        }
-  }
+  
 
   })
 
