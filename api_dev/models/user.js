@@ -9,6 +9,9 @@ var UserSchema = new mongoose.Schema({
     email : { type: String, required: true},
     picture: { type: String, required: false },
     is_admin : { type: Boolean, required: false, default: false}
+},
+{
+    timestamps: true
 });
 
 

@@ -1,3 +1,9 @@
+<h2 ng-show="previewPost.title"> Preview</h2>
+<div ng-show="previewPost.title" class="wrapper"  >
+    <article ng-bind-html="toTrustedHTML(previewPost.content)">
+
+    </article>
+</div>
 <h2>New Post</h2>
 <div class="wrapper">
     <article class="main">
@@ -5,18 +11,19 @@
         <form method="post">
             <div class="form-group">
                 <label for="post-title">Post Title</label>
-                <input id="post-title" type="text" class="form-control" placeholder="" />
+                <input id="post-title" type="text" class="form-control" ng-model="post.title" placeholder="" />
             </div>
             <div class="form-group">
                 <label for="post-content">Post Content</label>
-                <textarea rows="10" id="post-content" ui-tinymce="tinymceOptions" ng-model="tinymceModel" ></textarea>
+                <textarea rows="1" id="post-content" ui-tinymce="tinymceOptions"  ng-model="post.content"></textarea>
             </div>
             <div class="form-group">
                 <label for="post-tags">Post Tags</label>
-                <input id="post-tags"  class="form-control" value="alpha,beta,gamma" />
+                <input id="post-tags"  class="form-control" value="alpha,beta,gamma"  />
             </div>
         </form>
 
     </article>
-    <footer class="footer"><button class="pull-right btn btn-primary" ng-click="getContent()">Create Post</button></footer>
+    <footer class="footer"><button class="pull-right btn btn-primary" ng-click="makePreviewPost()">Preview Post</button><button class="pull-right btn btn-primary" ng-click="addPost()">Create Post</button></footer>
+
 </div>
