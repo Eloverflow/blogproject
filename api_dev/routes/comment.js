@@ -16,11 +16,15 @@ router.get('/', function(req, res, next) {
 
 /* POST /comments */
 router.post('/', function(req, res, next) {
-  Comment.create(req.body, function (err, comment) {
-    if (err) return next(err);
-    res.json(comment);
+
+  var comment = new Comment(req.body);
+  comment.save(function(err){
+    console.log(comment._id);
   });
+
+  res.json(comment);
 });
+
 
 /* GET /comments/id */
 router.get('/:id', function(req, res, next) {
