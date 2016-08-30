@@ -186,6 +186,7 @@ $inputs:            email, number, password, search, tel, text, url, color, date
     .user-img{
     }
     .user-img img{
+      margin-top: 15px;
       width: 40px;
       height: 40px;
       border-radius: 50%;
@@ -193,7 +194,7 @@ $inputs:            email, number, password, search, tel, text, url, color, date
     .user-msg-content{
       word-wrap: break-word;
       flex-grow: 80;
-      padding: 4px 20px 10px 20px;
+      padding: 10px 20px 10px 20px;
       width: 200px;
 
       @media (min-width: 480px) {
@@ -252,7 +253,8 @@ $inputs:            email, number, password, search, tel, text, url, color, date
     .sub-com{
       background-color: rgba(200,200,200,0.4);
       margin-left: 10%;
-      padding: 20px;
+      padding: 10px 20px 20px 20px;
+
     }
 
     .chat-sub-comment{
@@ -319,6 +321,7 @@ $inputs:            email, number, password, search, tel, text, url, color, date
   }
 
   .InputAddOn-sub-comment {
+    margin-top: 10px;
     display: flex;
   }
   .InputAddOn-field-sub-comment {
@@ -329,7 +332,6 @@ $inputs:            email, number, password, search, tel, text, url, color, date
   }
   .InputAddOn-item-sub-comment {
     border-left: 0;
-    border-right: 0;
     border-radius: 0;
     /* item styles */
   }

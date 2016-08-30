@@ -11,6 +11,7 @@ var index = require('./routes/index');
 var user = require('./routes/user');
 var post = require('./routes/post');
 var comment = require('./routes/comment');
+var subComment = require('./routes/subComment');
 var vote = require('./routes/vote');
 
 var config = require('./config/database.js');
@@ -38,7 +39,7 @@ app.set('view engine', 'ejs');
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json({limit: '50mb'}));
-app.use(bodyParser.urlencoded({ extended: false, limit: '50mb'}));
+app.use(bodyParser.urlencoded({ extended: true, limit: '50mb'}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../www')));
 
@@ -67,7 +68,7 @@ app.use(express.static(path.join(__dirname, '../www')));
 //Ajout pour supporter le cross-site
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
+    res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT, OPTIONS");
     res.header("Access-Control-Allow-Headers", "Cache-Control, Pragma, Authorization, Origin, X-Requested-With, Content-Type, Accept");
     res.header("Access-Control-Allow-Credentials", "true");
     next();
@@ -80,6 +81,7 @@ app.use('/', index);
 app.use('/api/user', user);
 app.use('/api/post', post);
 app.use('/api/comment', comment);
+app.use('/api/subComment', subComment);
 app.use('/api/vote', vote);
 /*
  app.use('/api/cloth/pants', pants);*/

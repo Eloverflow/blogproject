@@ -20,7 +20,7 @@ angular.module('starter.post', ['ngRoute', 'ui.tinymce'])
   });
 }])
 
-.controller('PostCtrl', function($rootScope, $scope, getReq, $routeParams, $sce, postReq) {
+.controller('PostCtrl', function($rootScope, $scope, getReq, $routeParams, $sce, postReq, $http) {
 
     $scope.getPost = function () {
 
@@ -61,7 +61,42 @@ angular.module('starter.post', ['ngRoute', 'ui.tinymce'])
 
 
     $scope.comment = {post_id : $routeParams.id};
-    $scope.addComment = function (comment) {
+
+    $scope.addSubComment = function (comment) {
+
+        var $url = 'http://127.0.0.1/api/subComment';
+        var data = {comment_id: comment._id, content: comment.currentSubComment};
+        /*
+         $callbackPath = '/cloth/type/' + $stateParams.type;*/
+
+        var $callbackFunction = function (response) {
+            //$location.path("/");
+            //$rootScope.updatePostList();
+            console.log(response);
+
+            if(typeof $scope.comments == undefined || $scope.comments == null)
+                $scope.comments = [];
+
+            if(typeof $scope.comment.subCommands == undefined || $scope.comment.subCommands == null)
+                $scope.comment.subCommands = [];
+            
+            $scope.comment.subCommands.push(response);
+            console.log($scope.comments);
+        };
+        /*
+         postReq.send($url, data, null, $callbackFunction);*/
+
+        $http({
+            url: $url,
+            method: "POST",
+            data: data
+        }).success(function (data, status, headers, config) {/*
+         console.log(data);*/
+            if($callbackFunction)
+                $callbackFunction(data);
+        })
+    }
+    $scope.addComment = function (comment, url) {
 
         var $url = 'http://127.0.0.1/api/comment';
         var data = comment;
@@ -77,9 +112,20 @@ angular.module('starter.post', ['ngRoute', 'ui.tinymce'])
             $scope.comments = [];
 
             $scope.comments.push(response);
+            console.log($scope.comments);
         };
+/*
+         postReq.send($url, data, null, $callbackFunction);*/
 
-        postReq.send($url, data, null, $callbackFunction);
+        $http({
+            url: $url,
+            method: "POST",
+            data: data
+        }).success(function (data, status, headers, config) {/*
+         console.log(data);*/
+            if($callbackFunction)
+                $callbackFunction(data);
+        })
     };
 
 
@@ -339,17 +385,17 @@ angular.module('starter.post', ['ngRoute', 'ui.tinymce'])
                     url: $url,
                     method: "POST",
                     data: $data
-                }).success(function (data) {/*
+                }).success(function (data, status, headers, config) {/*
                  console.log(data);*/
 
                     if($callbackPath)
                         $location.path($callbackPath);
 
                     if($callbackFunction)
-                        $callbackFunction();
+                        $callbackFunction(data);
 
                 })
-                    .error(function (data) {
+                    .error(function (data, status, headers, config) {
                         console.log('Error: ' + data);
                     });
             }
@@ -363,6 +409,9 @@ angular.module('starter.post', ['ngRoute', 'ui.tinymce'])
                 $http({
                     url: $url,
                     method: "PUT",
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
                     data: $data
                 }).success(function (data) {/*
                  console.log(data);*/
@@ -371,7 +420,7 @@ angular.module('starter.post', ['ngRoute', 'ui.tinymce'])
                         $location.path($callbackPath);
 
                     if($callbackFunction)
-                        $callbackFunction();
+                        $callbackFunction(data);
 
                 })
                     .error(function (data) {

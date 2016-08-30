@@ -1,4 +1,5 @@
 angular.module('starter.services', [])
+/*
 
 .factory('postReq', function ($http, $location) {
 
@@ -8,14 +9,14 @@ angular.module('starter.services', [])
                 url: $url,
                 method: "POST",
                 data: $data
-            }).success(function (data) {/*
-             console.log(data);*/
+            }).success(function (data) {/!*
+             console.log(data);*!/
 
                 if($callbackPath)
                     $location.path($callbackPath);
 
                 if($callbackFunction)
-                    $callbackFunction();
+                    $callbackFunction(data);
 
             })
                 .error(function (data) {
@@ -33,8 +34,8 @@ angular.module('starter.services', [])
                     url: $url,
                     method: "PUT",
                     data: $data
-                }).success(function (data) {/*
-                 console.log(data);*/
+                }).success(function (data) {/!*
+                 console.log(data);*!/
 
                     if($callbackPath)
                         $location.path($callbackPath);
@@ -58,8 +59,8 @@ angular.module('starter.services', [])
                     method: "GET",
                     crossDomain: true,
                     url: $url
-                }).success(function (response) {/*
-                 console.log(response);*/
+                }).success(function (response) {/!*
+                 console.log(response);*!/
 
                     if($callbackPath)
                         $location.path($callbackPath);
@@ -83,8 +84,8 @@ angular.module('starter.services', [])
                     method: "DELETE",
                     crossDomain: true,
                     url: $url
-                }).success(function (response) {/*
-                 console.log(response);*/
+                }).success(function (response) {/!*
+                 console.log(response);*!/
 
                     if($callbackPath)
                         $location.path($callbackPath);
@@ -98,4 +99,4 @@ angular.module('starter.services', [])
                     });
             }
         }
-    })
+    })*/

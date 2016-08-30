@@ -39,31 +39,23 @@
             <hr>
             <div class="sub-com">
                 <ul class="chat-sub-comment">
-                    <li>
+                    <li ng-repeat="subComment in comment.subComments">
                         <div class="user-sub-msg-content">
                             <div class="user-sub-msg-header">
                                 <strong>John Doe</strong>
-                                <span class="time">14min ago</span>
+                                <span class="time">{{subComment.updatedAt}}</span>
                             </div>
-                            <p>bla bla bla...bla bla bla...bla bla bla...bla bla bla..bla bla bla...bla bla bla...bla bla bla...bla bla bla...bla bla bla...bla bla bla...bla bla bla...</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="user-sub-msg-content">
-                            <div class="user-sub-msg-header">
-                                <strong>John Doe</strong>
-                                <span class="time">14min ago</span>
-                            </div>
-                            <p>bla bla bla...bla bla bla...bla bla bla...bla bla bla..bla bla bla...bla bla bla...bla bla bla...bla bla bla...bla bla bla...bla bla bla...bla bla bla...</p>
+                            <p>{{subComment.content}}</p>
                         </div>
                     </li>
                 </ul>
                 <div class="sub-com-sep"></div>
                 <div class="InputAddOn-sub-comment">
-                    <input id="btn-input-sub-comment" type="text" class="InputAddOn-field-sub-comment form-control" placeholder="Type your message here..." />
-                    <button class="InputAddOn-item-sub-comment btn btn-default">Send</button>
+                    <input id="btn-input-sub-comment" type="text" ng-model="comment.currentSubComment" class="InputAddOn-field-sub-comment form-control" placeholder="Type your message here..." />
+                    <button class="InputAddOn-item-sub-comment btn btn-default" ng-click="addSubComment(comment)">Send</button>
                 </div>
             </div>
+            <hr >
         </li>
     </ul>
     <hr>
