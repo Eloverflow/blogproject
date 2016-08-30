@@ -17,6 +17,7 @@ router.get('/', function(req, res, next) {
 /* POST /comments */
 router.post('/', function(req, res, next) {
   Comment.create(req.body, function (err, comment) {
+    if (err) return next(err);
     res.json(comment);
   });
 });
