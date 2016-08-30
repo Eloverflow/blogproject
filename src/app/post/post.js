@@ -20,8 +20,7 @@ angular.module('starter.post', ['ngRoute', 'ui.tinymce'])
   });
 }])
 
-.controller('PostCtrl', function($rootScope, $scope, getReq, $routeParams, $sce) {
-
+.controller('PostCtrl', function($rootScope, $scope, getReq, $routeParams, $sce, postReq) {
 
     $scope.getPost = function () {
 
@@ -43,6 +42,46 @@ angular.module('starter.post', ['ngRoute', 'ui.tinymce'])
     $scope.toTrustedHTML = function( html ){
         return $sce.trustAsHtml( html );
     }
+    $scope.getComments = function () {
+
+        var $url = 'http://127.0.0.1/api/post/' + $routeParams.id  + '/comments';
+        /*
+         $callbackPath = '/cloth/type/' + $stateParams.type;*/
+
+        var $callbackFunction = function (response) {
+            //$location.path("/");
+            //$rootScope.updatePostList();
+            console.log(response);
+            $scope.comments = response;
+        };
+
+        getReq.send($url, null, $callbackFunction);
+    };
+    $scope.getComments();
+
+
+    $scope.comment = {post_id : $routeParams.id};
+    $scope.addComment = function (comment) {
+
+        var $url = 'http://127.0.0.1/api/comment';
+        var data = comment;
+        /*
+         $callbackPath = '/cloth/type/' + $stateParams.type;*/
+
+        var $callbackFunction = function (response) {
+            //$location.path("/");
+            //$rootScope.updatePostList();
+            console.log(response);
+
+            if(typeof $scope.comments == undefined || $scope.comments == null)
+            $scope.comments = [];
+
+            $scope.comments.push(response);
+        };
+
+        postReq.send($url, data, null, $callbackFunction);
+    };
+
 
 })
 

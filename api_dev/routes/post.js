@@ -5,13 +5,25 @@ var router = express.Router();
 
 var mongoose = require('mongoose');
 var Post = require('../models/post.js');
+var Comment = require('../models/comment.js');
 
-/* GET /pantalons listing. */
+/* GET /post listing. */
 router.get('/', function(req, res, next) {
   Post.find(function (err, post) {
     if (err) return next(err);
     res.json(post);
   });
+});
+/* GET /pantalons listing. */
+router.get('/:id/comments', function(req, res, next) {
+      /*function (err, comments) {
+       if (err) return next(err);
+       res.json(comments);
+       }*/
+      Comment.find({post_id: req.params.id}, function (err, comments) {
+        if (err) return next(err);
+        res.json(comments);
+      });
 });
 
 /* POST /pantalons */

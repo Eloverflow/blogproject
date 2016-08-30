@@ -86,7 +86,7 @@ $inputs:            email, number, password, search, tel, text, url, color, date
 
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
-  border: 1px solid #888;
+  border: 1px solid lightgray;
   border-radius: 2px;
   margin-top: 20px;
 
@@ -114,6 +114,7 @@ $inputs:            email, number, password, search, tel, text, url, color, date
   list-style: none;
   overflow-y: auto;
   padding-top: 10px;
+  margin-bottom: 0;
 }
 
 
@@ -137,7 +138,7 @@ $inputs:            email, number, password, search, tel, text, url, color, date
 
 .chat{
   background-color: white;
-  border: 1px solid #888;
+  border: 1px solid lightgray;
   border-radius: 2px;
   margin-top: 10px;
 
@@ -281,20 +282,21 @@ $inputs:            email, number, password, search, tel, text, url, color, date
   }
 
   .chat-foot{
+    padding: 6px;
     .input-group{
     }
 
-    input{
+    textarea{
       transition: none;
       border-radius: 0;
-      border-left: 0;
-      border-bottom: 0;
+      resize: none;
     }
     :focus{
      /* border: 1px solid grey;*/
 
-      border: 1px solid darken(rgb(150, 150, 150), 5% );
+      /*border: 1px solid darken(rgb(150, 150, 150), 5% );*/
       box-shadow: none;
+
     }
 
     .InputAddOn {
@@ -307,9 +309,7 @@ $inputs:            email, number, password, search, tel, text, url, color, date
     }
     .InputAddOn-item {
 
-      border-bottom: 0;
       border-left: 0;
-      border-right: 0;
       border-radius: 0;
       /* item styles */
     }
@@ -474,9 +474,10 @@ p{/*
 
   /* non-critical apperance styles */
 
-  background: url('img/sandpaper.png') repeat;
+  /*background: url('img/sandpaper.png') repeat;*/
+  background-color: rgb(233, 233, 233);/*
   -webkit-background-size: 348px 500px!important;
-  background-size: 348px 500px!important;
+  background-size: 348px 500px!important;*/
 }
 
 @media (min-width: 480px) {
@@ -519,6 +520,7 @@ div[for="nav-trigger"] {
   left: 0;
   right: 0;
   top: 0;
+  border-bottom: 2px solid lighten(#2a3f54, 50%);
 }
 
 /* Make the Magic Happen */

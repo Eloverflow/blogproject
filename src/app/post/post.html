@@ -9,7 +9,7 @@
         &nbsp;<h3>Comments</h3>
     </div>
     <ul class="chat-msg">
-        <li class="chat-bloc">
+        <li class="chat-bloc" ng-repeat="comment in comments" >
             <div class="chat-bloc-row">
                 <div class="user-img">
                     <img src="http://placehold.it/80/30a5ff/fff"/>
@@ -17,9 +17,9 @@
                 <div class="user-msg-content">
                     <div class="user-msg-header">
                         <strong>John Doe</strong>
-                        <span class="time">14min ago</span>
+                        <span class="time">{{ comment.createdAt | date:'MMM d, y'}}</span>
                     </div>
-                    <p>bla bla bla...bla bla bla...bla bla bla...bla bla bla..bla bla bla...bla bla bla...bla bla bla...bla bla bla...bla bla bla...bla bla bla...bla bla bla...</p>
+                    <p>{{ comment.content}}</p>
                 </div>
                 <div class="user-msg-up-down"><!--
                            <i class="fa fa-thumbs-up"></i>
@@ -65,13 +65,13 @@
                 </div>
             </div>
         </li>
-        <hr>
     </ul>
+    <hr>
     <div class="chat-foot">
 
         <div class="InputAddOn">
-            <input id="btn-input" type="text" class="InputAddOn-field form-control" placeholder="Type your message here..." />
-            <button class="InputAddOn-item btn btn-default">Send</button>
+            <textarea id="btn-input" rows="2" ng-model="comment.content" class="InputAddOn-field form-control" placeholder="Type your message here..."></textarea>
+            <button ng-click="addComment(comment)" class="InputAddOn-item btn btn-default">Send</button>
         </div>
     </div>
 </div>
