@@ -21,11 +21,16 @@
       <div class="item img">
         <i class="fa fa-user" aria-hidden="true"></i>
       </div>
-      <div class="item msg">
+      <div ng-hide="user" class="item msg">
         <strong>Welcome, </strong><br />
-        <h4>Isael Blais</h4>
+        <h4>Guest</h4>
+      </div>
+      <div ng-show="user" class="item msg">
+        <strong>Welcome, </strong><br />
+        <h4>{{ user.name}} </h4>
       </div>
     </li>
+    <li ng-hide="user" class="nav-item" ><a href="#!/sign-in"><i class="fa fa-users" aria-hidden="true"></i>Sign In</a></li>
     <li class="nav-item" ><a href="#!/posts" ><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
     <li class="nav-item"><a href="#!/about"><i class="fa fa-info-circle" aria-hidden="true"></i>About</a></li>
     <li class="nav-item"><a href="#!/contact"><i class="fa fa-envelope" aria-hidden="true"></i>Contact</a></li>
@@ -64,21 +69,26 @@
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
+  <script src="../bower_components/openfb/openfb.js"></script>
   <script src="../bower_components/tinymce-dist/tinymce.js"></script>
   <script src="../bower_components/angular/angular.js"></script>
   <script src="../bower_components/angular-route/angular-route.js"></script>
   <script src="js/tinymce.js"></script>
   <!--<script src="../bower_components/angular-ui-tinymce/src/tinymce.js"></script>-->
   <script src="app.js"></script>
-  <script src="services.js"></script>
   <script src="starterController.js"></script>
+  <script src="accountController.js"></script>
+  <script src="constants.js"></script>
+  <script src="services.js"></script>
   <script src="post/post.js"></script>
   <script src="posts/posts.js"></script>
+  <script src="sign_in/sign_in.js"></script>
   <script src="js/menu-transition.js"></script>
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>
   <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
 
 </body>
 </html>

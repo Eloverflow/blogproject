@@ -8,6 +8,7 @@
   "dependencies": {
     "jquery": "*",
     "jquery-ui": "*",
+    "openfb": "*",
     "angular-ui-tinymce": "*",
     "compass-sass-mixins": "*",
     "angular-route": "*",

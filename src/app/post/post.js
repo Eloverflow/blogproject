@@ -20,7 +20,9 @@ angular.module('starter.post', ['ngRoute', 'ui.tinymce'])
   });
 }])
 
-.controller('PostCtrl', function($rootScope, $scope, getReq, $routeParams, $sce, postReq, $http) {
+.controller('PostCtrl', function($rootScope, $scope, getReq, $routeParams, $sce, postReq, $http, AuthService) {
+
+    console.log(" Is authenticated : " + AuthService.isAuthenticated());
 
     $scope.getPost = function () {
 

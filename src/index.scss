@@ -676,6 +676,39 @@ ul.post-infos li{
 #post-tags{
 }
 
+.sign-in{
+  padding: 4vh;
+  .sign-in-header,.sign-in-builtin,.sign-in-fb,.sign-in-other{
+    border-bottom: 1px solid lightgrey;
+    padding: 8px;
+    margin-bottom: 4px;
+
+
+  }
+
+  .sign-in-other{
+    width: 100%;
+    margin: 5px;
+    button{
+      width: 150px;
+    }
+  }
+
+  .sign-in-or{
+    text-align: center;
+    position: absolute;
+    margin-top: -20px;
+    left: 49%;
+    background-color: #f8f8f8;
+  }
+
+  button{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+}
+
 #btn-github{
   text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
   transition: all 0.2s;
