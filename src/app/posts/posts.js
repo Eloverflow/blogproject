@@ -15,27 +15,22 @@ angular.module('starter.posts', ['ngRoute'])
 
   $scope.deletePost = function (id) {
 
-    if($scope.post === 'undefined' ){
-      console.log('Post is empty');
-    }
-    else {
       var $url = 'http://127.0.0.1/api/post/' + id;
-      var $data = $scope.post;
-      /*
-       $callbackPath = '/cloth/type/' + $stateParams.type;*/
 
       var $callbackFunction = function (response) {
-        //$location.path("/");
-        //$rootScope.updatePostList();
-        console.log('posts')
-        console.log(response)
-        $location.path("#!/posts");
-      }
+        $scope.posts.splice(id, 1);
+        console.log(response);
+        //$location.path("#!/posts");
+      };
 
       if(confirm('Are you sure you want to delete this Post ?'))
-      delReq.send($url, $data, null, $callbackFunction);
-    }
-  }
+      delReq.send($url, null, $callbackFunction);
+
+  };
+
+  $scope.editPost = function (post_id) {
+    $location.path('/post-edit/'+post_id)
+  };
   
   $scope.getPosts = function () {
 

@@ -305,6 +305,7 @@ angular.module('starter.post', ['ngRoute', 'ui.tinymce'])
         theme : 'modern'
     };
 
+    var tags = $('#post-tags');
     $scope.getPost = function () {
 
         var $url = 'http://127.0.0.1/api/post/' + $routeParams.id;
@@ -316,8 +317,12 @@ angular.module('starter.post', ['ngRoute', 'ui.tinymce'])
             //$rootScope.updatePostList();
             console.log(response);
             $scope.post = response;
-            $('#post-tags').importTags(response.tags.join());
-        };
+            tags.importTags(response.tags.join());
+            console.log(response.tags)
+
+
+            /*$scope.post.tags = response.tags*/
+        }
 
         getReq.send($url, null, $callbackFunction);
     };
