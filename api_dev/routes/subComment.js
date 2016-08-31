@@ -5,6 +5,7 @@ var router = express.Router();
 
 var mongoose = require('mongoose');
 var SubComment = require('../models/subComment.js');
+var Comment = require('../models/comment.js');
 
 /* GET /comments listing. */
 router.get('/', function(req, res, next) {
@@ -16,10 +17,25 @@ router.get('/', function(req, res, next) {
 
 /* POST /comments */
 router.post('/', function(req, res, next) {
-  SubComment.create(req.body, function (err, post) {
-    if(err) return next(err)
-    next(res.json(post));
-  });
+
+  Comment.findById(req.body.comment_id,function (err, comment) {
+    if (err) return next(err);
+    SubComment.create(req.body, function (err, subComment) {
+      if(err) return next(err);
+      comment.sub_comments.push(subComment._id);
+      comment.save();
+
+      res.json(comment);
+    });
+
+
+
+  })
+
+
+
+
+
 });
 
 
