@@ -39,11 +39,11 @@
             <hr>
             <div class="sub-com">
                 <ul class="chat-sub-comment">
-                    <li ng-repeat="subComment in comment.subComments">
+                    <li ng-repeat="subComment in comment.sub_comments">
                         <div class="user-sub-msg-content">
                             <div class="user-sub-msg-header">
                                 <strong>John Doe</strong>
-                                <span class="time">{{subComment.updatedAt}}</span>
+                                <span class="time">{{subComment.updatedAt | date:'MMM d, y'}}</span>
                             </div>
                             <p>{{subComment.content}}</p>
                         </div>

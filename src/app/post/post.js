@@ -77,11 +77,12 @@ angular.module('starter.post', ['ngRoute', 'ui.tinymce'])
             if(typeof $scope.comments == undefined || $scope.comments == null)
                 $scope.comments = [];
 
-            if(typeof $scope.comment.subCommands == undefined || $scope.comment.subCommands == null)
-                $scope.comment.subCommands = [];
+            if(typeof comment.sub_comments == undefined || comment.sub_comments == null)
+                comment.sub_comments = [];
             
-            $scope.comment.subCommands.push(response);
-            console.log($scope.comments);
+            comment.sub_comments.push(response);
+            comment.currentSubComment = "";
+            console.log(comment);
         };
         /*
          postReq.send($url, data, null, $callbackFunction);*/
