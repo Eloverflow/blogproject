@@ -109,11 +109,10 @@ $inputs:            email, number, password, search, tel, text, url, color, date
 
 
 .chat-msg{
-  min-height: 250px;
-  max-height: 600px;
-  list-style: none;
-  overflow-y: auto;
-  padding-top: 10px;
+  min-height: 250px;/*
+  max-height: 600px;*/
+  list-style: none;/*
+  overflow-y: auto;*/
   margin-bottom: 0;
 }
 
@@ -172,6 +171,7 @@ $inputs:            email, number, password, search, tel, text, url, color, date
   }
 
   .chat-bloc{
+    border-top: 1px solid lightgrey;
     padding-left: 20px;
     /*flex-direction: row;*/
 
@@ -243,7 +243,9 @@ $inputs:            email, number, password, search, tel, text, url, color, date
 
     }
     .chat-bloc-footer{
-
+        a{
+          cursor: pointer;
+        }
     }
 
 /*    .sub-com > *{
