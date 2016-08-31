@@ -59,6 +59,42 @@ angular.module('starter.post', ['ngRoute', 'ui.tinymce'])
     };
     $scope.getComments();
 
+    
+    $scope.addUpVote = function (comment) {
+        addVote(comment, true);
+    };
+    $scope.addDownVote = function (comment) {
+       addVote(comment, false);
+    };
+    
+    function addVote(comment, isUpVote) {
+        var $url = 'http://127.0.0.1/api/vote';
+        var data = {comment_id: comment._id, is_upvote: isUpVote};
+        /*
+         $callbackPath = '/cloth/type/' + $stateParams.type;*/
+
+        var $callbackFunction = function (response) {
+            console.log(response);
+
+            if(typeof comment.votes == 'undefined' || comment.votes == null)
+                comment.votes = [];
+
+            comment.votes.push(response);
+            console.log(comment);
+        };
+        /*
+         postReq.send($url, data, null, $callbackFunction);*/
+
+        $http({
+            url: $url,
+            method: "POST",
+            data: data
+        }).success(function (data, status, headers, config) {/*
+         console.log(data);*/
+            if($callbackFunction)
+                $callbackFunction(data);
+        })
+    }
 
     $scope.comment = {post_id : $routeParams.id};
 
@@ -74,10 +110,10 @@ angular.module('starter.post', ['ngRoute', 'ui.tinymce'])
             //$rootScope.updatePostList();
             console.log(response);
 
-            if(typeof $scope.comments == undefined || $scope.comments == null)
+            if(typeof $scope.comments == 'undefined' || $scope.comments == null)
                 $scope.comments = [];
 
-            if(typeof comment.sub_comments == undefined || comment.sub_comments == null)
+            if(typeof comment.sub_comments == 'undefined' || comment.sub_comments == null)
                 comment.sub_comments = [];
             
             comment.sub_comments.push(response);

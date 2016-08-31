@@ -5,6 +5,7 @@ var router = express.Router();
 
 var mongoose = require('mongoose');
 var Vote = require('../models/vote.js');
+var Comment = require('../models/comment.js');
 
 /* GET /pantalons listing. */
 router.get('/', function(req, res, next) {
@@ -16,9 +17,22 @@ router.get('/', function(req, res, next) {
 
 /* POST /pantalons */
 router.post('/', function(req, res, next) {
-  Vote.create(req.body, function (err, post) {
+
+  Comment.findById(req.body.comment_id,function (err, comment) {
     if (err) return next(err);
-    res.json(post);
+    Vote.create(req.body, function (err, vote) {
+      if(err) return next(err);
+      comment.votes.push(vote._id);
+      comment.save();
+
+      res.json(vote);
+    });
+
+
+/*
+    Vote.create(req.body, function (err, post) {
+    if (err) return next(err);
+    res.json(post);*/
   });
 });
 

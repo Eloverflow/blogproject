@@ -22,7 +22,7 @@ router.get('/:id/comments', function(req, res, next) {
        }*//*
       mongoose.model('SubComment', 'SubCommentSchema');*/
 
-      Comment.find({post_id: req.params.id}).populate({path : 'sub_comments'}).exec(function (err, comments) {
+      Comment.find({post_id: req.params.id}).populate({path : 'sub_comments'}).populate({path : 'votes'}).exec(function (err, comments) {
         if (err) return next(err);
         res.json(comments);
       });

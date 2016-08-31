@@ -14,6 +14,7 @@
     "angular": "*",
     "bootstrap-sass-official": "*",
     "bootstrap-sass": "*",
+    "bootstrap": "*",
     "fontawesome": "*"
   },
   "private": false
