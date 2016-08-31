@@ -6,7 +6,8 @@ var PostSchema = new mongoose.Schema({
     content : { type: String, required: true },
     //  user_id :  { type: mongoose.Schema.Types.ObjectId, ref: 'UserSchema' },
     view_count: { type: Number, required: false, default: 0},
-    tags: {type: Array, required: false}
+    tags: {type: Array, required: false},
+    comments : [{ type: mongoose.Schema.Types.ObjectId, ref: 'CommentSchema' }]
 },
 {
     timestamps: true

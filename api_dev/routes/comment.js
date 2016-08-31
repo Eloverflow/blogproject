@@ -5,6 +5,7 @@ var router = express.Router();
 
 var mongoose = require('mongoose');
 var Comment = require('../models/comment.js');
+var Post = require('../models/post.js');
 
 /* GET /comments listing. */
 router.get('/', function(req, res, next) {
@@ -16,9 +17,19 @@ router.get('/', function(req, res, next) {
 
 /* POST /comments */
 router.post('/', function(req, res, next) {
-  Comment.create(req.body, function (err, post) {
+  Post.findById(req.body.post_id,function (err, post) {
+    if (err) return next(err);
+    Comment.create(req.body, function (err, comment) {
+      if(err) return next(err);
+      post.comments.push(comment._id);
+      post.save();
+
+      res.json(comment);
+    });
+/*
+    Comment.create(req.body, function (err, post) {
     if(err) return next(err)
-    next(res.json(post));
+    next(res.json(post));*/
   });
 });
 

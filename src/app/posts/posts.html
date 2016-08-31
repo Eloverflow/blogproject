@@ -7,7 +7,7 @@
       <li> <a href="#!/post-edit/{{post._id}}"><i class="fa fa-edit" aria-hidden="true"></i></a></li>
       <li class=""><a href="#!/profile"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Isael Blais</a></li>
       <li class=""><i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp;<!--August, 27, 2016  -->{{ post.createdAt | date:'MMM d, y'}}</li>
-      <li class=""><a href="#!/post/{{post._id}}"><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;(2) Comments</a></li>
+      <li class=""><a href="#!/post/{{post._id}}"><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;({{ post.comments.length }}) Comments</a></li>
     </ul>
   </header>
   <article class="post">
