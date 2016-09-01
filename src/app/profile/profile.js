@@ -16,6 +16,12 @@ angular.module('starter.controllers')
       title: "Log off",
       backdrop: true,
       buttons: {
+        cancel: {
+          label: "No",
+          className: "btn-danger",
+          callback: function() {
+          }
+        },
         logoff: {
           label: "Yes!",
           className: "btn-success",
@@ -30,12 +36,6 @@ angular.module('starter.controllers')
               $location.path('/sign-in');
             });
 
-          }
-        },
-        cancel: {
-          label: "No",
-          className: "btn-danger",
-          callback: function() {
           }
         }
       }

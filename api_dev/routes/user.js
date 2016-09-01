@@ -5,11 +5,8 @@ var router = express.Router();
 
 var mongoose = require('mongoose');
 var User = require('../models/user.js');
-var jwt = require('jwt-simple');
 var passport = require('passport');
 var nodemailer = require('nodemailer');
-
-var config = require('../config/database.js');
 
 require('../config/passport')(passport);
 
@@ -138,18 +135,7 @@ router.get('/resetPwd/:email', function(req, res, next) {
   });
 });
 
-function getToken(headers) {
-  if (headers && headers.authorization) {
-    var parted = headers.authorization.split(' ');
-    if (parted.length === 2) {
-      return parted[1];
-    } else {
-      return null;
-    }
-  } else {
-    return null;
-  }
-};
+
 
 module.exports = router;
 

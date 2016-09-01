@@ -6,6 +6,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Vote = require('../models/vote.js');
 var Comment = require('../models/comment.js');
+var User = require('../models/user.js');
 
 /* GET /pantalons listing. */
 router.get('/', function(req, res, next) {
@@ -18,22 +19,34 @@ router.get('/', function(req, res, next) {
 /* POST /pantalons */
 router.post('/', function(req, res, next) {
 
-  Comment.findById(req.body.comment_id,function (err, comment) {
-    if (err) return next(err);
-    Vote.create(req.body, function (err, vote) {
-      if(err) return next(err);
-      comment.votes.push(vote._id);
-      comment.save();
+  var token = getToken(req.headers);
+  if (token) {
+    var decoded = jwt.decode(token, config.secret);
+    User.findOne({
+      email: decoded.email
+    }, function (err, user) {
+      if (err) return next(err);
 
-      res.json(vote);
+      Comment.findById(req.body.comment_id, function (err, comment) {
+        if (err) return next(err);
+        Vote.create({
+          user_id: user,
+          comment_id: req.body.comment_id,
+          is_upvote: req.body.is_upvote
+        }, function (err, vote) {
+          if (err) return next(err);
+          comment.votes.push(vote._id);
+          comment.save();
+
+          res.json(vote);
+        });
+      })
     });
-
-
+  }
 /*
     Vote.create(req.body, function (err, post) {
     if (err) return next(err);
     res.json(post);*/
-  });
 });
 
 /* GET /pantalons/id */

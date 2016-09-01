@@ -6,10 +6,11 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Comment = require('../models/comment.js');
 var Post = require('../models/post.js');
+var User = require('../models/user.js');
 
 /* GET /comments listing. */
 router.get('/', function(req, res, next) {
-  Comment.find(function (err, comment) {
+  Comment.find().populate({path : 'user_id'}).exec(function (err, comment) {
     if (err) return next(err);
     res.json(comment);
   });
@@ -17,28 +18,41 @@ router.get('/', function(req, res, next) {
 
 /* POST /comments */
 router.post('/', function(req, res, next) {
-  Post.findById(req.body.post_id,function (err, post) {
-    if (err) return next(err);
-    Comment.create(req.body, function (err, comment) {
-      if(err) return next(err);
-      post.comments.push(comment._id);
-      post.save();
+  var token = getToken(req.headers);
+  if (token) {
+    var decoded = jwt.decode(token, config.secret);
+    User.findOne({
+      email: decoded.email
+    },function (err, user) {
+      if (err) return next(err);
+      
+      Post.findById(req.body.post_id,function (err, post) {
+        if (err) return next(err);
+        Comment.create({
+          user_id: user,
+          post_id: req.body.post_id,
+          content: req.body.content
+        },function (err, comment) {
+          if(err) return next(err);
+          post.comments.push(comment._id);
+          post.save();
 
-      res.json(comment);
-    });
-/*
-    Comment.create(req.body, function (err, post) {
-    if(err) return next(err)
-    next(res.json(post));*/
-  });
+          res.json(comment);
+        });
+      });
+    })
+  }
+        
+        
+  
 });
 
 
 /* GET /comments/id */
 router.get('/:id', function(req, res, next) {
-  Comment.findById(req.params.post_id, function (err, post) {
+  Comment.findById(req.params.post_id).populate({path : 'user_id'}).exec(function (err, comment) {
     if (err) return next(err);
-    res.json(post);
+    res.json(comment);
   });
 });
 

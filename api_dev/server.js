@@ -15,6 +15,7 @@ var subComment = require('./routes/subComment');
 var vote = require('./routes/vote');
 
 var config = require('./config/database.js');
+var jwt = require('jwt-simple');
 
 
 var mongoose = require('mongoose');
@@ -48,7 +49,7 @@ app.use(express.static(path.join(__dirname, '../www')));
 /*app.use(passport.initialize());*/
 
 
-/*getToken = function (headers) {
+global.getToken = function (headers) {
  if (headers && headers.authorization) {
  var parted = headers.authorization.split(' ');
  if (parted.length === 2) {
@@ -59,7 +60,10 @@ app.use(express.static(path.join(__dirname, '../www')));
  } else {
  return null;
  }
- };*/
+};
+
+global.config = config;
+global.jwt = jwt;
 
 
 

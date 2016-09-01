@@ -16,7 +16,7 @@
                 </div>
                 <div class="user-msg-content">
                     <div class="user-msg-header">
-                        <strong>John Doe</strong>
+                        <strong>{{ comment.user_id.email}}</strong>
                         <span class="time">{{ comment.createdAt | date:'MMM d, y'}}</span>
                     </div>
                     <p>{{ comment.content}}</p>
@@ -34,10 +34,10 @@
                 </div>
             </div>
             <div ng-show="user" class="chat-bloc-footer">
-                <a data-toggle="collapse" data-target="#reply-{{comment._id}}" class="">Reply</a>
+                <a data-toggle="collapse" data-target="#reply-{{comment._id}}" class="">Reply ({{comment.sub_comments.length}})</a>
             </div>
             <div ng-hide="user || comment.sub_comments.length == 0" class="chat-bloc-footer">
-                <a data-toggle="collapse" data-target="#reply-{{comment._id}}" class="">Show comments</a>
+                <a data-toggle="collapse" data-target="#reply-{{comment._id}}" class="">Show comments ({{comment.sub_comments.length}})</a>
             </div>
             <hr>
             <div id="reply-{{comment._id}}" class="sub-com collapse">
@@ -45,7 +45,7 @@
                     <li ng-repeat="subComment in comment.sub_comments">
                         <div class="user-sub-msg-content">
                             <div class="user-sub-msg-header">
-                                <strong>John Doe</strong>
+                                <strong>{{ subComment.user_id.email }}</strong>
                                 <span class="time">{{subComment.updatedAt | date:'MMM d, y'}}</span>
                             </div>
                             <p>{{subComment.content}}</p>
