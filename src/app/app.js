@@ -49,7 +49,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
 }]);
 
 
-app.run(function($rootScope,$http, API_ENDPOINT, AuthService) {
+app.run(function($rootScope,$http, API_ENDPOINT, AuthService,UserService) {
 
   openFB.init({appId: '1112318545481460'});
 
@@ -59,8 +59,11 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService) {
       console.log($rootScope.memberinfo);
       console.log(result.data.user);
     });
-    /*openFB.api({
-      path: '/me?fields=email,name,gender&access_token='/!* + authResponse.accessToken*!/,
+
+    console.log(UserService.getUser());
+/*
+    openFB.api({
+      path: '/me?fields=email,name,gender&access_token=' + UserService.getUser().authResponse.accessToken,
       success: function(data) {
         console.log(JSON.stringify(data));
         $rootScope.user = {

@@ -1,34 +1,7 @@
 angular.module('starter.controllers')
 .controller('LoginCtrl', function($scope, $rootScope, UserService,  AuthService, $q, EmailService, $location) {
 
-    var fbLoginSuccess = function(response) { 
-      if (!response.authResponse){
-        fbLoginError("Cannot find the authResponse");
-        return;
-      }
-
-      var authResponse = response.authResponse;
-
-      getFacebookProfileInfo(authResponse)
-        .then(function(profileInfo) {
-          // For the purpose of this example I will store user data on local storage
-          UserService.setUser({
-            authResponse: authResponse,
-            userID: profileInfo.id,
-            name: profileInfo.name,
-            email: profileInfo.email,
-            gender: profileInfo.gender,
-            picture : "http://graph.facebook.com/" + authResponse.userID + "/picture?type=large"
-          });
-          //$ionicLoading.hide();
-          //$state.go('tab.home');
-        }, function(fail){
-          // Fail get profile info
-          console.log('profile info fail', fail);
-        });
-    };
-
-    // This is the fail callback from the login method
+      // This is the fail callback from the login method
     var fbLoginError = function(error){
       console.log('fbLoginError', error);
       //$ionicLoading.hide();
@@ -44,46 +17,33 @@ angular.module('starter.controllers')
 
     // This method is to get the user profile info from the facebook api
     var getFacebookProfileInfo = function (authResponse) {
-      var info = $q.defer();
+        console.log(authResponse)
 
-      /*facebookConnectPlugin.api('/me?fields=email,name,gender&access_token=' + authResponse.accessToken, null,
-        function (response) {
-          console.log(response);
-          info.resolve(response);
-        },
-        function (response) {
-          console.log(response);
-          info.reject(response);
-        }
-      );*/
-      return info.promise;
+        openFB.api({
+            path: '/me',
+            success: function(data) {
+                console.log(JSON.stringify(data));
+                console.log(data)
+                UserService.setUser({
+                    authResponse: authResponse,
+                    userID: data.id,
+                    name: data.name,
+                    email: data.email,
+                    gender: data.gender,
+                    picture : "http://graph.facebook.com/" + authResponse.userID + "/picture?type=large"
+                });
+
+                //document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=small';
+            },
+            error: errorHandler});
+
     };
 
     $scope.user = {is_admin:"false"};
 
-    // when submitting the add form, send the text to the node API
-    /*$scope.signup = function() {
-      $http.post('http://159.203.125.56/api/signup', $scope.user)
-        .success(function(data) {
-          $scope.user = {}; // clear the form so our user is ready to enter another
-          console.log(data);
-        })
-        .error(function(data) {
-          console.log('Error: ' + data);
-        });
-    };*/
     $scope.signup = function() {
       AuthService.register($scope.user).then(function(msg) {
-        //$state.go('tab.home');
-       /* var alertPopup = $ionicPopup.alert({
-          title: 'Register success!',
-          template: msg
-        });*/
       }, function(errMsg) {
-       /* var alertPopup = $ionicPopup.alert({
-          title: 'Register failed!',
-          template: errMsg
-        });*/
       });
     };
 
@@ -93,7 +53,15 @@ angular.module('starter.controllers')
           if (response.status === 'connected') {
             console.log('Facebook login succeeded');
 
-            $scope.closeLogin();
+              if (!response.authResponse){
+                  console.log("Cannot find the authResponse");
+                  return;
+              }
+              var authResponse = response.authResponse;
+
+              getFacebookProfileInfo(authResponse)
+
+
           } else {
             alert('Facebook login failed');
           }
@@ -103,21 +71,10 @@ angular.module('starter.controllers')
 
     $scope.login = function() {
       AuthService.login($scope.user).then(function(msg) {
-
           AuthService.startupAuthenticate();
           $rootScope.getInfo();
           $location.path('/')
-
-       /* var alertPopup = $ionicPopup.alert({
-          title: 'Login success!',
-          template: msg
-        });
-        $state.go('tab.home');*/
       }, function(errMsg) {
-      /*  var alertPopup = $ionicPopup.alert({
-          title: 'Login failed!',
-          template: errMsg
-        });*/
       });
     };
 
@@ -126,54 +83,14 @@ angular.module('starter.controllers')
         $scope.fbLoginBrowser();
     };
 
-    $scope.closeLogin = function() {
-      //$state.go('tab.home');
+    $scope.logout = function() {
+      AuthService.logout();
     };
 
     $scope.forgotpwd = function() {
-      EmailService.resetPwd($scope.user).then(function(msg) {
-        /*var alertPopup = $ionicPopup.alert({
-          title: 'Reset Password Success!',
-          template: msg
-        });*/
-      }, function(errMsg) {
-        /*var alertPopup = $ionicPopup.alert({
-          title: 'Reset Password Failed!',
-          template: errMsg
-        });*/
-      });
-
+        EmailService.resetPwd($scope.user).then(function(msg) {
+        }, function(errMsg) {
+        });
     };
 
-
-
-    $scope.closeLogin = function() {
-      //$state.go('tab.account');
-    };
-
-    $scope.logout = function() {
-     /* facebookConnectPlugin.logout();*//*
-      UserService.logout('facebook');*/
-      AuthService.logout();
-     // $state.go('login');
-    };
-
-
-
-    /*
-        $scope.login = function() {
-          console.log($scope.user);
-          $http({
-            url: 'http://159.203.125.56/api/authentication/authenticate',
-            method: "POST",
-            data: $scope.user
-
-          }).success(function(data) {
-              $scope.user = {}; // clear the form so our user is ready to enter another
-              console.log(data);
-            })
-            .error(function(data) {
-              console.log('Error: ' + data);
-            });
-        };*/
-  });
+});
