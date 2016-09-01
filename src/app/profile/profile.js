@@ -40,12 +40,9 @@ angular.module('starter.controllers')
         }
       }
     });
-
-
   };
 
-
-  $scope.newPwd = function() {
+  $scope.newPwd = function() {/*
     var myPopup = $ionicPopup.show({
       template: '<label class="item item-input">' +
                 '<input type="password" placeholder="New Password">' +
@@ -65,15 +62,7 @@ angular.module('starter.controllers')
               e.preventDefault();
             } else {
                 AuthService.changePwd($scope.user).then(function(msg) {
-               /* var alertPopup = $ionicPopup.alert({
-                  title: 'Password Updated !',
-                  template: msg
-                });*/
               }, function(errMsg) {
-                /*var alertPopup = $ionicPopup.alert({
-                  title: 'Password Change Failed !',
-                  template: errMsg
-                });*/
               });
             };
           }
@@ -82,7 +71,7 @@ angular.module('starter.controllers')
           text: '<b>Cancel</b>'
         }
       ]
-    });
+    });*/
   };
 
 
