@@ -10,7 +10,7 @@ var User = require('../models/user.js');
 
 /* GET /subComment */
 router.get('/', function(req, res, next) {
-  SubComment.find().populate({path : 'user_id'}).exec(function (err, comment) {
+  SubComment.find().populate({path : 'user_id', model: 'User'}).exec(function (err, comment) {
     if (err) return next(err);
     res.json(comment);
   });
@@ -48,7 +48,7 @@ router.post('/', function(req, res, next) {
 
 /* GET /subComment/:id */
 router.get('/:id', function(req, res, next) {
-  SubComment.findById(req.params.post_id).populate({path : 'user_id'}).exec(function (err, comment) {
+  SubComment.findById(req.params.post_id).populate({path : 'user_id', model: 'User'}).exec(function (err, comment) {
     if (err) return next(err);
     res.json(comment);
   });

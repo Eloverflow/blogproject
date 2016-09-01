@@ -88,7 +88,7 @@ angular.module('starter.controllers')
     };
 
     $scope.fbLoginBrowser = function () {
-      /*ngFB.login({scope: 'public_profile,email,publish_actions,user_friends'}).then(
+        openFB.login(
         function (response) {
           if (response.status === 'connected') {
             console.log('Facebook login succeeded');
@@ -97,7 +97,7 @@ angular.module('starter.controllers')
           } else {
             alert('Facebook login failed');
           }
-        })*/
+        },{scope: 'public_profile,email,publish_actions,user_friends'})
     };
 
 
@@ -123,71 +123,7 @@ angular.module('starter.controllers')
 
     //This method is executed when the user press the "Login with facebook" button
     $scope.facebookSignIn = function() {
-     /* if(typeof facebookConnectPlugin === 'undefined' || facebookConnectPlugin === null )
-      {
         $scope.fbLoginBrowser();
-      }
-      else{
-        facebookConnectPlugin.getLoginStatus(function(success){
-          if(success.status === 'connected'){
-            // The user is logged in and has authenticated your app, and response.authResponse supplies
-            // the user's ID, a valid access token, a signed request, and the time the access token
-            // and signed request each expire
-            console.log('getLoginStatusFirst', success.status);
-
-            // Check if we have our user saved
-            var user = UserService.getUser();
-
-            $scope.user = user;
-            console.log('user : ' +user.toString);
-
-            $scope.user.picture = "http://graph.facebook.com/" + $scope.user.id + "/picture?width=270&height=270";
-
-            if(!user.userID){
-              getFacebookProfileInfo(success.authResponse)
-                .then(function(profileInfo) {
-                  // For the purpose of this example I will store user data on local storage
-                  UserService.setUser({
-                    authResponse: success.authResponse,
-                    userID: profileInfo.id,
-                    name: profileInfo.name,
-                    email: profileInfo.email,
-                    gender: profileInfo.gender,
-                    picture : "http://graph.facebook.com/" + success.authResponse.userID + "/picture?type=large"
-                  });
-
-                  $scope.user = profileInfo;
-                  console.log(user);
-
-                  $scope.user.picture = "http://graph.facebook.com/" + $scope.user.id + "/picture?width=270&height=270";
-
-                  $state.go('tab.home');
-                }, function(fail){
-                  // Fail get profile info
-                  console.log('profile info fail', fail);
-                });
-            }else{
-              $state.go('tab.home');
-            }
-          } else {
-            // If (success.status === 'not_authorized') the user is logged in to Facebook,
-            // but has not authenticated your app
-            // Else the person is not logged into Facebook,
-            // so we're not sure if they are logged into this app or not.
-
-            console.log('getLoginStatusSecond', success.status);
-
-            $ionicLoading.show({
-              template: 'Logging in...'
-            });
-
-            // Ask the permissions you need. You can learn more about
-            // FB permissions here: https://developers.facebook.com/docs/facebook-login/permissions/v2.4
-            facebookConnectPlugin.login(['email', 'public_profile'], fbLoginSuccess, fbLoginError);
-          }
-        })
-
-      }*/
     };
 
     $scope.closeLogin = function() {

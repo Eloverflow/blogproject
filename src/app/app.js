@@ -50,15 +50,35 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
 
 
 app.run(function($rootScope,$http, API_ENDPOINT, AuthService) {
+
+  openFB.init({appId: '1112318545481460'});
+
   $rootScope.getInfo = function () {
     $http.get(API_ENDPOINT.url + '/memberinfo').then(function (result) {
       $rootScope.user = result.data.user;
       console.log($rootScope.memberinfo);
       console.log(result.data.user);
     });
+    /*openFB.api({
+      path: '/me?fields=email,name,gender&access_token='/!* + authResponse.accessToken*!/,
+      success: function(data) {
+        console.log(JSON.stringify(data));
+        $rootScope.user = {
+          username: data.name,
+          email: data.email
+        };
+        //document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=small';
+      },
+      error: errorHandler});*/
   };
+
+
 
   AuthService.startupAuthenticate();
   $rootScope.getInfo();
 
 });
+
+function errorHandler(error) {
+  console.log(error.message);
+}

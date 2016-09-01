@@ -11,5 +11,5 @@ var VoteSchema = new mongoose.Schema({
 });
 
 
-module.exports = mongoose.model('VoteSchema', VoteSchema);
+module.exports = mongoose.model('Vote', VoteSchema);
 

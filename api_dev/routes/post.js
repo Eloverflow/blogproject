@@ -10,14 +10,14 @@ var User = require('../models/user.js');
 var SubComment = require('../models/subComment.js');
 /* GET /post listing. */
 router.get('/', function(req, res, next) {
-  Post.find().populate({path : 'user_id'}).exec(function (err, post) {
+  Post.find().populate({path : 'user_id', model: 'User'}).exec(function (err, post) {
     if (err) return next(err);
     res.json(post);
   });
 });
 /* GET /post */
 router.get('/:id/comments', function(req, res, next) {
-    Comment.find({post_id: req.params.id}).populate({path : 'sub_comments', populate: { path: 'user_id' }}).populate({path : 'votes'}).populate({path : 'user_id'}).exec(function (err, comments) {
+    Comment.find({post_id: req.params.id}).populate({path : 'sub_comments', model: 'SubComment', populate: { path: 'user_id', model: 'User' }}).populate({path : 'votes', model: 'Vote'}).populate({path : 'user_id', model: 'User'}).exec(function (err, comments) {
       if (err) return next(err);
       res.json(comments);
     });
