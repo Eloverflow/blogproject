@@ -207,12 +207,11 @@ $fa-font-path:   "../assets/fonts/fontawesome"!default;
         color: gray;
         font-size:24px;
         cursor: pointer;
-      }.fa-chevron-up{
+      }.fa-chevron-up,.fa-chevron-down{
           vertical-align: text-top;
-       }
-      .fa-chevron-down{
-          vertical-align: text-top;
-       }
+       }:hover{
+          color: #444;
+        }
 
       /*.fa-thumbs-down{
          -moz-transform: scaleX(-1);

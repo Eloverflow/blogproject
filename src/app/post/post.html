@@ -16,7 +16,7 @@
                 </div>
                 <div class="user-msg-content">
                     <div class="user-msg-header">
-                        <strong>{{ comment.user_id.email}}</strong>
+                        <strong>{{ comment.user_id.username}}</strong>
                         <span class="time">{{ comment.createdAt | date:'MMM d, y'}}</span>
                     </div>
                     <p>{{ comment.content}}</p>
@@ -45,7 +45,7 @@
                     <li ng-repeat="subComment in comment.sub_comments">
                         <div class="user-sub-msg-content">
                             <div class="user-sub-msg-header">
-                                <strong>{{ subComment.user_id.email }}</strong>
+                                <strong>{{ subComment.user_id.username }}</strong>
                                 <span class="time">{{subComment.updatedAt | date:'MMM d, y'}}</span>
                             </div>
                             <p>{{subComment.content}}</p>
