@@ -1,16 +1,8 @@
 'use strict';
 
-angular.module('starter.posts', ['ngRoute'])
+angular.module('starter.controllers')
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/posts', {
-    templateUrl: 'posts/posts.html',
-    controller: 'PostsCtrl'
-  });
-}])
-
-    
-.controller('PostsCtrl', function($scope, getReq, delReq, $location) {
+.controller('PostsCtrl', function($scope, getReq, delReq, $location, $sce) {
 
 
   $scope.deletePost = function (id) {
@@ -27,6 +19,11 @@ angular.module('starter.posts', ['ngRoute'])
       delReq.send($url, null, $callbackFunction);
 
   };
+
+
+    $scope.toTrustedHTML = function( html ){
+        return $sce.trustAsHtml( html );
+    }
 
   $scope.editPost = function (post_id) {
     $location.path('/post-edit/'+post_id)

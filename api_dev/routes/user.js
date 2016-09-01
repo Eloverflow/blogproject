@@ -137,7 +137,7 @@ router.get('/resetPwd/:email', function(req, res, next) {
   });
 });
 
-/*getToken = function (headers) {
+function getToken(headers) {
   if (headers && headers.authorization) {
     var parted = headers.authorization.split(' ');
     if (parted.length === 2) {
@@ -148,7 +148,7 @@ router.get('/resetPwd/:email', function(req, res, next) {
   } else {
     return null;
   }
-};*/
+};
 
 module.exports = router;
 

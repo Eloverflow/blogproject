@@ -1,16 +1,4 @@
-angular.module('starter.controllers', ['ngRoute'])
-.config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/sign-in', {
-            templateUrl: 'sign_in/sign_in.html',
-            controller: 'LoginCtrl'
-        });
-
-        $routeProvider.when('/sign-up', {
-            templateUrl: 'sign_in/sign_up.html',
-            controller: 'LoginCtrl'
-        });
-    }])
-
+angular.module('starter.controllers')
 .controller('LoginCtrl', function($scope, $rootScope, UserService,  AuthService, $q, EmailService, $location) {
 
     var fbLoginSuccess = function(response) { 

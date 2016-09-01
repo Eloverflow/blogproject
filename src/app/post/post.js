@@ -1,25 +1,5 @@
 'use strict';
-angular.module('starter.post', ['ngRoute', 'ui.tinymce'])
-
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/post', {
-    templateUrl: 'post/post.html',
-    controller: 'PostCtrl'
-  });
-  $routeProvider.when('/post/:id', {
-    templateUrl: 'post/post.html',
-    controller: 'PostCtrl'
-  });
-  $routeProvider.when('/post-create', {
-    templateUrl: 'post/create.html',
-    controller: 'PostCreateCtrl'
-  });
-  $routeProvider.when('/post-edit/:id', {
-    templateUrl: 'post/edit.html',
-    controller: 'PostEditCtrl'
-  });
-}])
-
+angular.module('starter.controllers', ['ui.tinymce'])
 .controller('PostCtrl', function($rootScope, $scope, getReq, $routeParams, $sce, postReq, $http, AuthService) {
 
     console.log(" Is authenticated : " + AuthService.isAuthenticated());

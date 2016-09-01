@@ -10,11 +10,7 @@
       <li class=""><a href="#!/post/{{post._id}}"><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;({{ post.comments.length }}) Comments</a></li>
     </ul>
   </header>
-  <article class="post">
-    <p>
-      {{ post.content }}
-    </p>
-
+  <article ng-bind-html="toTrustedHTML(post.content)" class="post">
   </article>
 
   <div class="footer">
