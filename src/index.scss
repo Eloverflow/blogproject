@@ -718,6 +718,20 @@ ul.post-infos li{
   }
 }
 
+#fa-posts-feed{
+  margin-top: 8px;
+  float: right;
+  vertical-align: middle;
+  i{
+    cursor: pointer;
+    color: lightgrey;
+    line-height: 48px;
+    font-size: 36px;
+  }:hover{
+       color: #16caa5;
+     }
+}
+
 #btn-github:hover{
    color: #16caa5;
   text-shadow: 0px 0px 0px;
