@@ -8,7 +8,7 @@ var Vote = require('../models/vote.js');
 var Comment = require('../models/comment.js');
 var User = require('../models/user.js');
 
-/* GET /pantalons listing. */
+/* GET /vote */
 router.get('/', function(req, res, next) {
   Vote.find(function (err, vote) {
     if (err) return next(err);
@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
   });
 });
 
-/* POST /pantalons */
+/* POST /vote */
 router.post('/', function(req, res, next) {
 
   var token = getToken(req.headers);
@@ -49,7 +49,7 @@ router.post('/', function(req, res, next) {
     res.json(post);*/
 });
 
-/* GET /pantalons/id */
+/* GET /vote/:id */
 router.get('/:id', function(req, res, next) {
   Vote.findById(req.params.id, function (err, post) {
     if (err) return next(err);
@@ -57,7 +57,7 @@ router.get('/:id', function(req, res, next) {
   });
 });
 
-/* PUT /pantalons/:id */
+/* PUT /vote/:id */
 router.put('/:id', function(req, res, next) {
   Vote.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
     if (err) return next(err);
@@ -65,7 +65,7 @@ router.put('/:id', function(req, res, next) {
   });
 });
 
-/* DELETE /pantalons/:id */
+/* DELETE /vote/:id */
 router.delete('/:id', function(req, res, next) {
   Vote.findByIdAndRemove(req.params.id, req.body, function (err, post) {
     if (err) return next(err);

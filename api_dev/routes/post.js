@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
     res.json(post);
   });
 });
-/* GET /pantalons listing. */
+/* GET /post */
 router.get('/:id/comments', function(req, res, next) {
     Comment.find({post_id: req.params.id}).populate({path : 'sub_comments', populate: { path: 'user_id' }}).populate({path : 'votes'}).populate({path : 'user_id'}).exec(function (err, comments) {
       if (err) return next(err);
@@ -23,7 +23,7 @@ router.get('/:id/comments', function(req, res, next) {
     });
 });
 
-/* POST /pantalons */
+/* POST /post */
 router.post('/', function(req, res, next) {
 
   var token = getToken(req.headers);
@@ -50,7 +50,7 @@ router.post('/', function(req, res, next) {
 
 });
 
-/* GET /pantalons/id */
+/* GET /post/:id */
 router.get('/:id', function(req, res, next) {
   Post.findById(req.params.id, function (err, post) {
     if (err) return next(err);
@@ -58,7 +58,7 @@ router.get('/:id', function(req, res, next) {
   });
 });
 
-/* PUT /pantalons/:id */
+/* PUT /post/:id */
 router.put('/:id', function(req, res, next) {
   Post.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
     if (err) return next(err);
@@ -66,7 +66,7 @@ router.put('/:id', function(req, res, next) {
   });
 });
 
-/* DELETE /pantalons/:id */
+/* DELETE /post/:id */
 router.delete('/:id', function(req, res, next) {
   Post.findByIdAndRemove(req.params.id, req.body, function (err, post) {
     if (err) return next(err);

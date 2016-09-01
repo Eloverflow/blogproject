@@ -8,7 +8,7 @@ var Comment = require('../models/comment.js');
 var Post = require('../models/post.js');
 var User = require('../models/user.js');
 
-/* GET /comments listing. */
+/* GET /comment */
 router.get('/', function(req, res, next) {
   Comment.find().populate({path : 'user_id'}).exec(function (err, comment) {
     if (err) return next(err);
@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
   });
 });
 
-/* POST /comments */
+/* POST /comment */
 router.post('/', function(req, res, next) {
   var token = getToken(req.headers);
   if (token) {
@@ -42,13 +42,9 @@ router.post('/', function(req, res, next) {
       });
     })
   }
-        
-        
-  
 });
 
-
-/* GET /comments/id */
+/* GET /comment/:id */
 router.get('/:id', function(req, res, next) {
   Comment.findById(req.params.post_id).populate({path : 'user_id'}).exec(function (err, comment) {
     if (err) return next(err);
@@ -56,7 +52,7 @@ router.get('/:id', function(req, res, next) {
   });
 });
 
-/* PUT /comments/:id */
+/* PUT /comment/:id */
 router.put('/:id', function(req, res, next) {
   Comment.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
     if (err) return next(err);
@@ -64,7 +60,7 @@ router.put('/:id', function(req, res, next) {
   });
 });
 
-/* DELETE /comments/:id */
+/* DELETE /comment/:id */
 router.delete('/:id', function(req, res, next) {
   Comment.findByIdAndRemove(req.params.id, req.body, function (err, post) {
     if (err) return next(err);

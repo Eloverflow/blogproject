@@ -8,7 +8,7 @@ var SubComment = require('../models/subComment.js');
 var Comment = require('../models/comment.js');
 var User = require('../models/user.js');
 
-/* GET /comments listing. */
+/* GET /subComment */
 router.get('/', function(req, res, next) {
   SubComment.find().populate({path : 'user_id'}).exec(function (err, comment) {
     if (err) return next(err);
@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
   });
 });
 
-/* POST /sub comments */
+/* POST /subComment */
 router.post('/', function(req, res, next) {
   var token = getToken(req.headers);
   if (token) {
@@ -46,7 +46,7 @@ router.post('/', function(req, res, next) {
 });
 
 
-/* GET /comments/id */
+/* GET /subComment/:id */
 router.get('/:id', function(req, res, next) {
   SubComment.findById(req.params.post_id).populate({path : 'user_id'}).exec(function (err, comment) {
     if (err) return next(err);
@@ -54,7 +54,7 @@ router.get('/:id', function(req, res, next) {
   });
 });
 
-/* PUT /comments/:id */
+/* PUT /subComment/:id */
 router.put('/:id', function(req, res, next) {
   SubComment.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
     if (err) return next(err);
@@ -62,7 +62,7 @@ router.put('/:id', function(req, res, next) {
   });
 });
 
-/* DELETE /comments/:id */
+/* DELETE /subComment/:id */
 router.delete('/:id', function(req, res, next) {
   SubComment.findByIdAndRemove(req.params.id, req.body, function (err, post) {
     if (err) return next(err);
