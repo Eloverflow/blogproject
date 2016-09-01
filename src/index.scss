@@ -51,6 +51,7 @@ $inputs:            email, number, password, search, tel, text, url, color, date
 @import 'modules/_type';
 @import 'modules/_utility';
 
+
 $icon-font-path:  "../assets/fonts/bootstrap"!default;
 @import "app/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap-sprockets";
 @import "app/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap";

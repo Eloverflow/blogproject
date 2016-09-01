@@ -57,7 +57,7 @@ gulp.task('webServer', function() {
 
 // Compile sass into CSS & auto-inject into browsers
 function sassCompile(done) {
-  gulp.src('src/**/*.scss')
+  gulp.src(['src/modules/*.scss', 'src/index.scss'])
       .pipe(sass())
       .pipe(autoprefixer())
       .pipe(gulp.dest("src/app/"))
