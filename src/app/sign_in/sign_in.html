@@ -8,7 +8,7 @@
             <div class="sign-in-builtin">
                 <div class="form-group">
                     <label for="email">Email : </label>
-                    <input id="email" type="text" class="form-control" ng-model="user.email" placeholder="Email" />
+                    <input id="email" type="text" class="form-control" ng-model="user.email" placeholder="Email or Username" />
                 </div>
                 <div class="form-group">
                     <label for="password">Password :</label>
@@ -26,8 +26,8 @@
             </div>
             <div class="sign-in-other">
                 <div class="sign-in-or"><span>OR</span></div>
-                <button class="btn btn-success" ui-sref="register">Register now!</button>
-                <button class="btn btn-info" ui-sref="forgotpwd">Forgot Password ?</button>
+                <button class="btn btn-success" ng-click="goToSignUp()">Register now!</button>
+                <button class="btn btn-info" >Forgot Password ?</button>
             </div>
         </div>
     </article>

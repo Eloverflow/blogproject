@@ -676,24 +676,20 @@ ul.post-infos li{
 #post-tags{
 }
 
-.sign-in{
+.sign-in,.sign-up{
   padding: 4vh;
-  .sign-in-header,.sign-in-builtin,.sign-in-fb,.sign-in-other{
+  .sign-in-header,.sign-in-builtin,.sign-in-fb,.sign-in-other,.sign-up-header,.sign-up-builtin,.sign-up-fb,.sign-up-other{
     border-bottom: 1px solid lightgrey;
     padding: 8px;
     margin-bottom: 4px;
-
-
   }
-
-  .sign-in-other{
+  .sign-in-other,.sign-up-other{
     width: 100%;
     button{
       margin-bottom: 10px;
     }
   }
-
-  .sign-in-or{
+  .sign-in-or,.sign-up-or{
     text-align: center;
     position: absolute;
     margin-top: -20px;

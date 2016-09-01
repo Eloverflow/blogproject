@@ -78,7 +78,7 @@ app.use(function(req, res, next) {
 
 //app.use('/api/sendColor', color);
 app.use('/', index);
-app.use('/api/user', user);
+app.use('/api/authentication', user);
 app.use('/api/post', post);
 app.use('/api/comment', comment);
 app.use('/api/subComment', subComment);

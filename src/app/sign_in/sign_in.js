@@ -4,9 +4,14 @@ angular.module('starter.controllers', ['ngRoute'])
             templateUrl: 'sign_in/sign_in.html',
             controller: 'LoginCtrl'
         });
+
+        $routeProvider.when('/sign-up', {
+            templateUrl: 'sign_in/sign_up.html',
+            controller: 'LoginCtrl'
+        });
     }])
 
-.controller('LoginCtrl', function($scope, $rootScope, UserService,  AuthService, $q, EmailService) {
+.controller('LoginCtrl', function($scope, $rootScope, UserService,  AuthService, $q, EmailService, $location) {
 
     var fbLoginSuccess = function(response) { 
       if (!response.authResponse){
@@ -39,6 +44,14 @@ angular.module('starter.controllers', ['ngRoute'])
     var fbLoginError = function(error){
       console.log('fbLoginError', error);
       //$ionicLoading.hide();
+    };
+
+    $scope.goToSignIn = function () {
+        $location.path('/sign-in');
+    };
+
+    $scope.goToSignUp = function () {
+        $location.path('/sign-up');
     };
 
     // This method is to get the user profile info from the facebook api
