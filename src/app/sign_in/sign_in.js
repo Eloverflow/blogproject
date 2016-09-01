@@ -59,7 +59,7 @@ angular.module('starter.controllers')
       return info.promise;
     };
 
-    $scope.user = {};
+    $scope.user = {is_admin:"false"};
 
     // when submitting the add form, send the text to the node API
     /*$scope.signup = function() {

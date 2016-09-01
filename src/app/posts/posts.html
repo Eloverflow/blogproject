@@ -3,9 +3,9 @@
   <header class="header">
     <h3>{{ post.title }}</h3>
     <ul class="post-infos">
-      <li> <i ng-click="deletePost(post._id)" class="fa fa-trash" aria-hidden="true"></i></li>
-      <li> <i ng-click="editPost(post._id)" class="fa fa-edit" aria-hidden="true"></i></li>
-      <li class=""><a href="#!/profile"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Isael Blais</a></li>
+      <li ng-show="user.is_admin"> <i ng-click="deletePost(post._id)" class="fa fa-trash" aria-hidden="true"></i></li>
+      <li ng-show="user.is_admin"> <i ng-click="editPost(post._id)" class="fa fa-edit" aria-hidden="true"></i></li>
+      <li class=""><a href="#!/profile/{{post.user_id}}"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Isael Blais</a></li>
       <li class=""><i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp;<!--August, 27, 2016  -->{{ post.createdAt | date:'MMM d, y'}}</li>
       <li class=""><a href="#!/post/{{post._id}}"><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;({{ post.comments.length }}) Comments</a></li>
     </ul>

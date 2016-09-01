@@ -33,8 +33,11 @@
 
                 </div>
             </div>
-            <div class="chat-bloc-footer">
+            <div ng-show="user" class="chat-bloc-footer">
                 <a data-toggle="collapse" data-target="#reply-{{comment._id}}" class="">Reply</a>
+            </div>
+            <div ng-hide="user || comment.sub_comments.length == 0" class="chat-bloc-footer">
+                <a data-toggle="collapse" data-target="#reply-{{comment._id}}" class="">Show comments</a>
             </div>
             <hr>
             <div id="reply-{{comment._id}}" class="sub-com collapse">
@@ -49,7 +52,7 @@
                         </div>
                     </li>
                 </ul>
-                <div class="InputAddOn-sub-comment">
+                <div ng-show="user"  class="InputAddOn-sub-comment">
                     <input id="btn-input-sub-comment" type="text" ng-model="comment.currentSubComment" class="InputAddOn-field-sub-comment form-control" placeholder="Type your message here..." />
                     <button class="InputAddOn-item-sub-comment btn btn-default" ng-click="addSubComment(comment)">Send</button>
                 </div>
@@ -57,8 +60,7 @@
         </li>
     </ul>
     <hr>
-    <div class="chat-foot">
-
+    <div ng-show="user" class="chat-foot">
         <div class="InputAddOn">
             <textarea id="btn-input" rows="2" ng-model="comment.content" class="InputAddOn-field form-control" placeholder="Type your message here..."></textarea>
             <button ng-click="addComment(comment)" class="InputAddOn-item btn btn-default">Send</button>

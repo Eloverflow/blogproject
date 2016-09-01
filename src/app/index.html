@@ -30,16 +30,16 @@
         <h4>{{ user.email}} </h4>
       </div>
     </li>
-    <li ng-hide="user" class="nav-item" ><a href="#!/sign-in"><i class="fa fa-users" aria-hidden="true"></i>Sign In</a></li>
     <li class="nav-item" ><a href="#!/posts" ><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
     <li class="nav-item"><a href="#!/about"><i class="fa fa-info-circle" aria-hidden="true"></i>About</a></li>
     <li class="nav-item"><a href="#!/contact"><i class="fa fa-envelope" aria-hidden="true"></i>Contact</a></li>
     <hr />
-    <li class="nav-item"><a href="#!/profile"><i class="fa fa-user" aria-hidden="true"></i>Profile</a></li>
     <li class="nav-item"><a href="#!/recent"><i class="fa fa-clock-o" aria-hidden="true"></i>Recent</a></li>
     <li class="nav-item"><a href="#!/popular"><i class="fa fa-fire" aria-hidden="true"></i>Popular</a></li>
     <hr />
-    <li class="nav-item"><a href="#!/post-create"><i class="fa fa-plus-square" aria-hidden="true"></i>New Post</a></li>
+    <li ng-hide="user" class="nav-item" ><a href="#!/sign-in"><i class="fa fa-users" aria-hidden="true"></i>Sign In</a></li>
+    <li ng-show="user" class="nav-item"><a href="#!/profile"><i class="fa fa-user" aria-hidden="true"></i>Profile</a></li>
+    <li ng-show="user.is_admin" class="nav-item"><a href="#!/post-create"><i class="fa fa-plus-square" aria-hidden="true"></i>New Post</a></li>
   </ul>
 
   <input type="checkbox" id="nav-trigger" class="nav-trigger" />
