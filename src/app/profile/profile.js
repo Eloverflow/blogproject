@@ -1,6 +1,5 @@
 angular.module('starter.controllers')
-
-.controller('ProfileCtrl', function($scope, $rootScope, AuthService, PictService, $state, ngFB, UserService) {
+.controller('ProfileCtrl', function($scope, $rootScope, AuthService, UserService, $location) {
   $scope.settings = {
     enableFriends: true
   };
@@ -12,55 +11,37 @@ angular.module('starter.controllers')
   $scope.user = UserService.getUser();
 
   $scope.showLogOutMenu = function() {
-    var hideSheet = $ionicActionSheet.show({
-      destructiveText: 'Logout',
-      titleText: 'Êtes-vous sure de vouloir vous déconnecter ? On vous recommande de rester :).',
-      cancelText: 'Cancel',
-      cancel: function() {},
-      buttonClicked: function(index) {
-        return true;
-      },
-      destructiveButtonClicked: function(){
-        $ionicLoading.show({
-          template: 'Logging out...'
-        });
+    bootbox.dialog({
+      message: "Are you sure?",
+      title: "Log off",
+      buttons: {
+        logoff: {
+          label: "Yes!",
+          className: "btn-success",
+          callback: function() {
+            console.log('Proceding with standard logging out');
 
-        console.log('Choosing the good logging out way');
+            AuthService.logout();
+            UserService.logout();
 
-        if(typeof facebookConnectPlugin === 'undefined' || facebookConnectPlugin === null ){
-
-          console.log('Proceding with standard logging out');
-
-          AuthService.logout();
-          UserService.logout();
-          $ionicLoading.hide();
-          $state.go('login');
-        }
-        else {
-
-          console.log('Proceding with plugin logging out');
-          // Facebook logout
-          facebookConnectPlugin.logout(function(){
-              UserService.logout();
-
-              console.log('Successfully logged out !');
-              $ionicLoading.hide();
-              $state.go('login');
-            },
-            function(fail){
-              console.log('Already logged out ?');
-              $state.go('login');
-              $ionicLoading.hide();
+            $rootScope.$apply(function() {
+              $rootScope.user = null;
+              $location.path('/sign-in');
             });
+
+          }
+        },
+        cancel: {
+          label: "No",
+          className: "btn-danger",
+          callback: function() {
+          }
         }
-
-
-
-
       }
     });
-  };
 
+
+  };
 
 
   $scope.newPwd = function() {

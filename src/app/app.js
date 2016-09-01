@@ -40,6 +40,11 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
     controller: 'LoginCtrl'
   });
 
+  $routeProvider.when('/profile', {
+    templateUrl: 'profile/profile.html',
+    controller: 'ProfileCtrl'
+  });
+
   $routeProvider.otherwise({redirectTo: '/posts'});
 }]);
 

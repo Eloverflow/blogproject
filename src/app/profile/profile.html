@@ -1,33 +1,15 @@
 <div class="wrapper">
     <article>
-        <div class="sign-in">
-            <div class="sign-in-header">
-                <h3>Sign in</h3>
+        <div class="profile">
+            <div class="profile-header">
+                <h3>Profile</h3>
                  <i class="fa fa-user" aria-hidden="true"></i>
             </div>
-            <div class="sign-in-builtin">
-                <div class="form-group">
-                    <label for="email">Email : </label>
-                    <input id="email" type="text" class="form-control" ng-model="user.email" placeholder="Email or Username" />
-                </div>
-                <div class="form-group">
-                    <label for="password">Password :</label>
-                    <input id="password" type="password" class="form-control"  placeholder="Password" ng-model="user.password">
-                </div>
-                <button class="btn btn-default" ng-click="login()">
-                    Login
+            <div class="profile-body">
+                <p>{{ user.email }}</p>
+                <button class="btn btn-danger" ng-click="logout()">
+                    Log off
                 </button>
-            </div>
-            <div class="sign-in-fb">
-                <div class="sign-in-or"><span>OR</span></div>
-                <button class="btn btn-primary" ng-click="facebookSignIn()">
-                    Login with Facebook
-                </button>
-            </div>
-            <div class="sign-in-other">
-                <div class="sign-in-or"><span>OR</span></div>
-                <button class="btn btn-success" ng-click="goToSignUp()">Register now!</button>
-                <button class="btn btn-info" >Forgot Password ?</button>
             </div>
         </div>
     </article>

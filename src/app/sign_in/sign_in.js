@@ -103,6 +103,11 @@ angular.module('starter.controllers')
 
     $scope.login = function() {
       AuthService.login($scope.user).then(function(msg) {
+
+          AuthService.startupAuthenticate();
+          $rootScope.getInfo();
+          $location.path('/')
+
        /* var alertPopup = $ionicPopup.alert({
           title: 'Login success!',
           template: msg
