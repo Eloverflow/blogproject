@@ -61,21 +61,7 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService,UserService) {
     });
 
     console.log(UserService.getUser());
-/*
-    openFB.api({
-      path: '/me?fields=email,name,gender&access_token=' + UserService.getUser().authResponse.accessToken,
-      success: function(data) {
-        console.log(JSON.stringify(data));
-        $rootScope.user = {
-          username: data.name,
-          email: data.email
-        };
-        //document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=small';
-      },
-      error: errorHandler});*/
   };
-
-
 
   AuthService.startupAuthenticate();
   $rootScope.getInfo();
