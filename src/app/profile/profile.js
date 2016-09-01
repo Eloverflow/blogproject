@@ -14,6 +14,7 @@ angular.module('starter.controllers')
     bootbox.dialog({
       message: "Are you sure?",
       title: "Log off",
+      backdrop: true,
       buttons: {
         logoff: {
           label: "Yes!",
