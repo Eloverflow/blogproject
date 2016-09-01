@@ -59,8 +59,6 @@ gulp.task('webServer', function() {
 function sassCompile(done) {
   gulp.src('src/**/*.scss')
       .pipe(sass())
-      .pipe(gulp.dest('src/tmp'))
-      .pipe(concat('index.css'))
       .pipe(autoprefixer())
       .pipe(gulp.dest("src/app/"))
       .pipe(browserSync.stream());

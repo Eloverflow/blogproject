@@ -16,6 +16,7 @@
     "bootstrap-sass-official": "*",
     "bootstrap-sass": "*",
     "bootstrap": "*",
+    "jquery.tagsinput": "*",
     "fontawesome": "*"
   },
   "private": false

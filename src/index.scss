@@ -51,33 +51,16 @@ $inputs:            email, number, password, search, tel, text, url, color, date
 @import 'modules/_type';
 @import 'modules/_utility';
 
-
+$icon-font-path:  "../assets/fonts/bootstrap"!default;
 @import "app/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap-sprockets";
 @import "app/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap";
-//
-//@import "app/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap-compass";
-
 @import "app/bower_components/compass-sass-mixins/lib/compass";
 
-
-
-/*$icon-font-path: 'app/bower_components/bootstrap-sass/assets/fonts/bootstrap/';
-
-@function font-path($path) {
-  @return $path;
-}*/
-
-/*@font-face{
-  font-family:'Glyphicons Halflings';
-  src: image-url("app/bower_components/bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.eot");
-  src: image-url("app/bower_components/bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"),
-  image-url("app/bower_components/bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.woff") format("woff"),
-  image-url("app/bower_components/bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.ttf") format("truetype"),
-  image-url("app/bower_components/bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg")
-}*/
-
+$fa-font-path:   "../assets/fonts/fontawesome"!default;
+@import "app/bower_components/fontawesome/scss/font-awesome";
 
 .wrapper {
+
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -675,6 +658,7 @@ ul.post-infos li{
 
 #post-tags{
 }
+
 
 .sign-in,.sign-up{
   padding: 4vh;
