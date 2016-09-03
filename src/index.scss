@@ -735,3 +735,128 @@ ul.post-infos li{
    color: #16caa5;
   text-shadow: 0px 0px 0px;
  }
+
+
+// Login css section ---
+
+.frm-login {
+  margin-top: 20px;
+  padding: 15px !important;
+}
+
+.login-logo {
+  display: block;
+  margin: auto;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+
+.login-btn-cont {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.login-btn {
+  margin-top: 5px;
+  width: 100%;
+  color: white;
+  background-color: darken(#2a3f54, 5%);
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus {
+  outline: 0 none;
+}
+
+.login-btn:hover, .login-btn:focus, .login-btn:active, .login-btn.active, .open > .dropdown-toggle.login-btn {
+  background-color: #35475d;
+  color: white;
+}
+
+.login-btn:active, .login-btn.active {
+  background-color: darken(#2a3f54, 5%);
+  box-shadow: none;
+  color: white;
+}
+
+
+
+
+.checkbox {
+  margin: 10px 0 5px 0 !important;
+  padding: 0 !important;
+}
+
+
+div.social-wrap button:active {
+  background-color: #222;
+}
+
+div.social-wrap.b button {
+  padding-right: 45px;
+  height: 35px;
+  background: none;
+  border: none;
+  display: block;
+  background-size: 25px 25px, cover;
+  background-repeat: no-repeat, repeat;
+  border-radius: 4px;
+  color: white;
+  font-family: "Merriweather Sans", sans-serif;
+  font-size: 14px;
+  margin-bottom: 15px;
+  width: 100%;
+  border-bottom: 2px solid transparent;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  box-shadow: 0 4px 2px -2px gray;
+  text-shadow: rgba(0, 0, 0, 0.4) -1px -1px 0;
+}
+
+div.social-wrap.b > .facebook {
+  background: url(http://aroosamanzar.com/uploads/images/facebook-logo-png-white-i6.png), -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4c74c4), color-stop(100%, #3b5998));
+  background-size: 25px 25px, cover;
+  background-position: center right 12px;
+  background-repeat: no-repeat, repeat;
+}
+
+.register-link {
+  margin-left: 10px;
+}
+
+.panel {
+  margin-bottom: 5px !important;
+}
+
+
+.or-hr {
+  border:0;
+  line-height:20px;
+  margin: 30px 0px 30px 0px !important;
+}
+
+.or-hr:before {
+  content: '';
+  display: block;
+  height: 1px;
+  background-color: #ddd;
+}
+
+.or-hr:after {
+  content: 'OR';
+  color:#ccc;
+  display:block;
+  text-align:center;
+  width:60px;
+  margin-top:-10px;
+  position:absolute;
+  left:50%;
+  background-color: white;
+  -webkit-transform: translate(-50%);
+  -moz-transform: translate(-50%);
+  -ms-transform: translate(-50%);
+  -o-transform: translate(-50%);
+  transform: translate(-50%);
+}
+
+// End Login css section
