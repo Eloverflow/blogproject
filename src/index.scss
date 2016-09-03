@@ -758,7 +758,7 @@ ul.post-infos li{
   padding-right: 0px !important;
 }
 
-.login-btn {
+.theme-btn {
   margin-top: 5px;
   width: 100%;
   color: white;
@@ -769,12 +769,12 @@ ul.post-infos li{
   outline: 0 none;
 }
 
-.login-btn:hover, .login-btn:focus, .login-btn:active, .login-btn.active, .open > .dropdown-toggle.login-btn {
+.theme-btn:hover, .theme-btn:focus, .theme-btn:active, .theme-btn.active, .open > .dropdown-toggle.theme-btn {
   background-color: #35475d;
   color: white;
 }
 
-.login-btn:active, .login-btn.active {
+.theme-btn:active, .theme-btn.active {
   background-color: darken(#2a3f54, 5%);
   box-shadow: none;
   color: white;

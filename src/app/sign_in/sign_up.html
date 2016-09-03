@@ -108,10 +108,12 @@
 
 
                     <div class="form-group">
+                        <button class="btn theme-btn" ng-click="signup()">
+                            Register
+                        </button>
+                        <hr class="or-hr">
                         <div class="col-md-6 login-btn-cont">
-                            <button class="btn login-btn" ng-click="signup()">
-                                Register
-                            </button>
+                            <button ng-click="goToSignIn()" class="btn theme-btn" type="submit">Log In</button>
                         </div>
                         <div class="col-md-6">
                             <span><a href="#">Forgot  password?</a></span>
@@ -121,6 +123,5 @@
                 </form>
             </div>
         </div>
-
     </div>
 </div>
