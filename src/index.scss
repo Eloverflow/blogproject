@@ -507,6 +507,7 @@ div[for="nav-trigger"] {
   right: 0;
   top: 0;
   border-bottom: 2px solid lighten(#2a3f54, 50%);
+  z-index: 9999;
 }
 
 /* Make the Magic Happen */

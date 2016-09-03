@@ -1,3 +1,4 @@
+<!--
 <div class="wrapper">
     <article>
         <div class="sign-up">
@@ -42,4 +43,84 @@
             </div>
         </div>
     </article>
+</div>-->
+<!--
+<div class="wrapper">
+    <article>
+        <div class="sign-in">
+            <div class="sign-in-header">
+                <h3>Sign in</h3>
+                 <i class="fa fa-user" aria-hidden="true"></i>
+            </div>
+            <div class="sign-in-builtin">
+                <div class="form-group">
+                    <label for="email">Email : </label>
+                    <input id="email" type="text" class="form-control" ng-model="user.email" placeholder="Email or Username" />
+                </div>
+                <div class="form-group">
+                    <label for="password">Password :</label>
+                    <input id="password" type="password" class="form-control"  placeholder="Password" ng-model="user.password">
+                </div>
+                <button class="btn btn-default" ng-click="login()">
+                    Login
+                </button>
+            </div>
+            <div class="sign-in-fb">
+                <div class="sign-in-or"><span>OR</span></div>
+                <button class="btn btn-primary" ng-click="facebookSignIn()">
+                    Login with Facebook
+                </button>
+            </div>
+            <div class="sign-in-other">
+                <div class="sign-in-or"><span>OR</span></div>
+                <button class="btn btn-success" ng-click="goToSignUp()">Register now!</button>
+                <button class="btn btn-info" >Forgot Password ?</button>
+            </div>
+        </div>
+    </article>
+</div>-->
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-default">
+            <div class="panel-heading"><strong>Sign Up</strong></div>
+            <div class="panel-body">
+                <form>
+
+                    <div class="form-group">
+                        <label for="email">Email : </label>
+                        <input id="email" type="text" class="form-control" ng-model="user.email" placeholder="Email" />
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Username : </label>
+                        <input id="username" type="text" class="form-control" ng-model="user.username" placeholder="Username" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password :</label>
+                        <input id="password" type="password" class="form-control"  placeholder="Password" ng-model="user.password">
+                    </div>
+                    <div class="form-group">
+                        <label for="is_admin">Is admin ? (For development purpose)</label>
+                        <select id="is_admin" ng-model="user.is_admin" class="form-control">
+                            <option value="false">No</option>
+                            <option value="true">Yes</option>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-md-6 login-btn-cont">
+                            <button class="btn login-btn" ng-click="signup()">
+                                Register
+                            </button>
+                        </div>
+                        <div class="col-md-6">
+                            <span><a href="#">Forgot  password?</a></span>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
 </div>
