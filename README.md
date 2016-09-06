@@ -8,6 +8,9 @@ This is an opensource blog project made for Mirageflow Inc.
 * **Git**
     > Download from [git](https://git-scm.com/)
 
+* **Python** (Required for package Bcrypt)
+    > Download from [python](https://www.python.org/downloads/)
+
 * **Nodejs(LTS)/Npm**
     > Download from [nodejs](https://nodejs.org/en/download/)
 
