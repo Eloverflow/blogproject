@@ -147,10 +147,9 @@ angular.module('starter.controllers', ['ui.tinymce'])
         })
     };
 
-
 })
 
-.controller('PostCreateCtrl', function($scope, postReq, $sce, $location) {
+.controller('PostCreateCtrl', function($rootScope, $scope, getReq, $routeParams, $sce, postReq, $http, AuthService, PostsService) {
 
     $scope.previewPost = {
         content: ""
@@ -164,6 +163,23 @@ angular.module('starter.controllers', ['ui.tinymce'])
         $scope.previewPost = $scope.post;
     };
 
+    $scope.addPost = function (lepost) {
+
+        if($scope.post === 'undefined' ){
+         console.log('Post is empty');
+         }
+         else {
+            var $url = 'http://127.0.0.1/api/post';
+            //var $data = $scope.post;
+            /*
+             $callbackPath = '/cloth/type/' + $stateParams.type;*/
+
+            PostsService.createPost(lepost).then(function(msg) {
+            }, function(errMsg) {
+            });
+        }
+        console.log(post);
+    }
 
     $scope.getContent = function() {
       console.log('Editor content:', $scope.tinymceModel);
@@ -186,16 +202,16 @@ angular.module('starter.controllers', ['ui.tinymce'])
 
 
 
-    $scope.addPost = function () {
+    /*$scope.addPost = function (post) {
 
-        if($scope.post === 'undefined' ){
+        /!*if($scope.post === 'undefined' ){
             console.log('Post is empty');
         }
         else {
             var $url = 'http://127.0.0.1/api/post';
-            var $data = $scope.post;
-        /*
-             $callbackPath = '/cloth/type/' + $stateParams.type;*/
+            //var $data = $scope.post;
+        /!*
+             $callbackPath = '/cloth/type/' + $stateParams.type;*!/
 
             var $callbackFunction = function (response) {
                 //$location.path("/");
@@ -203,11 +219,22 @@ angular.module('starter.controllers', ['ui.tinymce'])
                 console.log('posts')
                 console.log(response)
                 $location.path('#/posts');
-            }
+            };
 
-            postReq.send($url, $data, null, $callbackFunction);
-        }
-    }
+           /!* postReq.send($url, $data, null, $callbackFunction);*!/
+            $http({
+                url: $url,
+                method: "POST",
+                data: post
+            }).success(function (data, status, headers, config) {/!*
+             console.log(data);*!/
+                if($callbackFunction)
+                    $callbackFunction(data);
+            })
+
+        }*!/
+        console.log("ahahahaha");
+    }*/
 
 
     /*tinymce.init({

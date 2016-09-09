@@ -161,9 +161,21 @@ angular.module('starter.services', [])
 
 .config(function ($httpProvider) {
     $httpProvider.interceptors.push('AuthInterceptor');
+})
+
+.service('PostsService', function($q, $http, API_ENDPOINT) {
+    var createPost = function(post) {
+        return $q(function(resolve, reject) {
+            $http.post(API_ENDPOINT.url + '/createPost', post).then(function(result) {
+                if (result.data.success) {
+                    resolve(result.data.msg);
+                } else {
+                    reject(result.data.msg);
+                }
+            });
+        });
+    };
 });
-
-
 
 /*
 
