@@ -33,7 +33,7 @@ router.post('/signup', function(req, res, next) {
 router.post('/authenticate', function(req, res, next) {
 
     var userObject = {};
-    if((req.body.email).match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/))
+    if((req.body.email).match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm))
         userObject.email = req.body.email;
     else
         userObject.username = req.body.email;
