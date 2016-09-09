@@ -49,22 +49,28 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
 }]);
 
 
-app.run(function($rootScope,$http, API_ENDPOINT, AuthService,UserService) {
+app.run(function($rootScope,$http, API_ENDPOINT, AuthService,UserService, $sce, DEBUG) {
 
   openFB.init({appId: '1112318545481460'});
 
   $rootScope.getInfo = function () {
     $http.get(API_ENDPOINT.url + '/authentication/memberinfo').then(function (result) {
       $rootScope.user = result.data.user;
-      console.log($rootScope.memberinfo);
-      console.log(result.data.user);
+
+      if(DEBUG.isEnabled){
+        console.log('User:');
+        console.log(result.data.user);
+      }
     });
 
-    console.log(UserService.getUser());
   };
 
   AuthService.startupAuthenticate();
   $rootScope.getInfo();
+  
+  $rootScope.toTrustedHTML = function( html ){
+    return $sce.trustAsHtml( html );
+  }
 
 });
 

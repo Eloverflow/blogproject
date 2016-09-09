@@ -50,37 +50,6 @@ router.post('/', function(req, res, next) {
 
 });
 
-router.post('/createPost', function(req, res, next) {
-
-  var token = getToken(req.headers);
-  if (token) {
-    var decoded = jwt.decode(token, config.secret);
-    User.findOne({
-      email: decoded.email
-    },function (err, user) {
-      if (err) return next(err);
-
-      var pst = new Post({
-        user_id: user._id,
-        content: req.body.content,
-        title: req.body.title,
-        tags: req.body.tags
-      });
-
-      pst.save(function(err) {
-        if (err) {
-          return res.json({success: false, msg: 'Username already exists.'});
-        }
-        res.json({success: true, msg: 'Successful created new user.'});
-      });
-
-    })
-  }
-
-
-});
-
-
 /* GET /post/:id */
 router.get('/:id', function(req, res, next) {
   Post.findById(req.params.id, function (err, post) {

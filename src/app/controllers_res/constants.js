@@ -6,5 +6,9 @@ angular.module('starter.constants', [])
 
   .constant('API_ENDPOINT', {
     url: 'http://localhost/api'
-  });
+  })
 
+.constant('DEBUG', {
+    isEnabled: true
+  });
+    

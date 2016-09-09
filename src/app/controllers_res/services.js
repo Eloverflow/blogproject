@@ -52,17 +52,24 @@ angular.module('starter.services', [])
     };
 })
 
-.service('AuthService', function($q, $http, API_ENDPOINT) {
+.service('AuthService', function($q, $http, API_ENDPOINT, DEBUG) {
     var LOCAL_TOKEN_KEY = 'yourTokenKey';
     var isAuthenticated = false;
     var authToken;
 
     function loadUserCredentials() {
         var token = window.localStorage.getItem(LOCAL_TOKEN_KEY);
-        console.log('token :' + token);
+        if(DEBUG.isEnabled){
+            console.log('token:');
+            console.log(token);
+            console.log('isAuthenticated:');
+            console.log(isAuthenticated);
+        }
 
-        console.log(isAuthenticated);
         if (token != undefined) {
+            if(DEBUG.isEnabled)
+                console.log('Authenticating with token');
+
             useCredentials(token);
         }
     }
@@ -75,7 +82,7 @@ angular.module('starter.services', [])
     }
 
     function useCredentials(token) {
-        console.log("token" + token);
+        //console.log("token" + token);
         isAuthenticated = true;
         authToken = token;
 
@@ -136,7 +143,6 @@ angular.module('starter.services', [])
         destroyUserCredentials();
     };
 
-    loadUserCredentials();
 
     return {
         login: login,
@@ -163,66 +169,48 @@ angular.module('starter.services', [])
     $httpProvider.interceptors.push('AuthInterceptor');
 })
 
-.factory('postReq', function ($http, $location) {
+.factory('postReq', function ($http, $location, DEBUG) {
 
     return {
         send: function($url, $data, $callbackPath, $callbackFunction) {
             $http({
                 url: $url,
+                data: $data,
                 method: "POST",
-                data: $data
-            }).success(function (data) {/*
-             console.log(data);*/
+                crossDomain: true
+            }).success(function (response) {
+                if(DEBUG.isEnabled){
+                    console.log($url + ' -> Returned:');
+                    console.log(response);
+                }
 
                 if($callbackPath)
                     $location.path($callbackPath);
 
                 if($callbackFunction)
-                    $callbackFunction(data);
+                    $callbackFunction(response);
 
             })
-                .error(function (data) {
-                    console.log('Error: ' + data);
+                .error(function (response) {
+                    console.log('Error: ' + response);
                 });
         }
     }
 })
-
-    .factory('putReq', function ($http, $location) {
+    .factory('putReq', function ($http, $location, DEBUG) {
 
         return {
             send: function($url, $data, $callbackPath, $callbackFunction) {
                 $http({
                     url: $url,
+                    data: $data,
                     method: "PUT",
-                    data: $data
-                }).success(function (data) {/*
-                 console.log(data);*/
-
-                    if($callbackPath)
-                        $location.path($callbackPath);
-
-                    if($callbackFunction)
-                        $callbackFunction();
-
-                })
-                    .error(function (data) {
-                        console.log('Error: ' + data);
-                    });
-            }
-        }
-    })
-
-    .factory('getReq', function ($http, $location) {
-
-        return {
-            send: function($url, $callbackPath, $callbackFunction) {
-                $http({
-                    method: "GET",
-                    crossDomain: true,
-                    url: $url
-                }).success(function (response) {/*
-                 console.log(response);*/
+                    crossDomain: true
+                }).success(function (response) {
+                    if(DEBUG.isEnabled){
+                        console.log($url + ' -> Returned:');
+                        console.log(response);
+                    }
 
                     if($callbackPath)
                         $location.path($callbackPath);
@@ -238,16 +226,47 @@ angular.module('starter.services', [])
         }
     })
 
-    .factory('delReq', function ($http, $location) {
+    .factory('getReq', function ($http, $location, DEBUG) {
 
         return {
             send: function($url, $callbackPath, $callbackFunction) {
                 $http({
+                    method: "GET",
+                    url: $url,
+                    crossDomain: true
+                }).success(function (response) {
+                    if(DEBUG.isEnabled){
+                        console.log($url + ' -> Returned:');
+                        console.log(response);
+                    }
+
+                    if($callbackPath)
+                        $location.path($callbackPath);
+
+                    if($callbackFunction)
+                        $callbackFunction(response);
+
+                })
+                    .error(function (response) {
+                        console.log('Error: ' + response);
+                    });
+            }
+        }
+    })
+
+    .factory('delReq', function ($http, $location, DEBUG) {
+
+        return {
+            send: function($url, $callbackPath, $callbackFunction) {
+                $http({
+                    url: $url,
                     method: "DELETE",
-                    crossDomain: true,
-                    url: $url
-                }).success(function (response) {/*
-                 console.log(response);*/
+                    crossDomain: true
+                }).success(function (response) {
+                    if(DEBUG.isEnabled){
+                        console.log($url + ' -> Returned:');
+                        console.log(response);
+                    }
 
                     if($callbackPath)
                         $location.path($callbackPath);

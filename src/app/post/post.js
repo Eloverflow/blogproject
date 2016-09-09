@@ -1,19 +1,12 @@
 'use strict';
 angular.module('starter.controllers', ['ui.tinymce'])
-.controller('PostCtrl', function($rootScope, $scope, getReq, $routeParams, $sce, postReq, $http, AuthService) {
-
-    console.log(" Is authenticated : " + AuthService.isAuthenticated());
+.controller('PostCtrl', function($rootScope, $scope, getReq, $routeParams, $sce, postReq, $http, AuthService, API_ENDPOINT) {
 
     $scope.getPost = function () {
 
-        var $url = 'http://localhost/api/post/' + $routeParams.id;
-        /*
-         $callbackPath = '/cloth/type/' + $stateParams.type;*/
+        var $url = API_ENDPOINT.url + '/post/' + $routeParams.id;
 
         var $callbackFunction = function (response) {
-            //$location.path("/");
-            //$rootScope.updatePostList();
-            console.log(response);
             $scope.post = response;
         };
 
@@ -21,19 +14,11 @@ angular.module('starter.controllers', ['ui.tinymce'])
     };
     $scope.getPost();
 
-    $scope.toTrustedHTML = function( html ){
-        return $sce.trustAsHtml( html );
-    }
     $scope.getComments = function () {
 
-        var $url = 'http://localhost/api/post/' + $routeParams.id  + '/comments';
-        /*
-         $callbackPath = '/cloth/type/' + $stateParams.type;*/
+        var $url = API_ENDPOINT.url + '/post/' + $routeParams.id  + '/comments';
 
         var $callbackFunction = function (response) {
-            //$location.path("/");
-            //$rootScope.updatePostList();
-            console.log(response);
             $scope.comments = response;
         };
 
@@ -50,47 +35,28 @@ angular.module('starter.controllers', ['ui.tinymce'])
     };
     
     function addVote(comment, isUpVote) {
-        var $url = 'http://localhost/api/vote';
+        var $url = API_ENDPOINT.url + '/vote';
         var data = {comment_id: comment._id, is_upvote: isUpVote};
-        /*
-         $callbackPath = '/cloth/type/' + $stateParams.type;*/
 
         var $callbackFunction = function (response) {
-            console.log(response);
 
             if(typeof comment.votes == 'undefined' || comment.votes == null)
                 comment.votes = [];
 
             comment.votes.push(response);
-            console.log(comment);
         };
-        /*
-         postReq.send($url, data, null, $callbackFunction);*/
 
-        $http({
-            url: $url,
-            method: "POST",
-            data: data
-        }).success(function (data, status, headers, config) {/*
-         console.log(data);*/
-            if($callbackFunction)
-                $callbackFunction(data);
-        })
+         postReq.send($url, data, null, $callbackFunction);
     }
 
     $scope.comment = {post_id : $routeParams.id};
 
     $scope.addSubComment = function (comment) {
 
-        var $url = 'http://localhost/api/subComment';
+        var $url = API_ENDPOINT.url + '/subComment';
         var data = {comment_id: comment._id, content: comment.currentSubComment};
-        /*
-         $callbackPath = '/cloth/type/' + $stateParams.type;*/
 
         var $callbackFunction = function (response) {
-            //$location.path("/");
-            //$rootScope.updatePostList();
-            console.log(response);
 
             if(typeof $scope.comments == 'undefined' || $scope.comments == null)
                 $scope.comments = [];
@@ -100,103 +66,49 @@ angular.module('starter.controllers', ['ui.tinymce'])
             
             comment.sub_comments.push(response);
             comment.currentSubComment = "";
-            console.log(comment);
         };
-        /*
-         postReq.send($url, data, null, $callbackFunction);*/
+         postReq.send($url, data, null, $callbackFunction);
+    };
 
-        $http({
-            url: $url,
-            method: "POST",
-            data: data
-        }).success(function (data, status, headers, config) {/*
-         console.log(data);*/
-            if($callbackFunction)
-                $callbackFunction(data);
-        })
-    }
-    $scope.addComment = function (comment, url) {
+    $scope.addComment = function (comment) {
 
-        var $url = 'http://localhost/api/comment';
+        var $url = API_ENDPOINT.url + '/comment';
         var data = comment;
-        /*
-         $callbackPath = '/cloth/type/' + $stateParams.type;*/
 
         var $callbackFunction = function (response) {
-            //$location.path("/");
-            //$rootScope.updatePostList();
-            console.log(response);
-
             if(typeof $scope.comments == undefined || $scope.comments == null)
             $scope.comments = [];
 
             $scope.comments.push(response);
-            console.log($scope.comments);
         };
-/*
-         postReq.send($url, data, null, $callbackFunction);*/
 
-        $http({
-            url: $url,
-            method: "POST",
-            data: data
-        }).success(function (data, status, headers, config) {/*
-         console.log(data);*/
-            if($callbackFunction)
-                $callbackFunction(data);
-        })
+         postReq.send($url, data, null, $callbackFunction);
+
     };
 
 })
 
-.controller('PostCreateCtrl', function($rootScope, $location, $scope, getReq, $routeParams, $sce, postReq, $http, AuthService, PostsService) {
+.controller('PostCreateCtrl', function($rootScope, $location, $scope, getReq, $routeParams, postReq, $http, API_ENDPOINT) {
 
     $scope.previewPost = {
         content: ""
     };
 
-    $scope.toTrustedHTML = function( html ){
-        return $sce.trustAsHtml( html );
-    }
 
     $scope.makePreviewPost = function () {
         $scope.previewPost = $scope.post;
     };
 
-    $scope.addPost = function (lepost) {
+    $scope.addPost = function (post) {
 
         if($scope.post === 'undefined' ){
          console.log('Post is empty');
          }
          else {
-            var $url = 'http://localhost/api/post';
-            //var $data = $scope.post;
-            /*
-             $callbackPath = '/cloth/type/' + $stateParams.type;*/
-
-           /* PostsService.createPost(lepost).then(function(msg) {
-            }, function(errMsg) {
-            });*/
-
-            var $callbackFunction = function (response) {
-                //$location.path("/");
-                //$rootScope.updatePostList();
-                console.log('posts')
-                console.log(response)
-                $location.path('/posts');
-            };
-
-            $http({
-                url: $url,
-                method: "POST",
-                data: lepost
-            }).success(function (data, status, headers, config) {
-                if($callbackFunction)
-                    $callbackFunction(data);
-            })
+            var $url = API_ENDPOINT.url + '/post';
+            postReq.send($url, post, '/posts')
         }
-        console.log(lepost);
-    }
+    };
 
     $scope.getContent = function() {
       console.log('Editor content:', $scope.tinymceModel);
@@ -217,95 +129,28 @@ angular.module('starter.controllers', ['ui.tinymce'])
         theme : 'modern'
     };
 
-
-
-    /*$scope.addPost = function (post) {
-
-        /!*if($scope.post === 'undefined' ){
-            console.log('Post is empty');
-        }
-        else {
-            var $url = 'http://localhost/api/post';
-            //var $data = $scope.post;
-        /!*
-             $callbackPath = '/cloth/type/' + $stateParams.type;*!/
-
-            var $callbackFunction = function (response) {
-                //$location.path("/");
-                //$rootScope.updatePostList();
-                console.log('posts')
-                console.log(response)
-                $location.path('#/posts');
-            };
-
-           /!* postReq.send($url, $data, null, $callbackFunction);*!/
-            $http({
-                url: $url,
-                method: "POST",
-                data: post
-            }).success(function (data, status, headers, config) {/!*
-             console.log(data);*!/
-                if($callbackFunction)
-                    $callbackFunction(data);
-            })
-
-        }*!/
-        console.log("ahahahaha");
-    }*/
-
-
-    /*tinymce.init({
-      selector: '#post-content',
-      height: 500,
-      plugins: [
-        'advlist autolink lists link image charmap print preview anchor',
-        'searchreplace visualblocks code fullscreen',
-        'insertdatetime media table contextmenu paste code'
-      ],
-      toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
-      content_css: [
-        '//www.tinymce.com/css/codepen.min.css'
-      ],
-      theme_advanced_path : false
-    });*/
-
-
-
-  /* https://github.com/xoxco/jQuery-Tags-Input */
-  $('#post-tags').tagsInput({
+    /* https://github.com/xoxco/jQuery-Tags-Input */
+    $('#post-tags').tagsInput({
     'width':'100%',
     'height':'44px',
     'onChange': updateTags
-  });
+    });
 
-  function updateTags() {
-    var str_array = $(this).tagsInput();
-      if(typeof $scope.post != 'undefined' && $scope.post != null)
-      {
-          $scope.post.tags = (str_array.val()).split(',');
-
-
-         /* for(var i = 0; i < str_array.length; i++) {
-              // Trim the excess whitespace.
-              str_array[i] = str_array[i].replace(/^\s*!/, "").replace(/\s*$/, "");
-              // Add additional code here, such as:
-              $scope.post.tags.push(str_array[i]);
-          }
-*/
-      }
-  }
+    function updateTags() {
+        var str_array = $(this).tagsInput();
+        if(typeof $scope.post != 'undefined' && $scope.post != null)
+        {
+            $scope.post.tags = (str_array.val()).split(',');
+        }
+    }
 
 
 })
-.controller('PostEditCtrl', function($scope, putReq, getReq, delReq, $sce, $routeParams, $location) {
+.controller('PostEditCtrl', function($scope, putReq, getReq, delReq, $routeParams, $location, API_ENDPOINT) {
 
     $scope.previewPost = {
         content: ""
     };
-
-    $scope.toTrustedHTML = function( html ){
-        return $sce.trustAsHtml( html );
-    }
 
     $scope.makePreviewPost = function () {
         $scope.previewPost = $scope.post;
@@ -334,21 +179,12 @@ angular.module('starter.controllers', ['ui.tinymce'])
     var tags = $('#post-tags');
     $scope.getPost = function () {
 
-        var $url = 'http://localhost/api/post/' + $routeParams.id;
-        /*
-         $callbackPath = '/cloth/type/' + $stateParams.type;*/
+        var $url = API_ENDPOINT.url + '/post/' + $routeParams.id;
 
         var $callbackFunction = function (response) {
-            //$location.path("/");
-            //$rootScope.updatePostList();
-            console.log(response);
             $scope.post = response;
             tags.importTags(response.tags.join());
-            console.log(response.tags)
-
-
-            /*$scope.post.tags = response.tags*/
-        }
+        };
 
         getReq.send($url, null, $callbackFunction);
     };
@@ -360,21 +196,10 @@ angular.module('starter.controllers', ['ui.tinymce'])
             console.log('Post is empty');
         }
         else {
-            var $url = 'http://localhost/api/post/' + $routeParams.id;
-            var $data = $scope.post;
-            /*
-             $callbackPath = '/cloth/type/' + $stateParams.type;*/
-
-            var $callbackFunction = function (response) {
-                //$location.path("/");
-                //$rootScope.updatePostList();
-                console.log('posts')
-                console.log(response)
-                $location.path("#!/posts");
-            }
+            var $url = API_ENDPOINT.url + '/post/' + $routeParams.id;
 
             if(confirm('Are you sure you want to delete this Post ?'))
-            delReq.send($url, $data, null, $callbackFunction);
+            delReq.send($url, '/posts');
         }
     }
 
@@ -384,17 +209,11 @@ angular.module('starter.controllers', ['ui.tinymce'])
             console.log('Post is empty');
         }
         else {
-            var $url = 'http://localhost/api/post/' + $routeParams.id;
+            var $url = API_ENDPOINT.url + '/post/' + $routeParams.id;
             var $data = $scope.post;
-        /*
-             $callbackPath = '/cloth/type/' + $stateParams.type;*/
 
             var $callbackFunction = function (response) {
-                //$location.path("/");
-                //$rootScope.updatePostList();
-                console.log('posts')
-                console.log(response)
-                $location.path("#!/posts");
+                $location.path("/posts");
             }
 
             putReq.send($url, $data, null, $callbackFunction);
@@ -402,47 +221,20 @@ angular.module('starter.controllers', ['ui.tinymce'])
     }
 
 
-    /*tinymce.init({
-      selector: '#post-content',
-      height: 500,
-      plugins: [
-        'advlist autolink lists link image charmap print preview anchor',
-        'searchreplace visualblocks code fullscreen',
-        'insertdatetime media table contextmenu paste code'
-      ],
-      toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
-      content_css: [
-        '//www.tinymce.com/css/codepen.min.css'
-      ],
-      theme_advanced_path : false
-    });*/
-
-
-
-  /* https://github.com/xoxco/jQuery-Tags-Input */
-  $('#post-tags').tagsInput({
+    /* https://github.com/xoxco/jQuery-Tags-Input */
+    $('#post-tags').tagsInput({
     'width':'100%',
     'height':'44px',
     'onChange': updateTags
-  });
+    });
 
-  function updateTags() {
-    var str_array = $(this).tagsInput();
-      if(typeof $scope.post != 'undefined' && $scope.post != null)
-      {
-          $scope.post.tags = (str_array.val()).split(',');
-
-
-         /* for(var i = 0; i < str_array.length; i++) {
-              // Trim the excess whitespace.
-              str_array[i] = str_array[i].replace(/^\s*!/, "").replace(/\s*$/, "");
-              // Add additional code here, such as:
-              $scope.post.tags.push(str_array[i]);
-          }
-*/
-      }
-  }
-
+    function updateTags() {
+        var str_array = $(this).tagsInput();
+        if(typeof $scope.post != 'undefined' && $scope.post != null)
+        {
+            $scope.post.tags = (str_array.val()).split(',');
+        }
+    }
 
 })
- 
+
