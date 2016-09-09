@@ -1,6 +1,6 @@
 'use strict';
 angular.module('starter.controllers', ['ui.tinymce'])
-.controller('PostCtrl', function($rootScope, $scope, getReq, $routeParams, $sce, postReq, $http, AuthService, API_ENDPOINT) {
+.controller('PostCtrl', function($rootScope, $scope, getReq, $routeParams, $sce, postReq, $http, AuthService, API_ENDPOINT,$filter) {
 
     $scope.getPost = function () {
 
@@ -19,7 +19,11 @@ angular.module('starter.controllers', ['ui.tinymce'])
         var $url = API_ENDPOINT.url + '/post/' + $routeParams.id  + '/comments';
 
         var $callbackFunction = function (response) {
+            for(var i = 0; i < response.length; i++){
+                response[i].myVote  = $filter('filter')(response[i].votes, {user_id: $rootScope.user._id})[0];
+            }
             $scope.comments = response;
+            console.log($scope.comments);
         };
 
         getReq.send($url, null, $callbackFunction);
@@ -28,10 +32,22 @@ angular.module('starter.controllers', ['ui.tinymce'])
 
     
     $scope.addUpVote = function (comment) {
-        addVote(comment, true);
+        if(comment.MyVote == 'undefined'){
+            addVote(comment, true);
+        } else {
+            if(!comment.MyVote.isUpVote){
+                addVote(comment, true);
+            }
+        }
     };
     $scope.addDownVote = function (comment) {
-       addVote(comment, false);
+        if(comment.MyVote == 'undefined'){
+            addVote(comment, false);
+        } else {
+            if(comment.MyVote.isUpVote){
+                addVote(comment, false);
+            }
+        }
     };
     
     function addVote(comment, isUpVote) {
@@ -44,6 +60,7 @@ angular.module('starter.controllers', ['ui.tinymce'])
                 comment.votes = [];
 
             comment.votes.push(response);
+            comment.myVote = response;
         };
 
          postReq.send($url, data, null, $callbackFunction);

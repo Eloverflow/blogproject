@@ -24,12 +24,12 @@
                 <div class="user-msg-up-down"><!--
                            <i class="fa fa-thumbs-up"></i>
                            <i class="fa fa-thumbs-down"></i>-->
-                    <i ng-click="addUpVote(comment)" class="fa fa-chevron-up"></i>
+                    <i ng-click="addUpVote(comment)" class="fa fa-chevron-up {{ comment.MyVote != 'undefined' ? 'selected-chevron' : ''  }}"></i>
                     <div class="up-down">
                         <span  class="up">{{ (comment.votes | filter: {is_upvote: true}).length }}</span>
                         <span class="down">{{ (comment.votes | filter: {is_upvote: false}).length }}</span>
                     </div>
-                    <i ng-click="addDownVote(comment)"  class="fa fa-chevron-down"></i>
+                    <i ng-click="addDownVote(comment)"  class="fa fa-chevron-down {{ comment.MyVote != 'undefined' ? '' : 'selected-chevron' }}"></i>
 
                 </div>
             </div>
