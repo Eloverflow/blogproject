@@ -34,10 +34,12 @@ router.post('/', function(req, res, next) {
     },function (err, user) {
       if (err) return next(err);
 
+
+
       Post.create({
         user_id: user._id,
         content: req.body.content,
-        title: req.body.title,
+        title: req.body.title.charAt(0).toUpperCase() + req.body.title.slice(1),
         tags: req.body.tags
       }, function (err, post) {
         if (err) return next(err);
@@ -54,7 +56,12 @@ router.post('/', function(req, res, next) {
 router.get('/:id', function(req, res, next) {
   Post.findById(req.params.id, function (err, post) {
     if (err) return next(err);
-    res.json(post);
+
+    Post.populate(post,{path : 'user_id', model: 'User'},function (err, post) {
+      if (err) return next(err);
+      res.json(post);
+    });
+
   });
 });
 

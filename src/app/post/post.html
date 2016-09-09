@@ -1,4 +1,11 @@
-<h2>{{ post.title }}</h2>
+<h2 class="post-title">{{ post.title }}</h2>
+<ul class="post-info post-infos">
+    <li ng-show="user.is_admin"> <i ng-click="deletePost(post._id)" class="fa fa-trash" aria-hidden="true"></i></li>
+    <li ng-show="user.is_admin"> <i ng-click="editPost(post._id)" class="fa fa-edit" aria-hidden="true"></i></li>
+    <li class=""><a href="#!/profile/{{post.user_id.user_id}}"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;{{post.user_id.username ? post.user_id.username : post.user_id.name}}</a></li>
+    <li class=""><i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp;<!--August, 27, 2016  -->{{ post.createdAt | date:'MMM d, y'}}</li>
+    <li class=""><a href="#!/post/{{post._id}}"><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;({{ post.comments.length }}) Comments</a></li>
+</ul>
 <div class="wrapper">
     <article  ng-bind-html="toTrustedHTML(post.content)" class="post-content">
     </article>
