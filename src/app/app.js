@@ -66,6 +66,9 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService,UserService, $sce, 
 
   };
 
+
+  AuthService.startupAuthenticate();
+
   /*If a Facebook user is stored load it*/
   if(UserService.getUser() != {} && UserService.getUser() != ""){
     if(DEBUG.isEnabled)
@@ -73,16 +76,12 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService,UserService, $sce, 
 
     $rootScope.user = UserService.getUser();
   }
-  else {//Get standard user info
+  else if(AuthService.isAuthenticated()){//Get standard user info
     if(DEBUG.isEnabled)
       console.log('Choosing Standard Auth');
 
-    AuthService.startupAuthenticate();
     $rootScope.getInfo();
   }
-  
-  console.log('user');
-  console.log($rootScope.user);
   
   $rootScope.toTrustedHTML = function( html ){
     return $sce.trustAsHtml( html );
