@@ -25,7 +25,7 @@ angular.module('starter.controllers')
   
   $scope.getPosts = function () {
 
-      var $url = API_ENDPOINT.url + '/api/post';
+      var $url = API_ENDPOINT.url + '/post';
 
       var $callbackFunction = function (response) {
         $scope.posts = response;
