@@ -1,5 +1,5 @@
 angular.module('starter.controllers')
-.controller('LoginCtrl', function($scope, $rootScope, UserService,  AuthService, $q, EmailService, $location) {
+.controller('LoginCtrl', function($scope, $rootScope, UserService, postReq,  AuthService, $q, EmailService, $location, API_ENDPOINT) {
 
       // This is the fail callback from the login method
     var fbLoginError = function(error){
@@ -31,7 +31,7 @@ angular.module('starter.controllers')
         function (response) {
           if (response.status === 'connected') {
             console.log('Facebook login succeeded');
-
+              
               if (!response.authResponse){
                   console.log("Cannot find the authResponse");
               }
@@ -39,12 +39,18 @@ angular.module('starter.controllers')
 
                   var authResponse = response.authResponse;
                   $scope.getFacebookProfileInfo(authResponse)
+                  
+                  
+                  $url = API_ENDPOINT.url + '/facebook';
+                  
+                  postReq.send($url, $rootScope.user, '/');
+
+                  /*$rootScope.$apply(function() {
+                      $location.path('/')
+                  });*/
               }
 
 
-              $rootScope.$apply(function() {
-                $location.path('/')
-              });
 
 
           } else {
