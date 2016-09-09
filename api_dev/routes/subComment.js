@@ -37,7 +37,12 @@ router.post('/', function(req, res, next) {
           comment.sub_comments.push(subComment._id);
           comment.save();
 
-          res.json(subComment);
+
+          SubComment.populate(subComment, {path : 'user_id', model: 'User'}, function (err, subComment) {
+
+            res.json(subComment);
+          })
+
         });
       })
     })

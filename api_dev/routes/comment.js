@@ -37,12 +37,16 @@ router.post('/', function(req, res, next) {
           post.comments.push(comment._id);
           post.save();
 
-          res.json(comment);
+          Comment.populate(comment, {path : 'user_id', model: 'User'}, function (err, comment) {
+
+            res.json(comment);
+          })
+
         });
       });
     })
   }
-
+  
 });
 
 /* GET /comment/:id */

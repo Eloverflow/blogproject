@@ -27,7 +27,7 @@ router.post('/', function(req, res, next) {
     }, function (err, user) {
       if (err) return next(err);
 
-      Vote.find({
+      Vote.findOne({
         comment_id: req.body.comment_id,
         user_id: user._id
       }, function (err, vote) {
@@ -54,9 +54,7 @@ router.post('/', function(req, res, next) {
           else {
             if (vote.is_upvote != req.body.is_upvote) {
 
-              console.log(vote);
-
-              Vote.findByIdAndRemove(vote[0].id, vote[0], function (err, deletedVote) {
+              Vote.findByIdAndRemove(vote.id, vote, function (err, deletedVote) {
                 if (err) return next(err);
 
                 Vote.create({
