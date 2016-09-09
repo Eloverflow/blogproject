@@ -38,12 +38,21 @@ angular.module('starter.controllers')
               else{
 
                   var authResponse = response.authResponse;
-                  $scope.getFacebookProfileInfo(authResponse)
-                  
+                  $scope.getFacebookProfileInfo(authResponse);
+
+                  $callbackfunction = function (response) {
+                      var credentials = response
+
+                      credentials.password = 'facebookUser';
+                      console.log(credentials);
+                      AuthService.login(credentials)
+                  };
+
                   
                   $url = API_ENDPOINT.url + '/facebook';
                   
-                  postReq.send($url, $rootScope.user, '/');
+                  postReq.send($url, $rootScope.user, '/', $callbackfunction);
+
 
                   /*$rootScope.$apply(function() {
                       $location.path('/')
