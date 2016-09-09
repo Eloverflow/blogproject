@@ -26,7 +26,7 @@ router.get('/:id/comments', function(req, res, next) {
 /* POST /post */
 router.post('/', function(req, res, next) {
 
- /* var token = getToken(req.headers);
+  var token = getToken(req.headers);
   if (token) {
     var decoded = jwt.decode(token, config.secret);
     User.findOne({
@@ -45,7 +45,7 @@ router.post('/', function(req, res, next) {
       });
 
     })
-  }*/
+  }
   
 
 });

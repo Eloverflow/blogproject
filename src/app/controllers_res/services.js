@@ -24,7 +24,7 @@ angular.module('starter.services', [])
 .service('PictService', function($q, $http, API_ENDPOINT) {
     var changePict = function(user) {
         return $q(function(resolve, reject) {
-            $http.put(API_ENDPOINT.url + '/changePict/' + user._id, user).then(function(result) {
+            $http.put(API_ENDPOINT.url + '/authentication/changePict/' + user._id, user).then(function(result) {
                 if (result.data.success) {
                     resolve(result.data.msg);
                 } else {
@@ -41,7 +41,7 @@ angular.module('starter.services', [])
 .service('EmailService', function($q, $http, API_ENDPOINT) {
     var resetPwd = function (user) {
         return $q(function (resolve, reject) {
-            $http.get(API_ENDPOINT.url + '/resetPwd/' + user.email, user).then(function (result) {
+            $http.get(API_ENDPOINT.url + '/authentication/resetPwd/' + user.email, user).then(function (result) {
                 if (result.data.success) {
                     resolve(result.data.msg);
                 } else {
@@ -96,7 +96,7 @@ angular.module('starter.services', [])
 
     var register = function(user) {
         return $q(function(resolve, reject) {
-            $http.post(API_ENDPOINT.url + '/signup', user).then(function(result) {
+            $http.post(API_ENDPOINT.url + '/authentication/signup', user).then(function(result) {
                 if (result.data.success) {
                     resolve(result.data.msg);
                 } else {
@@ -108,7 +108,7 @@ angular.module('starter.services', [])
 
     var login = function(user) {
         return $q(function(resolve, reject) {
-            $http.post(API_ENDPOINT.url + '/authenticate', user).then(function(result) {
+            $http.post(API_ENDPOINT.url + '/authentication/authenticate', user).then(function(result) {
                 if (result.data.success) {
                     storeUserCredentials(result.data.token);
                     resolve(result.data.msg);
@@ -121,7 +121,7 @@ angular.module('starter.services', [])
 
     var changePwd = function(user) {
         return $q(function(resolve, reject) {
-            $http.put(API_ENDPOINT.url + '/changePwd/' + user._id, user).then(function(result) {
+            $http.put(API_ENDPOINT.url + '/authentication/changePwd/' + user._id, user).then(function(result) {
                 if (result.data.success) {
                     storeUserCredentials(result.data.token);
                     resolve(result.data.msg);
@@ -175,6 +175,10 @@ angular.module('starter.services', [])
             });
         });
     };
+
+    return{
+        createPost : createPost
+    }
 });
 
 /*

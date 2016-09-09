@@ -149,7 +149,7 @@ angular.module('starter.controllers', ['ui.tinymce'])
 
 })
 
-.controller('PostCreateCtrl', function($rootScope, $scope, getReq, $routeParams, $sce, postReq, $http, AuthService, PostsService) {
+.controller('PostCreateCtrl', function($rootScope, $location, $scope, getReq, $routeParams, $sce, postReq, $http, AuthService, PostsService) {
 
     $scope.previewPost = {
         content: ""
@@ -169,16 +169,33 @@ angular.module('starter.controllers', ['ui.tinymce'])
          console.log('Post is empty');
          }
          else {
-            var $url = 'http://127.0.0.1/api/post';
+            var $url = 'http://localhost/api/post';
             //var $data = $scope.post;
             /*
              $callbackPath = '/cloth/type/' + $stateParams.type;*/
 
-            PostsService.createPost(lepost).then(function(msg) {
+           /* PostsService.createPost(lepost).then(function(msg) {
             }, function(errMsg) {
-            });
+            });*/
+
+            var $callbackFunction = function (response) {
+                //$location.path("/");
+                //$rootScope.updatePostList();
+                console.log('posts')
+                console.log(response)
+                $location.path('/posts');
+            };
+
+            $http({
+                url: $url,
+                method: "POST",
+                data: lepost
+            }).success(function (data, status, headers, config) {
+                if($callbackFunction)
+                    $callbackFunction(data);
+            })
         }
-        console.log(post);
+        console.log(lepost);
     }
 
     $scope.getContent = function() {
