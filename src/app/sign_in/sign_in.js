@@ -17,13 +17,14 @@ angular.module('starter.controllers')
 
 
 
-    $scope.user = {is_admin:"false"};
+    $scope.newUser = {is_admin:"false"};
 
     $scope.signup = function() {
-      AuthService.register($scope.user).then(function(msg) {
+      AuthService.register($scope.newUser).then(function(msg) {
       }, function(errMsg) {
       });
     };
+
 
     $scope.fbLoginBrowser = function () {
         openFB.login(
@@ -33,11 +34,17 @@ angular.module('starter.controllers')
 
               if (!response.authResponse){
                   console.log("Cannot find the authResponse");
-                  return;
               }
-              var authResponse = response.authResponse;
+              else{
 
-              $scope.getFacebookProfileInfo(authResponse)
+                  var authResponse = response.authResponse;
+                  $scope.getFacebookProfileInfo(authResponse)
+              }
+
+
+              $rootScope.$apply(function() {
+                $location.path('/')
+              });
 
 
           } else {
@@ -48,7 +55,7 @@ angular.module('starter.controllers')
 
 
     $scope.login = function() {
-      AuthService.login($scope.user).then(function(msg) {
+      AuthService.login($scope.newUser).then(function(msg) {
           AuthService.startupAuthenticate();
           $rootScope.getInfo();
           $location.path('/')
@@ -56,7 +63,7 @@ angular.module('starter.controllers')
       });
     };
 
-    //This method is executed when the user press the "Login with facebook" button
+    //This method is executed when the newUser press the "Login with facebook" button
     $scope.facebookSignIn = function() {
         $scope.fbLoginBrowser();
     };
@@ -66,7 +73,7 @@ angular.module('starter.controllers')
     };
 
     $scope.forgotpwd = function() {
-        EmailService.resetPwd($scope.user).then(function(msg) {
+        EmailService.resetPwd($scope.newUser).then(function(msg) {
         }, function(errMsg) {
         });
     };

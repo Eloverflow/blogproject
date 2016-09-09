@@ -49,7 +49,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
 }]);
 
 
-app.run(function($rootScope,$http, API_ENDPOINT, AuthService,UserService, $sce, DEBUG) {
+app.run(function($rootScope,$http, API_ENDPOINT, AuthService,UserService, $sce, DEBUG, $location) {
 
   openFB.init({appId: '1112318545481460'});
 
@@ -87,6 +87,12 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService,UserService, $sce, 
     return $sce.trustAsHtml( html );
   }
 
+
+  $rootScope.afterLogin = function () {
+    console.log('test')
+    $location.path('/')
+  }
+
   // This method is to get the user profile info from the facebook api
   $rootScope.getFacebookProfileInfo = function (authResponse) {
     console.log(authResponse);
@@ -107,12 +113,18 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService,UserService, $sce, 
           name: data.name,
           email: data.email,
           gender: data.gender,
-          picture : "http://graph.facebook.com/" + authResponse.userID + "/picture?type=large"
+          picture : "http://graph.facebook.com/" + data.id + "/picture?type=large"
+        });
+
+        $rootScope.$apply(function() {
+          $rootScope.user = UserService.getUser();
+          console.log($rootScope.user );
         });
 
         //document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=small';
       },
       error: errorHandler});
+
 
   };
 

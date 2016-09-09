@@ -3,13 +3,7 @@ angular.module('starter.controllers')
   $scope.settings = {
     enableFriends: true
   };
-
-  $scope.infoUser = function() {$rootScope.getInfo()};
-
-  $scope.infoUser();
-
-  $scope.user = UserService.getUser();
-
+  
   $scope.showLogOutMenu = function() {
     bootbox.dialog({
       message: "Are you sure?",

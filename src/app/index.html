@@ -21,11 +21,11 @@
       <div class="item img">
         <i class="fa fa-user" aria-hidden="true"></i>
       </div>
-      <div ng-hide="user" class="item msg">
+      <div ng-hide="user.email" class="item msg">
         <strong>Welcome, </strong><br />
         <h4>Guest</h4>
       </div>
-      <div ng-show="user" class="item msg">
+      <div ng-show="user.email" class="item msg">
         <strong>Welcome, </strong><br />
         <h4>{{ user.email}} </h4>
       </div>
