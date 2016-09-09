@@ -51,7 +51,7 @@ angular.module('starter.controllers')
                   
                   $url = API_ENDPOINT.url + '/facebook';
                   
-                  postReq.send($url, $rootScope.user, '/', $callbackfunction);
+                  //postReq.send($url, $rootScope.user, '/', $callbackfunction);
 
 
                   /*$rootScope.$apply(function() {

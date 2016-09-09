@@ -32,19 +32,21 @@ angular.module('starter.controllers', ['ui.tinymce'])
 
     
     $scope.addUpVote = function (comment) {
-        if(comment.MyVote == 'undefined'){
+        if(typeof comment.myVote == 'undefined'){
             addVote(comment, true);
         } else {
-            if(!comment.MyVote.isUpVote){
+            if(!comment.myVote.is_upvote){
+                comment.votes.splice(comment.votes.indexOf(comment.myVote), 1);
                 addVote(comment, true);
             }
         }
     };
     $scope.addDownVote = function (comment) {
-        if(comment.MyVote == 'undefined'){
+        if(typeof comment.myVote == 'undefined'){
             addVote(comment, false);
         } else {
-            if(comment.MyVote.isUpVote){
+            if(comment.myVote.is_upvote){
+                comment.votes.splice(comment.votes.indexOf(comment.myVote), 1);
                 addVote(comment, false);
             }
         }
@@ -58,6 +60,7 @@ angular.module('starter.controllers', ['ui.tinymce'])
 
             if(typeof comment.votes == 'undefined' || comment.votes == null)
                 comment.votes = [];
+
 
             comment.votes.push(response);
             comment.myVote = response;

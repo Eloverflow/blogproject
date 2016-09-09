@@ -54,7 +54,7 @@ router.post('/', function(req, res, next) {
           else {
             if (vote.is_upvote != req.body.is_upvote) {
 
-              Vote.findByIdAndRemove(vote.id, function (err, post) {
+              Vote.findByIdAndRemove(vote.id, vote, function (err, vote) {
                 if (err) return next(err);
               });
 
@@ -81,10 +81,7 @@ router.post('/', function(req, res, next) {
 
     });
   }
-/*
-    Vote.create(req.body, function (err, post) {
-    if (err) return next(err);
-    res.json(post);*/
+
 });
 
 /* GET /vote/:id */
