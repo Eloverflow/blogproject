@@ -31,9 +31,14 @@ router.post('/signup', function(req, res, next) {
 });
 
 router.post('/authenticate', function(req, res, next) {
-  User.findOne({
-    email: req.body.email
-  }, function(err, user) {
+
+    var userObject = {};
+    if((req.body.email).match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/))
+        userObject.email = req.body.email;
+    else
+        userObject.username = req.body.email;
+
+  User.findOne(userObject, function(err, user) {
     if (err) throw err;
 
     if (!user) {
