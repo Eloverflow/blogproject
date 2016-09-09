@@ -8,14 +8,11 @@ This is an opensource blog project made for Mirageflow Inc.
 * **Git**
     > Download from [git](https://git-scm.com/)
 
-* **Python** (Required for package Bcrypt)
-    > Download from [python](https://www.python.org/downloads/) | Instruction : from [Google](https://www.google.ca/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=add%20python%20environment%20variable)
-
 * **Nodejs(LTS)/Npm**
     > Download from [nodejs](https://nodejs.org/en/download/)
 
 * **Mongodb**
-> Download from [Mongodb](https://www.mongodb.org/downloads#production) | Instruction : from [Microsoft](https://code.msdn.microsoft.com/Mongo-Database-setup-on-6963f46f)
+    > Download from [Mongodb](https://www.mongodb.org/downloads#production) | Instruction : from [Microsoft](https://code.msdn.microsoft.com/Mongo-Database-setup-on-6963f46f)
 
 * **mongodb (Mongodb Admin Panel)**(Optional)
 ```
@@ -36,7 +33,7 @@ npm install
 ```
 npm run serve
 ```
-Now browse to blogproject at [http://localhost:3000/](http://localhost:3000/) (Browsersync: [http://localhost:3001/](http://localhost:3001/))
+Now browse to blogproject at [http://localhost:3000/](http://localhost:3000/)
 
 ## To Run Database
 ```
