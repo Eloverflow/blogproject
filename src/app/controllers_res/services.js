@@ -163,26 +163,6 @@ angular.module('starter.services', [])
     $httpProvider.interceptors.push('AuthInterceptor');
 })
 
-.service('PostsService', function($q, $http, API_ENDPOINT) {
-    var createPost = function(post) {
-        return $q(function(resolve, reject) {
-            $http.post(API_ENDPOINT.url + '/createPost', post).then(function(result) {
-                if (result.data.success) {
-                    resolve(result.data.msg);
-                } else {
-                    reject(result.data.msg);
-                }
-            });
-        });
-    };
-
-    return{
-        createPost : createPost
-    }
-});
-
-/*
-
 .factory('postReq', function ($http, $location) {
 
     return {
@@ -191,8 +171,8 @@ angular.module('starter.services', [])
                 url: $url,
                 method: "POST",
                 data: $data
-            }).success(function (data) {/!*
-             console.log(data);*!/
+            }).success(function (data) {/*
+             console.log(data);*/
 
                 if($callbackPath)
                     $location.path($callbackPath);
@@ -216,8 +196,8 @@ angular.module('starter.services', [])
                     url: $url,
                     method: "PUT",
                     data: $data
-                }).success(function (data) {/!*
-                 console.log(data);*!/
+                }).success(function (data) {/*
+                 console.log(data);*/
 
                     if($callbackPath)
                         $location.path($callbackPath);
@@ -241,8 +221,8 @@ angular.module('starter.services', [])
                     method: "GET",
                     crossDomain: true,
                     url: $url
-                }).success(function (response) {/!*
-                 console.log(response);*!/
+                }).success(function (response) {/*
+                 console.log(response);*/
 
                     if($callbackPath)
                         $location.path($callbackPath);
@@ -266,8 +246,8 @@ angular.module('starter.services', [])
                     method: "DELETE",
                     crossDomain: true,
                     url: $url
-                }).success(function (response) {/!*
-                 console.log(response);*!/
+                }).success(function (response) {/*
+                 console.log(response);*/
 
                     if($callbackPath)
                         $location.path($callbackPath);
@@ -281,4 +261,4 @@ angular.module('starter.services', [])
                     });
             }
         }
-    })*/
+    })
