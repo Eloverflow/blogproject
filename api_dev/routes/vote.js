@@ -27,7 +27,7 @@ router.post('/', function(req, res, next) {
     }, function (err, user) {
       if (err) return next(err);
 
-      Vote.find({
+      Vote.findOne({
         comment_id: req.body.comment_id,
         user_id: user._id
       }, function (err, vote) {
@@ -36,7 +36,7 @@ router.post('/', function(req, res, next) {
         Comment.findById(req.body.comment_id, function (err, comment) {
           if (err) return next(err);
 
-          if (vote == null) {
+          if (vote == null || vote.length == 0) {
 
             Vote.create({
               user_id: user,

@@ -149,12 +149,12 @@ $fa-font-path:   "../assets/fonts/fontawesome"!default;
   }
 
   hr{
-    margin-top: 5px!important;
-    margin-bottom: 5px!important;
+    margin-top: 0!important;
+    margin-bottom: 0!important;
   }
 
-  .chat-bloc{
-    border-top: 1px solid lightgrey;
+  .chat-bloc{/*
+    border-top: 1px solid lightgrey;*/
     padding-left: 20px;
     /*flex-direction: row;*/
 
@@ -238,6 +238,8 @@ $fa-font-path:   "../assets/fonts/fontawesome"!default;
       background-color: rgba(200,200,200,0.4);
       margin-left: 10%;
       padding: 10px 20px 20px 20px;
+      margin-top: 5px;
+      margin-bottom: 5px;
 
     }
 

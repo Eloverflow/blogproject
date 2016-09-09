@@ -23,7 +23,8 @@
                 </div>
                 <div class="user-msg-content">
                     <div class="user-msg-header">
-                        <strong>{{ comment.user_id.username}}</strong>
+                        <strong ng-show="comment.user_id.username">{{ comment.user_id.username}}</strong>
+                        <strong ng-hide="comment.user_id.username">{{ comment.user_id.name }}</strong>
                         <span class="time">{{ comment.createdAt | date:'MMM d, y'}}</span>
                     </div>
                     <p>{{ comment.content}}</p>
@@ -43,18 +44,19 @@
                 </div>
             </div>
             <div ng-show="user" class="chat-bloc-footer">
-                <a data-toggle="collapse" data-target="#reply-{{comment._id}}" class="">Reply ({{comment.sub_comments.length}})</a>
+                <a data-toggle="collapse" data-target=".reply-{{comment._id}}" class="">Reply ({{comment.sub_comments.length}})</a>
             </div>
             <div ng-hide="user || comment.sub_comments.length == 0" class="chat-bloc-footer">
-                <a data-toggle="collapse" data-target="#reply-{{comment._id}}" class="">Show comments ({{comment.sub_comments.length}})</a>
+                <a data-toggle="collapse" data-target=".reply-{{comment._id}}" class="">Show comments ({{comment.sub_comments.length}})</a>
             </div>
-            <hr>
-            <div id="reply-{{comment._id}}" class="sub-com collapse">
+            <hr class="reply-{{comment._id}} collapse">
+            <div  class="sub-com reply-{{comment._id}} collapse">
                 <ul ng-show="comment.sub_comments.length > 0" class="chat-sub-comment">
                     <li ng-repeat="subComment in comment.sub_comments">
                         <div class="user-sub-msg-content">
                             <div class="user-sub-msg-header">
-                                <strong>{{ subComment.user_id.username }}</strong>
+                                <strong ng-show="subComment.user_id.username">{{ subComment.user_id.username }}</strong>
+                                <strong ng-hide="subComment.user_id.username">{{ subComment.user_id.name }}</strong>
                                 <span class="time">{{subComment.updatedAt | date:'MMM d, y'}}</span>
                             </div>
                             <p>{{subComment.content}}</p>
@@ -66,6 +68,7 @@
                     <button class="InputAddOn-item-sub-comment btn btn-default" ng-click="addSubComment(comment)">Send</button>
                 </div>
             </div>
+            <hr>
         </li>
     </ul>
     <hr>
