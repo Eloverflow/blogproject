@@ -27,20 +27,20 @@ router.get('/:id/comments', function(req, res, next) {
 router.post('/', function(req, res, next) {
 
     User.findOne({
-        email: req.body.email
+        facebook_id: req.body.userID
     },function (err, user) {
         if (err) return next(err);
-
         if(user == null){
-            User.create({
-                email: req.body.content,
+             User.create({
+                email: req.body.email,
                 facebook_id: req.body.userID,
                 name: req.body.name,
-                password: Math.random(999999999999999,100000000000000)
+                password: 'facebookUser'
             }, function (err, post) {
                 if (err) return next(err);
                 res.json(post);
             });
+
         }
         else {
             res.json(user);
