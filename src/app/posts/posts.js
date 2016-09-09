@@ -7,7 +7,7 @@ angular.module('starter.controllers')
 
   $scope.deletePost = function (id) {
 
-      var $url = 'http://127.0.0.1/api/post/' + id;
+      var $url = 'http://localhost/api/post/' + id;
 
       var $callbackFunction = function (response) {
         $scope.posts.splice(id, 1);
@@ -31,7 +31,7 @@ angular.module('starter.controllers')
   
   $scope.getPosts = function () {
 
-      var $url = 'http://127.0.0.1/api/post';
+      var $url = 'http://localhost/api/post';
     /*
        $callbackPath = '/cloth/type/' + $stateParams.type;*/
 

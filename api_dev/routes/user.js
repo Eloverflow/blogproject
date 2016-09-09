@@ -33,7 +33,7 @@ router.post('/signup', function(req, res, next) {
 router.post('/authenticate', function(req, res, next) {
 
     var userObject = {};
-    if((req.body.email).match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/))
+    if((req.body.email).match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm))
         userObject.email = req.body.email;
     else
         userObject.username = req.body.email;
@@ -50,7 +50,7 @@ router.post('/authenticate', function(req, res, next) {
           // if user is found and password is right create a token
           var token = jwt.encode(user, config.secret);
           // return the information including token as JSON
-          res.json({success: true, user: user, msg: 'Authentication success.', token: 'JWT ' + token });
+          res.json({success: true, using_email: userObject.email ? true : false, user: user, msg: 'Authentication success.', token: 'JWT ' + token });
         } else {
           return res.send({success: false, msg: 'Authentication failed. Wrong password.'});
         }

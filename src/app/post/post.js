@@ -6,7 +6,7 @@ angular.module('starter.controllers', ['ui.tinymce'])
 
     $scope.getPost = function () {
 
-        var $url = 'http://127.0.0.1/api/post/' + $routeParams.id;
+        var $url = 'http://localhost/api/post/' + $routeParams.id;
         /*
          $callbackPath = '/cloth/type/' + $stateParams.type;*/
 
@@ -26,7 +26,7 @@ angular.module('starter.controllers', ['ui.tinymce'])
     }
     $scope.getComments = function () {
 
-        var $url = 'http://127.0.0.1/api/post/' + $routeParams.id  + '/comments';
+        var $url = 'http://localhost/api/post/' + $routeParams.id  + '/comments';
         /*
          $callbackPath = '/cloth/type/' + $stateParams.type;*/
 
@@ -50,7 +50,7 @@ angular.module('starter.controllers', ['ui.tinymce'])
     };
     
     function addVote(comment, isUpVote) {
-        var $url = 'http://127.0.0.1/api/vote';
+        var $url = 'http://localhost/api/vote';
         var data = {comment_id: comment._id, is_upvote: isUpVote};
         /*
          $callbackPath = '/cloth/type/' + $stateParams.type;*/
@@ -82,7 +82,7 @@ angular.module('starter.controllers', ['ui.tinymce'])
 
     $scope.addSubComment = function (comment) {
 
-        var $url = 'http://127.0.0.1/api/subComment';
+        var $url = 'http://localhost/api/subComment';
         var data = {comment_id: comment._id, content: comment.currentSubComment};
         /*
          $callbackPath = '/cloth/type/' + $stateParams.type;*/
@@ -117,7 +117,7 @@ angular.module('starter.controllers', ['ui.tinymce'])
     }
     $scope.addComment = function (comment, url) {
 
-        var $url = 'http://127.0.0.1/api/comment';
+        var $url = 'http://localhost/api/comment';
         var data = comment;
         /*
          $callbackPath = '/cloth/type/' + $stateParams.type;*/
@@ -225,7 +225,7 @@ angular.module('starter.controllers', ['ui.tinymce'])
             console.log('Post is empty');
         }
         else {
-            var $url = 'http://127.0.0.1/api/post';
+            var $url = 'http://localhost/api/post';
             //var $data = $scope.post;
         /!*
              $callbackPath = '/cloth/type/' + $stateParams.type;*!/
@@ -334,7 +334,7 @@ angular.module('starter.controllers', ['ui.tinymce'])
     var tags = $('#post-tags');
     $scope.getPost = function () {
 
-        var $url = 'http://127.0.0.1/api/post/' + $routeParams.id;
+        var $url = 'http://localhost/api/post/' + $routeParams.id;
         /*
          $callbackPath = '/cloth/type/' + $stateParams.type;*/
 
@@ -360,7 +360,7 @@ angular.module('starter.controllers', ['ui.tinymce'])
             console.log('Post is empty');
         }
         else {
-            var $url = 'http://127.0.0.1/api/post/' + $routeParams.id;
+            var $url = 'http://localhost/api/post/' + $routeParams.id;
             var $data = $scope.post;
             /*
              $callbackPath = '/cloth/type/' + $stateParams.type;*/
@@ -384,7 +384,7 @@ angular.module('starter.controllers', ['ui.tinymce'])
             console.log('Post is empty');
         }
         else {
-            var $url = 'http://127.0.0.1/api/post/' + $routeParams.id;
+            var $url = 'http://localhost/api/post/' + $routeParams.id;
             var $data = $scope.post;
         /*
              $callbackPath = '/cloth/type/' + $stateParams.type;*/
