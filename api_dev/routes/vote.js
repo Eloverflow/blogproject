@@ -36,7 +36,7 @@ router.post('/', function(req, res, next) {
         Comment.findById(req.body.comment_id, function (err, comment) {
           if (err) return next(err);
 
-          if (vote == null) {
+          if (vote == null || vote.length == 0) {
 
             Vote.create({
               user_id: user,
@@ -54,7 +54,9 @@ router.post('/', function(req, res, next) {
           else {
             if (vote.is_upvote != req.body.is_upvote) {
 
-              Vote.findByIdAndRemove(vote.id, vote, function (err, deletedVote) {
+              console.log(vote);
+
+              Vote.findByIdAndRemove(vote[0].id, vote[0], function (err, deletedVote) {
                 if (err) return next(err);
 
                 Vote.create({
