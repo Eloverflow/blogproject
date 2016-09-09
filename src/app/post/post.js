@@ -34,6 +34,7 @@ angular.module('starter.controllers', ['ui.tinymce'])
     $scope.addUpVote = function (comment) {
         if(typeof comment.myVote == 'undefined'){
             addVote(comment, true);
+            comment.MyVote = { is_upvote :true }
         } else {
             if(!comment.myVote.is_upvote){
                 comment.votes.splice(comment.votes.indexOf(comment.myVote), 1);
