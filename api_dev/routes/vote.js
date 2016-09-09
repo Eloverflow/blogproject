@@ -27,20 +27,58 @@ router.post('/', function(req, res, next) {
     }, function (err, user) {
       if (err) return next(err);
 
-      Comment.findById(req.body.comment_id, function (err, comment) {
+      Vote.find({
+        comment_id: req.body.comment_id,
+        user_id: user._id
+      }, function (err, vote) {
         if (err) return next(err);
-        Vote.create({
-          user_id: user,
-          comment_id: req.body.comment_id,
-          is_upvote: req.body.is_upvote
-        }, function (err, vote) {
-          if (err) return next(err);
-          comment.votes.push(vote._id);
-          comment.save();
 
-          res.json(vote);
+        Comment.findById(req.body.comment_id, function (err, comment) {
+          if (err) return next(err);
+
+          if (vote == null) {
+
+            Vote.create({
+              user_id: user,
+              comment_id: req.body.comment_id,
+              is_upvote: req.body.is_upvote
+            }, function (err, vote) {
+              if (err) return next(err);
+              comment.votes.push(vote._id);
+              comment.save();
+
+              res.json(vote);
+            });
+
+          }
+          else {
+            if (vote.is_upvote != req.body.is_upvote) {
+
+              Vote.findByIdAndRemove(vote.id, function (err, post) {
+                if (err) return next(err);
+              });
+
+              Vote.create({
+                user_id: user,
+                comment_id: req.body.comment_id,
+                is_upvote: req.body.is_upvote
+              }, function (err, vote) {
+                if (err) return next(err);
+                comment.votes.push(vote._id);
+                comment.save();
+
+                res.json(vote);
+              });
+
+            }
+            else {
+              res.json('You already voted');
+            }
+          }
+
         });
-      })
+      });
+
     });
   }
 /*

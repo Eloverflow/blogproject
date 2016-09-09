@@ -13,6 +13,7 @@ var post = require('./routes/post');
 var comment = require('./routes/comment');
 var subComment = require('./routes/subComment');
 var vote = require('./routes/vote');
+var facebook = require('./routes/facebook');
 
 var config = require('./config/database.js');
 var jwt = require('jwt-simple');
@@ -87,6 +88,7 @@ app.use('/api/post', post);
 app.use('/api/comment', comment);
 app.use('/api/subComment', subComment);
 app.use('/api/vote', vote);
+app.use('/api/facebook', facebook);
 /*
  app.use('/api/cloth/pants', pants);*/
 
