@@ -15,29 +15,7 @@ angular.module('starter.controllers')
         $location.path('/sign-up');
     };
 
-    // This method is to get the user profile info from the facebook api
-    var getFacebookProfileInfo = function (authResponse) {
-        console.log(authResponse)
 
-        openFB.api({
-            path: '/me',
-            success: function(data) {
-                console.log(JSON.stringify(data));
-                console.log(data)
-                UserService.setUser({
-                    authResponse: authResponse,
-                    userID: data.id,
-                    name: data.name,
-                    email: data.email,
-                    gender: data.gender,
-                    picture : "http://graph.facebook.com/" + authResponse.userID + "/picture?type=large"
-                });
-
-                //document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=small';
-            },
-            error: errorHandler});
-
-    };
 
     $scope.user = {is_admin:"false"};
 
@@ -59,7 +37,7 @@ angular.module('starter.controllers')
               }
               var authResponse = response.authResponse;
 
-              getFacebookProfileInfo(authResponse)
+              $scope.getFacebookProfileInfo(authResponse)
 
 
           } else {
