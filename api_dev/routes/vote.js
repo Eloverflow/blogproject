@@ -54,20 +54,20 @@ router.post('/', function(req, res, next) {
           else {
             if (vote.is_upvote != req.body.is_upvote) {
 
-              Vote.findByIdAndRemove(vote.id, vote, function (err, vote) {
+              Vote.findByIdAndRemove(vote.id, vote, function (err, deletedVote) {
                 if (err) return next(err);
-              });
 
-              Vote.create({
-                user_id: user,
-                comment_id: req.body.comment_id,
-                is_upvote: req.body.is_upvote
-              }, function (err, vote) {
-                if (err) return next(err);
-                comment.votes.push(vote._id);
-                comment.save();
+                Vote.create({
+                  user_id: user,
+                  comment_id: req.body.comment_id,
+                  is_upvote: req.body.is_upvote
+                }, function (err, vote) {
+                  if (err) return next(err);
+                  comment.votes.push(vote._id);
+                  comment.save();
 
-                res.json(vote);
+                  res.json(vote);
+                });
               });
 
             }
