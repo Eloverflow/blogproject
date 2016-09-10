@@ -94,7 +94,7 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService,UserService, $sce, 
   }
 
   // This method is to get the user profile info from the facebook api
-  $rootScope.getFacebookProfileInfo = function (authResponse) {
+  $rootScope.getFacebookProfileInfo = function (authResponse, callback) {
     console.log(authResponse);
 
     openFB.api({
@@ -118,6 +118,10 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService,UserService, $sce, 
 
         $rootScope.$apply(function() {
           $rootScope.user = UserService.getUser();
+
+          if(callback)
+            callback();
+
           console.log($rootScope.user );
         });
 

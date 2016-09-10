@@ -19,6 +19,8 @@ angular.module('starter.controllers', ['ui.tinymce'])
         var $url = API_ENDPOINT.url + '/post/' + $routeParams.id  + '/comments';
 
         var $callbackFunction = function (response) {
+
+            if($rootScope.user)
             for(var i = 0; i < response.length; i++){
                 response[i].myVote  = $filter('filter')(response[i].votes, {user_id: $rootScope.user._id})[0];
             }
