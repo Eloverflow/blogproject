@@ -48,9 +48,8 @@ angular.module('starter.controllers')
                       AuthService.login(credentials)
                   };
 
-                  
+
                   $url = API_ENDPOINT.url + '/facebook';
-                  
                   postReq.send($url, $rootScope.user, '/', $callbackfunction);
 
 

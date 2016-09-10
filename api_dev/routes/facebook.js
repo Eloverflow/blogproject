@@ -36,10 +36,16 @@ router.post('/', function(req, res, next) {
                 facebook_id: req.body.userID,
                 name: req.body.name,
                 password: 'facebookUser'
-            }, function (err, post) {
+            }, function (err, user) {
                 if (err) return next(err);
-                res.json(post);
-            });
+                 user.save(function(err) {
+                     if (err) {
+                         return res.json({success: false, msg: 'Username already exists.'});
+                     }
+                     res.json(user);
+                 });
+
+             });
 
         }
         else {
