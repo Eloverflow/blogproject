@@ -569,13 +569,16 @@ ul.post-infos li{
   list-style-type: none;
   text-decoration: none;
   margin: 0px 3px 0px 3px;
+
   i{
-    font-size: 18px;
-    color: #337ab7;
-    cursor: pointer;
-  }:hover{
+    .link{
+      cursor: pointer;
+      color: #337ab7;
+    }:hover{
        color: grey;
      }
+    font-size: 18px;
+  }
 }
 
 

@@ -128,6 +128,43 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService,UserService, $sce, 
 
   };
 
+  $rootScope.showLogOutMenu = function() {
+    bootbox.dialog({
+      message: "Are you sure?",
+      title: "Log off",
+      backdrop: true,
+      buttons: {
+        cancel: {
+          label: "No",
+          className: "btn-danger",
+          callback: function() {
+          }
+        },
+        logoff: {
+          label: "Yes!",
+          className: "btn-success",
+          callback: function() {
+            console.log('Proceding with standard logging out');
+
+            AuthService.logout();
+            UserService.logout();
+
+            $rootScope.$apply(function() {
+              $rootScope.user = null;
+              $location.path('/sign-in');
+            });
+
+          }
+        }
+      }
+    });
+  };
+
+  $rootScope.logOut = function() {
+    $rootScope.showLogOutMenu();
+
+  };
+
 });
 
 function errorHandler(error) {

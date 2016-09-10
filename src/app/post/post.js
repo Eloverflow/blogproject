@@ -1,6 +1,6 @@
 'use strict';
 angular.module('starter.controllers', ['ui.tinymce'])
-.controller('PostCtrl', function($rootScope, $scope, getReq, $routeParams, $sce, postReq, $http, AuthService, API_ENDPOINT,$filter) {
+.controller('PostCtrl', function($rootScope, $scope, getReq, $routeParams, $sce, postReq, $http, AuthService, API_ENDPOINT,$filter,$location, delReq) {
 
     $scope.getPost = function () {
 
@@ -107,6 +107,24 @@ angular.module('starter.controllers', ['ui.tinymce'])
 
     };
 
+
+    $scope.editPost = function (post_id) {
+        $location.path('/post-edit/'+post_id)
+    };
+
+
+    $scope.deletePost = function () {
+
+        if($scope.post === 'undefined' ){
+            console.log('Post is empty');
+        }
+        else {
+            var $url = API_ENDPOINT.url + '/post/' + $routeParams.id;
+
+            if(confirm('Are you sure you want to delete this Post ?'))
+                delReq.send($url, '/posts');
+        }
+    }
 })
 
 .controller('PostCreateCtrl', function($rootScope, $location, $scope, getReq, $routeParams, postReq, $http, API_ENDPOINT) {
