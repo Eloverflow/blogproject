@@ -1,5 +1,5 @@
 angular.module('starter.controllers')
-.controller('LoginCtrl', function($scope, $rootScope, UserService, postReq,  AuthService, $q, EmailService, $location, API_ENDPOINT) {
+.controller('LoginCtrl', function($scope, $rootScope, UserService, postReq,  AuthService, $q, EmailService, $location, API_ENDPOINT, DEBUG) {
 
       // This is the fail callback from the login method
     var fbLoginError = function(error){
@@ -21,6 +21,9 @@ angular.module('starter.controllers')
 
     $scope.signup = function() {
       AuthService.register($scope.newUser).then(function(msg) {
+          if(DEBUG.isEnabled)
+            console.log(msg)
+          $location.path('/sign-in');
       }, function(errMsg) {
       });
     };

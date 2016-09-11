@@ -1,7 +1,7 @@
 <h2 class="post-title">{{ post.title }}</h2>
 <ul class="post-info post-infos">
-    <li ng-show="user.is_admin"> <i ng-click="deletePost(post._id)" class="fa fa-trash" aria-hidden="true"></i></li>
-    <li ng-show="user.is_admin"> <i ng-click="editPost(post._id)" class="fa fa-edit" aria-hidden="true"></i></li>
+    <li ng-show="seshUser.is_admin"> <i ng-click="deletePost(post._id)" class="fa fa-trash" aria-hidden="true"></i></li>
+    <li ng-show="seshUser.is_admin"> <i ng-click="editPost(post._id)" class="fa fa-edit" aria-hidden="true"></i></li>
     <li class=""><a href="#!/profile/{{post.user_id.user_id}}"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;{{post.user_id.username ? post.user_id.username : post.user_id.name}}</a></li>
     <li class=""><i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp;<!--August, 27, 2016  -->{{ post.createdAt | date:'MMM d, y'}}</li>
     <li class=""><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;({{ post.comments.length }}) Comments</li>
@@ -43,10 +43,10 @@
 
                 </div>
             </div>
-            <div ng-show="user" class="chat-bloc-footer">
+            <div ng-show="seshUser" class="chat-bloc-footer">
                 <a data-toggle="collapse" data-target=".reply-{{comment._id}}" class="">Reply ({{comment.sub_comments.length}})</a>
             </div>
-            <div ng-hide="user || comment.sub_comments.length == 0" class="chat-bloc-footer">
+            <div ng-hide="seshUser || comment.sub_comments.length == 0" class="chat-bloc-footer">
                 <a data-toggle="collapse" data-target=".reply-{{comment._id}}" class="">Show comments ({{comment.sub_comments.length}})</a>
             </div>
             <hr class="reply-{{comment._id}} collapse">
@@ -63,7 +63,7 @@
                         </div>
                     </li>
                 </ul>
-                <div ng-show="user"  class="InputAddOn-sub-comment">
+                <div ng-show="useshUserser"  class="InputAddOn-sub-comment">
                     <input id="btn-input-sub-comment" type="text" ng-model="comment.currentSubComment" class="InputAddOn-field-sub-comment form-control" placeholder="Type your message here..." />
                     <button class="InputAddOn-item-sub-comment btn btn-default" ng-click="addSubComment(comment)">Send</button>
                 </div>
@@ -72,7 +72,7 @@
         </li>
     </ul>
     <hr>
-    <div ng-show="user" class="chat-foot">
+    <div ng-show="seshUser" class="chat-foot">
         <div class="InputAddOn">
             <textarea id="btn-input" rows="2" ng-model="comment.content" class="InputAddOn-field form-control" placeholder="Type your message here..."></textarea>
             <button ng-click="addComment(comment)" class="InputAddOn-item btn btn-default">Send</button>

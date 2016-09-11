@@ -56,7 +56,7 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService,UserService, $sce, 
 
   $rootScope.getInfo = function () {
     $http.get(API_ENDPOINT.url + '/authentication/memberinfo').then(function (result) {
-      $rootScope.user = result.data.user;
+      $rootScope.seshUser = result.data.user;
 
       if(DEBUG.isEnabled){
         console.log('User:');
@@ -74,7 +74,7 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService,UserService, $sce, 
     if(DEBUG.isEnabled)
       console.log('Choosing Facebook Auth');
 
-    $rootScope.user = UserService.getUser();
+    $rootScope.seshUser = UserService.getUser();
   }
   else if(AuthService.isAuthenticated()){//Get standard user info
     if(DEBUG.isEnabled)
@@ -117,12 +117,12 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService,UserService, $sce, 
         });
 
         $rootScope.$apply(function() {
-          $rootScope.user = UserService.getUser();
+          $rootScope.seshUser = UserService.getUser();
 
           if(callback)
             callback();
 
-          console.log($rootScope.user );
+          console.log($rootScope.seshUser );
         });
 
         //document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=small';
@@ -154,7 +154,7 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService,UserService, $sce, 
             UserService.logout();
 
             $rootScope.$apply(function() {
-              $rootScope.user = null;
+              $rootScope.seshUser = null;
               $location.path('/sign-in');
             });
 
