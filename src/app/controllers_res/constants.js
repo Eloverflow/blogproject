@@ -5,7 +5,7 @@ angular.module('starter.constants', [])
   })
 
   .constant('API_ENDPOINT', {
-    url: 'http://localhost/api'
+    url: 'http://127.0.0.1/api'
   })
 
 .constant('DEBUG', {

@@ -19,7 +19,7 @@
         <li class="chat-bloc" ng-repeat="comment in comments" >
             <div class="chat-bloc-row">
                 <div class="user-img">
-                    <img src="http://placehold.it/80/30a5ff/fff"/>
+                    <img ng-src="{{comment.user_id.picture ? comment.user_id.picture : '/'}}" height="40" width="40" on-error-src="img/defaultProfile.png"/>
                 </div>
                 <div class="user-msg-content">
                     <div class="user-msg-header">
