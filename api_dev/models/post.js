@@ -1,5 +1,6 @@
 'use strict';
 var mongoose = require('mongoose');
+var textSearch = require('mongoose-text-search');
 
 var PostSchema = new mongoose.Schema({
     title : { type: String, required: true },
@@ -12,6 +13,9 @@ var PostSchema = new mongoose.Schema({
 {
     timestamps: true
 });
+
+PostSchema.plugin(textSearch);
+PostSchema.index({ title: 'text', content: 'text', tags: 'text' });
 
 module.exports = mongoose.model('Post', PostSchema);
 

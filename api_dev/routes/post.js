@@ -52,6 +52,28 @@ router.post('/', function(req, res, next) {
 
 });
 
+/* POST /post */
+router.post('/search', function(req, res, next) {
+
+  var token = getToken(req.headers);
+  if (token) {
+    var decoded = jwt.decode(token, config.secret);
+    User.findOne({
+      email: decoded.email
+    }, function (err, user) {
+      if (err) return next(err);
+
+      Post.textSearch(req.body.search, function (err, output) {
+        if (err) return handleError(err);
+          var inspect = require('util').inspect;
+          console.log(inspect(output, { depth: null }));
+      })
+    });
+  }
+
+
+});
+
 /* GET /post/:id */
 router.get('/:id', function(req, res, next) {
   Post.findById(req.params.id, function (err, post) {
