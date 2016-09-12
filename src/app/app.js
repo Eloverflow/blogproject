@@ -107,20 +107,11 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService,UserService, $sce, 
             console.log(data);
         }
 
-        UserService.setUser({
-          authResponse: authResponse,
-          userID: data.id,
-          name: data.name,
-          email: data.email,
-          gender: data.gender,
-          picture : "http://graph.facebook.com/" + data.id + "/picture?type=large"
-        });
 
         $rootScope.$apply(function() {
-          $rootScope.seshUser = UserService.getUser();
 
           if(callback)
-            callback();
+            callback(data);
 
           console.log($rootScope.seshUser );
         });
