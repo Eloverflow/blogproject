@@ -187,3 +187,19 @@ app.directive('onErrorSrc', function() {
     }
   }
 });
+
+app.directive('myOnKeyUpCall', function () {
+
+  return function (scope, element, attrs) {
+    var numKeysPress=0;
+    element.bind("keyup keypress", function (event) {
+      numKeysPress++;
+      if(numKeysPress>=3){
+        scope.$apply(function (){
+          scope.$eval(attrs.myOnKeyUpCall);
+        });
+        //event.preventDefault();
+      }
+    });
+  };
+});

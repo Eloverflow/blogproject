@@ -8,6 +8,7 @@ var Post = require('../models/post.js');
 var Comment = require('../models/comment.js');
 var User = require('../models/user.js');
 var SubComment = require('../models/subComment.js');
+var textSearch = require("mongoose-text-search");
 /* GET /post listing. */
 router.get('/', function(req, res, next) {
   Post.find().populate({path : 'user_id', model: 'User'}).exec(function (err, post) {
@@ -63,12 +64,13 @@ router.post('/search', function(req, res, next) {
     }, function (err, user) {
       if (err) return next(err);
 
-      Post.textSearch(req.body.search, function (err, output) {
-        if (err) return handleError(err);
-          var inspect = require('util').inspect;
-          console.log(inspect(output, { depth: null }));
-      })
-    });
+      Post.find({$text :{$search: req.body.search}},
+          { score : { $meta: "textScore" } }).sort({ score : { $meta : 'textScore' } })
+          .exec(function(err, results) {
+            if (err) return next(err);
+            res.json(results);
+          });
+  });
   }
 
 
