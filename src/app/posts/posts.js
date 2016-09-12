@@ -31,8 +31,10 @@ $scope.callRestService= function() {
         if(typeof $scope.result == 'undefined' || $scope.result == null)
             $scope.result = [];
 
-        if(response != "")
         $scope.posts = response;
+
+        $scope.noSearchResult = response == "";
+
     };
 
     console.log($data);
