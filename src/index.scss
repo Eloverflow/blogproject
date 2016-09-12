@@ -402,22 +402,27 @@ p{/*
 
 }
 
-.nav-item.profile .item.img {
-  flex-grow: 1;
-  line-height: 65px;
-  text-align: center;
-  font-size: 38px;
-}
+.nav-item.profile {
 
-.nav-item.profile .item.msg {
-  flex-grow: 3;
-  margin-left: 8px;
-  padding-top: 10px;
-  h4 {
-    margin-top: 5px;
+  .item.img {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    img {
+      border-radius: 50%;
+
+    }
+  }
+  .item.msg {
+    flex-grow: 4;
+    margin-left: 8px;
+    padding-top: 10px;
+    h4 {
+      margin-top: 5px;
+    }
   }
 }
-
 
 /* Navigation Menu - List items */
 .nav-item {
@@ -823,7 +828,7 @@ div.social-wrap.b > .facebook {
   background-repeat: no-repeat, repeat;
 }
 
-.register-link {
+.bottom-link {
   margin-left: 10px;
 }
 

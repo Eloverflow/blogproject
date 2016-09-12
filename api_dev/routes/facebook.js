@@ -32,6 +32,7 @@ router.post('/', function(req, res, next) {
         if (err) return next(err);
         if(user == null){
              User.create({
+                 picture: req.body.picture,
                 email: req.body.email,
                 facebook_id: req.body.userID,
                 name: req.body.name,
