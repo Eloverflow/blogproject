@@ -1,4 +1,7 @@
-<h2 ng-show="seshUser.is_admin"><a href="#!/post-create"><i class="fa fa-plus-square" aria-hidden="true"></i></a>&nbsp;New Post</h2>
+<h2 class="new-post" ng-show="seshUser.is_admin"><a href="#!/post-create"><i class="fa fa-plus-square" aria-hidden="true"></i></a>&nbsp;New Post</h2>
+<div class="search pull-right">
+  <input class="form-control" placeholder="Search" ng-model="textSearch.data" type="text" my-on-key-up-call="callRestService()">
+</div>
 <div ng-repeat="post in posts | orderBy:'created_at':true" class="wrapper">
   <header class="header">
     <h3>{{ post.title }}</h3>
@@ -16,4 +19,7 @@
   <div class="footer">
     <a class="pull-right" href="#!/post/{{post._id}}">READ MORE</a>
   </div>
+</div>
+<div ng-show="noSearchResult" class="wrapper">
+  <p>No search result !</p>
 </div>

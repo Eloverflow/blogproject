@@ -3,6 +3,8 @@
 This is an opensource blog project made for Mirageflow Inc.
 [![Total Downloads](https://poser.pugx.org/eloverflow/blogproject/d/total.svg)](https://packagist.org/packages/eloverflow/blogproject)
 
+In this project we are using build-in text search index of Mongod, you might want to look at Elastisearch for production environment.
+
 ## Prerequisites
 
 * **Git**

@@ -467,6 +467,19 @@ p{/*
   background-color: rgb(233, 233, 233);/*
   -webkit-background-size: 348px 500px!important;
   background-size: 348px 500px!important;*/
+
+  h2.new-post{
+    display: inline-block;
+  }
+
+  .search{
+    display: inline-block;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-right: 0;
+    input{
+    }
+  }
 }
 
 @media (min-width: 480px) {

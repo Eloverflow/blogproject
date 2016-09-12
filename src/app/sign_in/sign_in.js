@@ -41,19 +41,48 @@ angular.module('starter.controllers')
               else{
 
                   var authResponse = response.authResponse;
-                  $scope.getFacebookProfileInfo(authResponse, function () {
+                  $scope.getFacebookProfileInfo(authResponse, function (data) {
 
                       $callbackfunction = function (response) {
-                          var credentials = response
+                          if(response.facebook_id != null){
 
-                          credentials.password = 'facebookUser';
-                          console.log(credentials);
-                          AuthService.login(credentials)
+                              var credentials = response
+
+                              credentials.password = 'facebookUser';
+                              console.log(credentials);
+                              AuthService.login(credentials)
+
+
+                              UserService.setUser({
+                                  authResponse: authResponse,
+                                  userID: data.id,
+                                  name: data.name,
+                                  email: data.email,
+                                  gender: data.gender,
+                                  createdAt: response.createdAt,
+                                  picture : "http://graph.facebook.com/" + data.id + "/picture?type=large"
+                              });
+
+                              $rootScope.seshUser = UserService.getUser();
+
+                              $location.path('/');
+                          }
+                          else {
+                              console.log('Email alraedy taken')
+                          }
                       };
 
 
                       $url = API_ENDPOINT.url + '/facebook';
-                      postReq.send($url, $rootScope.user, '/', $callbackfunction);
+                      $data = {
+                          userID: data.id,
+                          name: data.name,
+                          email: data.email,
+                          picture : "http://graph.facebook.com/" + data.id + "/picture?type=large"
+                      }
+
+                      postReq.send($url, $data, null, $callbackfunction)
+
                   });
 
 

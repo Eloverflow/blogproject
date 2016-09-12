@@ -13,5 +13,18 @@ var PostSchema = new mongoose.Schema({
     timestamps: true
 });
 
+
+PostSchema.index({
+    title: 'text',
+    content: 'text',
+    tags: 'text'
+}, {
+    name: "posts_match_index",
+    weights: {
+        title: 1,
+        tags: 2
+    }
+});
+
 module.exports = mongoose.model('Post', PostSchema);
 

@@ -107,20 +107,11 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService,UserService, $sce, 
             console.log(data);
         }
 
-        UserService.setUser({
-          authResponse: authResponse,
-          userID: data.id,
-          name: data.name,
-          email: data.email,
-          gender: data.gender,
-          picture : "http://graph.facebook.com/" + data.id + "/picture?type=large"
-        });
 
         $rootScope.$apply(function() {
-          $rootScope.seshUser = UserService.getUser();
 
           if(callback)
-            callback();
+            callback(data);
 
           console.log($rootScope.seshUser );
         });
@@ -186,4 +177,20 @@ app.directive('onErrorSrc', function() {
       });
     }
   }
+});
+
+app.directive('myOnKeyUpCall', function () {
+
+  return function (scope, element, attrs) {
+    var numKeysPress=0;
+    element.bind("keyup keypress", function (event) {
+      numKeysPress++;
+      if(numKeysPress>=3){
+        scope.$apply(function (){
+          scope.$eval(attrs.myOnKeyUpCall);
+        });
+        //event.preventDefault();
+      }
+    });
+  };
 });

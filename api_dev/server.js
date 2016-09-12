@@ -27,8 +27,9 @@ mongoose.connect(config.database, function(err) {
         console.log('connection successful');
     }
 });
+/*
 
-
+mongoose.command({getParameter:1, textSearchEnabled: 1});*/
 
 
 var app = express();
