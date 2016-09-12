@@ -44,24 +44,32 @@ angular.module('starter.controllers')
                   $scope.getFacebookProfileInfo(authResponse, function (data) {
 
                       $callbackfunction = function (response) {
-                          var credentials = response
+                          if(response.facebook_id != null){
 
-                          credentials.password = 'facebookUser';
-                          console.log(credentials);
-                          AuthService.login(credentials)
+                              var credentials = response
+
+                              credentials.password = 'facebookUser';
+                              console.log(credentials);
+                              AuthService.login(credentials)
 
 
-                          UserService.setUser({
-                              authResponse: authResponse,
-                              userID: data.id,
-                              name: data.name,
-                              email: data.email,
-                              gender: data.gender,
-                              createdAt: response.createdAt,
-                              picture : "http://graph.facebook.com/" + data.id + "/picture?type=large"
-                          });
+                              UserService.setUser({
+                                  authResponse: authResponse,
+                                  userID: data.id,
+                                  name: data.name,
+                                  email: data.email,
+                                  gender: data.gender,
+                                  createdAt: response.createdAt,
+                                  picture : "http://graph.facebook.com/" + data.id + "/picture?type=large"
+                              });
 
-                          $rootScope.seshUser = UserService.getUser();
+                              $rootScope.seshUser = UserService.getUser();
+
+                              $location.path('/');
+                          }
+                          else {
+                              console.log('Email alraedy taken')
+                          }
                       };
 
 
@@ -73,7 +81,7 @@ angular.module('starter.controllers')
                           picture : "http://graph.facebook.com/" + data.id + "/picture?type=large"
                       }
 
-                      postReq.send($url, $data, '/', $callbackfunction)
+                      postReq.send($url, $data, null, $callbackfunction)
 
                   });
 
