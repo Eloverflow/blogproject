@@ -1,6 +1,7 @@
 'use strict';
 var JwtStrategy = require('passport-jwt').Strategy,
-    ExtractJwt = require('passport-jwt').ExtractJwt;
+    ExtractJwt = require('passport-jwt').ExtractJwt,
+    FacebookStrategy = require('passport-facebook').ExtractJwt;
 
 var user = require('../models/user.js'),
     config = require('./database');
@@ -23,6 +24,27 @@ module.exports = function(passport) {
 
     opts.secretOrKey = config.secret;
     passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
+   /*     new FacebookStrategy(
+            opts,
+            function(accessToken, refreshToken, profile, done) {
+                User.findOrCreate(
+                    { facebookId: profile.id },
+                    function (err, result) {
+                        if(result) {
+                            result.access_token = accessToken;
+                            result.save(function(err, doc) {
+                                done(err, doc);
+                            });
+                        } else {
+                            done(err, result);
+                        }
+                    }
+                );
+            }
+        );*/
+
+
+
         user.findOne({id: jwt_payload.id}, function(err, user) {
             if(err) {
                 return done(err, false);
