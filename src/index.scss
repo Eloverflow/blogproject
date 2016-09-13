@@ -117,11 +117,12 @@ $fa-font-path:   "../assets/fonts/fontawesome"!default;
 
 .post-header-sep {
   height: 100%;
-  min-height: 60px;
+
   position: relative;
 }
 .post-header {
   width: 100%;
+  min-height: 60px;
   height: auto;
 }
 
@@ -141,10 +142,9 @@ $fa-font-path:   "../assets/fonts/fontawesome"!default;
   h3 {
     font-size: 26px;
     font-weight: bold;
+    margin: 5px 0px 5px 0px;
   }
-}:hover {
-
- }
+}
 
 .post-info {
   position: absolute;
@@ -171,6 +171,13 @@ ul.posts-info li{
        color: grey;
      }
     font-size: 18px;
+  }
+}
+
+.post-search {
+  margin: 0px 0px 0px 0px;
+  input{
+    bottom: 0px;
   }
 }
 
@@ -519,7 +526,7 @@ p{/*
   bottom: 100%;
   left: 0;
   z-index: 1;
-  padding-top: 4em;
+  padding-top: 6em;
   padding-left: 1em;
   padding-right: 1em;
 
