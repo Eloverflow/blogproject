@@ -16,7 +16,7 @@
                     <h4 class="no-marg" ng-hide="seshUser.username"><strong>{{ seshUser.name }}</strong></h4>
                     <div class="form-group">
                         <span>Member since :</span>
-                        <span>{{ seshUser.createdAt }}</span>
+                        <span>{{ seshUser.createdAt | date:'MMM d, y' }}</span>
                     </div>
                     <div class="form-group">
                         <strong>Email :</strong>
