@@ -4,6 +4,7 @@ var express = require('express');
 var router = express.Router();
 
 var mongoose = require('mongoose');
+var Post = require('../models/post.js');
 var User = require('../models/user.js');
 var passport = require('passport');
 var nodemailer = require('nodemailer');
@@ -115,6 +116,14 @@ router.put('/changePict/:id', function(req, res, next) {
     if (err) return next(err);
   });
 
+});
+
+/* GET /posts of user */
+router.get('/:id/posts', function(req, res, next) {
+    Post.find({user_id: req.params.id}).exec(function (err, posts) {
+        if (err) return next(err);
+        res.json(posts);
+    });
 });
 
 router.get('/resetPwd/:email', function(req, res, next) {

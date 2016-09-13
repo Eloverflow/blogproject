@@ -2,7 +2,7 @@
   <div class="col-lg-9 post-header-sep">
     <h2 class="new-post" ng-show="seshUser.is_admin"><a href="#!/post-create"><i class="fa fa-plus-square" aria-hidden="true"></i></a>&nbsp;New Post</h2>
   </div>
-  <div class="col-lg-3 post-header-sep">
+  <div class="col-lg-3 post-header-sep sep-fix">
     <div class="form-group post-search">
       <div class="input-group pull-right">
           <input class="form-control" placeholder="Search" ng-model="textSearch.data" type="text" my-on-key-up-call="callRestService()">
@@ -11,7 +11,7 @@
       </div>
   </div>
 </div>
-<div ng-repeat="post in posts | orderBy:'created_at':true" class="wrapper">
+<div ng-repeat="post in posts | orderBy:'created_at':true" class="wrapper post">
   <header class="header">
     <a class="posts-title" href="#!/post/{{post._id}}"><h3>{{ post.title }}</h3></a>
     <ul class="posts-info">
@@ -22,7 +22,7 @@
       <li class=""><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;({{ post.comments.length }}) Comments</li>
     </ul>
   </header>
-  <article ng-bind-html="toTrustedHTML(post.content)" class="post">
+  <article ng-bind-html="toTrustedHTML(post.content)">
   </article>
 
   <div class="footer">

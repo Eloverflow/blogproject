@@ -17,10 +17,10 @@ angular.module('starter.controllers')
 
 
 
-    $scope.newUser = {is_admin:"false"};
+    $scope.user = {is_admin:"false"};
 
     $scope.signup = function() {
-      AuthService.register($scope.newUser).then(function(msg) {
+      AuthService.register($scope.user).then(function(msg) {
           if(DEBUG.isEnabled)
             console.log(msg)
           $location.path('/sign-in');
@@ -54,6 +54,7 @@ angular.module('starter.controllers')
 
 
                               UserService.setUser({
+                                  _id:credentials._id,
                                   authResponse: authResponse,
                                   userID: data.id,
                                   name: data.name,
@@ -104,7 +105,7 @@ angular.module('starter.controllers')
 
 
     $scope.login = function() {
-      AuthService.login($scope.newUser).then(function(msg) {
+      AuthService.login($scope.user).then(function(msg) {
           AuthService.startupAuthenticate();
           $rootScope.getInfo();
           $location.path('/')
@@ -112,7 +113,7 @@ angular.module('starter.controllers')
       });
     };
 
-    //This method is executed when the newUser press the "Login with facebook" button
+    //This method is executed when the user press the "Login with facebook" button
     $scope.facebookSignIn = function() {
         $scope.fbLoginBrowser();
     };
@@ -122,7 +123,7 @@ angular.module('starter.controllers')
     };
 
     $scope.forgotpwd = function() {
-        EmailService.resetPwd($scope.newUser).then(function(msg) {
+        EmailService.resetPwd($scope.user).then(function(msg) {
         }, function(errMsg) {
         });
     };

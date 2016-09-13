@@ -103,23 +103,32 @@ $fa-font-path:   "../assets/fonts/fontawesome"!default;
 
 
 .post {
-  text-align: left;
+  margin-top: 24px;
   min-height: 100px;
-  background-color: white;
+}
 
+.post:first-child {
+  margin-top: 0px !important;
 }
 
 .post-content {
+  padding: 10px;
   text-align: left;
   background-color: white;
+
+
 
 }
 
 .post-header-sep {
   height: 100%;
-
   position: relative;
 }
+
+.sep-fix {
+  min-height: 60px;
+}
+
 .post-header {
   width: 100%;
   min-height: 60px;
@@ -140,6 +149,7 @@ $fa-font-path:   "../assets/fonts/fontawesome"!default;
 .posts-title {
   color: black;
   h3 {
+    display: inline-block;
     font-size: 26px;
     font-weight: bold;
     margin: 5px 0px 5px 0px;
@@ -176,9 +186,8 @@ ul.posts-info li{
 
 .post-search {
   margin: 0px 0px 0px 0px;
-  input{
-    bottom: 0px;
-  }
+  position: absolute;
+  bottom: 0;
 }
 
 // End Post css section
@@ -277,7 +286,7 @@ ul.posts-info li{
         font-size:24px;
         cursor: pointer;
       }.fa-chevron-up,.fa-chevron-down{
-          vertical-align: text-top;
+         vertical-align: text-top;
        }:hover{
           color: #444;
         }
@@ -294,14 +303,14 @@ ul.posts-info li{
 
     }
     .chat-bloc-footer{
-        a{
-          cursor: pointer;
-        }
+      a{
+        cursor: pointer;
+      }
     }
 
-/*    .sub-com > *{
-      width: 90%;
-      }*/
+    /*    .sub-com > *{
+          width: 90%;
+          }*/
 
     .sub-com{
       background-color: rgba(200,200,200,0.4);
@@ -316,8 +325,8 @@ ul.posts-info li{
       list-style: none;
       border-bottom: 1px solid lightgrey;
 
-     /*
-      float: right;*/
+      /*
+       float: right;*/
 
       .user-sub-msg-content{
         border-bottom: 1px solid lightgrey;
@@ -349,7 +358,7 @@ ul.posts-info li{
       resize: none;
     }
     :focus{
-     /* border: 1px solid grey;*/
+      /* border: 1px solid grey;*/
 
       /*border: 1px solid darken(rgb(150, 150, 150), 5% );*/
       box-shadow: none;
@@ -792,14 +801,14 @@ html, body { height: 100%; width: 100%; font-family: Helvetica, Arial, sans-seri
     line-height: 48px;
     font-size: 36px;
   }:hover{
-       color: #16caa5;
-     }
+     color: #16caa5;
+   }
 }
 
 #btn-github:hover{
-   color: #16caa5;
+  color: #16caa5;
   text-shadow: 0px 0px 0px;
- }
+}
 
 
 // Login css section ---
@@ -947,21 +956,21 @@ div.social-wrap.b > .facebook {
     width: 200px;
   }
 
-  .total-post {
-    .lbl {
-      margin-top: 5px;
-      display: block;
-      text-align: center;
-    }
-
-    h3 {
-      margin: 5px 0px 5px 0px;
-      font-weight: bold;
-      text-align: center;
-    }
+.total-post {
+  .lbl {
+    margin-top: 5px;
+    display: block;
+    text-align: center;
   }
+
+  h3 {
+    margin: 5px 0px 5px 0px;
+    font-weight: bold;
+    text-align: center;
+  }
+}
 // End profile css section
 
-.no-marg {
+.no-margin {
   margin: 0px !important;
 }

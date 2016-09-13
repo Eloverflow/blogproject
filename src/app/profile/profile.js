@@ -1,9 +1,20 @@
 angular.module('starter.controllers')
-.controller('ProfileCtrl', function($scope, $rootScope, AuthService, UserService, $location) {
+.controller('ProfileCtrl', function($scope, $rootScope, AuthService, UserService, $location, $routeParams, API_ENDPOINT, getReq) {
   $scope.settings = {
     enableFriends: true
   };
-  
+
+  $scope.getPosts = function() {
+    var $url = API_ENDPOINT.url + '/authentication/'+ $routeParams.id +'/posts';
+
+    var $callbackFunction = function (response) {
+      $scope.posts = response;
+    };
+
+    getReq.send($url, null, $callbackFunction);
+  };
+  $scope.getPosts();
+
   $scope.showLogOutMenu = function() {
     bootbox.dialog({
       message: "Are you sure?",

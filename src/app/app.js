@@ -40,7 +40,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
     controller: 'LoginCtrl'
   });
 
-  $routeProvider.when('/profile', {
+  $routeProvider.when('/profile/:id', {
     templateUrl: 'profile/profile.html',
     controller: 'ProfileCtrl'
   });
@@ -87,6 +87,10 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService,UserService, $sce, 
     return $sce.trustAsHtml( html );
   }
 
+  $rootScope.profile = function(){
+    console.log($rootScope.seshUser)
+    $location.path('/profile/' + $rootScope.seshUser._id);
+  }
 
   $rootScope.afterLogin = function () {
     console.log('test')
