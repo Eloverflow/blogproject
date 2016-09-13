@@ -389,7 +389,7 @@ p{/*
   background-color: rgba(0,0,0,0.5);
 }
 
-.nav-item.profile {
+.nav-item.menu-profile {
   height: 65px;
   color: white;
   display: inline-flex;
@@ -398,11 +398,7 @@ p{/*
   border-bottom: 1px solid darken(#2a3f54, 10%);
 }
 
-.nav-item.profile .item {
-
-}
-
-.nav-item.profile {
+.nav-item.menu-profile {
 
   .item.img {
     display: flex;
@@ -577,17 +573,20 @@ html, body { height: 100%; width: 100%; font-family: Helvetica, Arial, sans-seri
 //}
 
 // Post infos css
+.post-info {
+  margin-top: 50px;
+}
 
-ul.post-infos {
+ul.posts-info {
   float: right;
 }
 
-ul.post-infos li{
+ul.posts-info li{
   display: inline;
   list-style-type: none;
   text-decoration: none;
   margin: 0px 3px 0px 3px;
-
+  color: grey;
   i{
     .link{
       cursor: pointer;
@@ -892,10 +891,41 @@ div.social-wrap.b > .facebook {
 
 // End Comments css section
 
+// Post css section ---
 .post-title {
   display: inline-block;
 }
 
-.post-info {
-  margin-top: 25px;
+// End Post css section
+
+// Profile css section ---
+
+.profile {
+  display: inline-block;
+  float: left;
+
+}.pic {
+   width: 80px;
+ }.info {
+    margin-left: 20px;
+    width: 200px;
+  }
+
+  .total-post {
+    .lbl {
+      margin-top: 5px;
+      display: block;
+      text-align: center;
+    }
+
+    h3 {
+      margin: 5px 0px 5px 0px;
+      font-weight: bold;
+      text-align: center;
+    }
+  }
+// End profile css section
+
+.no-marg {
+  margin: 0px !important;
 }
