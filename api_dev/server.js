@@ -17,6 +17,13 @@ var vote = require('./routes/vote');
 var config = require('./config/database.js');
 var jwt = require('jwt-simple');
 
+var env = require('node-env-file');
+try {
+    env(__dirname + '/.env');
+}
+catch (e) {
+    // No environment file, you may create one at '/api_dev/.env'
+}
 
 var mongoose = require('mongoose');
 mongoose.connect(config.database, function(err) {
@@ -31,7 +38,21 @@ mongoose.connect(config.database, function(err) {
 mongoose.command({getParameter:1, textSearchEnabled: 1});*/
 
 
+
 var app = express();
+/*
+var mailer = require('express-mailer');
+mailer.extend(app, {
+    from: process.env.email | 'user@gmail.com',
+    host: process.env.smtp_server | 'smtp.gmail.com', // hostname
+    secureConnection: true, // use SSL
+    port: process.env.smtp_port | 587, // port for secure SMTP
+    transportMethod: 'SMTP', // default is SMTP. Accepts anything that nodemailer accepts
+    auth: {
+        user: process.env.email | 'user@gmail.com',
+        pass: process.env.pass | 'pass'
+    }
+});*/
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -65,6 +86,7 @@ global.getToken = function (headers) {
 
 global.config = config;
 global.jwt = jwt;
+global.app = app;
 
 
 

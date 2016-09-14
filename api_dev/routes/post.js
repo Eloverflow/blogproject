@@ -36,16 +36,21 @@ router.post('/', function(req, res, next) {
       if (err) return next(err);
 
 
+      if(user.is_admin){
+        Post.create({
+          user_id: user._id,
+          content: req.body.content,
+          title: req.body.title.charAt(0).toUpperCase() + req.body.title.slice(1),
+          tags: req.body.tags
+        }, function (err, post) {
+          if (err) return next(err);
+          res.json(post);
+        });
+      }
+      else{
+        res.json({success: false, msg: 'You dont have enought rights'});
+      }
 
-      Post.create({
-        user_id: user._id,
-        content: req.body.content,
-        title: req.body.title.charAt(0).toUpperCase() + req.body.title.slice(1),
-        tags: req.body.tags
-      }, function (err, post) {
-        if (err) return next(err);
-        res.json(post);
-      });
 
     })
   }
