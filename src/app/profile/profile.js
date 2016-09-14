@@ -1,5 +1,5 @@
 angular.module('starter.controllers')
-.controller('ProfileCtrl', function($scope, $rootScope, AuthService, UserService, $location, $routeParams, API_ENDPOINT, getReq) {
+.controller('ProfileCtrl', function($scope, $rootScope, AuthService, $location, $routeParams, API_ENDPOINT, getReq) {
   $scope.settings = {
     enableFriends: true
   };
