@@ -29,6 +29,15 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
     controller: 'PostEditCtrl'
   });
 
+  $routeProvider.when('/about', {
+    templateUrl: 'about/about.html',
+    controller: 'AboutCtrl'
+  });
+
+  $routeProvider.when('/contact', {
+    templateUrl: 'contact/contact.html',
+    controller: 'ContactCtrl'
+  });
 
   $routeProvider.when('/sign-in', {
     templateUrl: 'sign_in/sign_in.html',

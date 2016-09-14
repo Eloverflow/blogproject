@@ -818,14 +818,9 @@ html, body { height: 100%; width: 100%; font-family: Helvetica, Arial, sans-seri
   border-radius: 50%;
 }
 
-.login-btn-cont {
-  padding-left: 0px !important;
-  padding-right: 0px !important;
-}
-
 .theme-btn {
   margin-top: 5px;
-  width: 100%;
+  min-width: 176px;
   color: white;
   background-color: darken(#2a3f54, 5%);
 }
@@ -963,6 +958,47 @@ div.social-wrap.b > .facebook {
 }
 // End profile css section
 
+// Contact css section ---
+.contact-info {
+
+  li {
+    list-style-type: none;
+    text-decoration: none;
+
+    margin: 0px 3px 0px 3px;
+    color: grey;
+    i{
+      width: 18px;
+      height: 18px;
+      .link{
+        cursor: pointer;
+        color: #337ab7;
+      }:hover{
+         color: grey;
+       }
+      font-size: 18px;
+    }
+  }
+
+  span {
+    margin-left: 12px;
+  }
+}
+// End Contact css section
+
+// Tools section ---
+
 .no-margin {
   margin: 0px !important;
 }
+
+.all-width {
+  width: 100% !important;
+}
+
+.no-col-pad {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+// End tools section
