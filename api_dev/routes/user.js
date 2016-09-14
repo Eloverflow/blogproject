@@ -8,6 +8,7 @@ var Post = require('../models/post.js');
 var User = require('../models/user.js');
 var passport = require('passport');
 var nodemailer = require('nodemailer');
+var smtpTransport = require('nodemailer-smtp-transport');
 
 require('../config/passport')(passport);
 
@@ -119,23 +120,29 @@ router.get('/memberinfo', passport.authenticate('jwt', { session: false}), funct
   }
 });
 
-router.put('/changePwd/:id', function(req, res, next) {
-  User.findById(req.params.id, function (err, post) {
+router.put('/changePwd', function(req, res, next) {
+    var token = getToken(req.headers);
+    if (token) {
+        var decoded = jwt.decode(token, config.secret);
+        User.findOne({
+            email: decoded.email
+        },function (err, user) {
+            if (err) return next(err);
 
-    post.password = req.body.password;
+            user.password = req.body.password;
 
-    post.save(function(err) {
-      if (err) {
-        return res.json({success: false, msg: 'Username already exists.'});
-      }
+            user.save(function(err) {
+                if (err) {
+                    return res.json({success: false, msg: 'Validation failed on save'});
+                }
 
-      var token = jwt.encode(post, config.secret);
-      post.token = token;
-      res.json({success: true, user: post});
-    });
+                token = jwt.encode(user, config.secret);
+                res.json({success: true, user: user, token: token, msg: 'Successfully changed password'});
+            });
 
-    if (err) return next(err);
-  });
+
+        })
+    }
 
 });
 
@@ -167,13 +174,38 @@ router.get('/:id/posts', function(req, res, next) {
 
 router.get('/resetPwd/:email', function(req, res, next) {
   // create reusable transporter object using the default SMTP transport
-  var transporter = nodemailer.createTransport('smtps://user%40gmail.com:pass@smtp.gmail.com');
+
+    var smtpConfig = {
+        host:  process.env.smtp_server | 'smtp.gmail.com',
+        port: process.env.smtp_port | 465,
+        secureConnection: true,
+        auth: {
+            user: process.env.email | 'user@gmail.com',
+            pass:  process.env.pass | 'pass'
+        },
+        tls:{
+            secureProtocol: "TLSv1_method"
+        }
+    };
+
+  var transporter = nodemailer.createTransport(smtpConfig);
+
+transporter.verify(function(error, success) {
+    if (error) {
+        console.log('Server is failed to test transporter');
+        console.log(error);
+    } else {
+        console.log('Server is ready to take our messages');
+    }
+});
+
+    //smtps://' + process.env.email +':'+ process.env.pass + '@'+ process.env.SMTPServer);
 
 // setup e-mail data with unicode symbols
   var mailOptions = {
-    from: 'foo@blurdybloop.com', // sender address
+    from: process.env.email | 'user@gmail.com', // sender address
     to: req.params.email, // list of receivers
-    subject: 'Hello ✔', // Subject line
+    subject: 'Hello it seems you lost your password ?', // Subject line
     text: 'Hello world 🐴', // plaintext body
     html: '<b>Hello world 🐴</b>' // html body
   };
@@ -182,12 +214,16 @@ router.get('/resetPwd/:email', function(req, res, next) {
 // send mail with defined transport object
   transporter.sendMail(mailOptions, function(error, info){
     if(error){
-      return console.log(error);
+      res.send(error);
     }
-    console.log('Message sent: ');
+    else{
+        res.send('Message sent')
+
+    }
+
+      transporter.close();
   });
 });
-
 
 
 module.exports = router;
