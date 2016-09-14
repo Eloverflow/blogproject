@@ -18,7 +18,12 @@ var config = require('./config/database.js');
 var jwt = require('jwt-simple');
 
 var env = require('node-env-file');
-env(__dirname + '/.env');
+try {
+    env(__dirname + '/.env');
+}
+catch (e) {
+    // No environment file, you may create one at '/api_dev/.env'
+}
 
 var mongoose = require('mongoose');
 mongoose.connect(config.database, function(err) {
