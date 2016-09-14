@@ -242,24 +242,26 @@ angular.module('starter.controllers', ['ui.tinymce'])
             if(confirm('Are you sure you want to delete this Post ?'))
             delReq.send($url, '/posts');
         }
-    }
+    };
 
-    $scope.updatePost = function () {
+    $scope.updatePost = function (post) {
 
         if($scope.post === 'undefined' ){
             console.log('Post is empty');
         }
         else {
-            var $url = API_ENDPOINT.url + '/post/' + $routeParams.id;
+           /* var $url = API_ENDPOINT.url + '/post/' + $routeParams.id;
             var $data = $scope.post;
 
             var $callbackFunction = function (response) {
                 $location.path("/posts");
-            }
+            };*/
 
-            putReq.send($url, $data, null, $callbackFunction);
+            var $url = API_ENDPOINT.url + '/post/' + $routeParams.id;
+
+            putReq.send($url, post, '/posts');
         }
-    }
+    };
 
 
     /* https://github.com/xoxco/jQuery-Tags-Input */
