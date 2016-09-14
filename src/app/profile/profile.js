@@ -34,7 +34,6 @@ angular.module('starter.controllers')
             console.log('Proceding with standard logging out');
 
             AuthService.logout();
-            UserService.logout();
 
             $rootScope.$apply(function() {
               $rootScope.user = null;
@@ -47,51 +46,19 @@ angular.module('starter.controllers')
     });
   };
 
-  $scope.newPwd = function() {/*
-    var myPopup = $ionicPopup.show({
-      template: '<label class="item item-input">' +
-                '<input type="password" placeholder="New Password">' +
-                '</label>' +
-                '<label class="item item-input">' +
-                '<input type="password" placeholder="Confirm Password" ng-model="user.password">' +
-                '</label>',
-      title: 'Change Password',
-      scope: $scope,
-      buttons: [
-        {
-          text: 'Save',
-          type: 'button-balanced',
-          onTap: function(e) {
-            if (!$scope.user.password) {
-              //don't allow the user to close unless he enters wifi password
-              e.preventDefault();
-            } else {
-                AuthService.changePwd($scope.user).then(function(msg) {
-              }, function(errMsg) {
-              });
-            };
-          }
-        },
-        {
-          text: '<b>Cancel</b>'
-        }
-      ]
-    });*/
+  $scope.newPwd = function() {
+    bootbox.prompt("Change Password ?", function(result) {
+      if (result === null) {
+        // "Prompt dismissed"
+      } else {
+        AuthService.changePwd(result).then(function (msg) {
+        });
+      }
+    });
   };
-
 
   $scope.logout = function() {
-/*    ngFB.logout();*/
-
-/*
-
-    var user= UserService.getUser();
-
-*/
-
     $scope.showLogOutMenu();
-
   };
-
 
 });
