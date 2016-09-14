@@ -104,17 +104,8 @@ $fa-font-path:   "../assets/fonts/fontawesome"!default;
 
 
 .post {
-  margin-top: 24px;
+  margin-bottom: 24px;
   min-height: 100px;
-}
-
-.post:first-child {
-  margin-top: 0px !important;
-}
-
-.posts-content {
-  text-align: left;
-  background-color: white;
 }
 
 .post-header-sep {
@@ -161,7 +152,7 @@ $fa-font-path:   "../assets/fonts/fontawesome"!default;
 
 ul.posts-info {
   float: right;
-  margin: 0px;
+  margin: 8px 0px 0px 0px;
 }
 
 ul.posts-info li{
@@ -181,10 +172,14 @@ ul.posts-info li{
   }
 }
 
+.posts-content {
+  text-align: left;
+  background-color: white;
+}
+
 .post-search {
   margin: 0px 0px 0px 0px;
-  position: absolute;
-  bottom: 0;
+
 }
 
 // End Post css section
@@ -950,7 +945,7 @@ div.social-wrap.b > .facebook {
    width: 80px;
  }.info {
     margin-left: 20px;
-    width: 200px;
+    width: 180px;
   }
 
 .total-post {
