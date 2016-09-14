@@ -161,15 +161,18 @@ ul.posts-info li{
   text-decoration: none;
   margin: 0px 3px 0px 3px;
   color: grey;
-  i{
-    .link{
-      cursor: pointer;
-      color: #337ab7;
-    }:hover{
-       color: grey;
-     }
+
+  i {
     font-size: 18px;
   }
+  .link{
+    cursor: pointer !important;
+    color: #337ab7;
+  }:hover{
+     color: grey;
+   }
+
+
 }
 
 .posts-content {
@@ -539,6 +542,7 @@ p{/*
   background-size: 348px 500px!important;*/
 
   h2.new-post{
+    margin: 0px;
     display: inline-block;
   }
 
@@ -988,6 +992,10 @@ div.social-wrap.b > .facebook {
 
 // Tools section ---
 
+.no-pad {
+  padding: 0px !important;
+}
+
 .no-margin {
   margin: 0px !important;
 }
@@ -1001,4 +1009,11 @@ div.social-wrap.b > .facebook {
   padding-right: 0px !important;
 }
 
+.no-margin-top {
+  margin-top: 0px !important;
+}
 // End tools section
+
+.section-title {
+  margin-top: 2px !important;
+}
