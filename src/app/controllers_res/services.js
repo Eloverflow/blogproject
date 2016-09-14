@@ -1,30 +1,9 @@
 angular.module('starter.services', [])
 
-
-.service('UserService', function() {
-    // For the purpose of this example I will store user data on ionic local storage but you should save it on a database
-    var setUser = function(user_data) {
-        window.localStorage.starter_facebook_user = JSON.stringify(user_data);
-    };
-
-    var getUser = function(){
-        return JSON.parse(window.localStorage.starter_facebook_user || '{}');
-    };
-
-    var logout = function(){
-        window.localStorage.starter_facebook_user = JSON.stringify("");
-    };
-
-    return {
-        getUser: getUser,
-        setUser: setUser,
-        logout: logout
-    };
-})
 .service('PictService', function($q, $http, API_ENDPOINT) {
     var changePict = function(user) {
         return $q(function(resolve, reject) {
-            $http.put(API_ENDPOINT.url + '/authentication/changePict/' + user._id, user).then(function(result) {
+            $http.put(API_ENDPOINT.url + '/auth/changePict/' + user._id, user).then(function(result) {
                 if (result.data.success) {
                     resolve(result.data.msg);
                 } else {
@@ -41,7 +20,7 @@ angular.module('starter.services', [])
 .service('EmailService', function($q, $http, API_ENDPOINT) {
     var resetPwd = function (user) {
         return $q(function (resolve, reject) {
-            $http.get(API_ENDPOINT.url + '/authentication/resetPwd/' + user.email, user).then(function (result) {
+            $http.get(API_ENDPOINT.url + '/auth/resetPwd/' + user.email, user).then(function (result) {
                 if (result.data.success) {
                     resolve(result.data.msg);
                 } else {
@@ -103,7 +82,7 @@ angular.module('starter.services', [])
 
     var register = function(user) {
         return $q(function(resolve, reject) {
-            $http.post(API_ENDPOINT.url + '/authentication/signup', user).then(function(result) {
+            $http.post(API_ENDPOINT.url + '/auth/signup', user).then(function(result) {
                 if (result.data.success) {
                     resolve(result.data.msg);
                 } else {
@@ -115,7 +94,21 @@ angular.module('starter.services', [])
 
     var login = function(user) {
         return $q(function(resolve, reject) {
-            $http.post(API_ENDPOINT.url + '/authentication/authenticate', user).then(function(result) {
+            $http.post(API_ENDPOINT.url + '/auth/authenticate', user).then(function(result) {
+                if (result.data.success) {
+                    storeUserCredentials(result.data.token);
+                    resolve(result.data.msg);
+                } else {
+                    reject(result.data.msg);
+                }
+            });
+        });
+    };
+
+
+    var loginFacebook = function(user) {
+        return $q(function(resolve, reject) {
+            $http.post(API_ENDPOINT.url + '/auth/facebook', user).then(function(result) {
                 if (result.data.success) {
                     storeUserCredentials(result.data.token);
                     resolve(result.data.msg);
@@ -128,7 +121,7 @@ angular.module('starter.services', [])
 
     var changePwd = function(user) {
         return $q(function(resolve, reject) {
-            $http.put(API_ENDPOINT.url + '/authentication/changePwd/' + user._id, user).then(function(result) {
+            $http.put(API_ENDPOINT.url + '/auth/changePwd/' + user._id, user).then(function(result) {
                 if (result.data.success) {
                     storeUserCredentials(result.data.token);
                     resolve(result.data.msg);
@@ -146,6 +139,7 @@ angular.module('starter.services', [])
 
     return {
         login: login,
+        loginFacebook: loginFacebook,
         register: register,
         logout: logout,
         changePwd: changePwd,

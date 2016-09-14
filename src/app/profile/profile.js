@@ -5,7 +5,7 @@ angular.module('starter.controllers')
   };
 
   $scope.getPosts = function() {
-    var $url = API_ENDPOINT.url + '/authentication/'+ $routeParams.id +'/posts';
+    var $url = API_ENDPOINT.url + '/auth/'+ $routeParams.id +'/posts';
 
     var $callbackFunction = function (response) {
       $scope.posts = response;

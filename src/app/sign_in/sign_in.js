@@ -1,5 +1,5 @@
 angular.module('starter.controllers')
-.controller('LoginCtrl', function($scope, $rootScope, UserService, postReq,  AuthService, $q, EmailService, $location, API_ENDPOINT, DEBUG) {
+.controller('LoginCtrl', function($scope, $rootScope, postReq,  AuthService, $q, EmailService, $location, API_ENDPOINT, DEBUG) {
 
       // This is the fail callback from the login method
     var fbLoginError = function(error){
@@ -42,11 +42,28 @@ angular.module('starter.controllers')
 
                   var authResponse = response.authResponse;
                   $scope.getFacebookProfileInfo(authResponse, function (data) {
+/*
 
                       $callbackfunction = function (response) {
                           if(response.facebook_id != null){
+*/
 
-                              var credentials = response
+                              if(data.id != null){
+
+
+                                  AuthService.loginFacebook({
+                                      userID: data.id,
+                                      name: data.name,
+                                      email: data.email,
+                                      picture : "http://graph.facebook.com/" + data.id + "/picture?type=large"
+                                  }).then(function(msg) {
+                                      AuthService.startupAuthenticate();
+                                      $rootScope.getInfo();
+                                      $location.path('/')
+                                  }, function(errMsg) {
+                              });
+
+                              /*var credentials = response
 
                               credentials.password = 'facebookUser';
                               console.log(credentials);
@@ -66,15 +83,15 @@ angular.module('starter.controllers')
 
                               $rootScope.seshUser = UserService.getUser();
 
-                              $location.path('/');
+                              $location.path('/');*/
                           }
                           else {
                               console.log('Email alraedy taken')
-                          }
+                          }/*
                       };
+*//*
 
-
-                      $url = API_ENDPOINT.url + '/facebook';
+                      $url = API_ENDPOINT.url + '/auth/facebook';
                       $data = {
                           userID: data.id,
                           name: data.name,
@@ -82,7 +99,7 @@ angular.module('starter.controllers')
                           picture : "http://graph.facebook.com/" + data.id + "/picture?type=large"
                       }
 
-                      postReq.send($url, $data, null, $callbackfunction)
+                      postReq.send($url, $data, null, $callbackfunction)*/
 
                   });
 

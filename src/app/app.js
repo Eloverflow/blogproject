@@ -49,13 +49,13 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
 }]);
 
 
-app.run(function($rootScope,$http, API_ENDPOINT, AuthService,UserService, $sce, DEBUG, $location) {
+app.run(function($rootScope,$http, API_ENDPOINT, AuthService, $sce, DEBUG, $location) {
 
   openFB.init({appId: '1112318545481460'});
 
 
   $rootScope.getInfo = function () {
-    $http.get(API_ENDPOINT.url + '/authentication/memberinfo').then(function (result) {
+    $http.get(API_ENDPOINT.url + '/auth/memberinfo').then(function (result) {
       $rootScope.seshUser = result.data.user;
 
       if(DEBUG.isEnabled){
@@ -70,15 +70,15 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService,UserService, $sce, 
   AuthService.startupAuthenticate();
 
   /*If a Facebook user is stored load it*/
-  if(UserService.getUser() != {} && UserService.getUser() != ""){
+  /*if(UserService.getUser() != {} && UserService.getUser() != ""){
     if(DEBUG.isEnabled)
       console.log('Choosing Facebook Auth');
 
     $rootScope.seshUser = UserService.getUser();
   }
-  else if(AuthService.isAuthenticated()){//Get standard user info
+  else */if(AuthService.isAuthenticated()){//Get standard user info
     if(DEBUG.isEnabled)
-      console.log('Choosing Standard Auth');
+      console.log('Doing profile information retrieval');
 
     $rootScope.getInfo();
   }
@@ -146,7 +146,6 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService,UserService, $sce, 
             console.log('Proceding with standard logging out');
 
             AuthService.logout();
-            UserService.logout();
 
             $rootScope.$apply(function() {
               $rootScope.seshUser = null;

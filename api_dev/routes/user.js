@@ -60,6 +60,45 @@ router.post('/authenticate', function(req, res, next) {
   });
 });
 
+/* POST /facebook */
+router.post('/facebook', function(req, res, next) {
+
+    User.findOne({
+        email: req.body.email
+    },function (err, user) {
+        if (err) return next(err);
+        if(user == null){
+            User.create({
+                picture: req.body.picture,
+                email: req.body.email,
+                facebook_id: req.body.userID,
+                name: req.body.name,
+                password: 'facebookUser'
+            }, function (err, user) {
+                if (err) return next(err);
+                user.save(function(err) {
+                    if (err) {
+                        return res.json({success: false, msg: 'Username already exists.'});
+                    }
+                    var token = jwt.encode(user, config.secret);
+                    res.json({success: true, using_facebook: true, user: user, msg: 'Account Created - Authentication success.', token: 'JWT ' + token });
+                });
+
+            });
+
+        }
+        else {
+            var token = jwt.encode(user, config.secret);
+            res.json({success: true, using_facebook: true, user: user, msg: 'Authentication success.', token: 'JWT ' + token });
+        }
+
+
+
+    })
+
+
+});
+
 router.get('/memberinfo', passport.authenticate('jwt', { session: false}), function(req, res) {
   var token = getToken(req.headers);
   if (token) {
