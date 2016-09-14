@@ -35,7 +35,7 @@ mongoose.command({getParameter:1, textSearchEnabled: 1});*/
 
 
 var app = express();
-
+/*
 var mailer = require('express-mailer');
 mailer.extend(app, {
     from: process.env.email | 'user@gmail.com',
@@ -47,7 +47,7 @@ mailer.extend(app, {
         user: process.env.email | 'user@gmail.com',
         pass: process.env.pass | 'pass'
     }
-});
+});*/
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -10,6 +10,7 @@
   "license": "MIT",
   "devDependencies": {
     "angular-mocks": "^1.5.0-beta.2",
+    "node-supervisor": "*",
     "autoprefixer": "^6.2.2",
     "babel-core": "*",
     "babel-loader": "^6.2.0",
@@ -20,6 +21,7 @@
     "browserify": "*",
     "connect-livereload": "*",
     "css-loader": "^0.23.1",
+    "sass": "^0.5.0",
     "debug": "*",
     "del": "^2.0.2",
     "es6-shim": "^0.35.0",
@@ -130,11 +132,7 @@
     "passport-jwt": "^1.2.1",
     "serve-favicon": "*",
     "bourbon-neat": "^1.8.0",
-    "sass": "^0.5.0",
-    "jwt-simple": "*",
-    "angular": "^1.5.0",
-    "angular-ui-router": "^0.3.1",
-    "todomvc-app-css": "^2.0.4"
+    "jwt-simple": "*"
   },
   "bugs": {
     "url": "https://github.com/angular/angular-seed/issues"
