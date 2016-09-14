@@ -15,8 +15,6 @@ angular.module('starter.controllers')
         $location.path('/sign-up');
     };
 
-
-
     $scope.user = {is_admin:"false"};
 
     $scope.signup = function() {
@@ -42,77 +40,24 @@ angular.module('starter.controllers')
 
                   var authResponse = response.authResponse;
                   $scope.getFacebookProfileInfo(authResponse, function (data) {
-/*
-
-                      $callbackfunction = function (response) {
-                          if(response.facebook_id != null){
-*/
-
-                              if(data.id != null){
-
-
-                                  AuthService.loginFacebook({
+                          if(data.id != null){
+                              AuthService.loginFacebook({
                                       userID: data.id,
                                       name: data.name,
                                       email: data.email,
                                       picture : "http://graph.facebook.com/" + data.id + "/picture?type=large"
-                                  }).then(function(msg) {
+                              }).then(function(msg) {
                                       AuthService.startupAuthenticate();
                                       $rootScope.getInfo();
                                       $location.path('/')
                                   }, function(errMsg) {
                               });
-
-                              /*var credentials = response
-
-                              credentials.password = 'facebookUser';
-                              console.log(credentials);
-                              AuthService.login(credentials)
-
-
-                              UserService.setUser({
-                                  _id:credentials._id,
-                                  authResponse: authResponse,
-                                  userID: data.id,
-                                  name: data.name,
-                                  email: data.email,
-                                  gender: data.gender,
-                                  createdAt: response.createdAt,
-                                  picture : "http://graph.facebook.com/" + data.id + "/picture?type=large"
-                              });
-
-                              $rootScope.seshUser = UserService.getUser();
-
-                              $location.path('/');*/
                           }
                           else {
-                              console.log('Email alraedy taken')
-                          }/*
-                      };
-*//*
-
-                      $url = API_ENDPOINT.url + '/auth/facebook';
-                      $data = {
-                          userID: data.id,
-                          name: data.name,
-                          email: data.email,
-                          picture : "http://graph.facebook.com/" + data.id + "/picture?type=large"
-                      }
-
-                      postReq.send($url, $data, null, $callbackfunction)*/
-
+                              console.log('No facebook profile info')
+                          }
                   });
-
-
-                  
-
-                  /*$rootScope.$apply(function() {
-                      $location.path('/')
-                  });*/
               }
-
-
-
 
           } else {
             alert('Facebook login failed');
