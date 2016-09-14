@@ -91,7 +91,11 @@ router.get('/:id', function(req, res, next) {
 
 /* PUT /post/:id */
 router.put('/:id', function(req, res, next) {
-  Post.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
+  Post.findByIdAndUpdate(req.params.id, {
+    content: req.body.content,
+    title: req.body.title.charAt(0).toUpperCase() + req.body.title.slice(1),
+    tags: req.body.tags
+  }, function (err, post) {
     if (err) return next(err);
     res.json(post);
   });
