@@ -8,12 +8,12 @@
                     <img ng-src="{{seshUser.picture ? seshUser.picture : '/'}}" height="80" width="80" on-error-src="img/defaultProfile.png"/>
                     <div class="total-post">
                         <span class="lbl">Total posts</span>
-                        <h3>43</h3>
+                        <h3>{{ posts.length }}</h3>
                     </div>
                 </div>
                 <div class="profile info">
-                    <h4 class="no-marg" ng-show="seshUser.username"><strong>{{ seshUser.username }}</strong></h4>
-                    <h4 class="no-marg" ng-hide="seshUser.username"><strong>{{ seshUser.name }}</strong></h4>
+                    <h4 class="no-margin" ng-show="seshUser.username"><strong>{{ seshUser.username }}</strong></h4>
+                    <h4 class="no-margin" ng-hide="seshUser.username"><strong>{{ seshUser.name }}</strong></h4>
                     <div class="form-group">
                         <span>Member since :</span>
                         <span>{{ seshUser.createdAt | date:'MMM d, y' }}</span>
@@ -29,23 +29,22 @@
 
     <div class="col-lg-6">
         <h2>Posts</h2>
-        <div ng-repeat="post in posts | orderBy:'created_at':true" class="panel panel-default">
-            <div class="panel-heading header">
+        <div ng-repeat="post in posts | orderBy:'created_at':true" class="wrapper">
+            <header class="header">
                 <a class="posts-title" href="#!/post/{{post._id}}"><h3>{{ post.title }}</h3></a>
                 <ul class="posts-info">
+                    <li ng-show="seshUser.is_admin"> <i ng-click="deletePost(post._id)" class="fa fa-trash link" aria-hidden="true"></i></li>
+                    <li ng-show="seshUser.is_admin"> <i ng-click="editPost(post._id)" class="fa fa-edit link" aria-hidden="true"></i></li>
+                    <li class=""><em>Written by&nbsp;</em><a href="#!/profile/{{post.user_id.user_id}}">{{post.user_id.username ? post.user_id.username : post.user_id.name}}</a></li>
                     <li class=""><i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp;<!--August, 27, 2016  -->{{ post.createdAt | date:'MMM d, y'}}</li>
                     <li class=""><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;({{ post.comments.length }}) Comments</li>
                 </ul>
-            </div>
-            <div class="panel-body">
+            </header>
+            <article ng-bind-html="toTrustedHTML(post.content)">
+            </article>
 
-                <article ng-bind-html="toTrustedHTML(post.content)">
-                </article>
-
-                <div class="footer">
-                    <a class="pull-right" href="#!/post/{{post._id}}">READ MORE</a>
-                </div>
-
+            <div class="footer">
+                <a class="pull-right" href="#!/post/{{post._id}}">READ MORE</a>
             </div>
         </div>
     </div>
