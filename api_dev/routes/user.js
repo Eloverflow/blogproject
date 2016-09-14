@@ -179,6 +179,7 @@ router.get('/resetPwd/:email', function(req, res, next) {
         host:  process.env.smtp_server | 'smtp.gmail.com',
         port: process.env.smtp_port | 465,
         secureConnection: true,
+        debug: true,
         auth: {
             user: process.env.email | 'user@gmail.com',
             pass:  process.env.pass | 'pass'
