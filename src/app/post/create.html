@@ -6,26 +6,33 @@
 </div>
 <h2 class="section-title">Add New Post</h2>
 <div class="wrapper">
-    <form name="createPostForm" method="post">
+    <form name="createPostForm" ng-submit="addPost()" method="post" novalidate>
         <article class="main">
-                <div class="form-group">
-                    <label for="post-title">Post Title</label>
-                    <input id="post-title" type="text" class="form-control" ng-model="post.title" required/>
-                </div>
-                <div class="form-group">
-                    <label for="post-content">Post Content</label>
-                    <textarea rows="1" id="post-content" ui-tinymce="tinymceOptions" ng-model="post.content" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="post-tags">Post Tags</label>
-                    <input id="post-tags"  class="form-control" value=""  />
-                </div>
+            <div ng-show="errorList.length > 0" class="alert alert-danger" role="alert">
+                <strong>Oops,</strong> There was an error with your submission :
+                <ul class="error-list">
+                    <li ng-repeat="n in errorList">{{ n }}</li>
+                </ul>
+            </div>
+
+            <div class="form-group {{ !createPostForm.title.$error.serverMessage ? '' : 'has-error'}}">
+                <label for="post-title">Post Title</label>
+                <input id="post-title" name="title" type="text" class="form-control" ng-model="post.title" ng-required="true" required/>
+            </div>
+            <div class="form-group {{ !createPostForm.content.$error.serverMessage ? '' : 'has-error'}}">
+                <label for="post-content">Post Content</label>
+                <textarea rows="1" id="post-content" name="content" class="form-control" ui-tinymce="tinymceOptions" ng-model="post.content" ng-required="true" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="post-tags">Post Tags</label>
+                <input id="post-tags"  name="tags" class="form-control" value=""  />
+            </div>
 
         </article>
         <footer class="footer">
             <div class="pull-right btn-group">
                 <button class="btn btn-default" ng-click="makePreviewPost()">Preview Post</button>
-                <button type="submit" class="btn btn-success" ng-click="addPost(post)">Create Post</button>
+                <button type="submit" class="btn btn-success">Create Post</button>
             </div>
         </footer>
     </form>

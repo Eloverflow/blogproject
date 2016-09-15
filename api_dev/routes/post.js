@@ -37,15 +37,32 @@ router.post('/', function(req, res, next) {
 
 
       if(user.is_admin){
-        Post.create({
-          user_id: user._id,
-          content: req.body.content,
-          title: req.body.title.charAt(0).toUpperCase() + req.body.title.slice(1),
-          tags: req.body.tags
-        }, function (err, post) {
-          if (err) return next(err);
-          res.json(post);
-        });
+
+        var formHasErrors = false;
+        var fieldState = {title: 'VALID'};
+        var allowedNames = ['Bob', 'Jill', 'Murray', 'Sally'];
+
+        if (allowedNames.indexOf(req.body.title) == -1){
+          fieldState.title = 'Allowed values are: ' + allowedNames.join(',');
+          formHasErrors = true;
+        }
+        /*if ($scope.lastName == $scope.firstName) fieldState.lastName = 'Your last name must be different from your first name';*/
+
+        /*return fieldState;*/
+        if(!formHasErrors) {
+          Post.create({
+            user_id: user._id,
+            content: req.body.content,
+            title: req.body.title.charAt(0).toUpperCase() + req.body.title.slice(1),
+            tags: req.body.tags
+          }, function (err, post) {
+            if (err) return next(err);
+            res.json(post);
+          });
+        } else {
+          res.json(fieldState);
+        }
+
       }
       else{
         res.json({success: false, msg: 'You dont have enought rights'});

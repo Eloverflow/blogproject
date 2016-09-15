@@ -1017,3 +1017,18 @@ div.social-wrap.b > .facebook {
 .section-title {
   margin-top: 2px !important;
 }
+
+/*
+.has-error .mce-tinymce{
+  border: 1px solid red!important;
+}
+*/
+
+.error-list {
+  margin-top: 12px;
+  margin-left: 20px;
+  li {
+
+    text-decoration: none;
+  }
+}

@@ -129,7 +129,7 @@ angular.module('starter.controllers', ['ui.tinymce'])
     }
 })
 
-.controller('PostCreateCtrl', function($rootScope, $location, $scope, getReq, $routeParams, postReq, $http, API_ENDPOINT) {
+.controller('PostCreateCtrl', function($rootScope, $location, $scope, getReq, $routeParams, postReq, $http, API_ENDPOINT, $parse) {
 
     $scope.previewPost = {
         content: ""
@@ -140,14 +140,55 @@ angular.module('starter.controllers', ['ui.tinymce'])
         $scope.previewPost = $scope.post;
     };
 
-    $scope.addPost = function (post) {
+    $scope.errorList = [];
+    $scope.addPost = function () {
 
         if($scope.post === 'undefined' ){
          console.log('Post is empty');
          }
          else {
             var $url = API_ENDPOINT.url + '/post';
-            postReq.send($url, post, '/posts')
+
+            var $callbackFunction = function (response) {
+                console.log(response);
+            };
+
+            var fieldState = {title: 'VALID', content: 'VALID'};
+
+            if($scope.createPostForm.title.$error.required){
+                fieldState.title = 'The title is required.';
+            }
+
+            if($scope.createPostForm.content.$error.required){
+                fieldState.content = 'The content is required.';
+            }
+
+            for (var fieldName in fieldState) {
+                var message = fieldState[fieldName];
+                var serverMessage = $parse('createPostForm.'+fieldName+'.$error.serverMessage');
+
+                if (message == 'VALID') {
+                    $scope.createPostForm.$setValidity(fieldName, true, $scope.createPostForm);
+                    serverMessage.assign($scope, undefined);
+                }
+                else {
+
+                    $scope.createPostForm.$setValidity(fieldName, false, $scope.createPostForm);
+                    serverMessage.assign($scope, fieldState[fieldName]);
+
+                    $scope.errorList.push(fieldState[fieldName]);
+                }
+            }
+
+            console.log($scope.errorList);
+
+            /*if (isValid) {
+                postReq.send($url, $scope.post, null, $callbackFunction)
+                console.log("Invalid form !!!");
+            } else {
+                console.log("Invalid form !!!");
+            }*/
+
         }
     };
 
@@ -160,7 +201,12 @@ angular.module('starter.controllers', ['ui.tinymce'])
     };
 
     $scope.tinymceOptions = {
-        height: 400,
+        height: 200,
+        setup: function(editor) {
+            editor.on("init", function () {
+                $(editor.editorContainer).addClass('form-control');
+            });
+        },
         plugins: ['advlist autolink lists link image charmap print preview anchor',
         'searchreplace visualblocks code fullscreen',
         'insertdatetime media table contextmenu paste code'
@@ -244,7 +290,7 @@ angular.module('starter.controllers', ['ui.tinymce'])
         }
     };
 
-    $scope.updatePost = function (post) {
+    $scope.updatePost = function () {
 
         if($scope.post === 'undefined' ){
             console.log('Post is empty');
@@ -259,7 +305,7 @@ angular.module('starter.controllers', ['ui.tinymce'])
 
             var $url = API_ENDPOINT.url + '/post/' + $routeParams.id;
 
-            putReq.send($url, post, '/posts');
+            putReq.send($url, $scope.post, '/posts');
         }
     };
 
