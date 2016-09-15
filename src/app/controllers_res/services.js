@@ -20,7 +20,7 @@ angular.module('starter.services', [])
 .service('EmailService', function($q, $http, API_ENDPOINT) {
     var resetPwd = function (user) {
         return $q(function (resolve, reject) {
-            $http.get(API_ENDPOINT.url + '/auth/resetPwd/' + user.email, user).then(function (result) {
+            $http.get(API_ENDPOINT.url + '/auth/resetPwd/' + user.email).then(function (result) {
                 if (result.data.success) {
                     resolve(result.data.msg);
                 } else {
@@ -29,6 +29,10 @@ angular.module('starter.services', [])
             });
         });
     };
+
+    return {
+        resetPwd: resetPwd
+    }
 })
 
 .service('AuthService', function($q, $http, API_ENDPOINT, DEBUG) {
@@ -132,6 +136,18 @@ angular.module('starter.services', [])
         });
     }
 
+    var newPwd = function(user, token) {
+        return $q(function(resolve, reject) {
+            $http.post(API_ENDPOINT.url + '/auth/newPwd/'+ token, user).then(function(result) {
+                if (result.data.success) {
+                    resolve(result.data.msg);
+                } else {
+                    reject(result.data.msg);
+                }
+            });
+        });
+    }
+
     var logout = function() {
         destroyUserCredentials();
     };
@@ -143,6 +159,7 @@ angular.module('starter.services', [])
         register: register,
         logout: logout,
         changePwd: changePwd,
+        newPwd: newPwd,
         startupAuthenticate: startupAuthenticate,
         isAuthenticated: function() {return isAuthenticated;},
     };

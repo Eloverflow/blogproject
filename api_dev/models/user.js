@@ -11,7 +11,7 @@ var UserSchema = new mongoose.Schema({
     picture: { type: String, required: false },
     facebook_id: { type: String, required: false },
     reset_token: { type: String, required: false },
-    reset_token_expiration :  { type: Date, required: false },
+    reset_token_expire :  { type: Date, required: false },
     is_admin : { type: Boolean, required: false, default: false}
 },
 {

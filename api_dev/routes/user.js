@@ -176,16 +176,21 @@ router.get('/:id/posts', function(req, res, next) {
 
 router.post('/newPwd/:token', function(req, res, next) {
 
-    User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
+    User.findOne({ reset_token: req.params.token, reset_token_expire: { $gt: Date.now() } }, function(err, user) {
         if (!user) {
-            return res.send('Password reset token is invalid or has expired.');
+            return res.send({success: false, msg:'Password reset token is invalid or has expired.'});
         }
         user.password = req.body.password;
         user.reset_token = undefined;
         user.reset_token_expire = undefined;
 
-        user.save();
-        res.send('Password successfully changed !');
+        user.save(function(err) {
+            if (err) {
+                return res.json({success: false, msg: 'User failed at saving changed'});
+            }
+
+            res.send({success: true, msg: 'Password successfully changed !'});
+        });
     });
 });
 
@@ -199,37 +204,39 @@ router.get('/resetPwd/:email', function(req, res, next) {
                 user.reset_token = buf.toString('hex');
                 user.reset_token_expire = Date.now() + 3600000;
                 user.save();
-            });
 
-            var transporter = nodemailer.createTransport(config.smtpConfig);
+                var transporter = nodemailer.createTransport(config.smtpConfig);
 
-            var link = config.network.address + ':3000' + '/newPwd/' + user.reset_token;
+                var link = config.network.address + ':3000' + '/#!/new-password/' + user.reset_token;
 
-            var mailOptions = {
-                from: process.env.email || 'user@gmail.com', // sender address
-                to: req.params.email, // list of receivers
-                subject: 'Hello it seems you lost your password ?', // Subject line
-                text: 'Click on the link :  ' + link +
-                '\n To type your new password!', // plaintext body
-                html: '<b>'+ 'Click on the link :' +'</b> <a href="' + link + '">'+ link + '</a><br>To type your new password!' // html body
-            };
+                var mailOptions = {
+                    from: process.env.email || 'user@gmail.com', // sender address
+                    to: req.params.email, // list of receivers
+                    subject: 'Hello it seems you lost your password ?', // Subject line
+                    text: 'Click on the link :  ' + link +
+                    '\n To type your new password!', // plaintext body
+                    html: '<b>'+ 'Click on the link :' +'</b> <a href="' + link + '">'+ link + '</a><br>To type your new password!' // html body
+                };
 
-            // send mail with defined transport object
-            transporter.sendMail(mailOptions, function(error, info){
-                if(error){
-                    res.send(error);
-                }
-                else{
-                    res.send('Message sent')
+                // send mail with defined transport object
+                transporter.sendMail(mailOptions, function(error, info){
+                    if(error){
+                        res.send({success: false, msg: error});
+                    }
+                    else{
+                        res.send({success: true, msg: 'Message sent'})
 
-                }
+                    }
 
-                transporter.close();
+                    transporter.close();
+                });
+
+
             });
 
         }
         else{
-            res.send('Invalid email')
+            res.send({success: false, msg: 'Invalid email'});
         }
 
 

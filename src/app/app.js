@@ -49,6 +49,16 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
     controller: 'LoginCtrl'
   });
 
+  $routeProvider.when('/forgot-password', {
+    templateUrl: 'sign_in/forgot_pass.html',
+    controller: 'LoginCtrl'
+  });
+
+  $routeProvider.when('/new-password/:token', {
+    templateUrl: 'sign_in/new_pass.html',
+    controller: 'LoginCtrl'
+  });
+
   $routeProvider.when('/profile/:id', {
     templateUrl: 'profile/profile.html',
     controller: 'ProfileCtrl'

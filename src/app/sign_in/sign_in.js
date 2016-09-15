@@ -1,5 +1,5 @@
 angular.module('starter.controllers')
-.controller('LoginCtrl', function($scope, $rootScope, postReq,  AuthService, $q, EmailService, $location, API_ENDPOINT, DEBUG) {
+.controller('LoginCtrl', function($scope, $rootScope, postReq,  AuthService, $q, EmailService, $location, API_ENDPOINT, DEBUG, $routeParams) {
 
       // This is the fail callback from the login method
     var fbLoginError = function(error){
@@ -84,6 +84,12 @@ angular.module('starter.controllers')
       AuthService.logout();
     };
 
+    $scope.newPwd = function() {
+        AuthService.newPwd($scope.user, $routeParams.token).then(function(msg) {
+        }, function(errMsg) {
+        });
+    };
+    
     $scope.forgotpwd = function() {
         EmailService.resetPwd($scope.user).then(function(msg) {
         }, function(errMsg) {
