@@ -32,7 +32,6 @@ $scope.callRestService= function() {
             $scope.result = [];
 
         $scope.posts = response;
-
         $scope.noSearchResult = response == "";
 
     };
@@ -48,6 +47,7 @@ $scope.callRestService= function() {
 
       var $callbackFunction = function (response) {
         $scope.posts = response;
+        $scope.noSearchResult = false;
       };
 
       getReq.send($url, null, $callbackFunction);
