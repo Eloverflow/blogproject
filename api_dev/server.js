@@ -13,8 +13,10 @@ var post = require('./routes/post');
 var comment = require('./routes/comment');
 var subComment = require('./routes/subComment');
 var vote = require('./routes/vote');
+var nodemailer = require('nodemailer');
 
 var config = require('./config/database.js');
+config.network = require('./config/network.js');
 var jwt = require('jwt-simple');
 
 var env = require('node-env-file');
@@ -33,26 +35,8 @@ mongoose.connect(config.database, function(err) {
         console.log('connection successful');
     }
 });
-/*
-
-mongoose.command({getParameter:1, textSearchEnabled: 1});*/
-
-
 
 var app = express();
-/*
-var mailer = require('express-mailer');
-mailer.extend(app, {
-    from: process.env.email | 'user@gmail.com',
-    host: process.env.smtp_server | 'smtp.gmail.com', // hostname
-    secureConnection: true, // use SSL
-    port: process.env.smtp_port | 587, // port for secure SMTP
-    transportMethod: 'SMTP', // default is SMTP. Accepts anything that nodemailer accepts
-    auth: {
-        user: process.env.email | 'user@gmail.com',
-        pass: process.env.pass | 'pass'
-    }
-});*/
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -65,11 +49,6 @@ app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({ extended: true, limit: '50mb'}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../www')));
-
-// passport
-
-/*app.use(passport.initialize());*/
-
 
 global.getToken = function (headers) {
  if (headers && headers.authorization) {
@@ -84,11 +63,30 @@ global.getToken = function (headers) {
  }
 };
 
+/*You may need to allow less secure secure app and enable application passwords within you email service configuration(Such as Gmail)*/
+config.smtpConfig = {
+    host:  process.env.smtp_server || 'smtp.gmail.com',
+    port: process.env.smtp_port || 465,
+    secureConnection: true,
+    auth: {
+        user: process.env.email || 'user@gmail.com',
+        pass:  process.env.pass || 'pass'
+    }
+};
+var transporter = nodemailer.createTransport(config.smtpConfig);
+transporter.verify(function(error, success) {
+    if (error) {
+        console.log('Server is failed to test transporter');
+        console.log(error);
+    } else {
+        console.log('Server is ready to take our messages');
+    }
+});
+transporter.close();
+
 global.config = config;
 global.jwt = jwt;
 global.app = app;
-
-
 
 //passport
 

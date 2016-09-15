@@ -10,6 +10,8 @@ var passport = require('passport');
 var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
 
+var crypto = require('crypto');
+
 require('../config/passport')(passport);
 
 router.post('/signup', function(req, res, next) {
@@ -172,58 +174,76 @@ router.get('/:id/posts', function(req, res, next) {
     });
 });
 
-router.get('/resetPwd/:email', function(req, res, next) {
-  // create reusable transporter object using the default SMTP transport
+router.post('/newPwd/:token', function(req, res, next) {
 
-    var smtpConfig = {
-        host:  process.env.smtp_server | 'smtp.gmail.com',
-        port: process.env.smtp_port | 465,
-        secureConnection: true,
-        debug: true,
-        auth: {
-            user: process.env.email | 'user@gmail.com',
-            pass:  process.env.pass | 'pass'
-        },
-        tls:{
-            secureProtocol: "TLSv1_method"
+    User.findOne({ reset_token: req.params.token, reset_token_expire: { $gt: Date.now() } }, function(err, user) {
+        if (!user) {
+            return res.send({success: false, msg:'Password reset token is invalid or has expired.'});
         }
-    };
+        user.password = req.body.password;
+        user.reset_token = undefined;
+        user.reset_token_expire = undefined;
 
-  var transporter = nodemailer.createTransport(smtpConfig);
+        user.save(function(err) {
+            if (err) {
+                return res.json({success: false, msg: 'User failed at saving changed'});
+            }
 
-transporter.verify(function(error, success) {
-    if (error) {
-        console.log('Server is failed to test transporter');
-        console.log(error);
-    } else {
-        console.log('Server is ready to take our messages');
-    }
+            res.send({success: true, msg: 'Password successfully changed !'});
+        });
+    });
 });
 
-    //smtps://' + process.env.email +':'+ process.env.pass + '@'+ process.env.SMTPServer);
+router.get('/resetPwd/:email', function(req, res, next) {
 
-// setup e-mail data with unicode symbols
-  var mailOptions = {
-    from: process.env.email | 'user@gmail.com', // sender address
-    to: req.params.email, // list of receivers
-    subject: 'Hello it seems you lost your password ?', // Subject line
-    text: 'Hello world 🐴', // plaintext body
-    html: '<b>Hello world 🐴</b>' // html body
-  };
+    User.findOne({email: req.params.email}, function (err, user) {
+        if (err) return next(err);
+
+        if(user != null){
+            crypto.randomBytes(20, function(err, buf) {
+                user.reset_token = buf.toString('hex');
+                user.reset_token_expire = Date.now() + 3600000;
+                user.save();
+
+                var transporter = nodemailer.createTransport(config.smtpConfig);
+
+                var link = config.network.address + ':3000' + '/#!/new-password/' + user.reset_token;
+
+                var mailOptions = {
+                    from: process.env.email || 'user@gmail.com', // sender address
+                    to: req.params.email, // list of receivers
+                    subject: 'Hello it seems you lost your password ?', // Subject line
+                    text: 'Click on the link :  ' + link +
+                    '\n To type your new password!', // plaintext body
+                    html: '<b>'+ 'Click on the link :' +'</b> <a href="' + link + '">'+ link + '</a><br>To type your new password!' // html body
+                };
+
+                // send mail with defined transport object
+                transporter.sendMail(mailOptions, function(error, info){
+                    if(error){
+                        res.send({success: false, msg: error});
+                    }
+                    else{
+                        res.send({success: true, msg: 'Message sent'})
+
+                    }
+
+                    transporter.close();
+                });
 
 
-// send mail with defined transport object
-  transporter.sendMail(mailOptions, function(error, info){
-    if(error){
-      res.send(error);
-    }
-    else{
-        res.send('Message sent')
+            });
 
-    }
+        }
+        else{
+            res.send({success: false, msg: 'Invalid email'});
+        }
 
-      transporter.close();
-  });
+
+    });
+
+
+
 });
 
 

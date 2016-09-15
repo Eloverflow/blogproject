@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-lg-4 col-lg-offset-4 frm-login">
+        <div class="panel panel-default">
+            <div class="panel-heading"><strong>Welcome,</strong>&nbsp;Please enter your new password...</div>
+            <div class="panel-body">
+                <form>
+
+                    <div class="form-group">
+
+                        <input ng-model="user.password" id="uname" class="form-control" type="text" placeholder="Email" name="uname" required>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6 no-col-pad">
+                            <button ng-click="newPwd()" class="btn theme-btn all-width" type="submit">Send reset link</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <span class="bottom-link"><a ng-click="goToSignIn()">Go to login</a></span>
+
+    </div>
+</div>
