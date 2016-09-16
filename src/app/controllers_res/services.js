@@ -201,9 +201,20 @@ angular.module('starter.services', [])
                 if($callbackFunction)
                     $callbackFunction(response);
 
-            })
-                .error(function (response) {
-                    console.log('Error: ' + response);
+            }).error(function (response,status) {
+                if(DEBUG.isEnabled){
+                    console.log('Error: ');
+                    console.log($url + ' -> Returned:');
+                    console.log(response);
+                }
+
+                if(status == 403){
+                    if(DEBUG.isEnabled) {
+                        console.log('Emptying the token and redirecting to login')
+                    }
+                    AuthService.logout();
+                    $location.path('/sign-in');
+                }
                 });
         }
     }
@@ -230,8 +241,19 @@ angular.module('starter.services', [])
                         $callbackFunction(response);
 
                 })
-                    .error(function (response) {
-                        console.log('Error: ' + response);
+                    .error(function (response,status) {
+                        if(DEBUG.isEnabled){
+                            console.log('Error: ');
+                            console.log($url + ' -> Returned:');
+                            console.log(response);
+                        }
+                        if(status == 403){
+                            if(DEBUG.isEnabled) {
+                                console.log('Emptying the token and redirecting to login')
+                            }
+                            AuthService.logout();
+                            $location.path('/sign-in');
+                        }
                     });
             }
         }
@@ -259,7 +281,11 @@ angular.module('starter.services', [])
 
                 })
                     .error(function (response) {
-                        console.log('Error: ' + response);
+                        if(DEBUG.isEnabled){
+                            console.log('Error: ');
+                            console.log($url + ' -> Returned:');
+                            console.log(response);
+                        }
                     });
             }
         }
@@ -286,8 +312,20 @@ angular.module('starter.services', [])
                         $callbackFunction(response);
 
                 })
-                    .error(function (response) {
-                        console.log('Error: ' + response);
+                    .error(function (response, status) {
+                        if(DEBUG.isEnabled){
+                            console.log('Error: ');
+                            console.log($url + ' -> Returned:');
+                            console.log(response);
+                        }
+
+                        if(status == 403){
+                            if(DEBUG.isEnabled) {
+                                console.log('Emptying the token and redirecting to login')
+                            }
+                            AuthService.logout();
+                            $location.path('/sign-in');
+                        }
                     });
             }
         }

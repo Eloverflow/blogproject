@@ -100,6 +100,17 @@ app.use(function(req, res, next) {
 });
 // Fin Ajout pour supporter le cross-site
 
+/*Check if there is a token for its expiration*/
+app.use(function(req, res, next) {
+    var token = getToken(req.headers);
+    if (token) {
+        var decoded = jwt.decode(token, config.secret);
+        if (decoded.exp <= Date.now()) {
+            res.status(403).end('Access token has expired');
+        }
+    }
+    next();
+});
 
 //app.use('/api/sendColor', color);
 app.use('/', index);
@@ -115,6 +126,14 @@ app.use('/api/vote', vote);
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
+    next(err);
+});
+
+// catch 400 and forward to error handler
+app.use(function(req, res, next) {
+
+    var err = new Error('Not Found');
+    err.status = 400;
     next(err);
 });
 

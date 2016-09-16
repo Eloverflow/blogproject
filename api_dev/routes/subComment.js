@@ -25,6 +25,8 @@ router.post('/', function(req, res, next) {
       email: decoded.email
     },function (err, user) {
       if (err) return next(err);
+      if (!user) return res.status(400).json({success: false, msg: 'User was not found with this token'});
+      if (!req.body.content) return res.status(400).json({success: false, msg: 'No content was found in the sub comment'});
 
       Comment.findById(req.body.comment_id, function (err, comment) {
         if (err) return next(err);
@@ -46,6 +48,9 @@ router.post('/', function(req, res, next) {
         });
       })
     })
+  }
+  else {
+    res.status(403).json({success: false, msg: 'You dont have enought rights'});
   }
 
 });

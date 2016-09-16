@@ -74,12 +74,21 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService, $sce, DEBUG, $loca
 
 
   $rootScope.getInfo = function () {
-    $http.get(API_ENDPOINT.url + '/auth/memberinfo').then(function (result) {
-      $rootScope.seshUser = result.data.user;
+    $http.get(API_ENDPOINT.url + '/auth/memberinfo').success(function (result) {
+
+      if(result.success) $rootScope.seshUser = result.user;
 
       if(DEBUG.isEnabled){
         console.log('User:');
-        console.log(result.data.user);
+        console.log(result);
+      }
+    }).error(function (result, status) {
+      if(status == 403){
+        if(DEBUG.isEnabled) {
+          console.log('Emptying the token and redirecting to login')
+        }
+        AuthService.logout();
+        $location.path('/sign-in');
       }
     });
 

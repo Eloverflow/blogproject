@@ -25,13 +25,13 @@ router.post('/', function(req, res, next) {
       email: decoded.email
     },function (err, user) {
       if (err) return next(err);
-      if (!user) return res.json({success: false, msg: 'User was not found with this token'});
-      if (!req.body.content) return res.json({success: false, msg: 'No content was found in the comment'});
+      if (!user) return res.status(400).json({success: false, msg: 'User was not found with this token'});
+      if (!req.body.content) return res.status(400).json({success: false, msg: 'No content was found in the comment'});
 
 
       Post.findById(req.body.post_id,function (err, post) {
         if (err) return next(err);
-        if (!post) return res.json({success: false, msg: 'Post was not found with this ID'});
+        if (!post) return res.status(400).json({success: false, msg: 'Post was not found with this ID'});
 
         Comment.create({
           user_id: user,
@@ -39,7 +39,7 @@ router.post('/', function(req, res, next) {
           content: req.body.content
         },function (err, comment) {
           if(err) return next(err);
-          if (!comment) return res.json({success: false, msg: 'Comment is invalid'});
+          if (!comment) return res.status(400).json({success: false, msg: 'Comment is invalid'});
 
           post.comments.push(comment._id);
           post.save();
@@ -54,7 +54,7 @@ router.post('/', function(req, res, next) {
     })
   }
   else {
-    res.json({success: false, msg: 'No authentication token found'});
+    res.status(403).json({success: false, msg: 'No authentication token found'});
   }
   
 });
