@@ -5,16 +5,16 @@ angular.module('starter.controllers')
 .controller('PostsCtrl', function($scope, getReq, delReq, $location, API_ENDPOINT, postReq) {
 
 
-  $scope.deletePost = function (id) {
+  $scope.deletePost = function (post) {
 
-      var $url = API_ENDPOINT.url + '/post/' + id;
+      var $url = API_ENDPOINT.url + '/post/' + post._id;
 
       var $callbackFunction = function (response) {
-        $scope.posts.splice(id, 1);
+        $scope.posts.splice($scope.posts.indexOf(post), 1);
       };
 
       if(confirm('Are you sure you want to delete this Post ?'))
-      delReq.send($url, '/posts', $callbackFunction);
+      delReq.send($url, null, $callbackFunction);
 
   };
 
