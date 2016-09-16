@@ -70,8 +70,10 @@
                     </li>
                 </ul>
                 <div ng-show="sesUser"  class="InputAddOn-sub-comment">
-                    <input id="btn-input-sub-comment" type="text" ng-model="comment.currentSubComment" class="InputAddOn-field-sub-comment form-control" placeholder="Type your message here..." />
-                    <button class="InputAddOn-item-sub-comment btn btn-default" ng-click="addSubComment(comment)">Send</button>
+                    <form>
+                        <input id="btn-input-sub-comment" type="text" ng-model="comment.currentSubComment" class="InputAddOn-field-sub-comment form-control" placeholder="Type your message here..." />
+                        <button class="InputAddOn-item-sub-comment btn btn-default" ng-click="addSubComment(comment)">Send</button>
+                    </form>
                 </div>
             </div>
             <hr>
