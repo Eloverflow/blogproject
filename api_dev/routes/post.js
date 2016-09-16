@@ -36,17 +36,7 @@ router.post('/', function(req, res, next) {
       if (err) return next(err);
       if (!user) return res.status(400).json({success: false, msg: 'User was not found with this token'});
 
-
       if(user.is_admin){
-
-      /*  var formHasErrors = false;
-        var fieldState = {title: 'VALID'};
-        var allowedNames = ['Bob', 'Jill', 'Murray', 'Sally'];
-
-        if (allowedNames.indexOf(req.body.title) == -1){
-          fieldState.title = 'Allowed values are: ' + allowedNames.join(',');
-          formHasErrors = true;
-        }*/
 
         if (!req.body.content) {
           res.status(400).json({success: false, msg: 'No content was found in the post'});
@@ -120,14 +110,48 @@ router.get('/:id', function(req, res, next) {
 
 /* PUT /post/:id */
 router.put('/:id', function(req, res, next) {
-  Post.findByIdAndUpdate(req.params.id, {
-    content: req.body.content,
-    title: req.body.title.charAt(0).toUpperCase() + req.body.title.slice(1),
-    tags: req.body.tags
-  }, function (err, post) {
-    if (err) return next(err);
-    res.json({success: true, post: post});
-  });
+  var token = getToken(req.headers);
+  if (token) {
+    var decoded = jwt.decode(token, config.secret);
+    User.findOne({
+      email: decoded.email
+    },function (err, user) {
+      if (err) return next(err);
+      if (!user) return res.status(400).json({success: false, msg: 'User was not found with this token'});
+
+      if(user.is_admin){
+
+        if (!req.body.content) {
+          res.status(400).json({success: false, msg: 'No content was found in the post'});
+        } else if (!req.body.title) {
+          res.status(400).json({success: false, msg: 'No title was found in the post'});
+        } else if (req.body.tags && req.body.tags.length > 20) {
+          res.status(400).json({success: false, msg: 'Too many tags for the post'});
+        }
+        else{
+          Post.findByIdAndUpdate(req.params.id, {
+            content: req.body.content,
+            title: req.body.title.charAt(0).toUpperCase() + req.body.title.slice(1),
+            tags: req.body.tags
+          }, function (err, post) {
+            if (err) return next(err);
+            res.json({success: true, post: post});
+          });
+        }
+
+      }
+      else{
+        res.status(403).json({success: false, msg: 'You dont have enought rights'});
+      }
+
+
+    })
+  }
+  else {
+    res.status(403).json({success: false, msg: 'No authentication token found'});
+  }
+
+
 });
 
 /* DELETE /post/:id */
