@@ -26,6 +26,7 @@ router.post('/', function(req, res, next) {
     },function (err, user) {
       if (err) return next(err);
       if (!user) return res.json({success: false, msg: 'User was not found with this token'});
+      if (!req.body.content) return res.json({success: false, msg: 'No content was found in the comment'});
 
 
       Post.findById(req.body.post_id,function (err, post) {

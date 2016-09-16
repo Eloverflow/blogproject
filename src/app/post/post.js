@@ -150,7 +150,7 @@ angular.module('starter.controllers', ['ui.tinymce'])
             var $url = API_ENDPOINT.url + '/post';
 
             var $callbackFunction = function (response) {
-                console.log(response);
+                $location.path('/posts')
             };
 
             var fieldState = {title: 'VALID', content: 'VALID'};
@@ -182,12 +182,12 @@ angular.module('starter.controllers', ['ui.tinymce'])
 
             console.log($scope.errorList);
 
-            /*if (isValid) {
+            if ($scope.errorList.length == 0) {
                 postReq.send($url, $scope.post, null, $callbackFunction)
-                console.log("Invalid form !!!");
+                console.log("Valid form !!!");
             } else {
                 console.log("Invalid form !!!");
-            }*/
+            }
 
         }
     };

@@ -34,22 +34,28 @@ router.post('/', function(req, res, next) {
       email: decoded.email
     },function (err, user) {
       if (err) return next(err);
+      if (!user) return res.json({success: false, msg: 'User was not found with this token'});
 
 
       if(user.is_admin){
 
-        var formHasErrors = false;
+      /*  var formHasErrors = false;
         var fieldState = {title: 'VALID'};
         var allowedNames = ['Bob', 'Jill', 'Murray', 'Sally'];
 
         if (allowedNames.indexOf(req.body.title) == -1){
           fieldState.title = 'Allowed values are: ' + allowedNames.join(',');
           formHasErrors = true;
-        }
-        /*if ($scope.lastName == $scope.firstName) fieldState.lastName = 'Your last name must be different from your first name';*/
+        }*/
 
-        /*return fieldState;*/
-        if(!formHasErrors) {
+        if (!req.body.content) {
+          res.json({success: false, msg: 'No content was found in the post'});
+        } else if (!req.body.title) {
+          res.json({success: false, msg: 'No title was found in the post'});
+        } else if (req.body.tags && req.body.tags.length > 20) {
+          res.json({success: false, msg: 'Too many tags for the post'});
+        }
+        else{
           Post.create({
             user_id: user._id,
             content: req.body.content,
@@ -59,8 +65,6 @@ router.post('/', function(req, res, next) {
             if (err) return next(err);
             res.json(post);
           });
-        } else {
-          res.json(fieldState);
         }
 
       }
@@ -71,7 +75,10 @@ router.post('/', function(req, res, next) {
 
     })
   }
-  
+  else {
+    res.json({success: false, msg: 'No authentication token found'});
+  }
+
 
 });
 
