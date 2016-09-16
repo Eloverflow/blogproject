@@ -106,7 +106,7 @@ app.use(function(req, res, next) {
     if (token) {
         var decoded = jwt.decode(token, config.secret);
         if (decoded.exp <= Date.now()) {
-            res.end('Access token has expired', 400);
+            res.status(403).end('Access token has expired');
         }
     }
     next();
