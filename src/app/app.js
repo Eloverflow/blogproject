@@ -97,14 +97,7 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService, $sce, DEBUG, $loca
 
   AuthService.startupAuthenticate();
 
-  /*If a Facebook user is stored load it*/
-  /*if(UserService.getUser() != {} && UserService.getUser() != ""){
-    if(DEBUG.isEnabled)
-      console.log('Choosing Facebook Auth');
-
-    $rootScope.sesUser = UserService.getUser();
-  }
-  else */if(AuthService.isAuthenticated()){//Get standard user info
+  if(AuthService.isAuthenticated()){
     if(DEBUG.isEnabled)
       console.log('Doing profile information retrieval');
 
