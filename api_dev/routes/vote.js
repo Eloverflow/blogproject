@@ -47,7 +47,7 @@ router.post('/', function(req, res, next) {
               comment.votes.push(vote._id);
               comment.save();
 
-              res.json(vote);
+              res.json({success:true, vote: vote});
             });
 
           }
@@ -66,7 +66,7 @@ router.post('/', function(req, res, next) {
                   comment.votes.push(vote._id);
                   comment.save();
 
-                  res.json(vote);
+                  res.json({success:true, vote: vote});
                 });
               });
 

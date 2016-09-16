@@ -20,12 +20,11 @@ angular.module('starter.controllers', ['ui.tinymce'])
 
         var $callbackFunction = function (response) {
 
-            if($rootScope.user)
+            if($rootScope.seshUser)
             for(var i = 0; i < response.length; i++){
-                response[i].myVote  = $filter('filter')(response[i].votes, {user_id: $rootScope.user._id})[0];
+                response[i].myVote  = $filter('filter')(response[i].votes, {user_id: $rootScope.seshUser._id})[0];
             }
             $scope.comments = response;
-            console.log($scope.comments);
         };
 
         getReq.send($url, null, $callbackFunction);
@@ -65,8 +64,10 @@ angular.module('starter.controllers', ['ui.tinymce'])
                 comment.votes = [];
 
 
-            comment.votes.push(response);
-            comment.myVote = response;
+            if(response.success){
+                comment.votes.push(response.vote);
+                comment.myVote = response.vote;
+            }
         };
 
          postReq.send($url, data, null, $callbackFunction);
@@ -86,9 +87,13 @@ angular.module('starter.controllers', ['ui.tinymce'])
 
             if(typeof comment.sub_comments == 'undefined' || comment.sub_comments == null)
                 comment.sub_comments = [];
-            
-            comment.sub_comments.push(response);
-            comment.currentSubComment = "";
+
+
+            if(response.success){
+                comment.sub_comments.push(response.sub_comment);
+                comment.currentSubComment = "";
+            }
+
         };
          postReq.send($url, data, null, $callbackFunction);
     };
@@ -102,7 +107,10 @@ angular.module('starter.controllers', ['ui.tinymce'])
             if(typeof $scope.comments == undefined || $scope.comments == null)
             $scope.comments = [];
 
-            $scope.comments.push(response);
+            if(response.success){
+            $scope.comments.push(response.comment);
+            comment.content = "";
+            }
         };
 
          postReq.send($url, data, null, $callbackFunction);
