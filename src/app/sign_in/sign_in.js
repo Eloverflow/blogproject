@@ -91,8 +91,10 @@ angular.module('starter.controllers')
     };
     
     $scope.forgotpwd = function() {
-        EmailService.resetPwd($scope.user).then(function(msg) {
-        }, function(errMsg) {
+        EmailService.resetPwd($scope.user).then(function(result) {
+        }, function(result) {
+            if(result.success)
+            $location.path('/login')
         });
     };
 
