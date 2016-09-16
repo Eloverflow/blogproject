@@ -154,6 +154,17 @@ router.put('/changePwd', function(req, res, next) {
             email: decoded.email
         },function (err, user) {
             if (err) return next(err);
+            if (!user) return res.status(400).json({success: false, msg: 'User was not found with this token'});
+            if(!req.body.password){
+                res.status(400).json({success: false, msg: 'Please pass a password'});
+            } else if(!(req.body.password).match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/)){
+                res.status(400).json({success: false, msg: 'Please pass a valid password', requirements: [
+                    'should contain at least one digit',
+                    'should contain at least one lower case',
+                    'should contain at least one upper case',
+                    'should contain at least 8 from the mentioned characters'
+                ]});
+            }
 
             user.password = req.body.password;
 
@@ -204,6 +215,18 @@ router.post('/newPwd/:token', function(req, res, next) {
         if (!user) {
             return res.status(400).send({success: false, msg:'Password reset token is invalid or has expired.'});
         }
+
+        if(!req.body.password){
+                res.status(400).json({success: false, msg: 'Please pass a password'});
+        } else if(!(req.body.password).match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/)){
+            res.status(400).json({success: false, msg: 'Please pass a valid password', requirements: [
+                'should contain at least one digit',
+                'should contain at least one lower case',
+                'should contain at least one upper case',
+                'should contain at least 8 from the mentioned characters'
+            ]});
+        }
+
         user.password = req.body.password;
         user.reset_token = undefined;
         user.reset_token_expire = undefined;
