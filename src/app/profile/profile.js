@@ -4,6 +4,17 @@ angular.module('starter.controllers')
     enableFriends: true
   };
 
+  $scope.getUser = function() {
+    var $url = API_ENDPOINT.url + '/auth/'+ $routeParams.id +'/profile';
+
+    var $callbackFunction = function (response) {
+      $scope.user = response;
+    };
+
+    getReq.send($url, null, $callbackFunction);
+  };
+  $scope.getUser();
+
   $scope.getPosts = function() {
     var $url = API_ENDPOINT.url + '/auth/'+ $routeParams.id +'/posts';
 

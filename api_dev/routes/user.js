@@ -209,6 +209,22 @@ router.get('/:id/posts', function(req, res, next) {
     });
 });
 
+/* GET /posts of user */
+router.get('/:id/profile', function(req, res, next) {
+    User.findById(req.params.id).exec(function (err, user) {
+        if (err) return next(err);
+        res.json({
+            _id: user._id,
+            name: user.name,
+            email: user.email,
+            username: user.username,
+            createdAt: user.createdAt,
+            is_admin: user.is_admin,
+            picture: user.picture
+        });
+    });
+});
+
 router.post('/newPwd/:token', function(req, res, next) {
 
     User.findOne({ reset_token: req.params.token, reset_token_expire: { $gt: Date.now() } }, function(err, user) {

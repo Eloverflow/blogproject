@@ -5,22 +5,22 @@
 
             <div class="panel-body">
                 <div class="profile pic">
-                    <img ng-src="{{seshUser.picture ? seshUser.picture : '/'}}" height="80" width="80" on-error-src="img/defaultProfile.png"/>
+                    <img ng-src="{{user.picture ? user.picture : '/'}}" height="80" width="80" on-error-src="img/defaultProfile.png"/>
                     <div class="total-post">
                         <span class="lbl">Total posts</span>
                         <h3>{{ posts.length }}</h3>
                     </div>
                 </div>
                 <div class="profile info">
-                    <h4 class="no-margin" ng-show="seshUser.username"><strong>{{ seshUser.username }}</strong></h4>
-                    <h4 class="no-margin" ng-hide="seshUser.username"><strong>{{ seshUser.name }}</strong></h4>
+                    <h4 class="no-margin" ng-show="user.username"><strong>{{ user.username }}</strong></h4>
+                    <h4 class="no-margin" ng-hide="user.username"><strong>{{ user.name }}</strong></h4>
                     <div class="form-group">
                         <span>Member since :</span>
-                        <span>{{ seshUser.createdAt | date:'MMM d, y' }}</span>
+                        <span>{{ user.createdAt | date:'MMM d, y' }}</span>
                     </div>
                     <div class="form-group">
                         <strong>Email :</strong>
-                        <span>{{ seshUser.email }}</span>
+                        <span>{{ user.email }}</span>
                     </div>
                     <button class="btn btn-default" ng-click="newPwd()" ng-hide="seshUser.facebook_id">Change password</button>
                 </div>
