@@ -3,14 +3,12 @@
 var app  = angular.module('starter', ['starter.controllers','starter.services','starter.constants','ngRoute']);
 
 app.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-  $locationProvider.hashPrefix('!');
-
+  //$locationProvider.hashPrefix('!');
 
   $routeProvider.when('/posts', {
     templateUrl: 'posts/posts.html',
     controller: 'PostsCtrl'
   });
-
 
   $routeProvider.when('/post', {
     templateUrl: 'post/post.html',
