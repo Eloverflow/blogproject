@@ -149,6 +149,7 @@ angular.module('starter.controllers', ['ui.tinymce'])
     };
 
 
+    
     $scope.addPost = function () {
 
         $scope.errorList = [];
