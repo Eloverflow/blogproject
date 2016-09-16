@@ -63,7 +63,7 @@ router.post('/', function(req, res, next) {
             tags: req.body.tags
           }, function (err, post) {
             if (err) return next(err);
-            res.json(post);
+            res.json({success: true, post: post});
           });
         }
 
@@ -126,7 +126,7 @@ router.put('/:id', function(req, res, next) {
     tags: req.body.tags
   }, function (err, post) {
     if (err) return next(err);
-    res.json(post);
+    res.json({success: true, post: post});
   });
 });
 
@@ -134,7 +134,7 @@ router.put('/:id', function(req, res, next) {
 router.delete('/:id', function(req, res, next) {
   Post.findByIdAndRemove(req.params.id, req.body, function (err, post) {
     if (err) return next(err);
-    res.json(post);
+    res.json({success: true, post: post});
   });
 });
 

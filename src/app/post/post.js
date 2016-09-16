@@ -158,7 +158,9 @@ angular.module('starter.controllers', ['ui.tinymce'])
             var $url = API_ENDPOINT.url + '/post';
 
             var $callbackFunction = function (response) {
-                $location.path('/posts')
+
+                if(response.success) $location.path('/posts');
+
             };
 
             var fieldState = {title: 'VALID', content: 'VALID'};
