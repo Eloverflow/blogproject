@@ -1,12 +1,3 @@
-
-<!--<footer class="footer">
-    <div class="pull-right btn-group">
-        <button type="submit" class="btn btn-default" ng-click="makePreviewPost()">Preview Post</button>
-        <button class="btn btn-danger" ng-click="deletePost()">Delete Post</button>
-        <button type="submit" class="btn btn-info" ng-click="updatePost(post)">Update Post</button>
-    </div>
-</footer>-->
-
 <h2 ng-show="previewPost.title"> Preview</h2>
 <div ng-show="previewPost.title" class="wrapper"  >
     <article ng-bind-html="toTrustedHTML(previewPost.content)">
@@ -17,14 +8,17 @@
 <div class="wrapper">
     <form name="createPostForm" method="post">
         <article class="main">
+
             <div class="form-group">
                 <label for="post-title">Post Title</label>
                 <input id="post-title" type="text" class="form-control" ng-model="post.title" required/>
             </div>
+
             <div class="form-group">
                 <label for="post-content">Post Content</label>
                 <textarea rows="1" id="post-content" ui-tinymce="tinymceOptions" ng-model="post.content" required></textarea>
             </div>
+
             <div class="form-group">
                 <label for="post-tags">Post Tags</label>
                 <input id="post-tags"  class="form-control" value=""  />
