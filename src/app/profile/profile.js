@@ -17,12 +17,31 @@ angular.module('starter.controllers')
 
 
   $scope.newPwd = function() {
-    bootbox.prompt("Type your new password !", function(result) {
-      if (result === null) {
-        // "Prompt dismissed"
-      } else {
-        AuthService.changePwd({password: result}).then(function (msg) {
-        });
+    bootbox.dialog({
+      title: "Type your new password !",
+      message: '<div class="row">  ' +
+      '<div class="col-md-12"> ' +
+      '<div class="form-group"> ' +
+      '<form class="bootbox-form">'+
+      '<input id="new-password" class="bootbox-input bootbox-input-text form-control" autocomplete="off" type="password">'+
+      '</form>'+
+      '</div>'+
+      '</div>',
+      buttons: {
+        success: {
+          label: "Save",
+          className: "btn-success",
+          callback: function () {
+            var result = $('#new-password').val();
+            if (result === null) {
+              // "Prompt dismissed"
+            } else {
+              AuthService.changePwd({password: result}).then(function (msg) {
+                /*Display success or faillure*/
+              });
+            }
+          }
+        }
       }
     });
   };
