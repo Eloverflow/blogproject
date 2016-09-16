@@ -34,7 +34,7 @@ router.post('/', function(req, res, next) {
       email: decoded.email
     },function (err, user) {
       if (err) return next(err);
-      if (!user) return res.json({success: false, msg: 'User was not found with this token'});
+      if (!user) return res.status(400).json({success: false, msg: 'User was not found with this token'});
 
 
       if(user.is_admin){
@@ -49,11 +49,11 @@ router.post('/', function(req, res, next) {
         }*/
 
         if (!req.body.content) {
-          res.json({success: false, msg: 'No content was found in the post'});
+          res.status(400).json({success: false, msg: 'No content was found in the post'});
         } else if (!req.body.title) {
-          res.json({success: false, msg: 'No title was found in the post'});
+          res.status(400).json({success: false, msg: 'No title was found in the post'});
         } else if (req.body.tags && req.body.tags.length > 20) {
-          res.json({success: false, msg: 'Too many tags for the post'});
+          res.status(400).json({success: false, msg: 'Too many tags for the post'});
         }
         else{
           Post.create({
@@ -69,14 +69,14 @@ router.post('/', function(req, res, next) {
 
       }
       else{
-        res.json({success: false, msg: 'You dont have enought rights'});
+        res.status(403).json({success: false, msg: 'You dont have enought rights'});
       }
 
 
     })
   }
   else {
-    res.json({success: false, msg: 'No authentication token found'});
+    res.status(403).json({success: false, msg: 'No authentication token found'});
   }
 
 

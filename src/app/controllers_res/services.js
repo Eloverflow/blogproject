@@ -201,9 +201,12 @@ angular.module('starter.services', [])
                 if($callbackFunction)
                     $callbackFunction(response);
 
-            })
-                .error(function (response) {
-                    console.log('Error: ' + response);
+            }).error(function (response) {
+                if(DEBUG.isEnabled){
+                    console.log('Error: ');
+                    console.log($url + ' -> Returned:');
+                    console.log(response);
+                }
                 });
         }
     }
@@ -231,7 +234,11 @@ angular.module('starter.services', [])
 
                 })
                     .error(function (response) {
-                        console.log('Error: ' + response);
+                        if(DEBUG.isEnabled){
+                            console.log('Error: ');
+                            console.log($url + ' -> Returned:');
+                            console.log(response);
+                        }
                     });
             }
         }
@@ -259,7 +266,11 @@ angular.module('starter.services', [])
 
                 })
                     .error(function (response) {
-                        console.log('Error: ' + response);
+                        if(DEBUG.isEnabled){
+                            console.log('Error: ');
+                            console.log($url + ' -> Returned:');
+                            console.log(response);
+                        }
                     });
             }
         }
@@ -287,7 +298,11 @@ angular.module('starter.services', [])
 
                 })
                     .error(function (response) {
-                        console.log('Error: ' + response);
+                        if(DEBUG.isEnabled){
+                            console.log('Error: ');
+                            console.log($url + ' -> Returned:');
+                            console.log(response);
+                        }
                     });
             }
         }

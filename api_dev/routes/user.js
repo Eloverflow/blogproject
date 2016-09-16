@@ -18,13 +18,13 @@ require('../config/passport')(passport);
 router.post('/signup', function(req, res, next) {
     //If there is no email or no password or the email is invalid or the password is invalid
     if (!req.body.email) {
-        res.json({success: false, msg: 'Please pass an email'});
+        res.status(400).json({success: false, msg: 'Please pass an email'});
     } else if(!req.body.password){
-        res.json({success: false, msg: 'Please pass a password'});
+        res.status(400).json({success: false, msg: 'Please pass a password'});
     } else if(!(req.body.email).match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm)){
-        res.json({success: false, msg: 'Please pass a valid email'});
+        res.status(400).json({success: false, msg: 'Please pass a valid email'});
     } else if(!(req.body.password).match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/)){
-        res.json({success: false, msg: 'Please pass a valid password', requirements: [
+        res.status(400).json({success: false, msg: 'Please pass a valid password', requirements: [
             'should contain at least one digit',
             'should contain at least one lower case',
             'should contain at least one upper case',
@@ -41,7 +41,7 @@ router.post('/signup', function(req, res, next) {
         // save the user
         newUser.save(function(err) {
             if (err) {
-                return res.json({success: false, msg: 'Username already exists.'});
+                return res.status(400).json({success: false, msg: 'Username already exists.'});
             }
             res.json({success: true, msg: 'Successful created new user.'});
         });
@@ -61,7 +61,7 @@ router.post('/authenticate', function(req, res, next) {
     if (err) throw err;
 
     if (!user) {
-      return res.send({success: false, msg: 'Authentication failed. User not found.'});
+      return res.status(401).send({success: false, msg: 'Authentication failed. User not found.'});
     } else {
       // check if password matches
       user.comparePassword(req.body.password, function (err, isMatch) {
@@ -73,7 +73,7 @@ router.post('/authenticate', function(req, res, next) {
           // return the information including token as JSON
           res.json({success: true, using_email: userObject.email ? true : false, user: user, msg: 'Authentication success.', token: 'JWT ' + token });
         } else {
-          return res.send({success: false, msg: 'Authentication failed. Wrong password.'});
+          return res.status(401).send({success: false, msg: 'Authentication failed. Wrong password.'});
         }
       });
     }
@@ -97,7 +97,7 @@ router.post('/facebook', function(req, res, next) {
                 if (err) return next(err);
                 user.save(function(err) {
                     if (err) {
-                        return res.json({success: false, msg: 'Username already exists.'});
+                        return res.status(400).json({success: false, msg: 'Username already exists.'});
                     }
                     var token = jwt.encode(user, config.secret);
                     res.json({success: true, using_facebook: true, user: user, msg: 'Account Created - Authentication success.', token: 'JWT ' + token });
@@ -128,7 +128,7 @@ router.get('/memberinfo', passport.authenticate('jwt', { session: false}), funct
       if (err) throw err;
 
       if (!user) {
-        return res.status(403).send({success: false, msg: 'Authentication failed. User not found.'});
+        return res.status(400).send({success: false, msg: 'Authentication failed. User not found.'});
       } else {
         res.json({success: true, msg: 'Welcome in the member area ' + user.name + '!', user: user});
       }
@@ -151,7 +151,7 @@ router.put('/changePwd', function(req, res, next) {
 
             user.save(function(err) {
                 if (err) {
-                    return res.json({success: false, msg: 'Validation failed on save'});
+                    return res.status(400).json({success: false, msg: 'Validation failed on save'});
                 }
 
                 token = jwt.encode(user, config.secret);
@@ -194,7 +194,7 @@ router.post('/newPwd/:token', function(req, res, next) {
 
     User.findOne({ reset_token: req.params.token, reset_token_expire: { $gt: Date.now() } }, function(err, user) {
         if (!user) {
-            return res.send({success: false, msg:'Password reset token is invalid or has expired.'});
+            return res.status(400).send({success: false, msg:'Password reset token is invalid or has expired.'});
         }
         user.password = req.body.password;
         user.reset_token = undefined;
@@ -202,7 +202,7 @@ router.post('/newPwd/:token', function(req, res, next) {
 
         user.save(function(err) {
             if (err) {
-                return res.json({success: false, msg: 'User failed at saving changed'});
+                return res.status(400).json({success: false, msg: 'User failed at saving changed'});
             }
 
             res.send({success: true, msg: 'Password successfully changed !'});
@@ -237,7 +237,7 @@ router.get('/resetPwd/:email', function(req, res, next) {
                 // send mail with defined transport object
                 transporter.sendMail(mailOptions, function(error, info){
                     if(error){
-                        res.send({success: false, msg: error});
+                        res.status(400).send({success: false, msg: error});
                     }
                     else{
                         res.send({success: true, msg: 'Message sent'})
@@ -252,7 +252,7 @@ router.get('/resetPwd/:email', function(req, res, next) {
 
         }
         else{
-            res.send({success: false, msg: 'Invalid email'});
+            res.status(400).send({success: false, msg: 'Invalid email'});
         }
 
 
