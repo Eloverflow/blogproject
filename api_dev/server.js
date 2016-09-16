@@ -100,6 +100,17 @@ app.use(function(req, res, next) {
 });
 // Fin Ajout pour supporter le cross-site
 
+/*Check if there is a token for its expiration*/
+app.use(function(req, res, next) {
+    var token = getToken(req.headers);
+    if (token) {
+        var decoded = jwt.decode(token, config.secret);
+        if (decoded.exp <= Date.now()) {
+            res.end('Access token has expired', 400);
+        }
+    }
+    next();
+});
 
 //app.use('/api/sendColor', color);
 app.use('/', index);
