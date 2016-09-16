@@ -9,6 +9,7 @@ var User = require('../models/user.js');
 var passport = require('passport');
 var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
+var moment = require('moment');
 
 var crypto = require('crypto');
 
@@ -66,7 +67,8 @@ router.post('/authenticate', function(req, res, next) {
       user.comparePassword(req.body.password, function (err, isMatch) {
         if (isMatch && !err) {
           // if user is found and password is right create a token
-          var token = jwt.encode(user, config.secret);
+            var expires = moment().add('days', 7).valueOf();
+          var token = jwt.encode({iss:user,exp: expires}, config.secret);
           // return the information including token as JSON
           res.json({success: true, using_email: userObject.email ? true : false, user: user, msg: 'Authentication success.', token: 'JWT ' + token });
         } else {
