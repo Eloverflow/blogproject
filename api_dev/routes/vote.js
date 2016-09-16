@@ -26,6 +26,8 @@ router.post('/', function(req, res, next) {
       email: decoded.email
     }, function (err, user) {
       if (err) return next(err);
+      if (!user) return res.json({success: false, msg: 'User was not found with this token'});
+      if (!req.body.comment_id) return res.json({success: false, msg: 'Comment was not found with this ID'});
 
       Vote.findOne({
         comment_id: req.body.comment_id,
@@ -72,7 +74,7 @@ router.post('/', function(req, res, next) {
 
             }
             else {
-              res.json('You already voted');
+              res.json({success: false, msg: 'You already voted'});
             }
           }
 

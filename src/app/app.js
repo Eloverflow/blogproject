@@ -192,7 +192,6 @@ app.directive('onErrorSrc', function() {
   return {
     link: function(scope, element, attrs) {
       element.bind('error', function() {
-        console.log('sfdsfsd')
         if (attrs.src != attrs.onErrorSrc) {
           attrs.$set('src', attrs.onErrorSrc);
         }
