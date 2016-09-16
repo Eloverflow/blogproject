@@ -20,9 +20,9 @@ angular.module('starter.controllers', ['ui.tinymce'])
 
         var $callbackFunction = function (response) {
 
-            if($rootScope.seshUser)
+            if($rootScope.sesUser)
             for(var i = 0; i < response.length; i++){
-                response[i].myVote  = $filter('filter')(response[i].votes, {user_id: $rootScope.seshUser._id})[0];
+                response[i].myVote  = $filter('filter')(response[i].votes, {user_id: $rootScope.sesUser._id})[0];
             }
             $scope.comments = response;
         };
