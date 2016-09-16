@@ -37,7 +37,8 @@ npm run serve
 ```
 Now browse to blogproject at [http://localhost:3000/](http://localhost:3000/)
 
-## To Run Database (Be sure to have a destination folder for the database or use : mongod --dbpath <Your mongo databse folder>)
+## To Run Database
+(Be sure to have a destination folder for the database or use : mongod --dbpath <Your mongo databse folder>)
 ```
 mongod
 ```
