@@ -25,26 +25,35 @@ router.post('/', function(req, res, next) {
       email: decoded.email
     },function (err, user) {
       if (err) return next(err);
-      
+      if (!user) return res.json({success: false, msg: 'User was not found with this token'});
+
+
       Post.findById(req.body.post_id,function (err, post) {
         if (err) return next(err);
+        if (!post) return res.json({success: false, msg: 'Post was not found with this ID'});
+
         Comment.create({
           user_id: user,
           post_id: req.body.post_id,
           content: req.body.content
         },function (err, comment) {
           if(err) return next(err);
+          if (!comment) return res.json({success: false, msg: 'Comment is invalid'});
+
           post.comments.push(comment._id);
           post.save();
 
           Comment.populate(comment, {path : 'user_id', model: 'User'}, function (err, comment) {
 
-            res.json(comment);
+            res.json({success: true, comment: comment});
           })
 
         });
       });
     })
+  }
+  else {
+    res.json({success: false, msg: 'No authentication token found'});
   }
   
 });

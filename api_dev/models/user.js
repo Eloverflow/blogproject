@@ -6,8 +6,8 @@ var bcrypt = require('bcryptjs');
 var UserSchema = new mongoose.Schema({
     username : { type: String, required: false },
     name : { type: String, required: false },
-    password : { type: String, required: true },
-    email : { type: String, required: true, unique: true},
+    password : { type: String, required: false },
+    email : { type: String, required: [true, 'Email is required'] , unique: true},
     picture: { type: String, required: false },
     facebook_id: { type: String, required: false },
     reset_token: { type: String, required: false },
@@ -21,7 +21,7 @@ var UserSchema = new mongoose.Schema({
 
 UserSchema.pre('save',function(next) {
     var user = this;
-    if (this.isModified('password') || this.isNew) {
+    if ((this.isModified('password') || this.isNew) && !user.facebook_id) {
         bcrypt.genSalt(10, function (err, salt) {
             if (err) {
                 return next(err);
@@ -31,7 +31,6 @@ UserSchema.pre('save',function(next) {
                     return next(err);
                 }
                 user.password = hash;
-                user.reset_token =
                 next();
             });
         });

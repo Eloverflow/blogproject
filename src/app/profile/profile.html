@@ -22,7 +22,7 @@
                         <strong>Email :</strong>
                         <span>{{ seshUser.email }}</span>
                     </div>
-                    <button ng-click="newPwd()">Change password</button>
+                    <button class="btn btn-default" ng-click="newPwd()" ng-hide="seshUser.facebook_id">Change password</button>
                 </div>
             </div>
         </div>

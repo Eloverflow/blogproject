@@ -15,9 +15,22 @@ var crypto = require('crypto');
 require('../config/passport')(passport);
 
 router.post('/signup', function(req, res, next) {
-    if (!req.body.email || !req.body.password) {
-        res.json({success: false, msg: 'Please pass email and password.'});
-    } else {
+    //If there is no email or no password or the email is invalid or the password is invalid
+    if (!req.body.email) {
+        res.json({success: false, msg: 'Please pass an email'});
+    } else if(!req.body.password){
+        res.json({success: false, msg: 'Please pass a password'});
+    } else if(!(req.body.email).match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm)){
+        res.json({success: false, msg: 'Please pass a valid email'});
+    } else if(!(req.body.password).match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/)){
+        res.json({success: false, msg: 'Please pass a valid password', requirements: [
+            'should contain at least one digit',
+            'should contain at least one lower case',
+            'should contain at least one upper case',
+            'should contain at least 8 from the mentioned characters'
+        ]});
+    }
+    else {
         var newUser = new User({
             email: req.body.email,
             username: req.body.username,
@@ -36,6 +49,7 @@ router.post('/signup', function(req, res, next) {
 
 router.post('/authenticate', function(req, res, next) {
 
+    /*Allow to authenticate with username and email*/
     var userObject = {};
     if((req.body.email).match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm))
         userObject.email = req.body.email;
@@ -75,8 +89,7 @@ router.post('/facebook', function(req, res, next) {
                 picture: req.body.picture,
                 email: req.body.email,
                 facebook_id: req.body.userID,
-                name: req.body.name,
-                password: 'facebookUser'
+                name: req.body.name
             }, function (err, user) {
                 if (err) return next(err);
                 user.save(function(err) {

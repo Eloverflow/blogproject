@@ -17,7 +17,7 @@ angular.module('starter.controllers')
 
 
   $scope.newPwd = function() {
-    bootbox.prompt("Change Password ?", function(result) {
+    bootbox.prompt("Type your new password !", function(result) {
       if (result === null) {
         // "Prompt dismissed"
       } else {
