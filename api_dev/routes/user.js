@@ -139,7 +139,7 @@ router.put('/changePwd', function(req, res, next) {
                 }
 
                 token = jwt.encode(user, config.secret);
-                res.json({success: true, user: user, token: token, msg: 'Successfully changed password'});
+                res.json({success: true, user: user,  token: 'JWT ' + token, msg: 'Successfully changed password'});
             });
 
 
@@ -210,7 +210,7 @@ router.get('/resetPwd/:email', function(req, res, next) {
                 var link = config.network.address + ':3000' + '/#!/new-password/' + user.reset_token;
 
                 var mailOptions = {
-                    from: process.env.email || 'user@gmail.com', // sender address
+                    from: process.env.from_email || 'user@gmail.com', // sender address
                     to: req.params.email, // list of receivers
                     subject: 'Hello it seems you lost your password ?', // Subject line
                     text: 'Click on the link :  ' + link +
