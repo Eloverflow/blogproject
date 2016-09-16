@@ -23,7 +23,7 @@ router.post('/signup', function(req, res, next) {
         res.status(400).json({success: false, msg: 'Please pass a password'});
     } else if(!(req.body.email).match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm)){
         res.status(400).json({success: false, msg: 'Please pass a valid email'});
-    } else if(!(req.body.password).match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/)){
+    } else if(!(req.body.password).match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[\S]{8,}$/)){
         res.status(400).json({success: false, msg: 'Please pass a valid password', requirements: [
             'should contain at least one digit',
             'should contain at least one lower case',
@@ -157,7 +157,7 @@ router.put('/changePwd', function(req, res, next) {
             if (!user) return res.status(400).json({success: false, msg: 'User was not found with this token'});
             if(!req.body.password){
                 res.status(400).json({success: false, msg: 'Please pass a password'});
-            } else if(!(req.body.password).match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/)){
+            } else if(!(req.body.password).match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[\S]{8,}$/)){
                 res.status(400).json({success: false, msg: 'Please pass a valid password', requirements: [
                     'should contain at least one digit',
                     'should contain at least one lower case',
@@ -218,7 +218,7 @@ router.post('/newPwd/:token', function(req, res, next) {
 
         if(!req.body.password){
                 res.status(400).json({success: false, msg: 'Please pass a password'});
-        } else if(!(req.body.password).match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/)){
+        } else if(!(req.body.password).match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[\S]{8,}$/)){
             res.status(400).json({success: false, msg: 'Please pass a valid password', requirements: [
                 'should contain at least one digit',
                 'should contain at least one lower case',
