@@ -38,23 +38,23 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
   });
 
   $routeProvider.when('/sign-in', {
-    templateUrl: 'sign_in/sign_in.html',
-    controller: 'LoginCtrl'
+    templateUrl: 'user/sign_in.html',
+    controller: 'UserCtrl'
   });
 
   $routeProvider.when('/sign-up', {
-    templateUrl: 'sign_in/sign_up.html',
-    controller: 'LoginCtrl'
+    templateUrl: 'user/sign_up.html',
+    controller: 'UserCtrl'
   });
 
   $routeProvider.when('/forgot-password', {
-    templateUrl: 'sign_in/forgot_pass.html',
-    controller: 'LoginCtrl'
+    templateUrl: 'user/forgot_pass.html',
+    controller: 'UserCtrl'
   });
 
   $routeProvider.when('/new-password/:token', {
-    templateUrl: 'sign_in/new_pass.html',
-    controller: 'LoginCtrl'
+    templateUrl: 'user/new_pass.html',
+    controller: 'UserCtrl'
   });
 
   $routeProvider.when('/profile/:id', {

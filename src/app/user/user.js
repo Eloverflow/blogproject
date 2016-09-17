@@ -1,5 +1,5 @@
 angular.module('starter.controllers')
-.controller('LoginCtrl', function($scope, $rootScope, postReq,  AuthService, $q, EmailService, $location, API_ENDPOINT, DEBUG, $routeParams) {
+.controller('UserCtrl', function($scope, $rootScope, postReq,  AuthService, $q, EmailService, $location, API_ENDPOINT, DEBUG, $routeParams, $parse) {
 
       // This is the fail callback from the login method
     var fbLoginError = function(error){
@@ -18,12 +18,53 @@ angular.module('starter.controllers')
     $scope.user = {is_admin:"false"};
 
     $scope.signup = function() {
-      AuthService.register($scope.user).then(function(msg) {
-          if(DEBUG.isEnabled)
-            console.log(msg)
-          $location.path('/sign-in');
-      }, function(errMsg) {
-      });
+
+        $scope.errorList = [];
+
+        var fieldState = {username: 'VALID', email: 'VALID', password: 'VALID'};
+
+        if($scope.signUpForm.email.$error.required || !$scope.signUpForm.email){
+            fieldState.email = 'The email is required.';
+        } else if ($scope.signUpForm.email.$error.pattern){
+            fieldState.email = 'The email is invalid.';
+        }
+
+        if($scope.signUpForm.username.$error.required || !$scope.signUpForm.username){
+            fieldState.username = 'The username is required.';
+        }
+
+        if($scope.signUpForm.password.$error.required || !$scope.signUpForm.password){
+            fieldState.password = 'The password is required.';
+        }
+
+        for (var fieldName in fieldState) {
+            var message = fieldState[fieldName];
+            var serverMessage = $parse('signUpForm.'+fieldName+'.$error.serverMessage');
+
+            if (message == 'VALID') {
+                $scope.signUpForm.$setValidity(fieldName, true, $scope.signUpForm);
+                serverMessage.assign($scope, undefined);
+            }
+            else {
+
+                $scope.signUpForm.$setValidity(fieldName, false, $scope.signUpForm);
+                serverMessage.assign($scope, fieldState[fieldName]);
+
+                $scope.errorList.push(fieldState[fieldName]);
+            }
+        }
+
+        console.log($scope.errorList);
+
+        if ($scope.errorList.length == 0) {
+            AuthService.register($scope.user).then(function(msg) {
+                if(DEBUG.isEnabled)
+                    console.log(msg)
+                $location.path('/sign-in');
+            }, function(errMsg) {
+            });
+        }
+
     };
 
 
