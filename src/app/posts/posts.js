@@ -5,7 +5,7 @@ angular.module('starter.controllers')
 .controller('PostsCtrl', function($scope, getReq, delReq, $location, API_ENDPOINT, postReq) {
 
 
-  $scope.deletePost = function (post) {
+    $scope.deletePost = function (post) {
 
       var $url = API_ENDPOINT.url + '/post/' + post._id;
 
@@ -16,32 +16,32 @@ angular.module('starter.controllers')
       if(confirm('Are you sure you want to delete this Post ?'))
       delReq.send($url, null, $callbackFunction);
 
-  };
+    };
 
-  $scope.textSearch = {};
+    $scope.textSearch = {};
 
-  $scope.editPost = function (post_id) {
-    $location.path('/post-edit/'+post_id)
-  };
+    $scope.editPost = function (post_id) {
+        $location.path('/post-edit/'+post_id)
+    };
 
-$scope.callRestService= function() {
-    var $url = API_ENDPOINT.url + '/post/search';
-    var $data = {search : $scope.textSearch.data}
-    var $callbackfunction = function (response) {
-        if(typeof $scope.result == 'undefined' || $scope.result == null)
-            $scope.result = [];
+    $scope.callRestService= function() {
+        var $url = API_ENDPOINT.url + '/post/search';
+        var $data = {search : $scope.textSearch.data}
+        var $callbackfunction = function (response) {
+            if(typeof $scope.result == 'undefined' || $scope.result == null)
+                $scope.result = [];
 
-        $scope.posts = response;
-        $scope.noSearchResult = response == "";
+            $scope.posts = response;
+            $scope.noSearchResult = response == "";
+
+        };
+
+        console.log($data);
+        postReq.send($url, $data, null, $callbackfunction)
 
     };
 
-    console.log($data);
-    postReq.send($url, $data, null, $callbackfunction)
-
-}
-  
-  $scope.getPosts = function () {
+    $scope.getPosts = function () {
 
       var $url = API_ENDPOINT.url + '/post';
 
@@ -52,7 +52,7 @@ $scope.callRestService= function() {
 
       getReq.send($url, null, $callbackFunction);
     };
-  $scope.getPosts();
+    $scope.getPosts();
   
 
 })

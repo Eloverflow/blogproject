@@ -57,35 +57,35 @@ router.post('/authenticate', function(req, res, next) {
     else
         userObject.username = req.body.email;
 
-  User.findOne(userObject, function(err, user) {
-    if (err) throw err;
+    User.findOne(userObject, function(err, user) {
+        if (err) throw err;
 
-    if (!user) {
-      return res.status(401).send({success: false, msg: 'Authentication failed. User not found.'});
-    } else {
-      // check if password matches
-      user.comparePassword(req.body.password, function (err, isMatch) {
-        if (isMatch && !err) {
-          // if user is found and password is right create a token
-
-            var userObject ={
-                _id: user._id,
-                email: user.email,
-                username: user.username,
-                name: user.name,
-                exp: !req.body.remember_me ? moment().add('minutes', 60).valueOf() : moment().add('days', 7).valueOf()
-                };
-
-            var token = jwt.encode(userObject, config.secret);
-
-          // return the information including token as JSON
-          res.json({success: true, using_email: userObject.email ? true : false, user: user, msg: 'Authentication success.', token: 'JWT ' + token });
+        if (!user) {
+            return res.status(400).send({success: false, msg: 'Authentication failed. User not found.'});
         } else {
-          return res.status(401).send({success: false, msg: 'Authentication failed. Wrong password.'});
+            // check if password matches
+            user.comparePassword(req.body.password, function (err, isMatch) {
+                if (isMatch && !err) {
+                    // if user is found and password is right create a token
+
+                    var userObject ={
+                        _id: user._id,
+                        email: user.email,
+                        username: user.username,
+                        name: user.name,
+                        exp: !req.body.remember_me ? moment().add('minutes', 60).valueOf() : moment().add('days', 7).valueOf()
+                    };
+
+                    var token = jwt.encode(userObject, config.secret);
+
+                    // return the information including token as JSON
+                    res.json({success: true, using_email: userObject.email ? true : false, user: user, msg: 'Authentication success.', token: 'JWT ' + token });
+                } else {
+                    return res.status(401).send({success: false, msg: 'Authentication failed. Wrong password.'});
+                }
+            });
         }
-      });
-    }
-  });
+    });
 });
 
 /* POST /facebook */
@@ -119,31 +119,29 @@ router.post('/facebook', function(req, res, next) {
             res.json({success: true, using_facebook: true, user: user, msg: 'Authentication success.', token: 'JWT ' + token });
         }
 
-
-
     })
-
 
 });
 
 router.get('/memberinfo', passport.authenticate('jwt', { session: false}), function(req, res) {
-  var token = getToken(req.headers);
-  if (token) {
-    var decoded = jwt.decode(token, config.secret);
-    User.findOne({
-      email: decoded.email
-    }, function(err, user) {
-      if (err) throw err;
+    var token = getToken(req.headers);
+    if (token) {
+        var decoded = jwt.decode(token, config.secret);
+        User.findOne({
+            email: decoded.email
+        }, function(err, user) {
+            if (err) throw err;
 
-      if (!user) {
-        return res.status(400).send({success: false, msg: 'Authentication failed. User not found.'});
-      } else {
-        res.json({success: true, msg: 'Welcome in the member area ' + user.name + '!', user: user});
-      }
-    });
-  } else {
-    return res.status(403).send({success: false, msg: 'No token provided.'});
-  }
+            if (!user) {
+                return res.status(400).send({success: false, msg: 'Authentication failed. User not found.'});
+            } else {
+                var finalName = !user.username ? user.name : user.username;
+                res.json({success: true, msg: 'Welcome in the member area ' + finalName + '!', user: user});
+            }
+        });
+    } else {
+        return res.status(403).send({success: false, msg: 'No token provided.'});
+    }
 });
 
 router.put('/changePwd', function(req, res, next) {
@@ -184,20 +182,20 @@ router.put('/changePwd', function(req, res, next) {
 });
 
 router.put('/changePict/:id', function(req, res, next) {
- User.findById(req.params.id, function (err, post) {
+    User.findById(req.params.id, function (err, post) {
 
-    post.picture = req.body.picture;
+        post.picture = req.body.picture;
 
-    post.save(function(err) {
-      if (err) {
-        return res.json({success: false, msg: 'Username already exists.'});
-      }
+        post.save(function(err) {
+            if (err) {
+                return res.json({success: false, msg: 'Username already exists.'});
+            }
 
-      res.json({success: true});
+            res.json({success: true});
+        });
+
+        if (err) return next(err);
     });
-
-    if (err) return next(err);
-  });
 
 });
 
@@ -233,7 +231,7 @@ router.post('/newPwd/:token', function(req, res, next) {
         }
 
         if(!req.body.password){
-                res.status(400).json({success: false, msg: 'Please pass a password'});
+            res.status(400).json({success: false, msg: 'Please pass a password'});
         } else if(!(req.body.password).match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[\S]{8,}$/)){
             res.status(400).json({success: false, msg: 'Please pass a valid password', requirements: [
                 'should contain at least one digit',
@@ -311,5 +309,3 @@ router.get('/resetPwd/:email', function(req, res, next) {
 
 
 module.exports = router;
-
-

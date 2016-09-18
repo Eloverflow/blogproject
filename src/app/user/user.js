@@ -7,14 +7,6 @@ angular.module('starter.controllers')
       //$ionicLoading.hide();
     };
 
-    $scope.goToSignIn = function () {
-        $location.path('/sign-in');
-    };
-
-    $scope.goToSignUp = function () {
-        $location.path('/sign-up');
-    };
-
     $scope.user = {is_admin:"false"};
 
     $scope.signup = function() {
@@ -113,6 +105,7 @@ angular.module('starter.controllers')
           $rootScope.getInfo();
           $location.path('/')
       }, function(errMsg) {
+          console.log(errMsg);
       });
     };
 

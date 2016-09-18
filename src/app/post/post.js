@@ -263,6 +263,11 @@ angular.module('starter.controllers', ['ui.tinymce'])
 
     $scope.tinymceOptions = {
         height: 400,
+        setup: function(editor) {
+            editor.on("init", function () {
+                $(editor.editorContainer).addClass('form-control');
+            });
+        },
         plugins: ['advlist autolink lists link image charmap print preview anchor',
         'searchreplace visualblocks code fullscreen',
         'insertdatetime media table contextmenu paste code'

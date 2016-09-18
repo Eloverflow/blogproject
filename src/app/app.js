@@ -104,21 +104,18 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService, $sce, DEBUG, $loca
   
   $rootScope.toTrustedHTML = function( html ){
     return $sce.trustAsHtml( html );
-  }
+  };
 
   $rootScope.profile = function(){
-    console.log($rootScope.sesUser)
     $location.path('/profile/' + $rootScope.sesUser._id);
-  }
+  };
 
   $rootScope.afterLogin = function () {
-    console.log('test')
     $location.path('/')
-  }
+  };
 
   // This method is to get the user profile info from the facebook api
   $rootScope.getFacebookProfileInfo = function (authResponse, callback) {
-    console.log(authResponse);
 
     openFB.api({
       path: '/me',
@@ -135,11 +132,9 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService, $sce, DEBUG, $loca
 
           if(callback)
             callback(data);
-
-          console.log($rootScope.sesUser );
+          
         });
-
-        //document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=small';
+        
       },
       error: errorHandler});
 
@@ -162,7 +157,6 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService, $sce, DEBUG, $loca
           label: "Yes!",
           className: "btn-success",
           callback: function() {
-            console.log('Proceding with standard logging out');
 
             AuthService.logout();
 
