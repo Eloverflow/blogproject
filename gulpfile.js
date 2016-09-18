@@ -14,23 +14,13 @@ const hub = new HubRegistry([conf.path.tasks('*.js')]);
 // Tell gulp to use the tasks just loaded
 gulp.registry(hub);
 
-gulp.task('build', gulp.series('partials', gulp.parallel('other', 'webpack:dist')));
 gulp.task('test', gulp.series('karma:single-run'));
 gulp.task('test:auto', gulp.series('karma:auto-run'));
 gulp.task('serve', gulp.series('watch', sassCompile, 'webServer'));
-//gulp.task('serve', gulp.series('webpack:watch', 'watch', 'browsersync', sassCompile));
 gulp.task('serve:api', gulp.series('api:watch'));
-gulp.task('serve:dist', gulp.series('default', 'browsersync:dist'));
-gulp.task('default', gulp.series('clean', 'build'));
 gulp.task('watch', watch);
 
-function reloadBrowserSync(cb) {
-  browserSync.reload();
-  cb();
-}
-
 function watch(done) {
-  gulp.watch(conf.path.src('app/**/*.html'), reloadBrowserSync);
   gulp.watch("src/**/*.scss", sassCompile);
   done();
 }
@@ -39,21 +29,19 @@ gulp.task('webServer', function() {
   gulp.src('src/app')
       .pipe(webserver({
         port:'3000',
-        livereload: true,
+        livereload: {
+            enable: true, // need this set to true to enable livereload
+            filter: function(fileName) {
+                if (fileName.match(/.map$/)) { // exclude all source maps from livereload
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        },
         open: true
       }));
 });
-
-
-
-// Compile sass into CSS & auto-inject into browsers
-/*function sassCompile(done) {
-  gulp.src("src/!**!/!*.scss")
-      .pipe(sass())
-      .pipe(gulp.dest("src/"))
-      .pipe(browserSync.stream());
-  done();
-};*/
 
 // Compile sass into CSS & auto-inject into browsers
 function sassCompile(done) {
@@ -61,12 +49,5 @@ function sassCompile(done) {
       .pipe(sass())
       .pipe(autoprefixer())
       .pipe(gulp.dest("src/app/"))
-      .pipe(browserSync.stream());
   done();
 }
-
-
-/*
-
-gulp.task('sass-watch', function() {
-});*/

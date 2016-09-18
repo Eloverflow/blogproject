@@ -5,11 +5,8 @@ module.exports = function(config) {
     basePath: './src',
 
     files: [
-      'lib/angular.min.js',
-      'lib/angular-ui-router.min.js',
-      'lib/angular-mocks.js',
-      'app/components/**/*.js',
-      'app/view*/**/*.js'
+      'app/**/*.js',
+      'app/**/*.css'
     ],
 
     autoWatch: true,
