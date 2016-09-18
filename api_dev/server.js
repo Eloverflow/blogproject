@@ -48,7 +48,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({ extended: true, limit: '50mb'}));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '../www')));
+app.use(express.static(path.join(__dirname, '../src/app')));
 
 global.getToken = function (headers) {
  if (headers && headers.authorization) {

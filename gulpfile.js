@@ -1,6 +1,5 @@
 const gulp = require('gulp');
 const HubRegistry = require('gulp-hub');
-const browserSync = require('browser-sync');
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var concat = require('gulp-concat');

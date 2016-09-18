@@ -18,6 +18,7 @@
     "bootstrap": "*",
     "jquery.tagsinput": "*",
     "bootbox.js": "*",
+    "tinymce-dist": "*",
     "fontawesome": "*"
   },
   "private": false

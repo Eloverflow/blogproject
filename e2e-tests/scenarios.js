@@ -14,7 +14,7 @@ describe('my app', function() {
   describe('post', function() {
 
     beforeEach(function() {
-      browser.get('index.html#!/view_feed');
+      browser.get('index.html#/post-post');
     });
 
 
@@ -29,7 +29,7 @@ describe('my app', function() {
   describe('posts', function() {
 
     beforeEach(function() {
-      browser.get('index.html#!/view_article');
+      browser.get('index.html#/view_article');
     });
 
 
