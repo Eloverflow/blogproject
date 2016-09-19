@@ -11,16 +11,16 @@ describe('blogproject', function() {
   });
 
 
-  describe('post', function() {
+  describe('contact', function() {
 
     beforeEach(function() {
-      browser.get('index.html/#/post');
+      browser.get('index.html/#/contact');
     });
 
 
-    it('should render post view when user navigates to /view_feed', function() {
+    it('should render contact view when user navigates to /contact', function() {
       expect(element.all(by.css('[ng-view] p')).first().getText()).
-        toMatch(/partial for view 1/);
+        toMatch(/partial for view contact/);
     });
 
   });
@@ -35,7 +35,7 @@ describe('blogproject', function() {
 
     it('should render posts when user navigates to /posts', function() {
       expect(element.all(by.css('[ng-view] p')).first().getText()).
-        toMatch(/partial for view 2/);
+        toMatch(/partial for view posts/);
     });
 
   });
