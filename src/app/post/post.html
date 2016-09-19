@@ -69,10 +69,10 @@
                         </div>
                     </li>
                 </ul>
-                <div ng-show="sesUser"  class="InputAddOn-sub-comment">
+                <div ng-show="sesUser"  class="input-sub-comment">
                     <form>
-                        <input id="btn-input-sub-comment" type="text" ng-model="comment.currentSubComment" class="InputAddOn-field-sub-comment form-control" placeholder="Type your message here..." />
-                        <button class="InputAddOn-item-sub-comment btn btn-default" ng-click="addSubComment(comment)">Send</button>
+                        <input id="btn-input-sub-comment" type="text" ng-model="comment.currentSubComment" class="input-field-sub-comment form-control" placeholder="Type your message here..." />
+                        <button class="input-item-sub-comment btn btn-default" ng-click="addSubComment(comment)">Send</button>
                     </form>
                 </div>
             </div>
@@ -81,9 +81,9 @@
     </ul>
     <hr>
     <div ng-show="sesUser" class="chat-foot">
-        <div class="InputAddOn">
-            <textarea id="btn-input" rows="2" ng-model="comment.content" class="InputAddOn-field form-control" placeholder="Type your message here..."></textarea>
-            <button ng-click="addComment(comment)" class="InputAddOn-item btn btn-default">Send</button>
+        <div class="input">
+            <textarea id="btn-input" rows="2" ng-model="comment.content" class="input-field form-control" placeholder="Type your message here..."></textarea>
+            <button ng-click="addComment(comment)" class="input-item btn btn-default">Send</button>
         </div>
     </div>
 </div>
