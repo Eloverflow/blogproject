@@ -27,6 +27,8 @@ angular.module('starter.controllers')
 
         if($scope.signUpForm.password.$error.required || !$scope.signUpForm.password){
             fieldState.password = 'The password is required.';
+        } else if ($scope.signUpForm.password.$error.pattern){
+            fieldState.password = 'The password should contain 8 characters including one digit, one lowercase and one uppercase letter.';
         }
 
         for (var fieldName in fieldState) {
