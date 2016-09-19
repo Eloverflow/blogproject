@@ -7,6 +7,7 @@ This is an opensource blog project made for Mirageflow Inc.
 
 In this project we are using build-in text search index of Mongod, you might want to look at Elastisearch for production environment.
 
+
 ## Prerequisites
 
 * **Git**
