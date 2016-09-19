@@ -85,9 +85,15 @@ router.post('/search', function(req, res, next) {
 
       Post.find({$text :{$search: req.body.search}},
           { score : { $meta: "textScore" } }).sort({ score : { $meta : 'textScore' } })
-          .exec(function(err, results) {
+          .exec(function(err, posts) {
             if (err) return next(err);
-            res.json(results);
+
+            Post.populate(posts,{path : 'user_id', model: 'User'},function (err, posts) {
+              if (err) return next(err);
+              res.json(posts);
+            });
+
+           // res.json(results);
           });
   });
   }
