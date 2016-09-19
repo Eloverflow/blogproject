@@ -26,7 +26,7 @@ angular.module('starter.controllers')
 
     $scope.callRestService= function() {
         var $url = API_ENDPOINT.url + '/post/search';
-        var $data = {search : $scope.textSearch.data}
+        var $data = {search : $scope.textSearch.data};
         var $callbackfunction = function (response) {
             if(typeof $scope.result == 'undefined' || $scope.result == null)
                 $scope.result = [];
@@ -49,7 +49,7 @@ angular.module('starter.controllers')
 
         $scope.posts = response;
         $scope.noSearchResult = false;
-          
+
       };
 
       getReq.send($url, null, $callbackFunction);

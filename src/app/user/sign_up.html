@@ -23,7 +23,7 @@
 
                     <div class="form-group {{ !signUpForm.password.$error.serverMessage ? '' : 'has-error'}}">
                         <label for="password">Password :</label>
-                        <input id="password" type="password" name="password" class="form-control" ng-model="user.password" ng-required="true" required>
+                        <input id="password" type="password" name="password" class="form-control" ng-model="user.password" ng-required="true" ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[\S]{8,}$/" required>
                     </div>
 
                     <div class="form-group">
