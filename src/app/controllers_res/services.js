@@ -9,6 +9,9 @@ angular.module('starter.services', [])
                 } else {
                     reject(result.data.msg);
                 }
+            },
+            function (result) {
+                reject(result.data);
             });
         });
     };
@@ -26,6 +29,9 @@ angular.module('starter.services', [])
                 } else {
                     reject(result.data.msg);
                 }
+            },
+            function (result) {
+                reject(result.data);
             });
         });
     };
@@ -93,6 +99,9 @@ angular.module('starter.services', [])
                     reject(result.data.msg);
                 }
             });
+        },
+        function (result) {
+            reject(result.data);
         });
     };
 
@@ -105,6 +114,9 @@ angular.module('starter.services', [])
                 } else {
                     reject(result.data.msg);
                 }
+            },
+            function (result) {
+                reject(result.data);
             });
         });
     };
@@ -119,6 +131,9 @@ angular.module('starter.services', [])
                 } else {
                     reject(result.data.msg);
                 }
+            },
+            function (result) {
+                reject(result.data);
             });
         });
     };
@@ -132,6 +147,9 @@ angular.module('starter.services', [])
                 } else {
                     reject(result.data.msg);
                 }
+            },
+            function (result) {
+                reject(result.data);
             });
         });
     }
@@ -144,6 +162,9 @@ angular.module('starter.services', [])
                 } else {
                     reject(result.data.msg);
                 }
+            },
+            function (result) {
+                reject(result.data);
             });
         });
     }

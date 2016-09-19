@@ -1,5 +1,5 @@
 'use strict';
 module.exports = {
-    'address' : 'http://localhost',
+    'address' : 'http://blogproject.net',
     'api' : '/api'
 };

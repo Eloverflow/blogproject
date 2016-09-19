@@ -268,7 +268,7 @@ router.get('/resetPwd/:email', function(req, res, next) {
 
                 var transporter = nodemailer.createTransport(config.smtpConfig);
 
-                var link = config.network.address + ':3000' + '/#/new-password/' + user.reset_token;
+                var link = config.network.address + '/#/new-password/' + user.reset_token;
 
                 var mailOptions = {
                     from: process.env.from_email || 'user@gmail.com', // sender address

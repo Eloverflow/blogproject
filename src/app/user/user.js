@@ -105,6 +105,7 @@ angular.module('starter.controllers')
           $rootScope.getInfo();
           $location.path('/')
       }, function(errMsg) {
+          console.log('errMsg');
           console.log(errMsg);
       });
     };
