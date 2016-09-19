@@ -46,6 +46,13 @@ angular.module('starter.controllers')
       var $url = API_ENDPOINT.url + '/post';
 
       var $callbackFunction = function (response) {
+
+          var whitelist = "p"; // for more tags use the multiple selector, e.g. "p, img"
+          $("#text *").not(whitelist).each(function() {
+              var content = $(this).contents();
+              $(this).replaceWith(content);
+          });
+          
         $scope.posts = response;
         $scope.noSearchResult = false;
       };

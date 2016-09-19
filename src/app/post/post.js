@@ -318,11 +318,11 @@ angular.module('starter.controllers', ['ui.tinymce'])
 
         var fieldState = {title: 'VALID', content: 'VALID'};
 
-        if($scope.createPostForm.title.$error.required || !$scope.createPostForm.title){
+        if($scope.editPostForm.title.$error.required || !$scope.editPostForm.title){
             fieldState.title = 'The title is required.';
         }
 
-        if($scope.createPostForm.content.$error.required || !$scope.createPostForm.content){
+        if($scope.editPostForm.content.$error.required || !$scope.editPostForm.content){
             fieldState.content = 'The content is required.';
         }
 
@@ -331,12 +331,12 @@ angular.module('starter.controllers', ['ui.tinymce'])
             var serverMessage = $parse('createPostForm.'+fieldName+'.$error.serverMessage');
 
             if (message == 'VALID') {
-                $scope.createPostForm.$setValidity(fieldName, true, $scope.createPostForm);
+                $scope.editPostForm.$setValidity(fieldName, true, $scope.editPostForm);
                 serverMessage.assign($scope, undefined);
             }
             else {
 
-                $scope.createPostForm.$setValidity(fieldName, false, $scope.createPostForm);
+                $scope.editPostForm.$setValidity(fieldName, false, $scope.editPostForm);
                 serverMessage.assign($scope, fieldState[fieldName]);
 
                 $scope.errorList.push(fieldState[fieldName]);
