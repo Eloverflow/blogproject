@@ -8,14 +8,15 @@
                 </div>
 
                 <form>
+
+                    <hr class="or-hr">
+
                     <div ng-show="errorList.length > 0" class="alert alert-danger" role="alert">
                         <strong>Oops,</strong> There was an error with your submission :
                         <ul class="error-list">
                             <li ng-repeat="n in errorList">{{ n }}</li>
                         </ul>
                     </div>
-
-                    <hr class="or-hr">
 
                     <div class="form-group">
                         <input ng-model="user.email" id="uname" class="form-control" type="text" placeholder="Email or Username" name="uname" required>
