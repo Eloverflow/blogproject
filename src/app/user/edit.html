@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-lg-6 col-lg-offset-3">
+        <div class="panel panel-default">
+            <div class="panel-heading"><strong>Edit User</strong></div>
+            <div class="panel-body">
+                <form name="updateUserForm" ng-submit="updateUser()" method="post" novalidate>
+                    <div ng-show="errorList.length > 0" class="alert alert-danger" role="alert">
+                        <strong>Oops,</strong> There was an error with your submission :
+                        <ul class="error-list">
+                            <li ng-repeat="n in errorList">{{ n }}</li>
+                        </ul>
+                    </div>
+
+                    <div class="form-group {{ !signUpForm.email.$error.serverMessage ? '' : 'has-error'}}">
+                        <label for="email">Email : </label>
+                        <input id="email" type="email" name="email" class="form-control" ng-model="user.email" ng-required="true" ng-pattern="/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/" required/>
+                    </div>
+
+                    <div class="form-group {{ !signUpForm.username.$error.serverMessage ? '' : 'has-error'}}">
+                        <label for="username">Username : </label>
+                        <input id="username" type="text" name="username" class="form-control" ng-model="user.username" ng-required="true" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reset_password">Reset password ? (Will send an email)</label>
+                        <select id="reset_password" ng-model="user.reset_password" class="form-control" ng-required="true" required>
+                            <option value="false">No</option>
+                            <option value="true">Yes</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="is_admin" >Is admin ?</label>
+                        <select  id="is_admin" ng-model="user.is_admin" class="form-control" ng-required="true" required>
+                            <option value="false">No</option>
+                            <option value="true">Yes</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn theme-btn pull-right">
+                            Update
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <span class="bottom-link"><a ng-click="goToSignIn()"><-- Get back to login</a></span>
+        <span class="bottom-link pull-right"><a href="#/forgot-password">Forgot  password ?</a></span>
+
+    </div>
+</div>

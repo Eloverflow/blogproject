@@ -1,5 +1,5 @@
 angular.module('starter.controllers')
-.controller('UserCtrl', function($scope, $rootScope, postReq,  AuthService, $q, EmailService, $location, API_ENDPOINT, DEBUG, $routeParams, $parse) {
+.controller('UserCtrl', function($scope, $rootScope, postReq,  AuthService, getReq, putReq, $q, EmailService, $location, API_ENDPOINT, DEBUG, $routeParams, $parse) {
 
       // This is the fail callback from the login method
     var fbLoginError = function(error){
@@ -113,6 +113,77 @@ angular.module('starter.controllers')
             }
 
             postReq.send($url, $scope.user, null, $callbackFunction);
+        }
+
+    };
+
+    $scope.getUser = function() {
+        var $url = API_ENDPOINT.url + '/auth/'+ $routeParams.id +'/profile';
+
+        var $callbackFunction = function (response) {
+            $scope.user = response;
+
+            if(response.is_admin){
+                $scope.user.is_admin ="true";
+            }else{
+                $scope.user.is_admin ="false";
+            }
+
+            $scope.user.reset_password ="false";
+
+        };
+
+        getReq.send($url, null, $callbackFunction);
+    };
+    $scope.getUser();
+
+
+    $scope.updateUser = function() {
+
+        $scope.errorList = [];
+
+        var fieldState = {username: 'VALID', email: 'VALID', password: 'VALID'};
+
+        if($scope.updateUserForm.email.$error.required || !$scope.updateUserForm.email){
+            fieldState.email = 'The email is required.';
+        } else if ($scope.updateUserForm.email.$error.pattern){
+            fieldState.email = 'The email is invalid.';
+        }
+
+        if($scope.updateUserForm.username.$error.required || !$scope.updateUserForm.username){
+            fieldState.username = 'The username is required.';
+        }
+
+        for (var fieldName in fieldState) {
+            var message = fieldState[fieldName];
+            var serverMessage = $parse('updateUserForm.'+fieldName+'.$error.serverMessage');
+
+            if (message == 'VALID') {
+                $scope.updateUserForm.$setValidity(fieldName, true, $scope.updateUserForm);
+                serverMessage.assign($scope, undefined);
+            }
+            else {
+
+                $scope.updateUserForm.$setValidity(fieldName, false, $scope.updateUserForm);
+                serverMessage.assign($scope, fieldState[fieldName]);
+
+                $scope.errorList.push(fieldState[fieldName]);
+            }
+        }
+
+        console.log($scope.errorList);
+
+        if ($scope.errorList.length == 0) {
+            $url = API_ENDPOINT.url + '/auth/'+$routeParams.id;
+
+
+            $callbackFunction = function (response) {
+                if(response.success){
+                    $location.path('/profile/'+response.user._id);
+                }
+            }
+
+            putReq.send($url, $scope.user, null, $callbackFunction);
         }
 
     };

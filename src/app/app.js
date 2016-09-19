@@ -52,6 +52,11 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
     controller: 'UserCtrl'
   });
 
+  $routeProvider.when('/edit-user/:id', {
+    templateUrl: 'user/edit.html',
+    controller: 'UserCtrl'
+  });
+
   $routeProvider.when('/forgot-password', {
     templateUrl: 'user/forgot_pass.html',
     controller: 'UserCtrl'

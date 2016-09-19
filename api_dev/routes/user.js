@@ -407,6 +407,115 @@ router.post('/', function(req, res, next) {
 
 });
 
+/* POST /post */
+router.put('/:id', function(req, res, next) {
+
+    var token = getToken(req.headers);
+    if (token) {
+        var decoded = jwt.decode(token, config.secret);
+        User.findOne({
+            email: decoded.email
+        },function (err, user) {
+            if (err) return next(err);
+            if (!user) return res.status(400).json({success: false, msg: 'User was not found with this token'});
+
+            if(user.is_admin){
+
+                if (!req.body.email) {
+                    res.status(400).json({success: false, msg: 'Please pass an email'});
+                } else if(!(req.body.email).match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm)){
+                    res.status(400).json({success: false, msg: 'Please pass a valid email'});
+                } else if(req.body.password && !(req.body.password).match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[\S]{8,}$/)){
+                    res.status(400).json({success: false, msg: 'Please pass a valid password', requirements: [
+                        'should contain at least one digit',
+                        'should contain at least one lower case',
+                        'should contain at least one upper case',
+                        'should contain at least 8 from the mentioned characters'
+                    ]});
+                }
+                else {
+
+                    User.findOne({_id: req.params.id },function (err, user) {
+                        if (err) return next(err);
+
+                        var password;
+                        if(req.body.reset_password){
+                            password = guid();
+                        }
+                        else{
+                            password = req.body.password;
+                        }
+
+
+                        user.email= req.body.email;
+                        user.username= req.body.username;
+                        user.is_admin= req.body.is_admin;
+                        if(password) user.password = password;
+
+                        // save the user
+                        user.save(function(err) {
+                            if (err) {
+                                return res.status(400).json({success: false, msg: 'Username already exists.'});
+                            }
+
+                            if(req.body.reset_password){
+                                crypto.randomBytes(20, function(err, buf) {
+                                    user.reset_token = buf.toString('hex');
+                                    user.reset_token_expire = Date.now() + 3600000;
+                                    user.save();
+
+                                    var transporter = nodemailer.createTransport(config.smtpConfig);
+
+                                    var link = config.network.address + '/#/new-password/' + user.reset_token;
+
+                                    var mailOptions = {
+                                        from: process.env.from_email || 'user@gmail.com', // sender address
+                                        to: req.body.email, // list of receivers
+                                        subject: 'Hello it seems someone just reset your password!', // Subject line
+                                        text: 'Click on the link :  ' + link +
+                                        '\n To choose your password!', // plaintext body
+                                        html: '<b>'+ 'Click on the link :' +'</b> <a href="' + link + '">'+ link + '</a><br>To choose your password!' // html body
+                                    };
+
+                                    // send mail with defined transport object
+                                    transporter.sendMail(mailOptions, function(error, info){
+                                        if(error){
+                                            res.json({success: false, msg: 'Successful updated user. & Could not send message', user: user});
+                                        }
+                                        else{
+                                            res.json({success: true, msg: 'Successful updated user. & Message sent', user: user});
+                                        }
+
+                                        transporter.close();
+                                    });
+
+
+                                });
+                            }
+                            else{
+                                res.json({success: true, msg: 'Successful updated user.', user: user});
+                            }
+
+                        });
+
+                    })
+                }
+
+            }
+            else{
+                res.status(403).json({success: false, msg: 'You dont have enought rights'});
+            }
+
+
+        })
+    }
+    else {
+        res.status(403).json({success: false, msg: 'No authentication token found'});
+    }
+
+
+});
+
 function guid() {
     function s4() {
         return Math.floor((1 + Math.random()) * 0x10000)
