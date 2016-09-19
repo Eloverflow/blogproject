@@ -162,10 +162,34 @@ router.put('/:id', function(req, res, next) {
 
 /* DELETE /post/:id */
 router.delete('/:id', function(req, res, next) {
-  Post.findByIdAndRemove(req.params.id, req.body, function (err, post) {
-    if (err) return next(err);
-    res.json({success: true, post: post});
-  });
+  var token = getToken(req.headers);
+  if (token) {
+    var decoded = jwt.decode(token, config.secret);
+    User.findOne({
+      email: decoded.email
+    },function (err, user) {
+      if (err) return next(err);
+      if (!user) return res.status(400).json({success: false, msg: 'User was not found with this token'});
+
+      if(user.is_admin){
+
+        Post.findByIdAndRemove(req.params.id, req.body, function (err, post) {
+          if (err) return next(err);
+          res.json({success: true, post: post});
+        });
+
+      }
+      else{
+        res.status(403).json({success: false, msg: 'You dont have enought rights'});
+      }
+
+
+    })
+  }
+  else {
+    res.status(403).json({success: false, msg: 'No authentication token found'});
+  }
+
 });
 
 module.exports = router;
