@@ -73,16 +73,23 @@ config.smtpConfig = {
         pass:  process.env.pass || 'pass'
     }
 };
-var transporter = nodemailer.createTransport(config.smtpConfig);
-transporter.verify(function(error, success) {
-    if (error) {
-        console.log('Server is failed to test transporter');
-        console.log(error);
-    } else {
-        console.log('Server is ready to take our messages');
-        transporter.close();
-    }
-});
+
+try {
+    var transporter = nodemailer.createTransport(config.smtpConfig);
+    transporter.verify(function(error, success) {
+        if (error) {
+            console.log('Server is failed to test transporter');
+            /*  console.log(error);*/
+        } else {
+            console.log('Server is ready to take our messages');
+        }
+    });
+
+    transporter.close();
+}
+catch (e){
+    console.log('Mail took the catch');
+}
 
 global.config = config;
 global.jwt = jwt;
