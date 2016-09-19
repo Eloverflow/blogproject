@@ -126,8 +126,6 @@ app.use('/api/post', post);
 app.use('/api/comment', comment);
 app.use('/api/subComment', subComment);
 app.use('/api/vote', vote);
-/*
- app.use('/api/cloth/pants', pants);*/
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
