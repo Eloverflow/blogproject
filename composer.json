@@ -1,5 +1,5 @@
 {
-  "name": "eloverflow/blogproject",
+  "name": "mirageflow/blogproject",
   "description": "A basic Angular 1 Blog Application with Node API Stateless",
   "require": {
     "nodejs": "^4.4.7"
