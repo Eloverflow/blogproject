@@ -135,7 +135,8 @@ angular.module('starter.controllers')
 
         getReq.send($url, null, $callbackFunction);
     };
-    $scope.getUser();
+    if($routeParams.id)$scope.getUser();
+
 
 
     $scope.updateUser = function() {
