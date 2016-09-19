@@ -9,6 +9,6 @@ angular.module('starter.constants', [])
   })
 
 .constant('DEBUG', {
-    isEnabled: true
+    isEnabled: !!(location.host == 'localhost' || location.host == "127.0.0.1")
   });
     
