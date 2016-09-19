@@ -80,9 +80,9 @@ transporter.verify(function(error, success) {
         console.log(error);
     } else {
         console.log('Server is ready to take our messages');
+        transporter.close();
     }
 });
-transporter.close();
 
 global.config = config;
 global.jwt = jwt;
