@@ -2,6 +2,7 @@
   "name": "mirageflow/blogproject",
   "version": "1.0.0",
   "description": "A basic Angular 1 Blog Application with Node API Stateless",
+  "license": "MIT",
   "require": {
     "nodejs": "^4.4.7"
   },
