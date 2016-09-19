@@ -20,23 +20,13 @@
   background-color: rgb(248, 248, 248);
 }
 
-
-.chat-msg{
-  min-height: 250px;/*
-  max-height: 600px;*/
-  list-style: none;/*
-  overflow-y: auto;*/
-  margin-bottom: 0;
-}
-
 // Post css section ---
-
-
-
-
-.post, .header, .post-header {
+.post{
   margin-bottom: 24px;
   min-height: 100px;
+}
+
+.post,.header, .post-header {
 
   .post-info {
     position: absolute;
@@ -118,14 +108,10 @@
   }
 
 }
-
-
 // End Post css section
 
-.aside-2 {
 
-}
-
+// Comments css section
 .chat{
   background-color: white;
   border: 1px solid lightgray;
@@ -135,6 +121,8 @@
   -webkit-box-shadow: 0 10px 6px -6px #777;
   -moz-box-shadow: 0 10px 6px -6px #777;
   box-shadow: 0 10px 6px -6px #777;
+
+
   .chat-header{
 
     background-color: darken(rgb(248, 248, 248), 5% );
@@ -154,6 +142,14 @@
       font-size: 30px;
     }
 
+  }
+
+  .chat-msg{
+    min-height: 250px;/*
+  max-height: 600px;*/
+    list-style: none;/*
+  overflow-y: auto;*/
+    margin-bottom: 0;
   }
 
   hr{
@@ -319,7 +315,7 @@
 .post-content{
   min-height: 400px;
 }
-
+// End Comments css section
 
 
 @media all and (min-width: 600px) {
@@ -333,15 +329,10 @@
   .footer  { order: 3; }
 }
 
-p{/*
-  display: inline;*/
-}
-
 /*Hide textarea editor toolbar path*/
 .mce-path {/* CSS */
   display: none !important;
 }
-
 
 /* Navigation Menu - Background */
 .navigation {
@@ -369,6 +360,64 @@ p{/*
     z-index: 3;
     width: 256px;
   }
+
+  /* Navigation Menu - List items */
+  .nav-item {
+    /* non-critical appearance styles */
+    width: 260px;
+  }
+
+  .nav-item a {
+    /* non-critical appearance styles */
+    display: block;
+    padding: 10px;
+    border-right: 4px solid #16caa5;
+    color: white;
+    font-size: 1.2em;
+    text-decoration: none;
+    transition: color 0.2s, background 0.5s;
+
+
+    i{
+      margin-right: 8px;
+    }
+  }
+
+  .nav-item a:hover {
+
+    background-color: #35475d;
+  }
+
+  .nav-item.menu-profile {
+    height: 65px;
+    color: white;
+    display: inline-flex;
+    flex-direction: row;
+    background-color: darken(#2a3f54, 5%);
+    border-bottom: 1px solid darken(#2a3f54, 10%);
+  }
+
+  .nav-item.menu-profile {
+
+    .item.img {
+      display: flex;
+      flex-grow: 1;
+      justify-content: center;
+      align-items: center;
+      img {
+        border-radius: 50%;
+
+      }
+    }
+    .item.msg {
+      flex-grow: 4;
+      margin-left: 8px;
+      padding-top: 10px;
+      h4 {
+        margin-top: 5px;
+      }
+    }
+  }
 }
 
 #backdrop{
@@ -376,64 +425,6 @@ p{/*
   width: 100%;
   height: 100%;
   background-color: rgba(0,0,0,0.5);
-}
-
-.nav-item.menu-profile {
-  height: 65px;
-  color: white;
-  display: inline-flex;
-  flex-direction: row;
-  background-color: darken(#2a3f54, 5%);
-  border-bottom: 1px solid darken(#2a3f54, 10%);
-}
-
-.nav-item.menu-profile {
-
-  .item.img {
-    display: flex;
-    flex-grow: 1;
-    justify-content: center;
-    align-items: center;
-    img {
-      border-radius: 50%;
-
-    }
-  }
-  .item.msg {
-    flex-grow: 4;
-    margin-left: 8px;
-    padding-top: 10px;
-    h4 {
-      margin-top: 5px;
-    }
-  }
-}
-
-/* Navigation Menu - List items */
-.nav-item {
-  /* non-critical appearance styles */
-  width: 260px;
-}
-
-.nav-item a {
-  /* non-critical appearance styles */
-  display: block;
-  padding: 10px;
-  border-right: 4px solid #16caa5;
-  color: white;
-  font-size: 1.2em;
-  text-decoration: none;
-  transition: color 0.2s, background 0.5s;
-
-
-  i{
-    margin-right: 8px;
-  }
-}
-
-.nav-item a:hover {
-
-  background-color: #35475d;
 }
 
 /* Site Wrapper - Everything that isn't navigation */
@@ -449,6 +440,7 @@ p{/*
   padding-top: 6em;
   padding-left: 1em;
   padding-right: 1em;
+  transition: left 0.4s;
 
   /* non-critical apperance styles */
 
@@ -482,27 +474,12 @@ p{/*
   }
 }
 
-
 /* Nav Trigger */
 .nav-trigger {
   /* critical styles - hide the checkbox input */
   position: absolute;
   clip: rect(0, 0, 0, 0);
 }
-/*
-div[for="nav-trigger"] {
-  !* critical positioning styles *!
-  position: absolute;
-  left: 15px; top: 15px;
-  z-index: 2;
-
-  !* non-critical apperance styles *!
-  height: 30px;
-  width: 30px;
-  cursor: pointer;
-  //background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' x='0px' y='0px' width='30px' height='30px' viewBox='0 0 30 30' enable-background='new 0 0 30 30' xml:space='preserve'><rect width='30' height='6'/><rect y='24' width='30' height='6'/><rect y='12' width='30' height='6'/></svg>");
-  background-size: contain;
-}*/
 
 #header{
   height: 65px;
@@ -514,16 +491,40 @@ div[for="nav-trigger"] {
   top: 0;
   border-bottom: 2px solid lighten(#2a3f54, 50%);
   z-index: 9999;
-}
 
+  #btn-github{
+    color: black;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: row;
+    vertical-align: middle;
+    margin: 10px;
+    padding: 0;
+    height: 40px;
+    span{
+      flex: 2;
+      width: 140px;
+      font-weight: bold;
+      line-height: 36px;
+      margin-right: 15px;
+    }
+
+    i{
+      flex: 1;
+      font-size: 26px;
+      width: 18px;
+      line-height: 36px;
+    }
+  }:hover{
+    color: #16caa5;
+    text-shadow: 0px 0px 0px;
+  }
+}
 
 /* Make the Magic Happen */
 .nav-trigger + #nav-icon{
   transition: left 0.1s;
-}
-
-.site-wrap {
-  transition: left 0.4s;
 }
 
 .nav-trigger:checked + #nav-icon {
@@ -551,17 +552,6 @@ code {
 /* Micro reset */
 *,*:before,*:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;margin:0;padding:0;}
 html, body { height: 100%; width: 100%; font-family: Helvetica, Arial, sans-serif; }
-
-
-
-//
-// Bourbon + Neat Grids
-//
-//@if $bourbon == true {
-//  @import 'modules/_grids';
-//} @else {
-// @import 'modules/_clearfix';
-//}
 
 /*Nav icon*/
 #nav-icon{
@@ -642,10 +632,6 @@ html, body { height: 100%; width: 100%; font-family: Helvetica, Arial, sans-seri
 }
 /*End nav icon*/
 
-#post-tags{
-}
-
-
 .sign-in,.sign-up{
   padding: 4vh;
   .sign-in-header,.sign-in-builtin,.sign-in-fb,.sign-in-other,.sign-up-header,.sign-up-builtin,.sign-up-fb,.sign-up-other{
@@ -677,52 +663,6 @@ html, body { height: 100%; width: 100%; font-family: Helvetica, Arial, sans-seri
     display: block;
   }
 }
-
-#btn-github{
-  color: black;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-  transition: all 0.2s;
-  display: flex;
-  flex-direction: row;
-  vertical-align: middle;
-  margin: 10px;
-  padding: 0;
-  height: 40px;
-  span{
-    flex: 2;
-    width: 140px;
-    font-weight: bold;
-    line-height: 36px;
-    margin-right: 15px;
-  }
-
-  i{
-    flex: 1;
-    font-size: 26px;
-    width: 18px;
-    line-height: 36px;
-  }
-}
-
-#fa-posts-feed{
-  margin-top: 8px;
-  float: right;
-  vertical-align: middle;
-  i{
-    cursor: pointer;
-    color: lightgrey;
-    line-height: 48px;
-    font-size: 36px;
-  }:hover{
-     color: #16caa5;
-   }
-}
-
-#btn-github:hover{
-  color: #16caa5;
-  text-shadow: 0px 0px 0px;
-}
-
 
 // Login css section ---
 
