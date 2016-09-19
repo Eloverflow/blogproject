@@ -59,6 +59,62 @@ angular.module('starter.controllers')
             });
         }
 
+    };  
+    
+    $scope.addUser = function() {
+
+        $scope.errorList = [];
+
+        var fieldState = {username: 'VALID', email: 'VALID', password: 'VALID'};
+
+        if($scope.newUserForm.email.$error.required || !$scope.newUserForm.email){
+            fieldState.email = 'The email is required.';
+        } else if ($scope.newUserForm.email.$error.pattern){
+            fieldState.email = 'The email is invalid.';
+        }
+
+        if($scope.newUserForm.username.$error.required || !$scope.newUserForm.username){
+            fieldState.username = 'The username is required.';
+        }
+
+        if($scope.newUserForm.password.$error.required || !$scope.newUserForm.password){
+            fieldState.password = 'The password is required.';
+        } else if ($scope.newUserForm.password.$error.pattern){
+            fieldState.password = 'The password should contain 8 characters including one digit, one lowercase and one uppercase letter.';
+        }
+
+        for (var fieldName in fieldState) {
+            var message = fieldState[fieldName];
+            var serverMessage = $parse('newUserForm.'+fieldName+'.$error.serverMessage');
+
+            if (message == 'VALID') {
+                $scope.newUserForm.$setValidity(fieldName, true, $scope.newUserForm);
+                serverMessage.assign($scope, undefined);
+            }
+            else {
+
+                $scope.newUserForm.$setValidity(fieldName, false, $scope.newUserForm);
+                serverMessage.assign($scope, fieldState[fieldName]);
+
+                $scope.errorList.push(fieldState[fieldName]);
+            }
+        }
+
+        console.log($scope.errorList);
+
+        if ($scope.errorList.length == 0) {
+            $url = API_ENDPOINT.url + '/auth';
+
+
+            $callbackFunction = function (response) {
+                if(response.success){
+                    $location.path('/profile/'+response.user._id);
+                }
+            }
+
+            postReq.send($url, $scope.user, null, $callbackFunction);
+        }
+
     };
 
 

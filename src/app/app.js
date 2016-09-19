@@ -47,6 +47,11 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
     controller: 'UserCtrl'
   });
 
+  $routeProvider.when('/new-user', {
+    templateUrl: 'user/create-new.html',
+    controller: 'UserCtrl'
+  });
+
   $routeProvider.when('/forgot-password', {
     templateUrl: 'user/forgot_pass.html',
     controller: 'UserCtrl'

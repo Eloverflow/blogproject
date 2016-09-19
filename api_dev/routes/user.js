@@ -35,7 +35,6 @@ router.post('/signup', function(req, res, next) {
         var newUser = new User({
             email: req.body.email,
             username: req.body.username,
-            is_admin: req.body.is_admin,
             password: req.body.password
         });
         // save the user
@@ -307,5 +306,115 @@ router.get('/resetPwd/:email', function(req, res, next) {
 
 });
 
+/* POST /post */
+router.post('/', function(req, res, next) {
+
+    var token = getToken(req.headers);
+    if (token) {
+        var decoded = jwt.decode(token, config.secret);
+        User.findOne({
+            email: decoded.email
+        },function (err, user) {
+            if (err) return next(err);
+            if (!user) return res.status(400).json({success: false, msg: 'User was not found with this token'});
+
+            if(user.is_admin){
+
+                if (!req.body.email) {
+                    res.status(400).json({success: false, msg: 'Please pass an email'});
+                } else if(!(req.body.email).match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm)){
+                    res.status(400).json({success: false, msg: 'Please pass a valid email'});
+                } else if(req.body.password && !(req.body.password).match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[\S]{8,}$/)){
+                    res.status(400).json({success: false, msg: 'Please pass a valid password', requirements: [
+                        'should contain at least one digit',
+                        'should contain at least one lower case',
+                        'should contain at least one upper case',
+                        'should contain at least 8 from the mentioned characters'
+                    ]});
+                }
+                else {
+                    var password;
+                    if(!req.body.password){
+                        password = guid();
+                    }
+                    else{
+                        password = req.body.password;
+                    }
+
+                    var newUser = new User({
+                        email: req.body.email,
+                        username: req.body.username,
+                        is_admin: req.body.is_admin,
+                        password: password
+                    });
+                    // save the user
+                    newUser.save(function(err) {
+                        if (err) {
+                            return res.status(400).json({success: false, msg: 'Username already exists.'});
+                        }
+
+                        if(!req.body.password){
+                            crypto.randomBytes(20, function(err, buf) {
+                                newUser.reset_token = buf.toString('hex');
+                                newUser.reset_token_expire = Date.now() + 3600000;
+                                newUser.save();
+
+                                var transporter = nodemailer.createTransport(config.smtpConfig);
+
+                                var link = config.network.address + '/#/new-password/' + newUser.reset_token;
+
+                                var mailOptions = {
+                                    from: process.env.from_email || 'user@gmail.com', // sender address
+                                    to: req.body.email, // list of receivers
+                                    subject: 'Hello it seems someone created an account for you!', // Subject line
+                                    text: 'Click on the link :  ' + link +
+                                    '\n To choose your password!', // plaintext body
+                                    html: '<b>'+ 'Click on the link :' +'</b> <a href="' + link + '">'+ link + '</a><br>To choose your password!' // html body
+                                };
+
+                                // send mail with defined transport object
+                                transporter.sendMail(mailOptions, function(error, info){
+                                    if(error){
+                                        console.log({success: false, msg: error});
+                                    }
+                                    else{
+                                        console.log({success: true, msg: 'Message sent'})
+                                    }
+
+                                    transporter.close();
+                                });
+
+
+                            });
+                        }
+
+                        res.json({success: true, msg: 'Successful created new user.', user: newUser});
+                    });
+                }
+
+            }
+            else{
+                res.status(403).json({success: false, msg: 'You dont have enought rights'});
+            }
+
+
+        })
+    }
+    else {
+        res.status(403).json({success: false, msg: 'No authentication token found'});
+    }
+
+
+});
+
+function guid() {
+    function s4() {
+        return Math.floor((1 + Math.random()) * 0x10000)
+            .toString(16)
+            .substring(1);
+    }
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+        s4() + '-' + s4() + s4() + s4();
+}
 
 module.exports = router;
