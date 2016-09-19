@@ -242,7 +242,7 @@ angular.module('starter.controllers', ['ui.tinymce'])
 
 
 })
-.controller('PostEditCtrl', function($scope, putReq, getReq, delReq, $routeParams, $location, API_ENDPOINT) {
+.controller('PostEditCtrl', function($scope, putReq, getReq, delReq, $routeParams, $location, API_ENDPOINT, $parse) {
 
     $scope.previewPost = {
         content: ""
@@ -308,7 +308,7 @@ angular.module('starter.controllers', ['ui.tinymce'])
 
         $scope.errorList = [];
 
-        var $url = API_ENDPOINT.url + '/post';
+        var $url = API_ENDPOINT.url + '/post/' + $routeParams.id;
 
         var $callbackFunction = function (response) {
 
@@ -346,11 +346,12 @@ angular.module('starter.controllers', ['ui.tinymce'])
         console.log($scope.errorList);
 
         if ($scope.errorList.length == 0) {
-            putReq.send($url, $scope.post, null, $callbackFunction);
+            putReq.send($url, $scope.post, null, $callbackFunction)
             console.log("Valid form !!!");
         } else {
             console.log("Invalid form !!!");
         }
+
 
 
     };
