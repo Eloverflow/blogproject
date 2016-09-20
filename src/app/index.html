@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Blog Project</title>
+  <title>Mirageflow Press-release</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="index.css">
@@ -31,13 +31,7 @@
         <h4 ng-hide="sesUser.username">{{ sesUser.name }} </h4>
       </div>
     </li>
-    <li class="nav-item" ><a href="#/posts" ><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
-    <li class="nav-item"><a href="#/about"><i class="fa fa-info-circle" aria-hidden="true"></i>About</a></li>
-    <li class="nav-item"><a href="#/contact"><i class="fa fa-envelope" aria-hidden="true"></i>Contact</a></li>
-    <hr />
-    <li class="nav-item"><a href="#/recent"><i class="fa fa-clock-o" aria-hidden="true"></i>Recent</a></li>
-    <li class="nav-item"><a href="#/popular"><i class="fa fa-fire" aria-hidden="true"></i>Popular</a></li>
-    <hr />
+    <li class="nav-item" ><a href="#/posts" ><i class="fa fa-home" aria-hidden="true"></i>Posts list</a></li>
     <li ng-hide="sesUser" class="nav-item" ><a href="#/sign-in"><i class="fa fa-users" aria-hidden="true"></i>Sign In</a></li>
     <li ng-show="sesUser" class="nav-item"><a href="#/profile/{{ sesUser._id }}"><i class="fa fa-user" aria-hidden="true"></i>Profile</a></li>
     <li ng-show="sesUser" ng-click="logOut()" class="nav-item"><a href=""><i class="fa fa-sign-out" aria-hidden="true"></i>Log Out</a></li>
@@ -62,7 +56,7 @@
   <div class="site-wrap">
 
     <div id="header">
-        <a href="https://github.com/mirageflow/blogproject"><button id="btn-github" class="pull-right"><i class="fa fa-github" aria-hidden="true"></i><span>View on Github</span></button></a>
+
     </div>
 
     <div ng-view></div>
@@ -86,8 +80,6 @@
   <script src="view_posts/posts.js"></script>
   <script src="view_user/user.js"></script>
   <script src="view_profile/profile.js"></script>
-  <script src="view_about/about.js"></script>
-  <script src="view_contact/contact.js"></script>
   <script src="js/menu-transition.js"></script>
   <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="../bower_components/bootbox.js/bootbox.js"></script>

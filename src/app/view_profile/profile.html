@@ -48,7 +48,6 @@
                 <a class="posts-title" href="#/post/{{post._id}}"><h3>{{ post.title }}</h3></a>
                 <ul class="posts-info">
                     <li class=""><i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp;<!--August, 27, 2016  -->{{ post.createdAt | date:'MMM d, y'}}</li>
-                    <li class=""><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;({{ post.comments.length }}) Comments</li>
                 </ul>
             </header>
             <article ng-bind-html="toTrustedHTML(post.content)" class="posts-content">

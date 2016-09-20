@@ -5,9 +5,7 @@ var router = express.Router();
 
 var mongoose = require('mongoose');
 var Post = require('../models/post.js');
-var Comment = require('../models/comment.js');
 var User = require('../models/user.js');
-var SubComment = require('../models/subComment.js');
 var textSearch = require("mongoose-text-search");
 /* GET /post listing. */
 router.get('/', function(req, res, next) {
@@ -15,13 +13,6 @@ router.get('/', function(req, res, next) {
     if (err) return next(err);
     res.json(post);
   });
-});
-/* GET /post */
-router.get('/:id/comments', function(req, res, next) {
-    Comment.find({post_id: req.params.id}).populate({path : 'sub_comments', model: 'SubComment', populate: { path: 'user_id', model: 'User' }}).populate({path : 'votes', model: 'Vote'}).populate({path : 'user_id', model: 'User'}).exec(function (err, comments) {
-      if (err) return next(err);
-      res.json(comments);
-    });
 });
 
 /* POST /post */

@@ -1,5 +1,5 @@
 'use strict';
 module.exports = {
-    'address' : 'http://blogproject.net',
+    'address' : 'http://mirageflow.com',
     'api' : '/api'
 };
