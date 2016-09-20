@@ -11,6 +11,10 @@ describe('Blogproject', function() {
     });
 
 
+    beforeEach(module('starter.constants'));
+    beforeEach(module('starter.services'));
+    beforeEach(module('starter.controllers'));
+
     describe('view_posts', function() {
 
         beforeEach(function() {
