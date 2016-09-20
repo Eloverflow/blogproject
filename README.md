@@ -103,10 +103,9 @@ travis.yml              --> Test and Deploy
 
 ## Full NPM Command
 ```
-npm run serve (to launch a browser sync server on your source files)
+npm run serve (to launch a web server on your source files)
 npm run serve:api (to launch a server api on your optimized application)
-npm run test (to launch your unit tests with Karma)
-npm run test:auto (to launch your unit tests with Karma in watch mode)
+npm run test-single-run (to launch your unit tests with Karma)
 ```
 
 ## Testing
