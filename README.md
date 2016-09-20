@@ -6,6 +6,25 @@
 
 This is an open-source Blog project made by Mirageflow Inc.
 
+The project includes theses features:
+- Posts Listing
+- Post consulting
+- Post commenting
+- Post comments sub-commenting
+- Post Up vote & Down vote
+- Complete build-in authentication
+- Secured with JWT Token
+- Sign-up
+- Sign-in
+- Forgot-password (Require email configurations)
+- Create User (User must be admin)
+- Facebook authentication (Require facebook configurations)
+- Profile (With user id)
+- Change password
+- Create Post (User must be admin)
+- Edit Post (User must be admin)
+- Delete Post (User must be admin)
+- Frontend (src/app) & Backend (api_dev)
 
 ## Prerequisites
 
