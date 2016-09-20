@@ -4,6 +4,18 @@
         <div class="panel panel-default">
 
             <div class="panel-body">
+                <div ng-show="errorList.length > 0" class="alert alert-danger" role="alert">
+                    <strong>Oops,</strong> There was an error with your submission :
+                    <ul class="error-list">
+                        <li ng-repeat="n in errorList">{{ n }}</li>
+                    </ul>
+                </div>
+                <div ng-show="msgList.length > 0" class="alert alert-success" role="alert">
+                    <strong>Success !</strong>
+                    <ul class="msg-list">
+                        <li ng-repeat="n in msgList">{{ n }}</li>
+                    </ul>
+                </div>
                 <div class="profile pic">
                     <img ng-src="{{user.picture ? user.picture : '/'}}" height="80" width="80" on-error-src="img/defaultProfile.png"/>
                     <div class="total-post">

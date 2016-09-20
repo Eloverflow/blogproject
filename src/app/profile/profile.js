@@ -47,8 +47,15 @@ angular.module('starter.controllers')
             if (result === null) {
               // "Prompt dismissed"
             } else {
-              AuthService.changePwd({password: result}).then(function (msg) {
-                /*Display success or faillure*/
+              $scope.msgList = [];
+              $scope.errorList = [];              
+              AuthService.changePwd({password: result}).then(function(result) {
+                if (result.success){
+                  $scope.msgList.push(result.msg);
+                }
+              }, function(errMsg) {
+                if (!errMsg.success)
+                  $scope.errorList.push(errMsg.msg);
               });
             }
           }
