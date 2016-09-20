@@ -3,12 +3,9 @@ const HubRegistry = require('gulp-hub');
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var concat = require('gulp-concat');
-var webserver = require('gulp-webserver');
-
-const conf = require('./conf/gulp.conf');
 
 // Load some files into the registry
-const hub = new HubRegistry([conf.path.tasks('*.js')]);
+const hub = new HubRegistry(['gulp_tasks/*.js']);
 
 // Tell gulp to use the tasks just loaded
 gulp.registry(hub);
@@ -23,24 +20,6 @@ function watch(done) {
   gulp.watch("src/**/*.scss", sassCompile);
   done();
 }
-
-gulp.task('webServer', function() {
-  gulp.src('src/app')
-      .pipe(webserver({
-        port:'3000',
-        livereload: {
-            enable: true, // need this set to true to enable livereload
-            filter: function(fileName) {
-                if (fileName.match(/.map$/)) { // exclude all source maps from livereload
-                    return false;
-                } else {
-                    return true;
-                }
-            }
-        },
-        open: true
-      }));
-});
 
 // Compile sass into CSS & auto-inject into browsers
 function sassCompile(done) {

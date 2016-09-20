@@ -4,9 +4,7 @@
 
 # Blogproject
 
-This is an opensource blog project made for Mirageflow Inc.
-
-In this project we are using build-in text search index of Mongod, you might want to look at Elastisearch for production environment.
+This is an open-source Blog project made by Mirageflow Inc.
 
 
 ## Prerequisites
