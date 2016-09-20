@@ -11,7 +11,7 @@ The project includes theses features:
 - Post consulting
 - Post commenting
 - Post comments sub-commenting
-- Post Up vote & Down vote
+- Post comments Up vote & Down vote
 - Complete build-in authentication
 - Secured with JWT Token
 - Sign-up
