@@ -10,7 +10,7 @@ describe('Blogproject', function() {
         expect(browser.getLocationAbsUrl()).toMatch("/posts");
     });
 
-    describe('view_posts', function() {
+  /*  describe('view_posts', function() {
 
         beforeEach(function() {
             browser.get('index.html/#/posts');
@@ -37,5 +37,5 @@ describe('Blogproject', function() {
             toMatch(/eloverflow/);
         });
 
-    });
+    });*/
 });
