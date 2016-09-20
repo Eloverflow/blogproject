@@ -1,7 +1,7 @@
 {
-  "name": "blogproject",
-  "private": true,
-  "version": "1.0.0",
+  "name": "Blogproject",
+  "private": false,
+  "version": "1.0.1",
   "description": "A starter blog project",
   "repository": {
     "type": "git",

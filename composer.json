@@ -1,6 +1,6 @@
 {
   "name": "mirageflow/blogproject",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "keywords": ["blog", "mirageflow", "blogproject", "angular", "nodejs", "template", "javascript"],
   "description": "A basic Angular 1 Blog Application with Node API Stateless",
   "license": "MIT",

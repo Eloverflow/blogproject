@@ -1,7 +1,7 @@
 {
   "name": "blogproject",
   "description": "A blogproject for Mirageflow",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/eloverflow/blogproject",
   "license": "MIT",
   "directory" : "src/app/bower_components",
