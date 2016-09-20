@@ -11,8 +11,8 @@ describe('starter.controllers module', function() {
     it('should ....', inject(function($controller) {
       //spec body
       var $scope = {};
-      var view1Ctrl = $controller('PostsCtrl', { $scope: $scope });
-      expect(view1Ctrl).toBeDefined();
+      var postsCtrl = $controller('PostsCtrl', { $scope: $scope });
+      expect(postsCtrl).toBeDefined();
     }));
 
   });

@@ -1,4 +1,3 @@
-/*
 'use strict';
 
 describe('starter.controllers module', function() {
@@ -7,14 +6,17 @@ describe('starter.controllers module', function() {
   beforeEach(module('starter.services'));
   beforeEach(module('starter.controllers'));
 
-  describe('Contact controller', function(){
+  describe('Profile controller', function(){
 
     it('should ....', inject(function($controller) {
       //spec body
       var $scope = {};
-      var contactCtrl = $controller('ContactCtrl', { $scope: $scope });
-      expect(contactCtrl).toBeDefined();
+      var profileCtrl = $controller('ProfileCtrl', {
+        $scope: $scope,
+        $routeParams: {id: '57e000b57772500ae3a0df6e'}
+      });
+      expect(profileCtrl).toBeDefined();
     }));
 
   });
-});*/
+});
