@@ -10,11 +10,6 @@ describe('Blogproject', function() {
         expect(browser.getLocationAbsUrl()).toMatch("/posts");
     });
 
-
-    beforeEach(module('starter.constants'));
-    beforeEach(module('starter.services'));
-    beforeEach(module('starter.controllers'));
-
     describe('view_posts', function() {
 
         beforeEach(function() {
