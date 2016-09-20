@@ -5,6 +5,9 @@
 # Blogproject
 
 This is an open-source Blog project made by Mirageflow Inc.
+- MongoDB as database
+- ExpressJS API as backend
+- AngularJS Application as front-end
 
 The project includes theses features:
 - Posts Listing
@@ -19,12 +22,11 @@ The project includes theses features:
 - Forgot-password (Require email configurations)
 - Create User (User must be admin)
 - Facebook authentication (Require facebook configurations)
-- Profile (With user id)
+- Profile
 - Change password
 - Create Post (User must be admin)
 - Edit Post (User must be admin)
 - Delete Post (User must be admin)
-- Frontend (src/app) & Backend (api_dev)
 
 ## Prerequisites
 
