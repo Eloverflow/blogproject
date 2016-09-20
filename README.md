@@ -1,8 +1,9 @@
+[![Latest Stable Version](https://poser.pugx.org/mirageflow/blogproject/v/stable.svg)](https://packagist.org/packages/mirageflow/blogproject)
+[![Total Downloads](https://poser.pugx.org/mirageflow/blogproject/d/total.svg)](https://packagist.org/packages/mirageflow/blogproject)
+
 # Blogproject
 
 This is an opensource blog project made for Mirageflow Inc.
-[![Latest Stable Version](https://poser.pugx.org/mirageflow/blogproject/v/stable.svg)](https://packagist.org/packages/mirageflow/blogproject)
-[![Total Downloads](https://poser.pugx.org/mirageflow/blogproject/d/total.svg)](https://packagist.org/packages/mirageflow/blogproject)
 
 In this project we are using build-in text search index of Mongod, you might want to look at Elastisearch for production environment.
 
