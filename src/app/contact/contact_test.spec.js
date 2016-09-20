@@ -1,7 +1,8 @@
+/*
 'use strict';
 
 describe('starter.controllers module', function() {
- /* beforeEach(module('starter.controllers'));*/
+ /!* beforeEach(module('starter.controllers'));*!/
 
   describe('contact controller', function(){
 
@@ -12,4 +13,4 @@ describe('starter.controllers module', function() {
     }));
 
   });
-});
+});*/

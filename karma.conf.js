@@ -5,30 +5,30 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
-
+    basePath: './src/app',
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['ng-scenario', 'jasmine', 'browserify'],
+    frameworks: ['jasmine'],
 
 
     // list of files / patterns to load in the browser
     files: [
-      'e2e-tests/scenarios.js',
-      'src/app/bower_components/angular-mocks/angular-mocks.js',
-      'src/app/bower_components/jquery/dist/jquery.min.js',
-      'src/app/bower_components/tinymce-dist/tinymce.js',
-      'src/app/bower_components/openfb/openfb.js',
-      'src/app/app.js',
-      'src/app/*/*.html',
-      'src/app/controllers_res/starter.js',
-      'src/app/controllers_res/constants.js',
-      'src/app/controllers_res/services.js',
-      'src/app/*/*.js',
-      'src/app/*/*.spec.js',
-      'src/app/bower_components/bootstrap/dist/js/bootstrap.min.js',
-      'src/app/bower_components/bootbox.js/bootbox.js'
+      'bower_components/angular/angular.js',
+      'bower_components/angular-route/angular-route.js',
+      'bower_components/angular-mocks/angular-mocks.js',
+      'bower_components/jquery/dist/jquery.min.js',
+      'bower_components/tinymce-dist/tinymce.js',
+      'bower_components/openfb/openfb.js',
+      'app.js',
+      '*/*.html',
+      'controllers_res/starter.js',
+      'controllers_res/constants.js',
+      'controllers_res/services.js',
+      '**/*.js',
+      '**/*.spec.js',
+      'bower_components/bootstrap/dist/js/bootstrap.min.js',
+      'bower_components/bootbox.js/bootbox.js',
     ],
 
 
@@ -77,12 +77,24 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
+    browsers: ['Chrome'],
 
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
     singleRun: false,
+
+    junitReporter: {
+      outputFile: 'test_out/unit.xml',
+      suite: 'unit'
+    },
+
+    plugins: [
+      'karma-chrome-launcher',
+      'karma-firefox-launcher',
+      'karma-jasmine',
+      'karma-junit-reporter'
+    ],
 
     // Concurrency level
     // how many browser should be started simultaneous

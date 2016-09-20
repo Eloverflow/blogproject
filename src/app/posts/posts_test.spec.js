@@ -1,16 +1,26 @@
+/*
 'use strict';
 
-describe('starter.controllers module', function() {
-/*
-  beforeEach(app('starter.controllers'));*/
+describe('PostsCtrl', function() {
+
+  beforeEach(angular.mock.module('starter.controllers'));
 
   describe('posts controller', function(){
 
-    it('should ....', inject(function($controller) {
-      //spec body
-      var viewPostsCtrl = $controller('PostsCtrl');
-      expect(viewPostsCtrl).toBeDefined();
+    var $controller;
+
+    beforeEach(angular.mock.inject(function(_$controller_){
+      // The injector unwraps the underscores (_) from around the parameter names when matching
+      $controller = _$controller_;
     }));
 
+    describe('$scope.grade', function() {
+      it('sets the strength to "strong" if the password length is >8 chars', function() {
+        var $scope = {};
+        var controller = $controller('PostsCtrl', { $scope: $scope });
+        $scope.password = 'longerthaneightchars';
+        expect($scope.password).toEqual('longerthaneightchars');
+      });
+    });
   });
-});
+});*/

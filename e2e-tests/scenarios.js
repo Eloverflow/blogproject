@@ -2,8 +2,9 @@
 
 /* https://github.com/angular/protractor/blob/master/docs/toc.md */
 
-describe('blogproject', function() {
+describe('starter', function() {
 
+  beforeEach(angular.mock.module('starter.controllers'));
 
   it('should automatically redirect to /posts when location hash/fragment is empty', function() {
     browser.get('index.html');
@@ -11,7 +12,7 @@ describe('blogproject', function() {
   });
 
 
-  describe('contact', function() {
+  describe('ContactCtrl', function() {
 
     beforeEach(function() {
       browser.get('/#/contact');
@@ -26,7 +27,7 @@ describe('blogproject', function() {
   });
 
 
-  describe('posts', function() {
+  describe('PostsCtrl', function() {
 
     beforeEach(function() {
       browser.get('/#/posts');
