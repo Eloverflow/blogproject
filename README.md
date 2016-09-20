@@ -147,9 +147,6 @@ bower update
 This will find the latest versions that match the version ranges specified in the `bower.json` file.
 
 
-This will copy the contents of the `angular-loader.js` library file into the `index-async.html` page.
-You can run this every time you update the version of Angular that you are using.
-
 ## Continuous Integration
 
 ### Travis CI
