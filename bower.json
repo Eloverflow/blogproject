@@ -13,6 +13,7 @@
     "compass-sass-mixins": "*",
     "angular-route": "*",
     "angular": "*",
+    "angular-mocks": "*",
     "bootstrap-sass-official": "*",
     "bootstrap-sass": "*",
     "bootstrap": "*",

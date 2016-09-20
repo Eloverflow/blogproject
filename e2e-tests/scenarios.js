@@ -7,14 +7,14 @@ describe('blogproject', function() {
 
   it('should automatically redirect to /posts when location hash/fragment is empty', function() {
     browser.get('index.html');
-    expect(browser.getLocationAbsUrl()).toMatch("/posts");
+    expect(browser.getLocationAbsUrl()).toMatch("/#/posts");
   });
 
 
   describe('contact', function() {
 
     beforeEach(function() {
-      browser.get('index.html/#/contact');
+      browser.get('/#/contact');
     });
 
 
@@ -29,7 +29,7 @@ describe('blogproject', function() {
   describe('posts', function() {
 
     beforeEach(function() {
-      browser.get('index.html/#/posts');
+      browser.get('/#/posts');
     });
 
 

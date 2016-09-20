@@ -10,26 +10,47 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine', 'requirejs'],
+    frameworks: ['ng-scenario', 'jasmine', 'browserify'],
 
 
     // list of files / patterns to load in the browser
     files: [
-      {pattern: 'e2e-tests/scenarios.js', included: false},
-      {pattern: 'src/app/**/*.spec.js', included: false}
+      'e2e-tests/scenarios.js',
+      'src/app/bower_components/angular-mocks/angular-mocks.js',
+      'src/app/bower_components/jquery/dist/jquery.min.js',
+      'src/app/bower_components/tinymce-dist/tinymce.js',
+      'src/app/bower_components/openfb/openfb.js',
+      'src/app/app.js',
+      'src/app/*/*.html',
+      'src/app/controllers_res/starter.js',
+      'src/app/controllers_res/constants.js',
+      'src/app/controllers_res/services.js',
+      'src/app/*/*.js',
+      'src/app/*/*.spec.js',
+      'src/app/bower_components/bootstrap/dist/js/bootstrap.min.js',
+      'src/app/bower_components/bootbox.js/bootbox.js'
     ],
 
 
     // list of files to exclude
     exclude: [
+      'src/app/index.html'
     ],
 
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      'src/app/app.js': [ 'browserify' ],
+      'src/app/*/*.html': [ 'browserify' ],
+      'src/app/*/*.js': [ 'browserify' ],
+      'src/app/*/*.spec.js': [ 'browserify' ]
     },
 
+    browserify: {
+      debug: true,
+      transform: ['babelify', 'stringify']
+    },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
@@ -56,7 +77,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: ['PhantomJS'],
 
 
     // Continuous Integration mode

@@ -10,6 +10,8 @@
   "license": "MIT",
   "devDependencies": {
     "angular-mocks": "^1.5.0-beta.2",
+    "stringify": "*",
+    "babelify": "*",
     "autoprefixer": "^6.2.2",
     "babel-core": "*",
     "babel-loader": "^6.2.0",
@@ -74,7 +76,8 @@
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-phantomjs-shim": "^1.1.2",
     "karma-requirejs": "^1.1.0",
-    "requirejs": "*",
+    "karma-ng-scenario": "*",
+    "requirejs": "^2.3.2",
     "karma-webpack": "^1.7.0",
     "main-bower-files": "^2.13.1",
     "method-override": "^2.1.2",

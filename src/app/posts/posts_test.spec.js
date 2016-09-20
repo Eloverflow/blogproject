@@ -1,8 +1,8 @@
 'use strict';
 
 describe('starter.controllers module', function() {
-
-  beforeEach(module('starter.controllers'));
+/*
+  beforeEach(app('starter.controllers'));*/
 
   describe('posts controller', function(){
 
