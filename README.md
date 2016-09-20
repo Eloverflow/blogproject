@@ -8,25 +8,9 @@ This is an open-source Blog project made by Mirageflow Inc.
 - MongoDB as Database
 - ExpressJS API as Back-End
 - AngularJS Application as Front-End
+- You can try it here : [http://blogproject.net](http://blogproject.net)
 
 The project includes theses features:
-- Posts Listing
-- Post consulting
-- Post commenting
-- Post comments sub-commenting
-- Post comments Up vote & Down vote
-- Complete build-in authentication
-- Secured with JWT Token
-- Sign-up
-- Sign-in
-- Forgot-password (Require email configurations)
-- Create User (User must be admin)
-- Facebook authentication (Require facebook configurations)
-- Profile
-- Change password
-- Create Post (User must be admin)
-- Edit Post (User must be admin)
-- Delete Post (User must be admin)
 
 ## Prerequisites
 
@@ -73,11 +57,23 @@ npm run serve:api
 Now browse to blogproject API at [localhost](http://localhost) [Debugger](http://localhost:8000)
 
 ## Content
-
-- Blogproject API
-- Angular 1 Blogproject
-- You can try it here (soon):
-- [http://blogproject.mirageflow.com](http://blogproject.mirageflow.com)
+- Posts Listing
+- Post consulting
+- Post commenting
+- Post comments sub-commenting
+- Post comments Up vote & Down vote
+- Complete build-in authentication
+- Secured with JWT Token
+- Sign-up
+- Sign-in
+- Forgot-password (Require email configurations)
+- Create User (User must be admin)
+- Facebook authentication (Require facebook configurations)
+- Profile
+- Change password
+- Create Post (User must be admin)
+- Edit Post (User must be admin)
+- Delete Post (User must be admin)
 
 
 ## Directory Layout
