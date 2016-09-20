@@ -230,9 +230,9 @@ router.post('/newPwd/:token', function(req, res, next) {
         }
 
         if(!req.body.password){
-            res.status(400).json({success: false, msg: 'Please pass a password'});
+            return res.status(400).json({success: false, msg: 'Please pass a password'});
         } else if(!(req.body.password).match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[\S]{8,}$/)){
-            res.status(400).json({success: false, msg: 'Please pass a valid password', requirements: [
+            return res.status(400).json({success: false, msg: 'Please pass a valid password', requirements: [
                 'should contain at least one digit',
                 'should contain at least one lower case',
                 'should contain at least one upper case',
@@ -241,15 +241,25 @@ router.post('/newPwd/:token', function(req, res, next) {
         }
 
         user.password = req.body.password;
-        user.reset_token = undefined;
-        user.reset_token_expire = undefined;
 
         user.save(function(err) {
             if (err) {
-                return res.status(400).json({success: false, msg: 'User failed at saving changed'});
+                return res.status(400).json({success: false, msg: 'User failed at saving password'});
             }
 
-            res.send({success: true, msg: 'Password successfully changed !'});
+
+            user.reset_token = undefined;
+            user.reset_token_expire = undefined;
+
+            user.save(function(err) {
+                if (err) {
+                    return res.status(400).json({success: false, msg: 'User failed at saving empty reset token'});
+                }
+
+                res.send({success: true, msg: 'Password successfully changed !'});
+            });
+
+
         });
     });
 });

@@ -248,8 +248,6 @@ angular.module('starter.controllers')
             }, function(errMsg) {
                 if (!errMsg.success)
                     $scope.errorList.push(errMsg.msg);
-                console.log('errMsg');
-                console.log(errMsg);
             });
         };
 
@@ -263,13 +261,31 @@ angular.module('starter.controllers')
         };
 
         $scope.newPwd = function() {
-            AuthService.newPwd($scope.user, $routeParams.token).then(function(msg) {}, function(errMsg) {});
+            $scope.msgList = [];
+            $scope.errorList = [];
+            AuthService.newPwd($scope.user, $routeParams.token).then(function(result) {
+                if (result.success){
+                    $scope.msgList.push(result.msg);
+                    setTimeout(function(){
+                        $location.path('/sign-in')
+                    },10);
+                }
+            }, function(errMsg) {
+                if (!errMsg.success)
+                    $scope.errorList.push(errMsg.msg);
+            });
         };
 
         $scope.forgotpwd = function() {
-            EmailService.resetPwd($scope.user).then(function(result) {}, function(result) {
-                if (result.success)
-                    $location.path('/login')
+            $scope.msgList = [];
+            $scope.errorList = [];
+            EmailService.resetPwd($scope.user).then(function(result) {
+                if (result.success){
+                    $scope.msgList.push(result.msg);
+                }
+            }, function(errMsg) {
+                if (!errMsg.success)
+                    $scope.errorList.push(errMsg.msg);
             });
         };
 

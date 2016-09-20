@@ -25,9 +25,9 @@ angular.module('starter.services', [])
         return $q(function (resolve, reject) {
             $http.get(API_ENDPOINT.url + '/auth/resetPwd/' + user.email).then(function (result) {
                 if (result.data.success) {
-                    resolve(result.data.msg);
+                    resolve(result.data);
                 } else {
-                    reject(result.data.msg);
+                    reject(result.data);
                 }
             },
             function (result) {
@@ -158,9 +158,9 @@ angular.module('starter.services', [])
         return $q(function(resolve, reject) {
             $http.post(API_ENDPOINT.url + '/auth/newPwd/'+ token, user).then(function(result) {
                 if (result.data.success) {
-                    resolve(result.data.msg);
+                    resolve(result.data);
                 } else {
-                    reject(result.data.msg);
+                    reject(result.data);
                 }
             },
             function (result) {
