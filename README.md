@@ -5,9 +5,9 @@
 # Blogproject
 
 This is an open-source Blog project made by Mirageflow Inc.
-- MongoDB as database
-- ExpressJS API as backend
-- AngularJS Application as front-end
+- MongoDB as Database
+- ExpressJS API as Back-End
+- AngularJS Application as Front-End
 
 The project includes theses features:
 - Posts Listing
