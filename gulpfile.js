@@ -10,8 +10,6 @@ const hub = new HubRegistry(['gulp_tasks/*.js']);
 // Tell gulp to use the tasks just loaded
 gulp.registry(hub);
 
-gulp.task('test', gulp.series('karma:single-run'));
-gulp.task('test:auto', gulp.series('karma:auto-run'));
 gulp.task('serve', gulp.series('watch', sassCompile, 'webServer'));
 gulp.task('serve:api', gulp.series('api:watch'));
 gulp.task('watch', watch);

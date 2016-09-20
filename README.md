@@ -69,6 +69,9 @@ api_dev/                --> all of the source files for the API
   routes/                   --> route (url->functions)
   views/                    --> render (html)
   server.js                 --> main api module
+e2e-tests/              --> protractor test files
+gulp_tasks/             --> gulp tasks that wil be imported by gulpfile.js
+node_modules/           --> External modules | will be created and populated after npm install
 src/                    --> all of the source files for the application including scss
   index.scss                --> scss index
   modules/                  --> scss modules
@@ -78,17 +81,23 @@ src/                    --> all of the source files for the application includin
     index.html                  --> app layout file (the main html template file of the app)
     logoutcallback.html         --> facebook auth requirement
     oauthcallback.html          --> facebook auth requirement
-    bower_components/           --> External modules | will be created and populated after npm install
+    bower_components/           --> External modules | will be created and populated after npm install or bower install
     controllers_res/            --> controller resources
-    contact/                    --> contact controller and views
-    about/                      --> about controller and views
-    post/                       --> post controller and views
-    posts/                      --> posts controller and views
-    profile/                    --> profile controller and views
-    sign_in/                    --> sign_in controller and views
+    view_contact/                    --> contact controller and views
+    view_about/                      --> about controller and views
+    view_post/                       --> post controller and views
+    view_posts/                      --> posts controller and views
+    view_profile/                    --> profile controller and views
+    view_user/                    --> user controller and views
     js/                         --> other js files
     assests/                    --> assets (Such as font)
     img/                        --> images
+gulpfile.js             --> Allow for taks such as SCSS compile & Livereload
+package.json            --> Dependencies and scripts for NPM
+bower.json              --> Dependencies for Bower
+.bowerrc                --> Configuration for Bower
+karma.conf.js           --> Configuration for Karma test runner
+travis.yml              --> Test and Deploy
 
 ```
 
@@ -102,29 +111,13 @@ npm run test:auto (to launch your unit tests with Karma in watch mode)
 
 ## Testing
 
-There are two kinds of tests in the angular-seed application: Unit tests and end-to-end tests.
+There are two kinds of tests in the application: Unit tests and end-to-end tests(Protractor).
 
 ### Running Unit Tests
 
-The angular-seed app comes preconfigured with unit tests. These are written in
-[Jasmine][jasmine], which we run with the [Karma Test Runner][karma]. We provide a Karma
-configuration file to run them.
-
-* the configuration is found at `karma.conf.js`
-* the unit tests are found next to the code they are testing and are named as `..._test.js`.
-
 The easiest way to run the unit tests is to use the supplied npm script:
 
-```
-npm test
-```
-
-This script will start the Karma test runner to execute the unit tests. Moreover, Karma will sit and
-watch the source and test files for changes and then re-run the tests whenever any of them change.
-This is the recommended strategy; if your unit tests are being run every time you save a file then
-you receive instant feedback on any changes that break the expected code functionality.
-
-You can also ask Karma to do a single run of the tests and then exit.  This is useful if you want to
+Karma will do a single run of the tests and then exit.  This is useful if you want to
 check that a particular version of the code is operating as expected.  The project contains a
 predefined script to do this:
 

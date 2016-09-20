@@ -103,7 +103,6 @@
     "prestart": "npm install",
     "start": "http-server -a localhost -p 8000 ./src/app",
     "pretest": "npm install",
-    "test": "gulp test",
     "test-single-run": "karma start karma.conf.js --single-run",
     "preupdate-webdriver": "npm install",
     "update-webdriver": "webdriver-manager update",
