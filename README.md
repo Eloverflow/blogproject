@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/mirageflow/blogproject.svg)](https://travis-ci.org/mirageflow/blogproject)
 [![Latest Stable Version](https://poser.pugx.org/mirageflow/blogproject/v/stable.svg)](https://packagist.org/packages/mirageflow/blogproject)
 [![Total Downloads](https://poser.pugx.org/mirageflow/blogproject/d/total.svg)](https://packagist.org/packages/mirageflow/blogproject)
 
