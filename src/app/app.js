@@ -6,69 +6,69 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
   //$locationProvider.hashPrefix('!');
 
   $routeProvider.when('/posts', {
-    templateUrl: 'posts/posts.html',
+    templateUrl: 'view_posts/posts.html',
     controller: 'PostsCtrl'
   });
 
   $routeProvider.when('/post', {
-    templateUrl: 'post/post.html',
+    templateUrl: 'view_post/post.html',
     controller: 'PostCtrl'
   });
   $routeProvider.when('/post/:id', {
-    templateUrl: 'post/post.html',
+    templateUrl: 'view_post/post.html',
     controller: 'PostCtrl'
   });
   $routeProvider.when('/post-create', {
-    templateUrl: 'post/create.html',
+    templateUrl: 'view_post/create.html',
     controller: 'PostCreateCtrl'
   });
   $routeProvider.when('/post-edit/:id', {
-    templateUrl: 'post/edit.html',
+    templateUrl: 'view_post/edit.html',
     controller: 'PostEditCtrl'
   });
 
   $routeProvider.when('/about', {
-    templateUrl: 'about/about.html',
+    templateUrl: 'view_about/about.html',
     controller: 'AboutCtrl'
   });
 
   $routeProvider.when('/contact', {
-    templateUrl: 'contact/contact.html',
+    templateUrl: 'view_contact/contact.html',
     controller: 'ContactCtrl'
   });
 
   $routeProvider.when('/sign-in', {
-    templateUrl: 'user/sign_in.html',
+    templateUrl: 'view_user/sign_in.html',
     controller: 'UserCtrl'
   });
 
   $routeProvider.when('/sign-up', {
-    templateUrl: 'user/sign_up.html',
+    templateUrl: 'view_user/sign_up.html',
     controller: 'UserCtrl'
   });
 
   $routeProvider.when('/new-user', {
-    templateUrl: 'user/create-new.html',
+    templateUrl: 'view_user/create-new.html',
     controller: 'UserCtrl'
   });
 
   $routeProvider.when('/edit-user/:id', {
-    templateUrl: 'user/edit.html',
+    templateUrl: 'view_user/edit.html',
     controller: 'UserCtrl'
   });
 
   $routeProvider.when('/forgot-password', {
-    templateUrl: 'user/forgot_pass.html',
+    templateUrl: 'view_user/forgot_pass.html',
     controller: 'UserCtrl'
   });
 
   $routeProvider.when('/new-password/:token', {
-    templateUrl: 'user/new_pass.html',
+    templateUrl: 'view_user/new_pass.html',
     controller: 'UserCtrl'
   });
 
   $routeProvider.when('/profile/:id', {
-    templateUrl: 'profile/profile.html',
+    templateUrl: 'view_profile/profile.html',
     controller: 'ProfileCtrl'
   });
 

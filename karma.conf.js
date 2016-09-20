@@ -19,32 +19,26 @@ module.exports = function(config) {
       'bower_components/angular-mocks/angular-mocks.js',
       'bower_components/jquery/dist/jquery.min.js',
       'bower_components/tinymce-dist/tinymce.js',
-      'bower_components/openfb/openfb.js',
+      'js/tinymce.js',
+      'bower_components/bootbox.js/bootbox.js',
       'app.js',
-      '*/*.html',
       'controllers_res/starter.js',
       'controllers_res/constants.js',
       'controllers_res/services.js',
-      '**/*.js',
-      '**/*.spec.js',
-      'bower_components/bootstrap/dist/js/bootstrap.min.js',
-      'bower_components/bootbox.js/bootbox.js',
+      'view*/**/*.js',
+      'bower_components/openfb/openfb.js',
+      'bower_components/bootstrap/dist/js/bootstrap.min.js'
     ],
 
 
     // list of files to exclude
     exclude: [
-      'src/app/index.html'
     ],
 
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'src/app/app.js': [ 'browserify' ],
-      'src/app/*/*.html': [ 'browserify' ],
-      'src/app/*/*.js': [ 'browserify' ],
-      'src/app/*/*.spec.js': [ 'browserify' ]
     },
 
     browserify: {
