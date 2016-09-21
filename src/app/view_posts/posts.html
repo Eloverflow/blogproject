@@ -1,9 +1,9 @@
-<div class="post-header">
+<div  ng-show="sesUser" class="post-header">
   <div class="col-lg-9 post-header-sep sep-fix">
-    <h2 class="new-post" ng-show="sesUser.is_admin"><a href="#/post-create"><i class="fa fa-plus-square" aria-hidden="true"></i></a>&nbsp;New Post</h2>
+    <h2 ng-show="sesUser.is_admin"  class="new-post" ><a href="#/post-create"><i class="fa fa-plus-square" aria-hidden="true"></i></a>&nbsp;New Post</h2>
   </div>
   <div class="col-lg-3 post-header-sep sep-fix">
-    <div class="form-group post-search">
+    <div  class="form-group post-search">
       <div class="input-group pull-right">
           <input class="form-control" placeholder="Search" ng-model="textSearch.data" type="text" my-on-key-up-call="callRestService()">
           <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
