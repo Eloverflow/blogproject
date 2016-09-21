@@ -1,4 +1,4 @@
-angular.module('starter.controllers')
+angular.module('starter.controllers', [])
     .controller('UserCtrl', function($scope, $rootScope, postReq, AuthService, getReq, putReq, $q, EmailService, $location, API_ENDPOINT, DEBUG, $routeParams, $parse) {
 
         // This is the fail callback from the login method

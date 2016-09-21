@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('starter.controllers')
+angular.module('starter.controllers', [])
 
 .controller('PressReleasesCtrl', function($scope, getReq, delReq, $location, API_ENDPOINT, postReq) {
 

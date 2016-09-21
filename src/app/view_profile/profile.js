@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('starter.controllers')
+angular.module('starter.controllers', [])
 .controller('ProfileCtrl', function($scope, $rootScope, AuthService, $location, $routeParams, API_ENDPOINT, getReq) {
   $scope.settings = {
     enableFriends: true
