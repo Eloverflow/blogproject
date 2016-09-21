@@ -289,4 +289,30 @@ angular.module('starter.controllers')
             });
         };
 
-    });
+    })
+    .controller('UserListCtrl', function($scope, $rootScope, delReq, postReq, AuthService, getReq, putReq, $q, EmailService, $location, API_ENDPOINT, DEBUG, $routeParams, $parse) {
+        $scope.getUsers = function() {
+            var $url = API_ENDPOINT.url + '/auth';
+
+            var $callbackFunction = function(response) {
+                $scope.users = response;
+            };
+
+            getReq.send($url, null, $callbackFunction);
+        };
+        $scope.getUsers();
+
+
+        $scope.deleteUser = function(user) {
+            var $url = API_ENDPOINT.url + '/auth/'+ user._id;
+
+            var $callbackFunction = function(response) {
+                if(response.success)
+                    $scope.users.splice($scope.users.indexOf(user), 1)
+            };
+
+            if(confirm('Are you sure you want to delete this User (Irreversible) ?'))
+                delReq.send($url, null, $callbackFunction);
+        };
+
+    })

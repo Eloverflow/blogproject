@@ -1,0 +1,28 @@
+<div class="post-header">
+    <div class="col-lg-9 post-header-sep sep-fix">
+        <h2 class="new-post" ng-show="sesUser.is_admin"><a href="#/new-user"><i class="fa fa-plus-square" aria-hidden="true"></i></a>&nbsp;New User</h2>
+    </div>
+    <div class="col-lg-3 post-header-sep sep-fix">
+        <div class="form-group post-search">
+            <div class="input-group pull-right">
+                <input class="form-control" placeholder="Search" ng-model="textSearch.data" type="text" my-on-key-up-call="callRestService()">
+                <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-repeat="user in users | orderBy:'created_at':true" class="wrapper post">
+    <ul class="posts-info">
+        <li ng-show="sesUser.is_admin && user.username"><a href="#/edit-user/{{user._id}}"><i  class="fa fa-edit link" aria-hidden="true"></i></a></li>
+        <li ng-show="sesUser.is_admin"  ng-click="deleteUser(user)"> <i  class="fa fa-trash link" aria-hidden="true"></i></li>
+        <li ng-hide="user.username"><i class="fa fa-facebook" aria-hidden="true"></i>&nbsp;Facebook User</li>
+        <li class=""><i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp; Created on {{ user.createdAt | date:'MMM d, y'}}</li>
+        <li class=""><i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp; Last updated on {{ user.updatedAt | date:'MMM d, y'}}</li>
+        <li class="posts-title" ><br>
+            - User informations - <br>
+            Email : {{ user.email }}<br>
+            {{user.username ? 'Username : ' + user.username : 'Name : ' + user.name}}<br>
+            Is Admin ? : {{user.is_admin ? 'Yes' : 'No'}}<br>
+        </li>
+    </ul>
+</div>

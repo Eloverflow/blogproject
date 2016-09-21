@@ -67,6 +67,11 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
     controller: 'UserCtrl'
   });
 
+  $routeProvider.when('/user-list', {
+    templateUrl: 'view_user/list.html',
+    controller: 'UserListCtrl'
+  });
+
   $routeProvider.when('/profile/:id', {
     templateUrl: 'view_profile/profile.html',
     controller: 'ProfileCtrl'

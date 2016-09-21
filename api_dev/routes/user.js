@@ -222,6 +222,47 @@ router.get('/:id/profile', function(req, res, next) {
     });
 });
 
+/* GET /posts of user */
+router.get('/', function(req, res, next) {
+    User.find().exec(function (err, users) {
+        if (err) return next(err);
+        res.json(users);
+    });
+});
+
+/* GET /posts of user */
+router.delete('/:id', function(req, res, next) {
+    var token = getToken(req.headers);
+    if (token) {
+        var decoded = jwt.decode(token, config.secret);
+        User.findOne({
+            email: decoded.email
+        },function (err, user) {
+            if (err) return next(err);
+            if (!user) return res.status(400).json({success: false, msg: 'User was not found with this token'});
+
+            if(user.is_admin){
+
+                User.findByIdAndRemove(req.params.id, req.body, function (err, user) {
+                    if (err) return next(err);
+                    res.json({success: true, user: user});
+                });
+
+            }
+            else{
+                res.status(403).json({success: false, msg: 'You dont have enought rights'});
+            }
+
+
+        })
+    }
+    else {
+        res.status(403).json({success: false, msg: 'No authentication token found'});
+    }
+
+});
+
+
 router.post('/newPwd/:token', function(req, res, next) {
 
     User.findOne({ reset_token: req.params.token, reset_token_expire: { $gt: Date.now() } }, function(err, user) {
