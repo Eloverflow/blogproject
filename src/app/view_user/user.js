@@ -151,7 +151,6 @@ angular.module('starter.controllers')
             $scope.errorList = [];
 
             var fieldState = {
-                username: 'VALID',
                 email: 'VALID',
                 password: 'VALID'
             };
@@ -160,10 +159,6 @@ angular.module('starter.controllers')
                 fieldState.email = 'The email is required.';
             } else if ($scope.updateUserForm.email.$error.pattern) {
                 fieldState.email = 'The email is invalid.';
-            }
-
-            if ($scope.updateUserForm.username.$error.required || !$scope.updateUserForm.username) {
-                fieldState.username = 'The username is required.';
             }
 
             for (var fieldName in fieldState) {

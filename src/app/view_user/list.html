@@ -13,7 +13,7 @@
 </div>
 <div ng-repeat="user in users | orderBy:'created_at':true" class="wrapper post">
     <ul class="posts-info">
-        <li ng-show="sesUser.is_admin && user.username"><a href="#/edit-user/{{user._id}}"><i  class="fa fa-edit link" aria-hidden="true"></i></a></li>
+        <li ng-show="sesUser.is_admin"><a href="#/edit-user/{{user._id}}"><i  class="fa fa-edit link" aria-hidden="true"></i></a></li>
         <li ng-show="sesUser.is_admin"  ng-click="deleteUser(user)"> <i  class="fa fa-trash link" aria-hidden="true"></i></li>
         <li ng-hide="user.username"><i class="fa fa-facebook" aria-hidden="true"></i>&nbsp;Facebook User</li>
         <li class=""><i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp; Created on {{ user.createdAt | date:'MMM d, y'}}</li>
