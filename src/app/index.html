@@ -42,7 +42,7 @@
   </ul>
 
   <input type="checkbox" id="nav-trigger" class="nav-trigger" />
-  <div id="nav-icon" for="nav-trigger">
+  <div ng-hide="sesUser" id="nav-icon" for="nav-trigger">
     <span></span>
     <span></span>
     <span></span>
@@ -56,9 +56,43 @@
 
 
   <div class="site-wrap">
-
     <div id="header">
+      <div class="navbar-header">
+        <img id="logo-mirageflow" width="80" height="50" src="http://mirageflow.com/Frontend2/images/logoSmall.png" alt="">
 
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a ng-class="{ active: isActive('/home')}" href="#/home">Home</a>
+          </li>
+          <li>
+            <a ng-class="{ active: isActive('/services')}" href="#/services">Services</a>
+          </li>
+          <li>
+            <a ng-class="{ active: isActive('/portfolio')}" href="#/portfolio">Portfolio</a>
+          </li>
+          <li>
+            <a ng-class="{ active: isActive('/press-release')}" href="#/press-releases">Press Release</a>
+          </li>
+          <li>
+            <a ng-class="{ active: isActive('/posts')}" href="#/posts">Blog</a>
+          </li>
+          <li>
+            <a ng-class="{ active: isActive('/about')}" href="#/about">About</a>
+          </li>
+          <li>
+            <a ng-class="{ active: isActive('/contact')}" href="#/contact">Contact</a>
+          </li>
+        </ul>
+      </div>
     </div>
 
     <div ng-view></div>
@@ -72,16 +106,18 @@
   <script src="../bower_components/tinymce-dist/tinymce.js"></script>
   <script src="../bower_components/angular/angular.js"></script>
   <script src="../bower_components/angular-route/angular-route.js"></script>
+  <script src="app.js"></script>
   <script src="js/tinymce.js"></script>
   <!--<script src="../bower_components/angular-ui-tinymce/src/tinymce.js"></script>-->
-  <script src="app.js"></script>
   <script src="controllers_res/starter.js"></script>
   <script src="controllers_res/constants.js"></script>
   <script src="controllers_res/services.js"></script>
+  <script src="view_press_release/press_release.js"></script>
+  <script src="view_profile/profile.js"></script>
   <script src="view_post/post.js"></script>
   <script src="view_posts/posts.js"></script>
   <script src="view_user/user.js"></script>
-  <script src="view_profile/profile.js"></script>
+  <script src="view_press_releases/press_releases.js"></script>
   <script src="js/menu-transition.js"></script>
   <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="../bower_components/bootbox.js/bootbox.js"></script>

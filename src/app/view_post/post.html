@@ -8,10 +8,82 @@
             <li ng-show="sesUser.is_admin"> <i ng-click="editPost(post._id)" class="fa fa-edit link" aria-hidden="true"></i></li>
             <li class=""><em>Written by&nbsp;</em><a href="#/profile/{{post.user_id._id}}">{{post.user_id.username ? post.user_id.username : post.user_id.name}}</a></li>
             <li class=""><i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp;<!--August, 27, 2016  -->{{ post.createdAt | date:'MMM d, y'}}</li>
+            <li class=""><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;({{ post.comments.length }}) Comments</li>
         </ul>
     </div>
 </div>
 <div class="wrapper">
     <article  ng-bind-html="toTrustedHTML(post.content)" class="post-content">
     </article>
+</div>
+<div class="chat">
+    <div class="chat-header">
+        <i class="fa fa-comments-o" aria-hidden="true"></i>
+        &nbsp;<h3>Comments</h3>
+    </div>
+    <ul class="chat-msg">
+        <li class="chat-bloc" ng-repeat="comment in comments" >
+            <div class="chat-bloc-row">
+                <div class="user-img">
+                    <img ng-src="{{comment.user_id.picture ? comment.user_id.picture : '/'}}" height="40" width="40" on-error-src="img/defaultProfile.png"/>
+                </div>
+                <div class="user-msg-content">
+                    <div class="user-msg-header">
+                        <strong ng-show="comment.user_id.username">{{ comment.user_id.username}}</strong>
+                        <strong ng-hide="comment.user_id.username">{{ comment.user_id.name }}</strong>
+                        <span class="time">{{ comment.createdAt | date:'MMM d, y'}}</span>
+                    </div>
+                    <p>{{ comment.content}}</p>
+                </div>
+                <div class="user-msg-up-down"><!--
+                           <i class="fa fa-thumbs-up"></i>
+                           <i class="fa fa-thumbs-down"></i>-->
+                    <i ng-click="addUpVote(comment)" class="fa fa-chevron-up {{ comment.myVote != 'undefined' &&
+                                                                                comment.myVote.is_upvote == true ? 'selected-chevron' : ''  }}"></i>
+                    <div class="up-down">
+                        <span  class="up">{{ (comment.votes | filter: {is_upvote: true}).length }}</span>
+                        <span class="down">{{ (comment.votes | filter: {is_upvote: false}).length }}</span>
+                    </div>
+                    <i ng-click="addDownVote(comment)"  class="fa fa-chevron-down {{ comment.myVote != 'undefined' &&
+                                                                                    comment.myVote.is_upvote == false ? 'selected-chevron' : '' }}"></i>
+
+                </div>
+            </div>
+            <div ng-show="sesUser" class="chat-bloc-footer">
+                <a data-toggle="collapse" data-target=".reply-{{comment._id}}" class="">Reply ({{comment.sub_comments.length}})</a>
+            </div>
+            <div ng-hide="sesUser || comment.sub_comments.length == 0" class="chat-bloc-footer">
+                <a data-toggle="collapse" data-target=".reply-{{comment._id}}" class="">Show comments ({{comment.sub_comments.length}})</a>
+            </div>
+            <hr class="reply-{{comment._id}} collapse">
+            <div  class="sub-com reply-{{comment._id}} collapse">
+                <ul ng-show="comment.sub_comments.length > 0" class="chat-sub-comment">
+                    <li ng-repeat="subComment in comment.sub_comments">
+                        <div class="user-sub-msg-content">
+                            <div class="user-sub-msg-header">
+                                <strong ng-show="subComment.user_id.username">{{ subComment.user_id.username }}</strong>
+                                <strong ng-hide="subComment.user_id.username">{{ subComment.user_id.name }}</strong>
+                                <span class="time">{{subComment.updatedAt | date:'MMM d, y'}}</span>
+                            </div>
+                            <p>{{subComment.content}}</p>
+                        </div>
+                    </li>
+                </ul>
+                <div ng-show="sesUser"  class="input-sub-comment">
+                    <form>
+                        <input id="btn-input-sub-comment" type="text" ng-model="comment.currentSubComment" class="input-field-sub-comment form-control" placeholder="Type your message here..." />
+                        <button class="input-item-sub-comment btn btn-default" ng-click="addSubComment(comment)">Send</button>
+                    </form>
+                </div>
+            </div>
+            <hr>
+        </li>
+    </ul>
+    <hr>
+    <div ng-show="sesUser" class="chat-foot">
+        <div class="input">
+            <textarea id="btn-input" rows="2" ng-model="comment.content" class="input-field form-control" placeholder="Type your message here..."></textarea>
+            <button ng-click="addComment(comment)" class="input-item btn btn-default">Send</button>
+        </div>
+    </div>
 </div>

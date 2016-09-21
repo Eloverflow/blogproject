@@ -1,10 +1,11 @@
 'use strict';
+
 angular.module('starter.controllers', ['ui.tinymce'])
-.controller('PostCtrl', function($rootScope, $scope, getReq, $routeParams, $sce, postReq, $http, AuthService, API_ENDPOINT,$filter,$location, delReq) {
+.controller('PressReleaseCtrl', function($rootScope, $scope, getReq, $routeParams, $sce, postReq, $http, AuthService, API_ENDPOINT,$filter,$location, delReq) {
 
     $scope.getPost = function () {
 
-        var $url = API_ENDPOINT.url + '/post/' + $routeParams.id;
+        var $url = API_ENDPOINT.url + '/press-release/' + $routeParams.id;
 
         var $callbackFunction = function (response) {
             $scope.post = response;
@@ -14,112 +15,8 @@ angular.module('starter.controllers', ['ui.tinymce'])
     };
     $scope.getPost();
 
-    $scope.getComments = function () {
-
-        var $url = API_ENDPOINT.url + '/post/' + $routeParams.id  + '/comments';
-
-        var $callbackFunction = function (response) {
-
-            if($rootScope.sesUser)
-            for(var i = 0; i < response.length; i++){
-                response[i].myVote  = $filter('filter')(response[i].votes, {user_id: $rootScope.sesUser._id})[0];
-            }
-            $scope.comments = response;
-        };
-
-        getReq.send($url, null, $callbackFunction);
-    };
-    $scope.getComments();
-
-    
-    $scope.addUpVote = function (comment) {
-        if(typeof comment.myVote == 'undefined'){
-            addVote(comment, true);
-            comment.MyVote = { is_upvote :true }
-        } else {
-            if(!comment.myVote.is_upvote){
-                comment.votes.splice(comment.votes.indexOf(comment.myVote), 1);
-                addVote(comment, true);
-            }
-        }
-    };
-    $scope.addDownVote = function (comment) {
-        if(typeof comment.myVote == 'undefined'){
-            addVote(comment, false);
-        } else {
-            if(comment.myVote.is_upvote){
-                comment.votes.splice(comment.votes.indexOf(comment.myVote), 1);
-                addVote(comment, false);
-            }
-        }
-    };
-    
-    function addVote(comment, isUpVote) {
-        var $url = API_ENDPOINT.url + '/vote';
-        var data = {comment_id: comment._id, is_upvote: isUpVote};
-
-        var $callbackFunction = function (response) {
-
-            if(typeof comment.votes == 'undefined' || comment.votes == null)
-                comment.votes = [];
-
-
-            if(response.success){
-                comment.votes.push(response.vote);
-                comment.myVote = response.vote;
-            }
-        };
-
-         postReq.send($url, data, null, $callbackFunction);
-    }
-
-    $scope.comment = {post_id : $routeParams.id};
-
-    $scope.addSubComment = function (comment) {
-
-        var $url = API_ENDPOINT.url + '/subComment';
-        var data = {comment_id: comment._id, content: comment.currentSubComment};
-
-        var $callbackFunction = function (response) {
-
-            if(typeof $scope.comments == 'undefined' || $scope.comments == null)
-                $scope.comments = [];
-
-            if(typeof comment.sub_comments == 'undefined' || comment.sub_comments == null)
-                comment.sub_comments = [];
-
-
-            if(response.success){
-                comment.sub_comments.push(response.sub_comment);
-                comment.currentSubComment = "";
-            }
-
-        };
-         postReq.send($url, data, null, $callbackFunction);
-    };
-
-    $scope.addComment = function (comment) {
-
-        var $url = API_ENDPOINT.url + '/comment';
-        var data = comment;
-
-        var $callbackFunction = function (response) {
-            if(typeof $scope.comments == undefined || $scope.comments == null)
-            $scope.comments = [];
-
-            if(response.success){
-            $scope.comments.push(response.comment);
-            comment.content = "";
-            }
-        };
-
-         postReq.send($url, data, null, $callbackFunction);
-
-    };
-
-
     $scope.editPost = function (post_id) {
-        $location.path('/post-edit/'+post_id)
+        $location.path('/press-release-edit/'+post_id)
     };
 
 
@@ -129,7 +26,7 @@ angular.module('starter.controllers', ['ui.tinymce'])
             console.log('Post is empty');
         }
         else {
-            var $url = API_ENDPOINT.url + '/post/' + $routeParams.id;
+            var $url = API_ENDPOINT.url + '/press-release/' + $routeParams.id;
 
             if(confirm('Are you sure you want to delete this Post ?'))
                 delReq.send($url, '/posts');
@@ -137,7 +34,7 @@ angular.module('starter.controllers', ['ui.tinymce'])
     }
 })
 
-.controller('PostCreateCtrl', function($rootScope, $location, $scope, getReq, $routeParams, postReq, $http, API_ENDPOINT, $parse) {
+.controller('PressReleaseCreateCtrl', function($rootScope, $location, $scope, getReq, $routeParams, postReq, $http, API_ENDPOINT, $parse) {
 
     $scope.previewPost = {
         content: ""
@@ -154,11 +51,11 @@ angular.module('starter.controllers', ['ui.tinymce'])
 
         $scope.errorList = [];
 
-        var $url = API_ENDPOINT.url + '/post';
+        var $url = API_ENDPOINT.url + '/press-release';
 
         var $callbackFunction = function (response) {
 
-            if(response.success) $location.path('/posts');
+            if(response.success) $location.path('/press-releases');
 
         };
 
@@ -242,7 +139,7 @@ angular.module('starter.controllers', ['ui.tinymce'])
 
 
 })
-.controller('PostEditCtrl', function($scope, putReq, getReq, delReq, $routeParams, $location, API_ENDPOINT, $parse) {
+.controller('PressReleaseEditCtrl', function($scope, putReq, getReq, delReq, $routeParams, $location, API_ENDPOINT, $parse) {
 
     $scope.previewPost = {
         content: ""
@@ -280,7 +177,7 @@ angular.module('starter.controllers', ['ui.tinymce'])
     var tags = $('#post-tags');
     $scope.getPost = function () {
 
-        var $url = API_ENDPOINT.url + '/post/' + $routeParams.id;
+        var $url = API_ENDPOINT.url + '/press-release/' + $routeParams.id;
 
         var $callbackFunction = function (response) {
             $scope.post = response;
@@ -297,10 +194,10 @@ angular.module('starter.controllers', ['ui.tinymce'])
             console.log('Post is empty');
         }
         else {
-            var $url = API_ENDPOINT.url + '/post/' + $routeParams.id;
+            var $url = API_ENDPOINT.url + '/press-release/' + $routeParams.id;
 
             if(confirm('Are you sure you want to delete this Post ?'))
-            delReq.send($url, '/posts');
+            delReq.send($url, '/press-releases');
         }
     };
 
@@ -308,11 +205,11 @@ angular.module('starter.controllers', ['ui.tinymce'])
 
         $scope.errorList = [];
 
-        var $url = API_ENDPOINT.url + '/post/' + $routeParams.id;
+        var $url = API_ENDPOINT.url + '/press-release/' + $routeParams.id;
 
         var $callbackFunction = function (response) {
 
-            if(response.success) $location.path('/posts');
+            if(response.success) $location.path('/press-releases');
 
         };
 

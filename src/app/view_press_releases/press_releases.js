@@ -2,12 +2,12 @@
 
 angular.module('starter.controllers')
 
-.controller('PostsCtrl', function($scope, getReq, delReq, $location, API_ENDPOINT, postReq) {
+.controller('PressReleasesCtrl', function($scope, getReq, delReq, $location, API_ENDPOINT, postReq) {
 
 
     $scope.deletePost = function (post) {
 
-      var $url = API_ENDPOINT.url + '/post/' + post._id;
+      var $url = API_ENDPOINT.url + '/press-release/' + post._id;
 
       var $callbackFunction = function (response) {
         $scope.posts.splice($scope.posts.indexOf(post), 1);
@@ -21,11 +21,11 @@ angular.module('starter.controllers')
     $scope.textSearch = {};
 
     $scope.editPost = function (post_id) {
-        $location.path('/post-edit/'+post_id)
+        $location.path('/press-release-edit/'+post_id)
     };
 
     $scope.callRestService= function() {
-        var $url = API_ENDPOINT.url + '/post/search';
+        var $url = API_ENDPOINT.url + '/press-release/search';
         var $data = {search : $scope.textSearch.data};
         var $callbackfunction = function (response) {
             if(typeof $scope.result == 'undefined' || $scope.result == null)
@@ -43,7 +43,7 @@ angular.module('starter.controllers')
 
     $scope.getPosts = function () {
 
-      var $url = API_ENDPOINT.url + '/post';
+      var $url = API_ENDPOINT.url + '/press-release';
 
       var $callbackFunction = function (response) {
 
@@ -57,4 +57,4 @@ angular.module('starter.controllers')
     $scope.getPosts();
   
 
-});
+})

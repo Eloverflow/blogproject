@@ -13,10 +13,22 @@
     display: inline-block;
   }
 }
-
 .modal.in .modal-dialog{
   margin-top: 80px!important;
 }
+
+body{
+  padding-top: 63px!important;
+}
+
+#navbar-collapse-1 > ul > li > a{
+  height: 63px!important;
+}
+
+#navbar-collapse-1 ul li a.active{
+  background-color: #eeeeee!important;
+}
+
 
 .wrapper > * {
   padding: 10px;
@@ -65,7 +77,7 @@
     }
     .link{
       cursor: pointer !important;
-      color: #337ab7;
+      color: #30A5FF;
     }:hover{
        color: grey;
      }
@@ -337,6 +349,13 @@
 .mce-path {/* CSS */
   display: none !important;
 }
+/*
+
+#logo-mirageflow{
+  margin-left: 12em;
+}
+*/
+
 
 /* Navigation Menu - Background */
 .navigation {
@@ -352,14 +371,14 @@
 
   /* non-critical appearance styles */
   list-style: none;
-  background: #2a3f54;
+  background: #333;
 
   hr {
     position: fixed;
     display: block;
     height: 1px;
     border: 0;
-    border-top: 1px solid darken(#2a3f54, 10%);
+    border-top: 1px solid darken(#222, 10%);
     margin: 0;
     z-index: 3;
     width: 256px;
@@ -375,7 +394,7 @@
     /* non-critical appearance styles */
     display: block;
     padding: 10px;
-    border-right: 4px solid #16caa5;
+    border-right: 4px solid #30A5FF;
     color: white;
     font-size: 1.2em;
     text-decoration: none;
@@ -397,8 +416,8 @@
     color: white;
     display: inline-flex;
     flex-direction: row;
-    background-color: darken(#2a3f54, 5%);
-    border-bottom: 1px solid darken(#2a3f54, 10%);
+    background-color: darken(#444, 5%);
+    border-bottom: 1px solid darken(#444, 10%);
   }
 
   .nav-item.menu-profile {
@@ -441,7 +460,7 @@
   bottom: 100%;
   left: 0;
   z-index: 1;
-  padding-top: 6em;
+  padding-top: 1em;
   padding-left: 1em;
   padding-right: 1em;
   transition: left 0.4s;
@@ -449,7 +468,7 @@
   /* non-critical apperance styles */
 
   /*background: url('img/sandpaper.png') repeat;*/
-  background-color: rgb(233, 233, 233);/*
+  background-color:  rgb(233, 233, 233);/*
   -webkit-background-size: 348px 500px!important;
   background-size: 348px 500px!important;*/
 
@@ -471,7 +490,7 @@
 @media (min-width: 480px) {
 
   .site-wrap {
-    padding-top: 6em;
+    padding-top: 1em;
     padding-left: 12em;
     padding-right: 12em;
     padding-bottom: 6em;
@@ -487,42 +506,22 @@
 
 #header{
   height: 65px;
-  background-color: darken(#2a3f54, 5%);
+  background-color:#222222;
   position: fixed;
   width: 100%;
   left: 0;
   right: 0;
   top: 0;
-  border-bottom: 2px solid lighten(#2a3f54, 50%);
+  border-bottom: 2px solid lighten(#222222, 50%);
   z-index: 9999;
+}
 
-  #btn-github{
-    color: black;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    transition: all 0.2s;
-    display: flex;
-    flex-direction: row;
-    vertical-align: middle;
-    margin: 10px;
-    padding: 0;
-    height: 40px;
-    span{
-      flex: 2;
-      width: 140px;
-      font-weight: bold;
-      line-height: 36px;
-      margin-right: 15px;
-    }
 
-    i{
-      flex: 1;
-      font-size: 26px;
-      width: 18px;
-      line-height: 36px;
-    }
-  }:hover{
-    color: #16caa5;
-    text-shadow: 0px 0px 0px;
+@media (min-width: 480px) {
+
+  #header{
+    padding-left: 12em;
+    padding-right: 12em;
   }
 }
 
@@ -581,7 +580,7 @@ html, body { height: 100%; width: 100%; font-family: Helvetica, Arial, sans-seri
   position: absolute;
   height: 6px;
   width: 100%;
-  background: #16caa5;
+  background: #30a5ff;
   border-radius: 0;
   opacity: 1;
   left: 0;

@@ -10,10 +10,6 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
     controller: 'PostsCtrl'
   });
 
-  $routeProvider.when('/post', {
-    templateUrl: 'view_post/post.html',
-    controller: 'PostCtrl'
-  });
   $routeProvider.when('/post/:id', {
     templateUrl: 'view_post/post.html',
     controller: 'PostCtrl'
@@ -25,6 +21,25 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
   $routeProvider.when('/post-edit/:id', {
     templateUrl: 'view_post/edit.html',
     controller: 'PostEditCtrl'
+  });
+
+
+  $routeProvider.when('/press-releases', {
+    templateUrl: 'view_press_releases/press_releases.html',
+    controller: 'PressReleasesCtrl'
+  });
+
+  $routeProvider.when('/press-release/:id', {
+    templateUrl: 'view_press_release/press_release.html',
+    controller: 'PressReleaseCtrl'
+  });
+  $routeProvider.when('/press-release-create', {
+    templateUrl: 'view_press_release/create.html',
+    controller: 'PressReleaseCreateCtrl'
+  });
+  $routeProvider.when('/press-release-edit/:id', {
+    templateUrl: 'view_press_release/edit.html',
+    controller: 'PressReleaseEditCtrl'
   });
 
   $routeProvider.when('/about', {
@@ -77,7 +92,27 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
     controller: 'ProfileCtrl'
   });
 
-  $routeProvider.otherwise({redirectTo: '/posts'});
+  $routeProvider.when('/home', {
+    templateUrl: 'views_modern_template/home.html'
+  });
+
+  $routeProvider.when('/services', {
+    templateUrl: 'views_modern_template/services.html'
+  });
+
+  $routeProvider.when('/portfolio', {
+    templateUrl: 'views_modern_template/portfolio.html'
+  });
+
+  $routeProvider.when('/contact', {
+    templateUrl: 'views_modern_template/contact.html'
+  });
+
+  $routeProvider.when('/about', {
+    templateUrl: 'views_modern_template/about.html'
+  });
+
+  $routeProvider.otherwise({redirectTo: '/home'});
 }]);
 
 
@@ -189,6 +224,10 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService, $sce, DEBUG, $loca
   $rootScope.logOut = function() {
     $rootScope.showLogOutMenu();
 
+  };
+
+  $rootScope.isActive = function (viewLocation) {
+    return viewLocation === $location.path();
   };
 
 });

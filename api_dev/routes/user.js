@@ -4,7 +4,7 @@ var express = require('express');
 var router = express.Router();
 
 var mongoose = require('mongoose');
-var Post = require('../models/post.js');
+var Post = require('../models/pressRelease.js');
 var User = require('../models/user.js');
 var passport = require('passport');
 var nodemailer = require('nodemailer');

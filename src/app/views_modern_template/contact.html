@@ -1,0 +1,69 @@
+<section id="three" class="cd-section wrapper style1 fade-up">
+    <div class="inner">
+        <h2>Entrez en contact</h2>
+        <p></p>
+        <div class="split style1">
+            <section>
+                <form method="post" action="/contact">
+                    <div class="field half first">
+                        <label for="name">Nom</label>
+                        <input type="text" name="name" id="name" />
+                    </div>
+                    <div class="field half">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" id="email" />
+                    </div>
+                    <!--<div class="field">
+                        <label for="human" class="control-label"><span id="number1" >{{rand(1,9)}}</span> + <span id="number2">{{rand(1,9)}}</span> = ?</label>
+                        <input type="text" class="form-control" id="human" name="human" placeholder="Votre réponse">
+
+                        <input id="humanConfirm" name="humanConfirm"  type="hidden" value="false">
+                    </div>-->
+                    <div class="field">
+                        <label for="message">Message</label>
+                        <textarea name="message" id="message" rows="5"></textarea>
+                    </div>
+                    <ul class="actions">
+                        <li><input id="sendButton" name="submit" type="submit" value="Envoyer le message" class="btn btn-primary">
+
+                    </ul>
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+
+                </form>
+            </section>
+            <section>
+                <ul class="contact">
+                    <li>
+                        <h3>Adresse</h3>
+                                <span>2089 Avenue Chapdelaine #3<br />
+                                Québec, G1V 2R1<br />
+                                CA</span>
+                    </li>
+                    <li>
+                    <h3>Email</h3>
+                    <a href="#">user@untitled.tld</a>
+                </li>
+
+                    <li>
+                        <h3>Téléphone</h3>
+                        <span>(581) 991-5326</span>
+                    </li>
+                    <li>
+                        <iframe width="310" height="310" frameborder="" style="border:0"
+                                src="https://www.google.com/maps/embed/v1/place?q=2089+Avenue+Chapdelaine+Ville+de+Quebec+Canada&key=AIzaSyCxPEipixekVPZMTll3TaiDimX2V5l0NXc" allowfullscreen></iframe>
+                    </li>
+                    <li>
+                        <h3>Social</h3>
+                        <ul class="icons">
+                            <li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
+                            <li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
+                            <li><a href="#" class="fa-github"><span class="label">GitHub</span></a></li>
+                            <li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
+                            <li><a href="#" class="fa-linkedin"><span class="label">LinkedIn</span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+</section>

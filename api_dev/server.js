@@ -9,7 +9,11 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var user = require('./routes/user');
+var pressRelease = require('./routes/pressRelease');
 var post = require('./routes/post');
+var comment = require('./routes/comment');
+var subComment = require('./routes/subComment');
+var vote = require('./routes/vote');
 var nodemailer = require('nodemailer');
 
 var config = require('./config/database.js');
@@ -119,7 +123,11 @@ app.use(function(req, res, next) {
 //app.use('/api/sendColor', color);
 app.use('/', index);
 app.use('/api/auth', user);
+app.use('/api/press-release', pressRelease);
 app.use('/api/post', post);
+app.use('/api/comment', comment);
+app.use('/api/subComment', subComment);
+app.use('/api/vote', vote);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
