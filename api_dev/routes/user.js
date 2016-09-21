@@ -509,7 +509,7 @@ router.put('/:id', function(req, res, next) {
                                 return res.status(400).json({success: false, msg: 'Username already exists.'});
                             }
 
-                            if(req.body.reset_password){
+                            if(req.body.reset_password && req.body.reset_password == "true"){
                                 crypto.randomBytes(20, function(err, buf) {
                                     user.reset_token = buf.toString('hex');
                                     user.reset_token_expire = Date.now() + 3600000;
