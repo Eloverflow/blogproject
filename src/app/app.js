@@ -5,48 +5,6 @@ var app  = angular.module('starter', ['starter.controllers','starter.services','
 app.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   //$locationProvider.hashPrefix('!');
 
-  $routeProvider.when('/posts', {
-    templateUrl: 'view_posts/posts.html',
-    controller: 'PostsCtrl'
-  });
-
-  $routeProvider.when('/post/:id', {
-    templateUrl: 'view_post/post.html',
-    controller: 'PostCtrl'
-  });
-  $routeProvider.when('/post-create', {
-    templateUrl: 'view_post/create.html',
-    controller: 'PostCreateCtrl'
-  });
-  $routeProvider.when('/post-edit/:id', {
-    templateUrl: 'view_post/edit.html',
-    controller: 'PostEditCtrl'
-  });
-
-
-  $routeProvider.when('/press-releases', {
-    templateUrl: 'view_press_releases/press_releases.html',
-    controller: 'PressReleasesCtrl'
-  });
-
-  $routeProvider.when('/press-release/:id', {
-    templateUrl: 'view_press_release/press_release.html',
-    controller: 'PressReleaseCtrl'
-  });
-  $routeProvider.when('/press-release-create', {
-    templateUrl: 'view_press_release/create.html',
-    controller: 'PressReleaseCreateCtrl'
-  });
-  $routeProvider.when('/press-release-edit/:id', {
-    templateUrl: 'view_press_release/edit.html',
-    controller: 'PressReleaseEditCtrl'
-  });
-
-  $routeProvider.when('/about', {
-    templateUrl: 'view_about/about.html',
-    controller: 'AboutCtrl'
-  });
-
   $routeProvider.when('/contact', {
     templateUrl: 'view_contact/contact.html',
     controller: 'ContactCtrl'
@@ -104,12 +62,44 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
     templateUrl: 'views_modern_template/portfolio.html'
   });
 
-  $routeProvider.when('/contact', {
-    templateUrl: 'views_modern_template/contact.html'
-  });
-
   $routeProvider.when('/about', {
     templateUrl: 'views_modern_template/about.html'
+  });
+
+
+  $routeProvider.when('/post/:id', {
+    templateUrl: 'view_post/post.html',
+    controller: 'PostCtrl'
+  });
+  $routeProvider.when('/post-create', {
+    templateUrl: 'view_post/create.html',
+    controller: 'PostCreateCtrl'
+  });
+  $routeProvider.when('/post-edit/:id', {
+    templateUrl: 'view_post/edit.html',
+    controller: 'PostEditCtrl'
+  });
+  $routeProvider.when('/posts', {
+    templateUrl: 'view_posts/posts.html',
+    controller: 'PostsCtrl'
+  });
+
+
+  $routeProvider.when('/press-release/:id', {
+    templateUrl: 'view_press_release/press_release.html',
+    controller: 'PressReleaseCtrl'
+  });
+  $routeProvider.when('/press-release-create', {
+    templateUrl: 'view_press_release/create.html',
+    controller: 'PressReleaseCreateCtrl'
+  });
+  $routeProvider.when('/press-release-edit/:id', {
+    templateUrl: 'view_press_release/edit.html',
+    controller: 'PressReleaseEditCtrl'
+  });
+  $routeProvider.when('/press-releases', {
+    templateUrl: 'view_press_releases/press_releases.html',
+    controller: 'PressReleasesCtrl'
   });
 
   $routeProvider.otherwise({redirectTo: '/home'});

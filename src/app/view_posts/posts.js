@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('starter.controllers', [])
-
+angular.module('starter.controllers')
 .controller('PostsCtrl', function($scope, getReq, delReq, $location, API_ENDPOINT, postReq) {
 
 

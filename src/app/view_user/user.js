@@ -1,4 +1,6 @@
-angular.module('starter.controllers', [])
+'use strict';
+
+angular.module('starter.controllers')
     .controller('UserCtrl', function($scope, $rootScope, postReq, AuthService, getReq, putReq, $q, EmailService, $location, API_ENDPOINT, DEBUG, $routeParams, $parse) {
 
         // This is the fail callback from the login method
@@ -110,7 +112,7 @@ angular.module('starter.controllers', [])
             console.log($scope.errorList);
 
             if ($scope.errorList.length == 0) {
-                $url = API_ENDPOINT.url + '/auth';
+                var $url = API_ENDPOINT.url + '/auth';
 
 
                 $callbackFunction = function(response) {
@@ -180,7 +182,7 @@ angular.module('starter.controllers', [])
             console.log($scope.errorList);
 
             if ($scope.errorList.length == 0) {
-                $url = API_ENDPOINT.url + '/auth/' + $routeParams.id;
+                var $url = API_ENDPOINT.url + '/auth/' + $routeParams.id;
 
 
                 $callbackFunction = function(response) {
