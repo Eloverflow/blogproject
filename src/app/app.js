@@ -217,7 +217,16 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService, $sce, DEBUG, $loca
   };
 
   $rootScope.isActive = function (viewLocation) {
-    return viewLocation === $location.path();
+    var path;
+    var splitted = $location.path().split("/");
+    if(splitted.length > 2){
+      path = '/'+splitted[1];
+    }
+    else {
+      path = $location.path();
+    }
+
+    return viewLocation === path;
   };
 
 });
