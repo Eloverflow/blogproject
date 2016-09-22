@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('starter.controllers', ['ui.tinymce'])
+angular.module('starter.controllers')
 .controller('PressReleaseCtrl', function($rootScope, $scope, getReq, $routeParams, $sce, postReq, $http, AuthService, API_ENDPOINT,$filter,$location, delReq) {
 
     $scope.getPost = function () {
