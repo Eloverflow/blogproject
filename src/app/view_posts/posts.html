@@ -29,6 +29,10 @@
     <a class="pull-right" href="#/post/{{post._id}}">READ MORE</a>
   </div>
 </div>
+<div ng-hide="noSearchResult" class="">
+  <div ng-hide="sesUser" ><a href="#/sign-in"><em>(Authenticate)</em></a></div>
+  <div ng-show="sesUser" ng-click="logOut()"><a href="#"><em>(Log out)</em></a></div>
+</div>
 <div ng-show="noSearchResult" class="wrapper">
   <p>No search result !</p>
 </div>
