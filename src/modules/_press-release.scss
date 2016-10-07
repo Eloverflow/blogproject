@@ -21,6 +21,10 @@
   width: 4px;
 }
 
+.panel-body{
+  overflow: hidden;
+}
+
 ::-webkit-scrollbar-track {
   background-color: #222;
 }
