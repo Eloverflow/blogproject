@@ -110,7 +110,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
 }]);
 
 
-app.run(function($rootScope,$http, API_ENDPOINT, AuthService, $sce, DEBUG, $location) {
+app.run(function($rootScope,$http, API_ENDPOINT, AuthService, $sce, DEBUG, $location, Fullscreen) {
 
   openFB.init({appId: '1112318545481460'});
 
@@ -170,6 +170,34 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService, $sce, DEBUG, $loca
   function closeMenu(  ){
     $('.navbar-toggle').click();
   };
+
+  $rootScope.$on('$viewContentLoaded', function() {
+    $('.img-responsive').on('click', function () {
+
+        $rootScope.lastImage = $(this);
+    });
+
+  });
+
+  var removeFullscreenHandler = Fullscreen.$on('FBFullscreen.change', function(evt, isFullscreenEnabled){
+    if(!isFullscreenEnabled){
+      $rootScope.$evalAsync(function(){
+        $rootScope.lastImage.addClass('img-responsive');
+        $rootScope.lastImage.off('click', fullscreenCancel)
+      });
+    }
+    else {
+      $rootScope.$evalAsync(function(){
+        $rootScope.lastImage.removeClass('img-responsive');
+        $rootScope.lastImage.on('click', fullscreenCancel)
+
+      });
+    }
+  });
+
+  function fullscreenCancel() {
+    Fullscreen.cancel();
+  }
 
   $rootScope.profile = function(){
     $location.path('/profile/' + $rootScope.sesUser._id);

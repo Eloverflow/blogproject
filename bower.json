@@ -21,7 +21,8 @@
     "bootbox.js": "*",
     "tinymce-dist": "*",
     "fontawesome": "*",
-    "angular-recaptcha": "*"
+    "angular-recaptcha": "*",
+    "angular-fullscreen": "*"
   },
   "private": false
 }
