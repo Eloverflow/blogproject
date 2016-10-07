@@ -2,23 +2,25 @@
     <h2 class="section-title">Contact</h2>
     <div class="col-lg-3 no-col-pad">
         <div class="panel panel-default">
-            <div class="panel-heading"><b>Contact Us</b></div>
+            <div class="panel-heading"><b>Contactez-nous</b></div>
             <div class="panel-body">
                 <ul class="contact-info">
-                    <li><i class="fa fa-map-marker" aria-hidden="true"></i><span>2089 Avenue Chapdelaine, Quebec, QC, G1V 1M7</span></li>
+                    <li><i class="fa fa-map-marker" aria-hidden="true"></i><span>2089 Avenue Chapdelaine, #3, Quebec, QC, G1V 1M7</span></li>
                     <li><i class="fa fa-phone" aria-hidden="true"></i><span>(581)&nbsp;991-5326</span></li>
-                    <li><i class="fa fa-envelope" aria-hidden="true"></i><span>administration@mirageflow.com</span></li>
+                    <li><i class="fa fa-envelope" aria-hidden="true"></i><span><a href="mailto:administration@mirageflow.com">administration@mirageflow.com</a></span></li>
                 </ul>
+                <iframe width="275" height="275" frameborder="" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=2089%20Avenue%20Chapdelaine%2C%20%2C%20Ville%20de%20Qu%C3%A9bec%2C%20QC%2C%20Canada&key=AIzaSyCxPEipixekVPZMTll3TaiDimX2V5l0NXc" allowfullscreen></iframe>
+
             </div>
         </div>
     </div>
     <div class="col-lg-9">
         <div class="panel panel-default">
-            <div class="panel-heading"><b>Send us a message</b></div>
+            <div class="panel-heading"><b>Envoyez-nous un message</b></div>
             <div class="panel-body">
                 <form ng-submit="submit()">
                     <div ng-show="errorList.length > 0" class="alert alert-danger" role="alert">
-                        <strong>Oops,</strong> There was an error with your submission :
+                        <strong>Oops,</strong> Il y a eu une erreur avec votre soumission :
                         <ul class="error-list">
                             <li ng-repeat="n in errorList">{{ n }}</li>
                         </ul>
@@ -46,7 +48,7 @@
                         ></div>
                     </div>
                     <div class="form-group">
-                        <button class="btn theme-btn" type="submit">Send</button>
+                        <button class="btn theme-btn" type="submit">Envoyer</button>
                     </div>
                 </form>
             </div>
