@@ -98,7 +98,7 @@ src/                    --> all of the source files for the application includin
     index.html                  --> app layout file (the main html template file of the app)
     logoutcallback.html         --> facebook auth requirement
     oauthcallback.html          --> facebook auth requirement
-    bower_components/           --> External modules | will be created and populated after npm install or bower install
+    lib/                        --> External modules | will be created and populated after npm install or bower install
     controllers_res/            --> controller resources
     view_contact/                    --> contact controller and views
     view_about/                      --> about controller and views

@@ -10,9 +10,9 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="index.css">
-  <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="../bower_components/jquery.tagsinput/src/jquery.tagsinput.js"></script>
-  <link rel="stylesheet" type="text/css" href="../bower_components/jquery.tagsinput/dist/jquery.tagsinput.min.css" />
+  <script src="../lib/jquery/dist/jquery.min.js"></script>
+  <script src="../lib/jquery.tagsinput/src/jquery.tagsinput.js"></script>
+  <link rel="stylesheet" type="text/css" href="../lib/jquery.tagsinput/dist/jquery.tagsinput.min.css" />
 </head>
 <body>
   <div id="backdrop"></div>
@@ -31,7 +31,7 @@
         <h4 ng-hide="sesUser.username">{{ sesUser.name }} </h4>
       </div>
     </li>
-    <li class="nav-item" ><a href="#/posts" ><i class="fa fa-home" aria-hidden="true"></i>Press Releases</a></li>
+    <li class="nav-item" ><a href="#/press-releases" ><i class="fa fa-home" aria-hidden="true"></i>Press Releases</a></li>
     <hr>
     <li ng-hide="sesUser" class="nav-item" ><a href="#/sign-in"><i class="fa fa-users" aria-hidden="true"></i>Sign In</a></li><li ng-show="sesUser.is_admin" class="nav-item"><a href="#/post-create"><i class="fa fa-plus-square" aria-hidden="true"></i>New Post</a></li>
     <li ng-show="sesUser.is_admin" class="nav-item"><a href="#/new-user"><i class="fa fa-plus-square-o" aria-hidden="true"></i>New User</a></li>
@@ -92,12 +92,12 @@
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
-  <script src="../bower_components/openfb/openfb.js"></script>
-  <script src="../bower_components/tinymce-dist/tinymce.js"></script>
-  <script src="../bower_components/angular/angular.js"></script>
-  <script src="../bower_components/angular-route/angular-route.js"></script>
+  <script src="../lib/openfb/openfb.js"></script>
+  <script src="../lib/tinymce-dist/tinymce.js"></script>
+  <script src="../lib/angular/angular.js"></script>
+  <script src="../lib/angular-route/angular-route.js"></script>
   <script src="js/tinymce.js"></script>
-  <!--<script src="../bower_components/angular-ui-tinymce/src/tinymce.js"></script>-->
+  <!--<script src="../lib/angular-ui-tinymce/src/tinymce.js"></script>-->
   <script src="app.js"></script>
   <script src="controllers_res/starter.js"></script>
   <script src="controllers_res/constants.js"></script>
@@ -111,15 +111,15 @@
   <script src="view_contact/contact.js"></script>
   <script src="view_services/page-services.js"></script>
   <script src="js/menu-transition.js"></script>
-  <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="../bower_components/bootbox.js/bootbox.js"></script>
+  <script src="../lib/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="../lib/bootbox.js/bootbox.js"></script>
 
   <!-- Include the JS ReCaptcha API -->
   <script src="//www.google.com/recaptcha/api.js?render=explicit&onload=vcRecaptchaApiLoaded" async defer></script>
 
   <!-- Include the ngReCaptcha directive -->
-  <script src="./bower_components/angular-recaptcha/release/angular-recaptcha.min.js"></script>
-  <script src="./bower_components/angular-fullscreen/src/angular-fullscreen.js"></script>
+  <script src="./lib/angular-recaptcha/release/angular-recaptcha.min.js"></script>
+  <script src="./lib/angular-fullscreen/src/angular-fullscreen.js"></script>
 
   <!-- Main library -->
   <script src="js/three.min.js"></script>
