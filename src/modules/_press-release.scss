@@ -117,6 +117,10 @@ body{
   height: 63px!important;
 }
 
+#navbar-collapse-1 ul li a{
+  transition: all 0.1s;
+}
+
 #navbar-collapse-1 ul li a.active{
   background-color: #eeeeee!important;
 }
