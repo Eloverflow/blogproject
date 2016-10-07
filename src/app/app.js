@@ -150,6 +150,27 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService, $sce, DEBUG, $loca
     return $sce.trustAsHtml( html );
   };
 
+
+  $rootScope.listenMenuButton = function () {
+    $('.navbar-toggle').on('click', function () {
+      document.body.addEventListener('click', bodyClickFn, true);
+    })
+  };
+  $rootScope.listenMenuButton()
+
+  function bodyClickFn() {
+    closeMenu();
+    removeBodyClickFn();
+  }
+
+  function removeBodyClickFn() {
+    document.body.removeEventListener('click', bodyClickFn, true)
+  }
+
+  function closeMenu(  ){
+    $('.navbar-toggle').click();
+  };
+
   $rootScope.profile = function(){
     $location.path('/profile/' + $rootScope.sesUser._id);
   };
