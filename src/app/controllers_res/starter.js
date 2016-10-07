@@ -1,1 +1,1 @@
-angular.module('starter.controllers', ['starter.services', 'ui.tinymce']);
+angular.module('starter.controllers', ['starter.services', 'ui.tinymce', 'vcRecaptcha']);

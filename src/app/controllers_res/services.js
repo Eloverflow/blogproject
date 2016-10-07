@@ -229,6 +229,9 @@ angular.module('starter.services', [])
                     console.log(response);
                 }
 
+                if($callbackFunction)
+                    $callbackFunction(response);
+
                 if(status == 403){
                     if(DEBUG.isEnabled) {
                         console.log('Emptying the token and redirecting to login')

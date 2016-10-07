@@ -5,9 +5,9 @@
             <div class="panel-heading"><b>Contact Us</b></div>
             <div class="panel-body">
                 <ul class="contact-info">
-                    <li><i class="fa fa-map-marker" aria-hidden="true"></i><span>Blog Project, Quebec, QC</span></li>
-                    <li><i class="fa fa-phone" aria-hidden="true"></i><span>(581)&nbsp;000-000</span></li>
-                    <li><i class="fa fa-envelope" aria-hidden="true"></i><span>blogproject@bp.com</span></li>
+                    <li><i class="fa fa-map-marker" aria-hidden="true"></i><span>2089 Avenue Chapdelaine, Quebec, QC, G1V 1M7</span></li>
+                    <li><i class="fa fa-phone" aria-hidden="true"></i><span>(581)&nbsp;991-5326</span></li>
+                    <li><i class="fa fa-envelope" aria-hidden="true"></i><span>administration@mirageflow.com</span></li>
                 </ul>
             </div>
         </div>
@@ -16,21 +16,39 @@
         <div class="panel panel-default">
             <div class="panel-heading"><b>Send us a message</b></div>
             <div class="panel-body">
-                <div class="form-group">
-                    <input ng-model="contact.name" id="name" class="form-control" type="text" placeholder="Your Name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <input ng-model="contact.email" id="email" class="form-control" type="text" placeholder="Email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <textarea ng-model="contact.message" id="message" class="form-control" rows="5" placeholder="Message" name="message" required></textarea>
-                </div>
-                <div class="form-group">
-                    <p>Captcha</p>
-                </div>
-                <div class="form-group">
-                    <button class="btn theme-btn" type="submit">Send</button>
-                </div>
+                <form ng-submit="submit()">
+                    <div ng-show="errorList.length > 0" class="alert alert-danger" role="alert">
+                        <strong>Oops,</strong> There was an error with your submission :
+                        <ul class="error-list">
+                            <li ng-repeat="n in errorList">{{ n }}</li>
+                        </ul>
+                    </div>
+                    <div ng-show="successMsg" class="alert alert-success" role="alert">
+                        <strong>Success, </strong>{{ successMsg }}
+                    </div>
+                    <div class="form-group">
+                        <input ng-model="contact.name" id="name" class="form-control" type="text" placeholder="Your Name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <input ng-model="contact.email" id="email" class="form-control" type="text" placeholder="Email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea ng-model="contact.message" id="message" class="form-control" rows="5" placeholder="Message" name="message" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <div
+                                vc-recaptcha
+                                theme="'light'"
+                                key="captcha.key"
+                                on-create="setWidgetId(widgetId)"
+                                on-success="setResponse(response)"
+                                on-expire="cbExpiration()"
+                        ></div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn theme-btn" type="submit">Send</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

@@ -20,7 +20,8 @@
     "jquery.tagsinput": "*",
     "bootbox.js": "*",
     "tinymce-dist": "*",
-    "fontawesome": "*"
+    "fontawesome": "*",
+    "angular-recaptcha": "*"
   },
   "private": false
 }

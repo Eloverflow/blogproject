@@ -42,7 +42,7 @@
   </ul>
 
   <input type="checkbox" id="nav-trigger" class="nav-trigger" />
-  <div ng-show="sesUser" id="nav-icon" for="nav-trigger">
+  <div ng-show="" id="nav-icon" style="z-index:{{ sesUser == 'undefined' ? '-1':'2' }}" for="nav-trigger">
     <span></span>
     <span></span>
     <span></span>
@@ -109,10 +109,27 @@
   <script src="view_user/user.js"></script>
   <script src="view_profile/profile.js"></script>
   <script src="view_contact/contact.js"></script>
+  <script src="view_services/page-services.js"></script>
   <script src="js/menu-transition.js"></script>
   <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="../bower_components/bootbox.js/bootbox.js"></script>
 
+  <!-- Include the JS ReCaptcha API -->
+  <script src="//www.google.com/recaptcha/api.js?render=explicit&onload=vcRecaptchaApiLoaded" async defer></script>
+
+  <!-- Include the ngReCaptcha directive -->
+  <script src="./bower_components/angular-recaptcha/release/angular-recaptcha.min.js"></script>
+
+  <!-- Main library -->
+  <script src="js/three.min.js"></script>
+
+  <!-- Helpers -->
+  <script src="js/projector.js"></script>
+  <script src="js/canvas-renderer.js"></script>
+
+
+  <!-- Animated background color -->
+  <script src="js/color.js"></script>
 
 </body>
 </html>

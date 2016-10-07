@@ -55,11 +55,15 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
   });
 
   $routeProvider.when('/services', {
-    templateUrl: 'views_modern_template/services.html'
+    templateUrl: 'view_services/services.html',
+    controller: 'PageServicesCtrl'
   });
 
   $routeProvider.when('/portfolio', {
     templateUrl: 'views_modern_template/portfolio.html'
+  });
+  $routeProvider.when('/portfolio/posio', {
+    templateUrl: 'views_modern_template/portfolio-posio.html'
   });
 
   $routeProvider.when('/about', {

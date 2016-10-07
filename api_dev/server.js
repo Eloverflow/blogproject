@@ -14,6 +14,7 @@ var post = require('./routes/post');
 var comment = require('./routes/comment');
 var subComment = require('./routes/subComment');
 var vote = require('./routes/vote');
+var contact = require('./routes/contact');
 var nodemailer = require('nodemailer');
 
 var config = require('./config/database.js');
@@ -128,6 +129,8 @@ app.use('/api/post', post);
 app.use('/api/comment', comment);
 app.use('/api/subComment', subComment);
 app.use('/api/vote', vote);
+app.use('/api/contact', contact);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
