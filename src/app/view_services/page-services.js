@@ -12,7 +12,7 @@ angular.module('starter.controllers')
         AMOUNTX = 1,
         AMOUNTY = 1,
 
-        camera, scene, renderer;
+        camera, scene, renderer,nbrLine;
 
     init();
     animate();
@@ -29,78 +29,84 @@ angular.module('starter.controllers')
 
         function init() {
 
-            /*
-             *   Define variables
-             */
-            var container, separation = 1000, amountX = 50, amountY = 50, color = 0x333333,
-                particles, particle;
 
-            container = document.getElementById("canvas");
+            if(screen.width > 480){
+                /*
+                 *   Define variables
+                 */
+                var container, separation = 1000, amountX = 50, amountY = 50, color = 0x333333,
+                    particles, particle;
 
-
-            camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
-            camera.position.z = 100;
-
-            scene = new THREE.Scene();
-
-            renderer = new THREE.CanvasRenderer({ alpha: true });
-            renderer.setPixelRatio( window.devicePixelRatio );
-            renderer.setClearColor( 0x000000, 0 );   // canvas background color
-            renderer.setSize( window.innerWidth, window.innerHeight );
-            container.appendChild( renderer.domElement );
+                container = document.getElementById("canvas");
 
 
+                camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
+                camera.position.z = 100;
 
-            var PI2 = Math.PI * 2;
-            var material = new THREE.SpriteCanvasMaterial( {
+                scene = new THREE.Scene();
 
-                color: color,
-                opacity: 0.5,
-                program: function ( context ) {
+                renderer = new THREE.CanvasRenderer({ alpha: true });
+                renderer.setPixelRatio( window.devicePixelRatio );
+                renderer.setClearColor( 0x000000, 0 );   // canvas background color
+                renderer.setSize( window.innerWidth, window.innerHeight );
+                container.appendChild( renderer.domElement );
 
-                    context.beginPath();
-                    context.arc( 0, 0, 0.5, 0, PI2, true );
-                    context.fill();
+
+
+                var PI2 = Math.PI * 2;
+                var material = new THREE.SpriteCanvasMaterial( {
+
+                    color: color,
+                    opacity: 0.5,
+                    program: function ( context ) {
+
+                        context.beginPath();
+                        context.arc( 0, 0, 0.5, 0, PI2, true );
+                        context.fill();
+
+                    }
+
+                } );
+
+                var geometry = new THREE.Geometry();
+
+                /*
+                 *   Number of particles
+                 */
+                for ( var i = 0; i < 800; i ++ ) {
+
+                    particle = new THREE.Sprite( material );
+                    particle.position.x = Math.random() * 2 - 1;
+                    particle.position.y = Math.random() * 2 - 1;
+                    particle.position.z = Math.random() * 2 - 1;
+                    particle.position.normalize();
+                    particle.position.multiplyScalar( Math.random() * 10 + 600 );
+                    particle.scale.x = particle.scale.y = 5;
+
+                    scene.add( particle );
+
+                    geometry.vertices.push( particle.position );
 
                 }
 
-            } );
+                /*
+                 *   Lines
+                 */
 
-            var geometry = new THREE.Geometry();
+                var line = new THREE.Line( geometry, new THREE.LineBasicMaterial( { color: color, opacity: 0.2 } ) );
+                scene.add( line );
 
-            /*
-             *   Number of particles
-             */
-            for ( var i = 0; i < 800; i ++ ) {
+                document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+                document.addEventListener( 'touchstart', onDocumentTouchStart, false );
+                document.addEventListener( 'touchmove', onDocumentTouchMove, false );
 
-                particle = new THREE.Sprite( material );
-                particle.position.x = Math.random() * 2 - 1;
-                particle.position.y = Math.random() * 2 - 1;
-                particle.position.z = Math.random() * 2 - 1;
-                particle.position.normalize();
-                particle.position.multiplyScalar( Math.random() * 10 + 600 );
-                particle.scale.x = particle.scale.y = 5;
+                //
 
-                scene.add( particle );
-
-                geometry.vertices.push( particle.position );
-
+                window.addEventListener( 'resize', onWindowResize, false );
+            }else {
+                $('#canvas').remove();
             }
 
-            /*
-             *   Lines
-             */
-
-            var line = new THREE.Line( geometry, new THREE.LineBasicMaterial( { color: color, opacity: 0.2 } ) );
-            scene.add( line );
-
-            document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-            document.addEventListener( 'touchstart', onDocumentTouchStart, false );
-            document.addEventListener( 'touchmove', onDocumentTouchMove, false );
-
-            //
-
-            window.addEventListener( 'resize', onWindowResize, false );
 
         }
 
