@@ -52,7 +52,7 @@ router.post('/', function(req, res, next) {
         };
 
         var mailAdminOptions = {
-          from: process.env.from_email || 'user@gmail.com', // sender address
+          from: process.env.noreply_email || 'noreply@mirageflow.com', // sender address
           to: process.env.from_email, // list of receivers
           subject: 'Hello it seems someone just contacted us', // Subject line
           text: 'Email :' + req.body.contact.email +
