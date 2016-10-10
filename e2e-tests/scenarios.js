@@ -13,7 +13,7 @@ describe('Blogproject', function() {
   /*  describe('view_posts', function() {
 
         beforeEach(function() {
-            browser.get('index.html/#/posts');
+            browser.get('index.html.old/#/posts');
         });
 
 
@@ -28,7 +28,7 @@ describe('Blogproject', function() {
     describe('view_profile', function() {
 
         beforeEach(function() {
-            browser.get('index.html/#/profile/57deff1a5e9c7b023b87e96b');
+            browser.get('index.html.old/#/profile/57deff1a5e9c7b023b87e96b');
         });
 
 

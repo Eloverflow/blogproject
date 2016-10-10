@@ -1,0 +1,55 @@
+/*
+.navbar {
+    min-height: 70px;
+}
+.navbar-brand {
+    margin: 10px 0px 0px 0px;
+    padding: 0 15px;
+    height: 56px;
+    line-height: 80px;
+}
+
+.navbar .navbar-nav > li > a:hover, .navbar .navbar-nav > li > a:focus {
+    color: #000;  !*Sets the text hover color on navbar*!
+}
+
+.navbar .navbar-nav > .active > a, .navbar .navbar-nav > .active >
+a:hover, .navbar .navbar-nav > .active > a:focus {
+    color: white; !*BACKGROUND color for active*!
+    background-color: #030033;
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+    color: #262626;
+    text-decoration: none;
+    background-color: #66CCFF;  !*change color of links in drop down here*!
+}
+
+.nav > li > a:hover,
+.nav > li > a:focus {
+    text-decoration: none;
+    background-color: silver; !*Change rollover cell color here*!
+}
+
+
+.navbar .navbar-nav > li > a {
+    color: white; !*Change active text color here*!
+    font-weight: bold;
+}
+
+footer{
+    z-index: 4;
+}
+
+
+iframe.press-release{
+    z-index: 5;
+    position: fixed;
+    !*left: -100px;*!
+    top: 0;
+    margin-left: 0;
+    right: 0;
+    width: 100%;
+    min-height: 1080px;
+}*/
