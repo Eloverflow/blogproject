@@ -553,6 +553,21 @@ code {
 *,*:before,*:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;margin:0;padding:0;}
 html, body { height: 100%; width: 100%; font-family: Helvetica, Arial, sans-serif; }
 
+
+.canvas-container{
+
+  height: 0px;
+
+  #canvas{
+    left: 0;
+    top: 0;
+    height: 100%;
+    position: fixed;
+    width: 100%;
+  }
+}
+
+
 /*Nav icon*/
 #nav-icon{
   position: fixed;
