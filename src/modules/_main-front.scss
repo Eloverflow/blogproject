@@ -89,6 +89,45 @@
 // End Post css section
 
 
+.canvas-container{
+
+  height: 0px;
+
+  #canvas{
+    left: 0;
+    top: 0;
+    height: 100%;
+    position: fixed;
+    width: 100%;
+  }
+}
+
+.img-portfolio{
+  img.img-responsive{
+    @media screen and (min-width: 480px) {
+      height: 400px;
+    }
+    /* Small Devices, Tablets */
+    @media only screen and (min-width : 768px) {
+      height: 350px;
+    }
+
+    /* Medium Devices, Desktops */
+    @media only screen and (min-width : 992px) {
+      height: 200px;
+    }
+
+    /* Large Devices, Wide Screens */
+    @media only screen and (min-width : 1200px) {
+      height: 300px;
+    }
+
+    @media only screen and (min-width : 1600px) {
+      height: 400px;
+    }
+  }
+}
+
 // Comments css section
 .chat{
   background-color: white;
