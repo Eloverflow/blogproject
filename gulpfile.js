@@ -24,6 +24,12 @@ function sassCompile(done) {
   gulp.src(['src/modules/*.scss', 'src/index.scss'])
       .pipe(sass())
       .pipe(autoprefixer())
-      .pipe(gulp.dest("src/app/"))
+      .pipe(gulp.dest("src/app/"));
+  
+  gulp.src(['src/modules/*.scss', 'src/dashboard.scss'])
+      .pipe(sass())
+      .pipe(autoprefixer())
+      .pipe(gulp.dest("src/app/"));
+  
   done();
 }

@@ -1,0 +1,296 @@
+// Post css section ---
+.post{
+  margin-bottom: 24px;
+  min-height: 100px;
+}
+
+.post,.header, .post-header {
+
+  .post-info {
+    position: absolute;
+    bottom: 4px;
+    right:0;
+  }
+
+  .posts-title {
+    color: black;
+    h3 {
+      display: inline-block;
+      font-size: 26px;
+      font-weight: bold;
+      margin: 5px 0px 5px 0px;
+    }
+  }
+
+  ul.posts-info {
+    float: right;
+    margin: 8px 0px 0px 0px;
+  }
+
+  ul.posts-info li{
+    display: inline;
+    list-style-type: none;
+    text-decoration: none;
+    margin: 0px 3px 0px 3px;
+    color: grey;
+
+    i {
+      font-size: 18px;
+    }
+    .link{
+      cursor: pointer !important;
+      color: #30A5FF;
+    }:hover{
+       color: grey;
+     }
+
+  }
+
+  .posts-content {
+    text-align: left;
+    background-color: white;
+  }
+
+  .post-search {
+    margin: 0px 0px 0px 0px;
+
+  }
+}
+
+.post-header {
+  width: 100%;
+  min-height: 60px;
+  height: auto;
+
+  .post-header-sep {
+    height: 100%;
+    position: relative;
+
+    .post-title {
+      font-size: 36px;
+      font-weight: bold;
+      display: inline-block;
+      margin: 0px;
+      position: absolute;
+      bottom: 6px;
+      left:0;
+      white-space: nowrap;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .sep-fix {
+    min-height: 60px;
+  }
+
+}
+// End Post css section
+
+
+// Comments css section
+.chat{
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 2px;
+  margin-top: 10px;
+
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+  -moz-box-shadow: 0 10px 6px -6px #777;
+  box-shadow: 0 10px 6px -6px #777;
+
+
+  .chat-header{
+
+    background-color: darken(rgb(248, 248, 248), 5% );
+    padding-top: 4px;
+    height: 42px;
+    width: 100%;
+    border-bottom: 1px solid lightgray;
+
+
+    h3 {
+      display: inline-block;
+      margin: 0px;
+    }
+
+    i {
+      margin-left: 8px;
+      font-size: 30px;
+    }
+
+  }
+
+  .chat-msg{
+    min-height: 250px;/*
+  max-height: 600px;*/
+    list-style: none;/*
+  overflow-y: auto;*/
+    margin-bottom: 0;
+  }
+
+  hr{
+    margin-top: 0!important;
+    margin-bottom: 0!important;
+  }
+
+  .chat-bloc{
+    padding-left: 20px;
+    .chat-bloc-row{
+      flex: 1 100%;
+      flex-flow: row wrap;
+      display: flex;
+    }
+
+    .user-img{
+    }
+    .user-img img{
+      margin-top: 15px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+    .user-msg-content{
+      word-wrap: break-word;
+      flex-grow: 80;
+      padding: 10px 20px 10px 20px;
+      width: 200px;
+
+      @media (min-width: 480px) {
+        width: 300px;
+      }
+    }
+    .user-msg-up-down{
+      margin-right: 10px;
+      justify-content: flex-end;
+      flex-grow: 5;
+      text-align: center;
+      .up-down{
+        height: 20px;
+        padding-top: 2px;
+        .up{
+          margin-left: 0;
+          color: #00AA00;
+        }
+        .down{
+          color: red;
+          margin-right: 0;
+        }
+      }
+
+      i{
+        display: block;
+        color: gray;
+        font-size:24px;
+        cursor: pointer;
+      }.fa-chevron-up,.fa-chevron-down{
+         vertical-align: text-top;
+       }:hover{
+          color: #444;
+        }
+
+    }
+    .chat-bloc-footer{
+      a{
+        cursor: pointer;
+      }
+    }
+
+    .sub-com{
+      background-color: rgba(200,200,200,0.4);
+      margin-left: 10%;
+      padding: 10px 20px 20px 20px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+
+    }
+
+    .chat-sub-comment{
+      list-style: none;
+      border-bottom: 1px solid lightgrey;
+
+      /*
+       float: right;*/
+
+      .user-sub-msg-content{
+        border-bottom: 1px solid lightgrey;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-top: 1px;
+      }
+
+    }
+
+    .sub-com-sep{
+      display: block;
+      height: 1px;
+      float: right;
+      margin-top: 5px!important;
+    }
+
+
+  }
+
+  .chat-foot{
+    padding: 6px;
+    .input-group{
+    }
+
+    textarea{
+      transition: none;
+      border-radius: 0;
+      resize: none;
+    }
+    :focus{
+      /* border: 1px solid grey;*/
+
+      /*border: 1px solid darken(rgb(150, 150, 150), 5% );*/
+      box-shadow: none;
+
+    }
+
+    .input {
+      display: flex;
+    }
+    .input-field {
+
+      flex: 1;
+      /* field styles */
+    }
+    .input-item {
+
+      border-left: 0;
+      border-radius: 0;
+      /* item styles */
+    }
+
+
+  }
+
+  .input-sub-comment {
+    form{
+      display: flex;
+      width: 100%;
+    }
+    margin-top: 10px;
+    display: flex;
+  }
+  .input-field-sub-comment {
+    transition: none;
+    border-radius: 0;
+    flex: 1;
+    /* field styles */
+  }
+  .input-item-sub-comment {
+    border-left: 0;
+    border-radius: 0;
+    /* item styles */
+  }
+
+}
+
+.post-content{
+  min-height: 400px;
+}
+// End Comments css section
