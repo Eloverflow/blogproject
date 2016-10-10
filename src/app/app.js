@@ -5,10 +5,36 @@ var app  = angular.module('starter', ['starter.controllers','starter.services','
 app.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   //$locationProvider.hashPrefix('!');
 
+
+  // Main template mirageflow routes ---
+
+  $routeProvider.when('/home', {
+    templateUrl: 'views_modern_template/home.html'
+  });
+
+  $routeProvider.when('/services', {
+    templateUrl: 'view_services/services.html',
+    controller: 'PageServicesCtrl'
+  });
+
+  $routeProvider.when('/portfolio', {
+    templateUrl: 'views_modern_template/portfolio.html'
+  });
+  $routeProvider.when('/portfolio/posio', {
+    templateUrl: 'views_modern_template/portfolio-posio.html'
+  });
+
+  $routeProvider.when('/about', {
+    templateUrl: 'views_modern_template/about.html'
+  });
+  
   $routeProvider.when('/contact', {
     templateUrl: 'view_contact/contact.html',
     controller: 'ContactCtrl'
   });
+
+  // End main template ---
+
 
   $routeProvider.when('/sign-in', {
     templateUrl: 'view_user/sign_in.html',
@@ -48,26 +74,6 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
   $routeProvider.when('/profile/:id', {
     templateUrl: 'view_profile/profile.html',
     controller: 'ProfileCtrl'
-  });
-
-  $routeProvider.when('/home', {
-    templateUrl: 'views_modern_template/home.html'
-  });
-
-  $routeProvider.when('/services', {
-    templateUrl: 'view_services/services.html',
-    controller: 'PageServicesCtrl'
-  });
-
-  $routeProvider.when('/portfolio', {
-    templateUrl: 'views_modern_template/portfolio.html'
-  });
-  $routeProvider.when('/portfolio/posio', {
-    templateUrl: 'views_modern_template/portfolio-posio.html'
-  });
-
-  $routeProvider.when('/about', {
-    templateUrl: 'views_modern_template/about.html'
   });
 
 
