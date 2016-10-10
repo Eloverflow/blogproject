@@ -185,7 +185,7 @@ angular.module('starter.controllers')
                 var $url = API_ENDPOINT.url + '/auth/' + $routeParams.id;
 
 
-                $callbackFunction = function(response) {
+                var $callbackFunction = function(response) {
                     if (response.success) {
                         $location.path('/profile/' + response.user._id);
                     }
