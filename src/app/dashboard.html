@@ -51,7 +51,6 @@
   <div class="site-wrap">
     <div id="header">
       <div class="navbar-header">
-        <img id="logo-mirageflow" width="80" height="50" src="/img/logoSmall.png" alt="">
 
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
           <span class="sr-only">Toggle navigation</span>
@@ -60,29 +59,7 @@
           <span class="icon-bar"></span>
         </button>
         </div>
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-          <li>
-            <a ng-class="{ active: isActive('/home')}" href="#/home">Home</a>
-          </li>
-          <li>
-            <a ng-class="{ active: isActive('/services')}" href="#/services">Services</a>
-          </li>
-          <li>
-            <a ng-class="{ active: isActive('/portfolio')}" href="#/portfolio">Portfolio</a>
-          </li>
-          <li>
-            <a ng-class="{ active: isActive('/press-releases') || isActive('/press-release')}" href="#/press-releases">News Feed</a>
-          </li>
-          <li>
-            <a ng-class="{ active: isActive('/about')}" href="#/about">About</a>
-          </li>
-          <li>
-            <a ng-class="{ active: isActive('/contact')}" href="#/contact">Contact</a>
-          </li>
-        </ul>
-      </div>
+
     </div>
 
     <div ng-view></div>
