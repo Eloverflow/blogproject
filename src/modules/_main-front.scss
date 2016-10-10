@@ -294,3 +294,19 @@
   min-height: 400px;
 }
 // End Comments css section
+
+.fixed-box .panel-body {
+  min-height: 210px !important;
+}
+
+.fixed-box .panel-body .btn-pull-down {
+  float: bottom;
+}
+
+.nav-title {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 8px 0px 0px 0px;
+
+}
