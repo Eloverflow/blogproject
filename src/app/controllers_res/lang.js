@@ -2,7 +2,7 @@
 angular.module('starter.controllers')
 .config(['$translateProvider', function ($translateProvider) {
 
-    $translateProvider.useSanitizeValueStrategy('escape');
+    $translateProvider.useSanitizeValueStrategy(null);
     /*$translateProvider.usePostCompiling(true);*/
 
     // configures staticFilesLoader

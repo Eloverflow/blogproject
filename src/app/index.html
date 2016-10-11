@@ -52,26 +52,26 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a ng-class="{ active: isActive('/home')}" href="#/home">Home</a>
+                    <a ng-class="{ active: isActive('/home')}" href="#/home" translate="MENU-HOME">Accueil</a>
                 </li>
                 <li>
-                    <a ng-class="{ active: isActive('/services')}" href="#/services">Services</a>
+                    <a ng-class="{ active: isActive('/services')}" href="#/services" translate="MENU-SERVICES">Services</a>
                 </li>
                 <li>
-                    <a ng-class="{ active: isActive('/portfolio')}" href="#/portfolio">Portfolio</a>
+                    <a ng-class="{ active: isActive('/portfolio')}" href="#/portfolio" translate="MENU-PORTFOLIO">Portfolio</a>
                 </li>
                 <li>
-                    <a ng-class="{ active: isActive('/press-releases') || isActive('/press-release')}" href="#/press-releases">News Feed</a>
+                    <a ng-class="{ active: isActive('/press-releases') || isActive('/press-release')}" href="#/press-releases" translate="MENU-NEWSFEED">News Feed</a>
                 </li>
                 <li>
-                    <a ng-class="{ active: isActive('/about')}" href="#/about">About</a>
+                    <a ng-class="{ active: isActive('/about')}" href="#/about" translate="MENU-ABOUT">À propos</a>
                 </li>
                 <li>
                     <a ng-class="{ active: isActive('/contact')}" href="#/contact" translate="MENU-CONTACT">Contact</a>
                 </li>
                 </li>
                 <li>
-                    <a translate="MENU-OTHER-LANG">EN</a>
+                    <a style="cursor: pointer" translate="MENU-OTHER-LANG" ng-click="changeLanguage('MENU-OTHER-LANG' | translate)">EN</a>
                 </li>
             </ul>
         </div>
@@ -117,6 +117,7 @@
 <script src="controllers_res/starter.js"></script>
 <script src="controllers_res/constants.js"></script>
 <script src="controllers_res/services.js"></script>
+<script src="controllers_res/directives.js"></script>
 <script src="controllers_res/lang.js"></script>
 <script src="view_home/home.js"></script>
 <script src="view_posts/posts.js"></script>
@@ -126,7 +127,7 @@
 <script src="view_user/user.js"></script>
 <script src="view_profile/profile.js"></script>
 <script src="view_contact/contact.js"></script>
-<script src="view_services/page-services.js"></script>
+<script src="view_services/services.js"></script>
 <script src="js/menu-transition.js"></script>
 
 <script src="../lib/bootbox.js/bootbox.js"></script>
@@ -137,7 +138,6 @@
 <!-- Include the ngReCaptcha directive -->
 <script src="./lib/angular-recaptcha/release/angular-recaptcha.min.js"></script>
 <script src="./lib/angular-fullscreen/src/angular-fullscreen.js"></script>
-<script src="./lib/angular-typewrite/dist/angular-typewrite.js"></script>
 
 <!-- Main library -->
 <script src="js/three.min.js"></script>

@@ -116,7 +116,32 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
 }]);
 
 
-app.run(function($rootScope,$http, API_ENDPOINT, AuthService, $sce, DEBUG, $location, Fullscreen) {
+app.run(function($rootScope,$http, API_ENDPOINT, AuthService, $sce, DEBUG, $location, Fullscreen, $translate) {
+
+  $rootScope.changeLanguage = function (langKey) {
+    $translate.use(langKey);
+    setTimeout(function () {
+
+      initMsgInteractive();
+    }, 100)
+  };
+
+
+  function initMsgInteractive() {
+    $rootScope.msgInteractive = [''];
+    $translate(['MSG-INTERATIVE-1', 'MSG-INTERATIVE-2']).then(function (translations) {
+
+
+      $.each(translations, function(title, currentTranslation) {
+        $rootScope.msgInteractive.push(currentTranslation);
+      });
+
+      $rootScope.msgInteractiveStart = Math.random();
+    })
+
+  }
+  initMsgInteractive();
+
 
   openFB.init({appId: '1112318545481460'});
 
