@@ -25,6 +25,7 @@ angular.module('starter.controllers')
             renderer = null;
             scene = null;
             camera = null;
+            window.removeEventListener( 'resize', onWindowResize, false );
         }
 
         function init() {

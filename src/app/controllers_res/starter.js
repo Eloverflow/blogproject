@@ -1,1 +1,1 @@
-angular.module('starter.controllers', ['starter.services', 'ui.tinymce', 'vcRecaptcha','FBAngular']);
+angular.module('starter.controllers', ['starter.services', 'ui.tinymce', 'vcRecaptcha','FBAngular', 'angularTypewrite']);

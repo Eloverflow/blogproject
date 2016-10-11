@@ -22,6 +22,7 @@
     "tinymce-dist": "*",
     "fontawesome": "*",
     "angular-recaptcha": "*",
+    "angular-typewrite": "*",
     "angular-fullscreen": "*"
   },
   "private": false
