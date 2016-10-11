@@ -1,4 +1,28 @@
 // Post css section ---
+
+.wrapper {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+
+  margin-top: 25px;
+  h3{
+    margin: 0;
+    display: inline-block;
+  }
+}
+
+.wrapper > * {
+  padding: 10px;
+  flex: 1 100%;
+  background-color: rgb(248, 248, 248);
+}
+
 .post{
   margin-bottom: 24px;
   min-height: 100px;
@@ -335,16 +359,42 @@
   min-height: 210px !important;
 }
 
-.demo-box {
-  min-height: 210px;
-  /*border: 1px solid #cccccc;*/
-  background-color: #f2f2f2;
 
+.demo-box {
+
+  /*border: 1px solid #cccccc;*/
+  /*background-color: #f2f2f2;*/
+  min-height: 350px;
   .box-logo {
-    width:100%;
-    height:100px;
+    width:200px;
+    height:200px;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .mission {
     background: url('img/startup.png') center center no-repeat;
     background-size: 100px 100px;
+    background-color: #f2f2f2;
+  }
+
+  .engagement {
+    background: url('img/handshake.png') center center no-repeat;
+    background-size: 100px 100px;
+    background-color: #f2f2f2;
+  }
+
+  .success {
+    background: url('img/laptop.png') center center no-repeat;
+    background-size: 100px 100px;
+    background-color: #f2f2f2;
+  }
+
+  .box-title {
+    font-weight: bold;
+    text-align: center;
+    padding: 4px 0px 0px 0px;
   }
 }
 
@@ -358,7 +408,6 @@
 }
 
 .nav-title {
-
   letter-spacing: 2px;
   text-transform: uppercase;
   color: white !important;
@@ -397,6 +446,7 @@ a:hover, .navbar .navbar-nav > .active > a:focus {
 .navbar .navbar-nav > li > a {
   font-weight: bold;
   color: #C9C9C9;
+
 }
 
 
@@ -490,3 +540,9 @@ a:hover, .navbar .navbar-nav > .active > a:focus {
   margin-top: 0px !important;
 }
 // End tools section
+
+.wrapper-boxed {
+  margin-top: 50px;
+  min-height: 650px;
+  border: 1px solid black;
+}
