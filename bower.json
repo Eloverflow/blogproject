@@ -23,7 +23,9 @@
     "fontawesome": "*",
     "angular-recaptcha": "*",
     "angular-typewrite": "*",
-    "angular-fullscreen": "*"
+    "angular-fullscreen": "*",
+    "angular-translate-loader-static-files": "*",
+    "angular-translate": "*"
   },
   "private": false
 }

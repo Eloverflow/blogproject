@@ -60,6 +60,7 @@ $icon-font-path:  "../assets/fonts/bootstrap"!default;
 $fa-font-path:   "../assets/fonts/fontawesome"!default;
 @import "app/lib/fontawesome/scss/font-awesome";
 
+@import "app/lib/angular-typewrite/dist/angular-typewrite";
 
 
 @import 'modules/_main-front';

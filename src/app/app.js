@@ -36,7 +36,6 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
 
   // End main template ---
 
-
   $routeProvider.when('/sign-in', {
     templateUrl: 'view_user/sign_in.html',
     controller: 'UserCtrl'

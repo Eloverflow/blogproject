@@ -67,7 +67,11 @@
                     <a ng-class="{ active: isActive('/about')}" href="#/about">About</a>
                 </li>
                 <li>
-                    <a ng-class="{ active: isActive('/contact')}" href="#/contact">Contact</a>
+                    <a ng-class="{ active: isActive('/contact')}" href="#/contact" translate="MENU-CONTACT">Contact</a>
+                </li>
+                </li>
+                <li>
+                    <a translate="MENU-OTHER-LANG">EN</a>
                 </li>
             </ul>
         </div>
@@ -105,12 +109,15 @@
 <script src="../lib/tinymce-dist/tinymce.js"></script>
 <script src="../lib/angular/angular.js"></script>
 <script src="../lib/angular-route/angular-route.js"></script>
+<script src="./lib/angular-translate/angular-translate.min.js"></script>
+<script src="./lib/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
 <script src="js/tinymce.js"></script>
 <!--<script src="../lib/angular-ui-tinymce/src/tinymce.js"></script>-->
 <script src="app.js"></script>
 <script src="controllers_res/starter.js"></script>
 <script src="controllers_res/constants.js"></script>
 <script src="controllers_res/services.js"></script>
+<script src="controllers_res/lang.js"></script>
 <script src="view_home/home.js"></script>
 <script src="view_posts/posts.js"></script>
 <script src="view_post/post.js"></script>
