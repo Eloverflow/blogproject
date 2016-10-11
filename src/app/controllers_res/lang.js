@@ -12,6 +12,13 @@ angular.module('starter.controllers')
         $http: { cache: true }
 });
 
-    $translateProvider.preferredLanguage('fr');
+    var lang = window.navigator.language || window.navigator.userLanguage;
+    if (lang === 'fr-FR') {
+        $translateProvider.preferredLanguage('FR');
+    }
+    else {
+        $translateProvider.preferredLanguage('EN');
+    }
+
     $translateProvider.forceAsyncReload(true);
 }]);
