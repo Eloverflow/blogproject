@@ -365,6 +365,7 @@
   /*border: 1px solid #cccccc;*/
   /*background-color: #f2f2f2;*/
   min-height: 350px;
+  margin-top: 20px;
   .box-logo {
     width:200px;
     height:200px;
@@ -544,5 +545,22 @@ a:hover, .navbar .navbar-nav > .active > a:focus {
 .wrapper-boxed {
   margin-top: 50px;
   min-height: 650px;
-  border: 1px solid black;
+  background-color: white;
+  padding: 0px 20px;
+
+  -moz-box-shadow: 0 0 3px #ccc;
+  -webkit-box-shadow: 0 0 3px #ccc;
+  box-shadow: 0 0 3px #ccc;
+  /*border: 1px solid black;*/
+}
+
+body {
+  background: url('img/pattrn_clouds.jpg') repeat-x;
+  background-size: auto 600px ;
+}
+
+.page-title {
+  padding: 0px 0px 10px 0px;
+  margin: 16px 0px 8px 0px;
+  border-bottom: 1px solid #eeeeee;
 }
