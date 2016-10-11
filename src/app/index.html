@@ -83,7 +83,7 @@
 <!-- Page Content -->
 <div class="container">
 
-    <div class="{{ isActive('/contact') ? '' : 'wrapper-boxed' }} {{isActive('/services') ? 'services' : ''}}" ng-view></div>
+    <div class="{{ isActive('/contact') || isActive('/press-releases') ? '' : 'wrapper-boxed' }} {{isActive('/services') ? 'services' : ''}}" ng-view></div>
 
     <!-- Footer -->
     <footer>
