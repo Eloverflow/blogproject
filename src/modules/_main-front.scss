@@ -112,17 +112,52 @@
 }
 // End Post css section
 
+/*
+.row-canvas{
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  position: fixed;
+  z-index: 10;
+*/
+
+  .row{
+    position: relative;
+    z-index: 10;
+    background-color: rgba(0,0,0,0);
+  }/*
+}*/
+
+.wrapper-boxed.services{
+  position: relative;
+  background-color: rgba(0,0,0,0)!important;
+}
 
 .canvas-container{
+  z-index: -1;
 
   height: 0px;
 
   #canvas{
-    left: 0;
     top: 0;
+    bottom:0;
+    left: 0;
     height: 100%;
-    position: fixed;
-    width: 100%;
+    z-index: -1;
+    width:100%;
+    position: absolute;
+    canvas{
+
+      top: 0;
+      bottom:0;
+      left: 0;
+      height: 100%!important;
+      z-index: -1;
+      width:100%!important;
+      position: absolute;
+    }
   }
 }
 

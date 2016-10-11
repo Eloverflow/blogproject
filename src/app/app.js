@@ -14,7 +14,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
   });
 
   $routeProvider.when('/services', {
-    templateUrl: 'view_services/services.html.old',
+    templateUrl: 'view_services/services.html',
     controller: 'PageServicesCtrl'
   });
 

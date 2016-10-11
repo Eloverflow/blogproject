@@ -83,7 +83,7 @@
 <!-- Page Content -->
 <div class="container">
 
-    <div class="wrapper-boxed" ng-view></div>
+    <div class="wrapper-boxed {{isActive('/services') ? 'services' : ''}}" ng-view></div>
 
     <!-- Footer -->
     <footer>
@@ -153,3 +153,4 @@
 </body>
 
 </html>
+
