@@ -41,7 +41,7 @@ angular.module('starter.controllers')
                 container = document.getElementById("canvas");
 
 
-                camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
+                camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 20000 );
                 camera.position.z = 100;
 
                 scene = new THREE.Scene();
@@ -57,12 +57,12 @@ angular.module('starter.controllers')
                 var PI2 = Math.PI * 2;
                 var material = new THREE.SpriteCanvasMaterial( {
 
-                    color: color,
-                    opacity: 0.5,
+                    color: "#419ce8",
+                    opacity: 1,
                     program: function ( context ) {
 
                         context.beginPath();
-                        context.arc( 0, 0, 0.5, 0, PI2, true );
+                        context.arc( 0, 0, 0.3, 0, PI2, true );
                         context.fill();
 
                     }
@@ -81,8 +81,8 @@ angular.module('starter.controllers')
                     particle.position.y = Math.random() * 2 - 1;
                     particle.position.z = Math.random() * 2 - 1;
                     particle.position.normalize();
-                    particle.position.multiplyScalar( Math.random() * 10 + 600 );
-                    particle.scale.x = particle.scale.y = 5;
+                    particle.position.multiplyScalar( Math.random() * 10 + 230 );
+                    particle.scale.x = particle.scale.y = 4;
 
                     scene.add( particle );
 
@@ -94,7 +94,7 @@ angular.module('starter.controllers')
                  *   Lines
                  */
 
-                var line = new THREE.Line( geometry, new THREE.LineBasicMaterial( { color: color, opacity: 0.2 } ) );
+                var line = new THREE.Line( geometry, new THREE.LineBasicMaterial( { color: color, opacity: 0.3 } ) );
                 scene.add( line );
 
                 document.addEventListener( 'mousemove', onDocumentMouseMove, false );
