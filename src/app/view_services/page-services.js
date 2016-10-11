@@ -57,7 +57,7 @@ angular.module('starter.controllers')
                 var PI2 = Math.PI * 2;
                 var material = new THREE.SpriteCanvasMaterial( {
 
-                    color: "#419ce8",
+                    color: "#286090",
                     opacity: 1,
                     program: function ( context ) {
 
@@ -74,14 +74,14 @@ angular.module('starter.controllers')
                 /*
                  *   Number of particles
                  */
-                for ( var i = 0; i < 800; i ++ ) {
+                for ( var i = 0; i < 600; i ++ ) {
 
                     particle = new THREE.Sprite( material );
                     particle.position.x = Math.random() * 2 - 1;
                     particle.position.y = Math.random() * 2 - 1;
                     particle.position.z = Math.random() * 2 - 1;
                     particle.position.normalize();
-                    particle.position.multiplyScalar( Math.random() * 10 + 230 );
+                    particle.position.multiplyScalar( Math.random() * 10 + 100 );
                     particle.scale.x = particle.scale.y = 4;
 
                     scene.add( particle );
@@ -127,8 +127,8 @@ angular.module('starter.controllers')
 
         function onDocumentMouseMove(event) {
 
-            mouseX = (event.clientX - windowHalfX) * 0.05;
-            mouseY = (event.clientY - windowHalfY) * 0.2;
+            mouseX = (event.clientX - windowHalfX) * 0.05 * 3;
+            mouseY = (event.clientY - windowHalfY) * 0.2 * 2+120;
 
         }
 
