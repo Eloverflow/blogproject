@@ -9,7 +9,8 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
   // Main template mirageflow routes ---
 
   $routeProvider.when('/home', {
-    templateUrl: 'views_modern_template/home.html'
+    templateUrl: 'view_home/home.html',
+    controller: 'HomeCtrl'
   });
 
   $routeProvider.when('/services', {
