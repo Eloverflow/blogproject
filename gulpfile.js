@@ -17,6 +17,7 @@ gulp.task('watch', watch);
 
 function watch(done) {
   gulp.watch("src/**/*.scss", sassCompile);
+  gulp.watch("src/app/**/*.html", templateCompile);
   done();
 }
 
@@ -35,10 +36,16 @@ function sassCompile(done) {
   done();
 }
 
+function templateCompile(done) {
+  gulp.task('templates');
+  done();
+}
 
 gulp.task('templates', function (done) {
   gulp.src('src/app/**/*.html')
       .pipe(templateCache('templates.js',{root : "templates", module : "starter.templates"}))
-      .pipe(gulp.dest('src/app/lib/'))
+      .pipe(gulp.dest('src/app/assets/'))
       .on('end', done);
+
+
 });
