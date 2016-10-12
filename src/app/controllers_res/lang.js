@@ -12,13 +12,22 @@ angular.module('starter.controllers')
         $http: { cache: true }
 });
 
-    var lang = window.navigator.language || window.navigator.userLanguage;
-    if (lang === 'fr-FR') {
-        $translateProvider.preferredLanguage('FR');
+
+    var language = localStorage.getItem("language");
+    if(language){
+        $translateProvider.preferredLanguage(language);
     }
     else {
-        $translateProvider.preferredLanguage('EN');
+        language = window.navigator.language || window.navigator.userLanguage;
+        if (language === 'fr-FR') {
+            $translateProvider.preferredLanguage('FR');
+        }
+        else {
+            $translateProvider.preferredLanguage('EN');
+        }
     }
+
+
 
     $translateProvider.forceAsyncReload(true);
 }]);

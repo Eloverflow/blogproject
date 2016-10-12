@@ -180,7 +180,17 @@ angular.module('starter.controllers')
         var $url = API_ENDPOINT.url + '/press-release/' + $routeParams.id;
 
         var $callbackFunction = function (response) {
-            $scope.post = response;
+
+            $scope.post = {};
+
+            $.each(response, function (key, value) {
+                if(key == 'content_fr')
+                    key = 'contentFR';
+                if(key == 'content_en')
+                    key = 'contentEN';
+                $scope.post[key] = value
+            });
+
             tags.importTags(response.tags.join());
         };
 

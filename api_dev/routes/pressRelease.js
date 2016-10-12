@@ -120,8 +120,10 @@ router.put('/:id', function(req, res, next) {
 
       if(user.is_admin){
 
-        if (!req.body.content) {
-          res.status(400).json({success: false, msg: 'No content was found in the post'});
+        if (!req.body.contentFR) {
+          res.status(400).json({success: false, msg: 'No french content was found in the post'});
+        } else if (!req.body.contentEN) {
+          res.status(400).json({success: false, msg: 'No english content was found in the post'});
         } else if (!req.body.title) {
           res.status(400).json({success: false, msg: 'No title was found in the post'});
         } else if (req.body.tags && req.body.tags.length > 20) {
@@ -129,7 +131,8 @@ router.put('/:id', function(req, res, next) {
         }
         else{
           Post.findByIdAndUpdate(req.params.id, {
-            content: req.body.content,
+            content_fr: req.body.contentFR,
+            content_en: req.body.contentEN,
             title: req.body.title.charAt(0).toUpperCase() + req.body.title.slice(1),
             tags: req.body.tags
           }, function (err, post) {

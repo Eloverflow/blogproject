@@ -134,11 +134,6 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService, $sce, DEBUG, $loca
     }, 100)
   };
 
-  var language = localStorage.getItem("language");
-  if(language){
-    $rootScope.changeLanguage(language)
-  }
-
 
   $rootScope.msgInteractive = [''];
   function initMsgInteractive() {
