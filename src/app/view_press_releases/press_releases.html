@@ -18,7 +18,7 @@
     <ul class="posts-info">
       <li ng-show="sesUser.is_admin"> <i ng-click="deletePost(post)" class="fa fa-trash link" aria-hidden="true"></i></li>
       <li ng-show="sesUser.is_admin"> <i ng-click="editPost(post._id)" class="fa fa-edit link" aria-hidden="true"></i></li>
-      <li class=""><em>Written by&nbsp;</em><a href="#/profile/{{post.user_id._id}}">{{post.user_id.username ? post.user_id.username : post.user_id.name}}</a></li>
+      <li class=""><em translate="WRITTEN-BY">Écrit par</em> <a href="#/profile/{{post.user_id._id}}">{{post.user_id.username ? post.user_id.username : post.user_id.name}}</a></li>
       <li class=""><i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp;<!--August, 27, 2016  -->{{ post.createdAt | date:'MMM d, y'}}</li>
     </ul>
   </header>
@@ -26,7 +26,7 @@
   </article>
 
   <div class="footer">
-    <a class="pull-right" href="#/press-release/{{post._id}}">READ MORE</a>
+    <a class="pull-right" translate="READ-MORE" href="#/press-release/{{post._id}}">READ MORE</a>
   </div>
 </div>
 <div ng-show="noSearchResult" class="wrapper">

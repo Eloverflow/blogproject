@@ -129,10 +129,15 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService, $sce, DEBUG, $loca
   $rootScope.changeLanguage = function (langKey) {
     $translate.use(langKey);
     setTimeout(function () {
-
+      localStorage.setItem("language", langKey);
       initMsgInteractive();
     }, 100)
   };
+
+  var language = localStorage.getItem("language");
+  if(language){
+    $rootScope.changeLanguage(language)
+  }
 
 
   $rootScope.msgInteractive = [''];
