@@ -20,9 +20,14 @@
                 <input id="post-title" name="title" type="text" class="form-control" ng-model="post.title" ng-required="true" required/>
             </div>
 
-            <div class="form-group {{ !editPostForm.content.$error.serverMessage ? '' : 'has-error'}}">
-                <label for="post-content">Post Content</label>
-                <textarea rows="1" id="post-content" name="content" class="form-control" ui-tinymce="tinymceOptions" ng-model="post.content" ng-required="true" required></textarea>
+            <div class="form-group {{ !createPostForm.content.$error.serverMessage ? '' : 'has-error'}}">
+                <label for="post-content-fr">Post Content (French)</label>
+                <textarea rows="1" id="post-content-fr" name="content" class="form-control" ui-tinymce="tinymceOptions" ng-model="post.contentFR" ng-required="true" required></textarea>
+            </div>
+
+            <div class="form-group {{ !createPostForm.content.$error.serverMessage ? '' : 'has-error'}}">
+                <label for="post-content-en">Post Content (English)</label>
+                <textarea rows="1" id="post-content-en" name="content" class="form-control" ui-tinymce="tinymceOptions" ng-model="post.contentEN" ng-required="true" required></textarea>
             </div>
 
             <div class="form-group">

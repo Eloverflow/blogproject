@@ -1,7 +1,7 @@
 
 <div  ng-show="sesUser" class="post-header">
   <div class="col-lg-9 post-header-sep sep-fix">
-    <h2 ng-show="sesUser.is_admin"  class="new-post" ><a href="#/press-release-create"><i class="fa fa-plus-square" aria-hidden="true"></i></a>&nbsp;New Press Release</h2>
+    <h2 ng-show="sesUser.is_admin"  class="new-post" ><a href="/dashboard.html#/press-release-create"><i class="fa fa-plus-square" aria-hidden="true"></i></a>&nbsp;New Press Release</h2>
   </div>
   <div class="col-lg-3 post-header-sep sep-fix">
     <div  class="form-group post-search">
@@ -28,10 +28,6 @@
   <div class="footer">
     <a class="pull-right" href="#/press-release/{{post._id}}">READ MORE</a>
   </div>
-</div>
-<div ng-hide="noSearchResult" class="">
-  <div ng-hide="sesUser" ><a href="#/sign-in"><em>(Authenticate)</em></a></div>
-  <div ng-show="sesUser" ng-click="logOut()"><a href="#"><em>(Log out)</em></a></div>
 </div>
 <div ng-show="noSearchResult" class="wrapper">
   <p>No search result !</p>
