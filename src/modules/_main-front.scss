@@ -1,3 +1,9 @@
+@font-face {
+  font-family: "AdamCG";
+  src: url("fonts/adam.cgpro.otf") format("opentype");
+}
+
+
 // Post css section ---
 
 .wrapper {
@@ -399,7 +405,7 @@
 
   /*border: 1px solid #cccccc;*/
   /*background-color: #f2f2f2;*/
-  min-height: 350px;
+  min-height: 380px;
   margin-top: 20px;
   .box-logo {
     width:200px;
@@ -439,9 +445,8 @@
   }
 }
 
-.fixed-box .panel-body .btn-pull-down {
-  position: absolute;
-  bottom: 30px;
+.fixed-box {
+  padding-bottom: 15px;
 }
 
 .navbar-header {
@@ -687,3 +692,37 @@ div.img-list .lee:hover span.text-content {
 .section-title {
   padding: 0px 15px;
 }
+
+.main-footer {
+  background-color: #272727;
+  height: 130px;
+
+  padding-top: 10px;
+  ul {
+    list-style-type: none;
+    padding: 0px;
+    margin-top: 6px;
+
+    li {
+      color: #bcbcbc;
+      text-align: justify;
+      margin: 0 auto;
+    }
+  }
+
+  .copyright-foot {
+    text-align: center;
+    color: #bcbcbc;
+    margin: 0px 0px 0px 0px;
+  }
+
+  .list-section {
+    font-family: AdamCG;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 200;
+    color: #505050;
+  }
+
+}
+
