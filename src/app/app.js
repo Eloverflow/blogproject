@@ -19,10 +19,18 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
   });
 
   $routeProvider.when('/portfolio', {
-    templateUrl: 'views_modern_template/portfolio.html'
+    templateUrl: 'views_modern_template/portfolio.html',
+    controller: 'PortfolioCtrl'
   });
+
+  $routeProvider.when('/blogproject', {
+    templateUrl: 'views_modern_template/portfolio-blogproject.html',
+    controller: 'PortfolioCtrl'
+  });
+
   $routeProvider.when('/portfolio/posio', {
-    templateUrl: 'views_modern_template/portfolio-posio.html'
+    templateUrl: 'views_modern_template/portfolio-posio.html',
+    controller: 'PortfolioCtrl'
   });
 
   $routeProvider.when('/about', {

@@ -25,7 +25,9 @@
     "angular-typewrite": "*",
     "angular-fullscreen": "*",
     "angular-translate-loader-static-files": "*",
-    "angular-translate": "*"
+    "angular-translate": "*",
+    "angular-animate": "*",
+    "angular-touch": "*"
   },
   "private": false
 }

@@ -599,3 +599,48 @@ body {
   margin: 16px 0px 8px 0px;
   border-bottom: 1px solid #eeeeee;
 }
+
+div.img-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+div.img-list .lee {
+  display: inline-block;
+
+  height: auto;
+  position: relative;
+
+}
+
+span.text-content {
+  background: rgba(0,0,0,0.5);
+  color: white;
+  cursor: pointer;
+  display: table;
+  height: 250px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  opacity: 0;
+  -webkit-transition: opacity 500ms;
+  -moz-transition: opacity 500ms;
+  -o-transition: opacity 500ms;
+  transition: opacity 500ms;
+
+  padding: 0px 15px;
+}
+
+span.text-content span {
+
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+
+div.img-list .lee:hover span.text-content {
+  opacity: 1;
+}
