@@ -22,7 +22,6 @@
     "tinymce-dist": "*",
     "fontawesome": "*",
     "angular-recaptcha": "*",
-    "angular-typewrite": "*",
     "angular-fullscreen": "*",
     "angular-translate-loader-static-files": "*",
     "angular-translate": "*",

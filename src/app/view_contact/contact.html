@@ -1,8 +1,8 @@
 <div class="row">
     <h2 class="section-title">Contact</h2>
-    <div class="col-lg-4 no-pad">
+    <div class="col-lg-4">
         <div class="panel panel-default">
-            <div class="panel-heading"><b>Contactez-nous</b></div>
+            <div class="panel-heading" translate="CONTACT-US"><b>Contactez-nous</b></div>
             <div class="panel-body">
                 <ul class="contact-info">
                     <li class="marker">2089 Avenue Chapdelaine, #3, Quebec, QC, G1V 1M7</li>
@@ -17,7 +17,7 @@
     </div>
     <div class="col-lg-8">
         <div class="panel panel-default">
-            <div class="panel-heading"><b>Envoyez-nous un message</b></div>
+            <div class="panel-heading" translate="CONTACT-SEND-MSG"><b>Envoyez-nous un message</b></div>
             <div class="panel-body">
                 <form ng-submit="submit()">
                     <div ng-show="errorList.length > 0" class="alert alert-danger" role="alert">
@@ -30,7 +30,7 @@
                         <strong>Success, </strong>{{ successMsg }}
                     </div>
                     <div class="form-group">
-                        <input ng-model="contact.name" id="name" class="form-control" type="text" placeholder="Votre nom" name="name" required>
+                        <input ng-model="contact.name" id="name" class="form-control" type="text" placeholder="{{'CONTACT-UR-NAME' | translate}}" name="name" required>
                     </div>
                     <div class="form-group">
                         <input ng-model="contact.email" id="email" class="form-control" type="text" placeholder="Email" name="email" required>
@@ -49,7 +49,7 @@
                         ></div>
                     </div>
                     <div class="form-group">
-                        <button class="btn theme-btn" type="submit">Envoyer</button>
+                        <button class="btn theme-btn" type="submit" translate="CONTACT-SEND">Envoyer</button>
                     </div>
                 </form>
             </div>
