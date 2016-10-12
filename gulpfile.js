@@ -11,7 +11,7 @@ const hub = new HubRegistry(['gulp_tasks/*.js']);
 // Tell gulp to use the tasks just loaded
 gulp.registry(hub);
 
-gulp.task('serve', gulp.series('watch', sassCompile, 'templates', 'webServer'));
+gulp.task('serve', gulp.series('watch', sassCompile, templateCompile, 'webServer'));
 gulp.task('serve:api', gulp.series('api:watch'));
 gulp.task('watch', watch);
 
@@ -37,15 +37,9 @@ function sassCompile(done) {
 }
 
 function templateCompile(done) {
-  gulp.task('templates');
-  done();
-}
-
-gulp.task('templates', function (done) {
   gulp.src('src/app/**/*.html')
       .pipe(templateCache('templates.js',{root : "templates", module : "starter.templates"}))
-      .pipe(gulp.dest('src/app/assets/'))
-      .on('end', done);
+      .pipe(gulp.dest('src/app/assets/'));
 
-
-});
+  done();
+}
