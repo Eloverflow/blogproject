@@ -22,7 +22,7 @@
       <li class=""><i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp;<!--August, 27, 2016  -->{{ post.createdAt | date:'MMM d, y'}}</li>
     </ul>
   </header>
-  <article ng-bind-html="toTrustedHTML(post.content)" class="posts-content">
+  <article ng-bind-html="getCurrentLanguage() == 'FR' ? toTrustedHTML(post.content_fr) :  toTrustedHTML(post.content_en)" class="posts-content">
   </article>
 
   <div class="footer">

@@ -190,6 +190,9 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService, $sce, DEBUG, $loca
     return $sce.trustAsHtml( html );
   };
 
+  $rootScope.getCurrentLanguage = function () {
+    return $translate.use();
+  };
 
   $rootScope.listenMenuButton = function () {
     $('.navbar-toggle').on('click', function () {

@@ -12,6 +12,6 @@
     </div>
 </div>
 <div class="wrapper">
-    <article  ng-bind-html="toTrustedHTML(post.content)" class="post-content">
+    <article  ng-bind-html="getCurrentLanguage() == 'FR' ? toTrustedHTML(post.content_fr) :  toTrustedHTML(post.content_en)" class="post-content">
     </article>
 </div>

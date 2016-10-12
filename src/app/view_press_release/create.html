@@ -1,6 +1,6 @@
-<h2 ng-show="previewPost.title"> Preview</h2>
-<div ng-show="previewPost.title" class="wrapper"  >
-    <article ng-bind-html="toTrustedHTML(previewPost.content)">
+<h2 ng-show="previewPost.contentFR"> Preview (FR)</h2>
+<div ng-show="previewPost.contentFR" class="wrapper">
+    <article ng-bind-html="toTrustedHTML(previewPost.contentFR)">
 
     </article>
 </div>
@@ -21,8 +21,13 @@
             </div>
 
             <div class="form-group {{ !createPostForm.content.$error.serverMessage ? '' : 'has-error'}}">
-                <label for="post-content">Post Content</label>
-                <textarea rows="1" id="post-content" name="content" class="form-control" ui-tinymce="tinymceOptions" ng-model="post.content" ng-required="true" required></textarea>
+                <label for="post-content-fr">Post Content (French)</label>
+                <textarea rows="1" id="post-content-fr" name="content" class="form-control" ui-tinymce="tinymceOptions" ng-model="post.contentFR" ng-required="true" required></textarea>
+            </div>
+
+            <div class="form-group {{ !createPostForm.content.$error.serverMessage ? '' : 'has-error'}}">
+                <label for="post-content-en">Post Content (English)</label>
+                <textarea rows="1" id="post-content-en" name="content" class="form-control" ui-tinymce="tinymceOptions" ng-model="post.contentEN" ng-required="true" required></textarea>
             </div>
 
             <div class="form-group">
@@ -33,7 +38,7 @@
         </article>
         <footer class="footer">
             <div class="pull-right btn-group">
-                <button class="btn btn-default" ng-click="makePreviewPost()">Preview Post</button>
+                <button class="btn btn-default" type="button" ng-click="makePreviewPost()">Preview Post</button>
                 <button type="submit" class="btn btn-success">Create Post</button>
             </div>
         </footer>
