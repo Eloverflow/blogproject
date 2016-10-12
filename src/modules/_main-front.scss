@@ -614,7 +614,7 @@ div.img-list {
 
 div.img-list .lee {
   display: inline-block;
-  height: auto;
+  height: 250px;
   position: relative;
 
 }
@@ -622,7 +622,11 @@ div.img-list .lee {
 span.text-content {
 
   background: rgba(0,0,0,0.5);
+
+  font-size: 28px;
+  font-weight: bold;
   color: white;
+
   cursor: pointer;
   display: table;
   height: 250px;
