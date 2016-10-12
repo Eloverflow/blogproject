@@ -135,19 +135,6 @@
   background-color: rgba(255,255,255,0.9)!important;
 }
 
-
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: #222;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #337ab7;
-}
-
 .canvas-container{
   z-index: -1;
 
@@ -445,6 +432,11 @@
     text-align: center;
     padding: 4px 0px 0px 0px;
   }
+
+  .box-text {
+    text-align: justify;
+    text-justify: inter-word;
+  }
 }
 
 .fixed-box .panel-body .btn-pull-down {
@@ -622,29 +614,27 @@ div.img-list {
 
 div.img-list .lee {
   display: inline-block;
-
   height: auto;
   position: relative;
 
 }
 
 span.text-content {
+
   background: rgba(0,0,0,0.5);
   color: white;
   cursor: pointer;
   display: table;
   height: 250px;
-  left: 0;
+  left: 15px;
   position: absolute;
   top: 0;
-  width: 100%;
+  width: calc(100% - 30px);
   opacity: 0;
   -webkit-transition: opacity 500ms;
   -moz-transition: opacity 500ms;
   -o-transition: opacity 500ms;
   transition: opacity 500ms;
-
-  padding: 0px 15px;
 }
 
 span.text-content span {
