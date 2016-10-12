@@ -2,7 +2,7 @@
 <div  ng-show="sesUser" class="post-header">
   <div class="col-lg-9 post-header-sep sep-fix">
     <h2 ng-show="sesUser.is_admin"  class="new-post" ><a href="/dashboard.html#/press-release-create"><i class="fa fa-plus-square" aria-hidden="true"></i></a>&nbsp;New Press Release</h2>
-  </div>
+  </div><!--
   <div class="col-lg-3 post-header-sep sep-fix">
     <div  class="form-group post-search">
       <div class="input-group pull-right">
@@ -10,7 +10,7 @@
           <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
       </div>
       </div>
-  </div>
+  </div>-->
 </div>
 <div ng-repeat="post in posts | orderBy:'created_at':true" class="wrapper post">
   <header class="header">
