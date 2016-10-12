@@ -135,6 +135,7 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService, $sce, DEBUG, $loca
   };
 
 
+  $rootScope.msgInteractive = [''];
   function initMsgInteractive() {
     $rootScope.msgInteractive = [''];
     $translate(['MSG-INTERATIVE-1', 'MSG-INTERATIVE-2']).then(function (translations) {
