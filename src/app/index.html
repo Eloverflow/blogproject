@@ -83,7 +83,7 @@
 <!-- Page Content -->
 <div class="container">
 
-    <div class="{{ isActive('/contact') || isActive('/press-releases') ? '' : 'wrapper-boxed' }} {{isActive('/services') ? 'services' : ''}}" ng-view></div>
+    <div class="{{ isActive('/contact') ? '' : 'wrapper-boxed' }} {{isActive('/services') ? 'services' : ''}}" ng-view></div>
 
     <!-- Footer -->
     <footer class="main-footer">
@@ -205,6 +205,9 @@
 <script src="js/projector.js"></script>
 <script src="js/canvas-renderer.js"></script>
 
+<!-- Cached Views-->
+<script src="controllers_res/templates.js"></script>
+<script src="lib/templates.js"></script>
 
 <!-- Animated background color -->
 <script src="js/color.js"></script>

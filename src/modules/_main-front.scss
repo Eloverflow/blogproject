@@ -402,7 +402,6 @@
   min-height: 210px !important;
 }
 
-
 .demo-box {
 
   /*border: 1px solid #cccccc;*/
@@ -597,10 +596,15 @@ a:hover, .navbar .navbar-nav > .active > a:focus {
 // End tools section
 
 .wrapper-boxed {
+
+
+
   margin-top: 50px;
   min-height: 650px;
   background-color: white;
   padding: 0px 20px;
+
+  
 
   -moz-box-shadow: 0 0 3px #ccc;
   -webkit-box-shadow: 0 0 3px #ccc;

@@ -12,7 +12,8 @@
       </div>
   </div>-->
 </div>
-<div ng-repeat="post in posts | orderBy:'created_at':true" class="wrapper post">
+<div class="col-lg-12">
+<div ng-repeat="post in posts | orderBy:'created_at':true" class="wrapper post panel panel-default">
   <header class="header">
     <a class="posts-title" href="#/press-release/{{post._id}}"><h3>{{ post.title }}</h3></a>
     <ul class="posts-info">
@@ -28,6 +29,7 @@
   <div class="footer">
     <a class="pull-right" translate="READ-MORE" href="#/press-release/{{post._id}}">READ MORE</a>
   </div>
+</div>
 </div>
 <div ng-show="noSearchResult" class="wrapper">
   <p>No search result !</p>

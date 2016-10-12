@@ -1,6 +1,6 @@
 'use strict';
 // Declare app level module which depends on views, and components
-var app  = angular.module('starter', ['starter.controllers','starter.services','starter.constants','ngRoute']);
+var app  = angular.module('starter', ['starter.templates', 'starter.controllers','starter.services','starter.constants','ngRoute']);
 
 app.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   //$locationProvider.hashPrefix('!');
@@ -9,118 +9,118 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
   // Main template mirageflow routes ---
 
   $routeProvider.when('/home', {
-    templateUrl: 'view_home/home.html',
+    templateUrl: 'templates/view_home/home.html',
     controller: 'HomeCtrl'
   });
 
   $routeProvider.when('/services', {
-    templateUrl: 'view_services/services.html',
+    templateUrl: 'templates/view_services/services.html',
     controller: 'PageServicesCtrl'
   });
 
   $routeProvider.when('/portfolio', {
-    templateUrl: 'views_modern_template/portfolio.html',
+    templateUrl: 'templates/views_modern_template/portfolio.html',
     controller: 'PortfolioCtrl'
   });
 
   $routeProvider.when('/blogproject', {
-    templateUrl: 'views_modern_template/portfolio-blogproject.html',
+    templateUrl: 'templates/views_modern_template/portfolio-blogproject.html',
     controller: 'PortfolioCtrl'
   });
 
   $routeProvider.when('/portfolio/posio', {
-    templateUrl: 'views_modern_template/portfolio-posio.html',
+    templateUrl: 'templates/views_modern_template/portfolio-posio.html',
     controller: 'PortfolioCtrl'
   });
 
   $routeProvider.when('/about', {
-    templateUrl: 'views_modern_template/about.html'
+    templateUrl: 'templates/views_modern_template/about.html'
   });
   
   $routeProvider.when('/contact', {
-    templateUrl: 'view_contact/contact.html',
+    templateUrl: 'templates/view_contact/contact.html',
     controller: 'ContactCtrl'
   });
 
   // End main template ---
 
   $routeProvider.when('/sign-in', {
-    templateUrl: 'view_user/sign_in.html',
+    templateUrl: 'templates/view_user/sign_in.html',
     controller: 'UserCtrl'
   });
 
   $routeProvider.when('/sign-up', {
-    templateUrl: 'view_user/sign_up.html',
+    templateUrl: 'templates/view_user/sign_up.html',
     controller: 'UserCtrl'
   });
 
   $routeProvider.when('/new-user', {
-    templateUrl: 'view_user/create-new.html',
+    templateUrl: 'templates/view_user/create-new.html',
     controller: 'UserCtrl'
   });
 
   $routeProvider.when('/edit-user/:id', {
-    templateUrl: 'view_user/edit.html',
+    templateUrl: 'templates/view_user/edit.html',
     controller: 'UserCtrl'
   });
 
   $routeProvider.when('/forgot-password', {
-    templateUrl: 'view_user/forgot_pass.html',
+    templateUrl: 'templates/view_user/forgot_pass.html',
     controller: 'UserCtrl'
   });
 
   $routeProvider.when('/new-password/:token', {
-    templateUrl: 'view_user/new_pass.html',
+    templateUrl: 'templates/view_user/new_pass.html',
     controller: 'UserCtrl'
   });
 
   $routeProvider.when('/user-list', {
-    templateUrl: 'view_user/list.html',
+    templateUrl: 'templates/view_user/list.html',
     controller: 'UserListCtrl'
   });
 
   $routeProvider.when('/profile/:id', {
-    templateUrl: 'view_profile/profile.html',
+    templateUrl: 'templates/view_profile/profile.html',
     controller: 'ProfileCtrl'
   });
 
 
   $routeProvider.when('/post/:id', {
-    templateUrl: 'view_post/post.html',
+    templateUrl: 'templates/view_post/post.html',
     controller: 'PostCtrl'
   });
   $routeProvider.when('/post-create', {
-    templateUrl: 'view_post/create.html',
+    templateUrl: 'templates/view_post/create.html',
     controller: 'PostCreateCtrl'
   });
   $routeProvider.when('/post-edit/:id', {
-    templateUrl: 'view_post/edit.html',
+    templateUrl: 'templates/view_post/edit.html',
     controller: 'PostEditCtrl'
   });
   $routeProvider.when('/posts', {
-    templateUrl: 'view_posts/posts.html',
+    templateUrl: 'templates/view_posts/posts.html',
     controller: 'PostsCtrl'
   });
 
 
   $routeProvider.when('/press-release/:id', {
-    templateUrl: 'view_press_release/press_release.html',
+    templateUrl: 'templates/view_press_release/press_release.html',
     controller: 'PressReleaseCtrl'
   });
   $routeProvider.when('/press-release-create', {
-    templateUrl: 'view_press_release/create.html',
+    templateUrl: 'templates/view_press_release/create.html',
     controller: 'PressReleaseCreateCtrl'
   });
   $routeProvider.when('/press-release-edit/:id', {
-    templateUrl: 'view_press_release/edit.html',
+    templateUrl: 'templates/view_press_release/edit.html',
     controller: 'PressReleaseEditCtrl'
   });
   $routeProvider.when('/press-releases', {
-    templateUrl: 'view_press_releases/press_releases.html',
+    templateUrl: 'templates/view_press_releases/press_releases.html',
     controller: 'PressReleasesCtrl'
   });
   $routeProvider.when('/terms-of-service', {
-    templateUrl: 'views_modern_template/terms-of-service.html'
+    templateUrl: 'templates/views_modern_template/terms-of-service.html'
   });
 
   $routeProvider.otherwise({redirectTo: '/home'});
