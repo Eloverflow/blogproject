@@ -7,6 +7,7 @@
   "MENU-PORTFOLIO": "Portfolio",
   "MENU-NEWSFEED": "News Feed",
   "MENU-ABOUT": "À propos",
+  "MENU-ABOUT-MORE" : "À propos de nous",
   "MENU-CONTACT": "Contact",
   "MENU-OTHER-LANG": "EN",
   "HOME-MISSION-TITLE": "Notre Mission",
@@ -30,11 +31,14 @@
   "ABOUT-OUR-TEAM" : "Notre équipe",
   "ABOUT-JEAN-TITLES" : "Président / Développeur",
   "ABOUT-JEAN-CONTENT" : "TI, QA Analyste, Administrateur de systèmes et Développeur",
+  "ABOUT-ISAEL-TITLES" : "Vice-Président / Développeur",
+  "ABOUT-ISAEL-CONTENT" : "Conseiller en programmation",
   "CONTACT-US" : "Contactez-nous",
   "CONTACT-SEND-MSG" : "Envoyez-nous un message",
   "CONTACT-SEND" : "Envoyer",
   "CONTACT-UR-NAME" : "Votre nom",
   "WRITTEN-BY" : "Écrit par",
-  "READ-MORE" : "LIRE LA SUITE"
+  "READ-MORE" : "LIRE LA SUITE",
+  "TERMS-OF-SERVICE" : "Conditions d'utilisation"
 
 }

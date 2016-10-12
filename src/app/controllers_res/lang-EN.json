@@ -7,6 +7,7 @@
     "MENU-PORTFOLIO": "Portfolio",
     "MENU-NEWSFEED": "News Feed",
     "MENU-ABOUT": "About",
+    "MENU-ABOUT-MORE" : "About Us",
     "MENU-CONTACT": "Contact",
     "MENU-OTHER-LANG": "FR",
     "HOME-MISSION-TITLE": "Our Goal",
@@ -30,12 +31,15 @@
     "ABOUT-OUR-TEAM" : "Our team",
     "ABOUT-JEAN-TITLES" : "President / Developer",
     "ABOUT-JEAN-CONTENT" : "TI, QA Analyst, System administrator and Developer",
+    "ABOUT-ISAEL-TITLES" : "Vice-President / Developer",
+    "ABOUT-ISAEL-CONTENT" : "Programming Consultant",
     "CONTACT-US" : "Contact us",
     "CONTACT-SEND-MSG" : "Send us a message",
     "CONTACT-SEND" : "Send",
     "CONTACT-UR-NAME" : "Your name",
     "WRITTEN-BY" : "Written by",
-    "READ-MORE" : "READ MORE"
+    "READ-MORE" : "READ MORE",
+    "TERMS-OF-SERVICE" : "Terms of Service"
 
 }
 

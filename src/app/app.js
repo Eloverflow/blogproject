@@ -119,6 +119,9 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
     templateUrl: 'view_press_releases/press_releases.html',
     controller: 'PressReleasesCtrl'
   });
+  $routeProvider.when('/terms-of-service', {
+    templateUrl: 'views_modern_template/terms-of-service.html'
+  });
 
   $routeProvider.otherwise({redirectTo: '/home'});
 }]);
