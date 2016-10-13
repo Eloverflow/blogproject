@@ -141,6 +141,13 @@
   background-color: rgba(255,255,255,0.9)!important;
 }
 
+.panel-desc{
+  margin-top: 8px;
+  .label{
+    margin-right: 4px;
+  }
+}
+
 .canvas-container{
   z-index: -1;
 
