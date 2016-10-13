@@ -454,6 +454,7 @@
 }
 
 .fixed-box {
+  margin-top: 20px;
   padding-bottom: 15px;
 }
 
@@ -512,7 +513,7 @@ a:hover, .navbar .navbar-nav > .active > a:focus {
     list-style-type: none;
     text-decoration: none;
     padding: 0px;
-    margin: 8px 3px 0px 3px;
+    margin: 14px 3px 0px 3px;
     color: grey;
     i{
       width: 18px;
@@ -721,14 +722,25 @@ div.img-list .lee:hover span.text-content {
       color: #bcbcbc;
       text-align: justify;
       margin: 0 auto;
+
+      a {
+        color: #bcbcbc;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: none;
+        color: #979797;
+      }
     }
   }
 
   .copyright-foot {
+    border-top: 1px solid #2e2e2e;
     text-align: center;
-    color: #bcbcbc;
-    margin: 0px 0px 0px 0px;
-    padding: 10px 0px 6px 0px;
+    color: #5c5c5c;
+    margin: 8px 0px 0px 0px;
+    padding: 10px 8px 6px 8px;
   }
 
   .list-section {
@@ -746,3 +758,6 @@ div.img-list .lee:hover span.text-content {
   }
 }
 
+.contact-box {
+  margin-top: 20px;
+}
