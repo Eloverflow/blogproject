@@ -36,6 +36,35 @@ angular.module('starter.controllers')
 
 .controller('PressReleaseCreateCtrl', function($rootScope, $location, $scope, getReq, $routeParams, postReq, $http, API_ENDPOINT, $parse) {
 
+    $scope.getGoogleTranslate = function (dst) {
+
+        var $callbackFunction = function (response) {
+
+            if(response){
+                $scope.googleTranslateResult = response.data.translations[0]['translatedText'];
+            }
+        };
+
+        var text;
+        var $url;
+        var key = '22a8e7e7460a09d862183886a2bb25dc6e2edaf7';
+
+        if(dst){
+            if(dst == 'fr')
+                text = $scope.post.contentEN;
+            else if(dst == 'en')
+                text = $scope.post.contentFR;
+
+            $url = 'https://www.googleapis.com/language/translate/v2/detect?key=' + key + '&q=' + encodeURI(text) + '&source=auto&target='+dst
+
+            getReq.send($url, null, $callbackFunction);
+
+        }
+
+
+
+    }
+
     $scope.previewPost = {
         content: ""
     };
@@ -100,6 +129,7 @@ angular.module('starter.controllers')
 
     $scope.getContent = function() {
       console.log('Editor content:', $scope.tinymceModel);
+        return $scope.tinymceModel;
     };
 
     $scope.setContent = function() {

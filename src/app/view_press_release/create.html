@@ -23,17 +23,25 @@
             <div class="form-group {{ !createPostForm.content.$error.serverMessage ? '' : 'has-error'}}">
                 <label for="post-content-fr">Post Content (French)</label>
                 <textarea rows="1" id="post-content-fr" name="content" class="form-control" ui-tinymce="tinymceOptions" ng-model="post.contentFR" ng-required="true" required></textarea>
+               <!-- <span><a ng-click="getGoogleTranslate('en')">Google translate</a></span>-->
             </div>
 
             <div class="form-group {{ !createPostForm.content.$error.serverMessage ? '' : 'has-error'}}">
                 <label for="post-content-en">Post Content (English)</label>
                 <textarea rows="1" id="post-content-en" name="content" class="form-control" ui-tinymce="tinymceOptions" ng-model="post.contentEN" ng-required="true" required></textarea>
+               <!-- <span><a ng-click="getGoogleTranslate('fr')">Google translate</a></span>-->
             </div>
 
             <div class="form-group">
                 <label for="post-tags">Post Tags</label>
                 <input id="post-tags"  name="tags" class="form-control" value=""  />
             </div>
+<!--
+            <div ng-show="googleTranslateResult" class="form-group {{ !createPostForm.content.$error.serverMessage ? '' : 'has-error'}}">
+                <label for="post-google-translate">Google Translate Result</label>
+                <textarea rows="1" id="post-google-translate" name="content" class="form-control" ui-tinymce="tinymceOptions" ng-model="googleTranslateResult" ></textarea>
+            </div>-->
+            <a href="https://translate.google.com/" target="_blank">Google translate</a>
 
         </article>
         <footer class="footer">
