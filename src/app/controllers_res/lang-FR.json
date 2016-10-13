@@ -27,18 +27,21 @@
   "SERVICES-COLLABORATION-CONTENT" : "Nous passons la majorité de nos temps libres à aiguiser nos compétences en travaillant sur des projets libres de droits (open source). Vous avez un projet? N’hésitez pas à nous contacter!",
   "PORTFOLIO-TITLE" : "Projets Open-Source",
   "ABOUT-TITLE" : "À propos",
-  "ABOUT-US" : "<p>Notre Travail<br><br>Du développement? On en mange. Si vous nous cherchez, nous sommes au coin de l’environnement de développement de plus proche et d’un moteur de recherche. Nous travaillons selon les principes de la méthode agile et nous adaptons nos méthodes selon vos besoins. Notre motto : Flexibilité, versatilité et respect de votre rythme.</p><br><p>Notre attitude<br><br>L’équilibre. C’est le meilleur mot pour décrire ce qui se passe chez nous. Vie personnelle, travail, développement des compétences professionnelles et interpersonnelles, le plus important est de trouver l’équilibre. Pour cette raison, nous offrons les conditions les plus flexibles à nos employés et à nos clients. Un climat positif et chaleureux, des employés heureux et des clients satisfaits. Bienvenue chez nous!</p><br><p>Nos exigences<br><br>Très Élevés. Dans un domaine d’activité évoluant aussi rapidement, nous nous assurons de toujours être un pas en avant afin de vous offrir des services en correspondant à ce qui se fait de mieux dans l’industrie. Chez MirageFlow, on ne laisse personne derrière.</p>",
+  "ABOUT-US" : "<p>Notre Travail<br><br>Du développement? On en mange. Si vous nous cherchez, nous sommes au coin de l’environnement de développement et du moteur de recherche le plus proche. Nous travaillons selon les principes de la méthode agile et nous adaptons nos méthodes selon vos besoins. Notre motto : Flexibilité, versatilité et respect de votre rythme.</p><br><p>Notre attitude<br><br>L’équilibre. C’est le meilleur mot pour décrire ce qui se passe chez nous. Vie personnelle, travail, développement des compétences professionnelles et interpersonnelles, le plus important est de trouver l’équilibre. Pour cette raison, nous offrons les conditions les plus flexibles à nos employés et à nos clients. Un climat positif et chaleureux, des employés heureux et des clients satisfaits. Bienvenue chez nous!</p><br><p>Nos exigences<br><br>Très Élevées. Dans un domaine d’activité évoluant aussi rapidement, nous nous assurons de toujours être un pas en avant afin de vous offrir des services correspondant à ce qui se fait de mieux dans l’industrie. Chez MirageFlow, on ne laisse personne derrière.</p>",
   "ABOUT-OUR-TEAM" : "Notre équipe",
   "ABOUT-JEAN-TITLES" : "Président / Développeur",
   "ABOUT-JEAN-CONTENT" : "TI, QA Analyste, Administrateur de systèmes et Développeur",
   "ABOUT-ISAEL-TITLES" : "Vice-Président / Développeur",
   "ABOUT-ISAEL-CONTENT" : "Conseiller en programmation",
+  "ABOUT-BRYAN-TITLES" : "Administrateur",
+  "ABOUT-BRYAN-CONTENT" : "Administrateur, responsable du développement des affaires.",
   "CONTACT-US" : "Contactez-nous",
   "CONTACT-SEND-MSG" : "Envoyez-nous un message",
   "CONTACT-SEND" : "Envoyer",
   "CONTACT-UR-NAME" : "Votre nom",
   "WRITTEN-BY" : "Écrit par",
   "READ-MORE" : "LIRE LA SUITE",
-  "TERMS-OF-SERVICE" : "Conditions d'utilisation"
+  "TERMS-OF-SERVICE" : "Conditions d'utilisation",
+  "BLOG-PROJECT-DESC" : "Blogproject est un projet libre de droit, "
 
 }
