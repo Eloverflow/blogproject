@@ -192,6 +192,19 @@
   }
 }
 
+.row-services{
+  .panel{
+    text-align: justify;
+    .btn{
+      margin-bottom: 0;
+    }
+  }
+}
+
+.row-about{
+  text-align: justify;
+}
+
 // Comments css section
 .chat{
   background-color: white;
