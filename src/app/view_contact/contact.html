@@ -3,58 +3,50 @@
         <h1 class="page-title">Contact</h1>
     </div>
     <div class="col-lg-4 contact-box">
-        <!--<div class="panel panel-default">-->
-           <!-- <div class="panel-heading" translate="CONTACT-US"><b>Contactez-nous</b></div>
-            <div class="panel-body">-->
-                <ul class="contact-info">
-                    <li class="marker">2089 Avenue Chapdelaine, #3, Quebec, QC, G1V 1M7</li>
-                    <li class="phone">(581)&nbsp;991-5326</li>
-                    <li class="envelope"><a href="mailto:administration@mirageflow.com">administration@mirageflow.com</a></li>
-                </ul>
-                <div class="embed-responsive embed-responsive-4by3">
-                    <iframe class="embed-responsive-item" frameborder="" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=2089%20Avenue%20Chapdelaine%2C%20%2C%20Ville%20de%20Qu%C3%A9bec%2C%20QC%2C%20Canada&key=AIzaSyCxPEipixekVPZMTll3TaiDimX2V5l0NXc" allowfullscreen></iframe>
-                </div>
-            <!--</div>-->
-        <!--</div>-->
+        <ul class="contact-info">
+            <li class="marker">2089 Avenue Chapdelaine, #3, Quebec, QC, G1V 1M7</li>
+            <li class="phone">(581)&nbsp;991-5326</li>
+            <li class="envelope"><a href="mailto:administration@mirageflow.com">administration@mirageflow.com</a></li>
+        </ul>
+        <div class="embed-responsive embed-responsive-4by3">
+            <iframe class="embed-responsive-item" frameborder="" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=2089%20Avenue%20Chapdelaine%2C%20%2C%20Ville%20de%20Qu%C3%A9bec%2C%20QC%2C%20Canada&key=AIzaSyCxPEipixekVPZMTll3TaiDimX2V5l0NXc" allowfullscreen></iframe>
+        </div>
+
     </div>
     <div class="col-lg-8 contact-box">
-        <!--<div class="panel panel-default">
-            <div class="panel-heading" translate="CONTACT-SEND-MSG"><b>Envoyez-nous un message</b></div>
-            <div class="panel-body">-->
-                <form ng-submit="submit()">
-                    <div ng-show="errorList.length > 0" class="alert alert-danger" role="alert">
-                        <strong>Oops,</strong> Il y a eu une erreur avec votre soumission :
-                        <ul class="error-list">
-                            <li ng-repeat="n in errorList">{{ n }}</li>
-                        </ul>
-                    </div>
-                    <div ng-show="successMsg" class="alert alert-success" role="alert">
-                        <strong>Success, </strong>{{ successMsg }}
-                    </div>
-                    <div class="form-group">
-                        <input ng-model="contact.name" id="name" class="form-control" type="text" placeholder="{{'CONTACT-UR-NAME' | translate}}" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <input ng-model="contact.email" id="email" class="form-control" type="text" placeholder="Email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea ng-model="contact.message" id="message" class="form-control" rows="5" placeholder="Message" name="message" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <div
-                                vc-recaptcha
-                                theme="'light'"
-                                key="captcha.key"
-                                on-create="setWidgetId(widgetId)"
-                                on-success="setResponse(response)"
-                                on-expire="cbExpiration()"
-                        ></div>
-                    </div>
-                    <div class="form-group">
-                        <button class="btn theme-btn" type="submit" translate="CONTACT-SEND">Envoyer</button>
-                    </div>
-                </form>
-            <!--</div>
-        </div>-->
+        <form ng-submit="submit()">
+            <div ng-show="errorList.length > 0" class="alert alert-danger" role="alert">
+                <strong>Oops,</strong> Il y a eu une erreur avec votre soumission :
+                <ul class="error-list">
+                    <li ng-repeat="n in errorList">{{ n }}</li>
+                </ul>
+            </div>
+            <div ng-show="successMsg" class="alert alert-success" role="alert">
+                <strong>Success, </strong>{{ successMsg }}
+            </div>
+            <div class="form-group">
+                <input ng-model="contact.name" id="name" class="form-control" type="text" placeholder="{{'CONTACT-UR-NAME' | translate}}" name="name" required>
+            </div>
+            <div class="form-group">
+                <input ng-model="contact.email" id="email" class="form-control" type="text" placeholder="Email" name="email" required>
+            </div>
+            <div class="form-group">
+                <textarea ng-model="contact.message" id="message" class="form-control" rows="5" placeholder="Message" name="message" required></textarea>
+            </div>
+            <div class="form-group">
+                <div
+                        vc-recaptcha
+                        theme="'light'"
+                        key="captcha.key"
+                        on-create="setWidgetId(widgetId)"
+                        on-success="setResponse(response)"
+                        on-expire="cbExpiration()"
+                ></div>
+            </div>
+            <div class="form-group">
+                <button class="btn theme-btn" type="submit" translate="CONTACT-SEND">Envoyer</button>
+            </div>
+        </form>
+
     </div>
 </div>
