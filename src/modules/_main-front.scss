@@ -541,6 +541,10 @@ a:hover, .navbar .navbar-nav > .active > a:focus {
     }
   }
 
+  :first-child {
+    margin-top: 4px;
+  }
+
   li.marker:before
   {
     /*Using a Bootstrap glyphicon as the bullet point*/
@@ -725,7 +729,7 @@ div.img-list .lee:hover span.text-content {
   min-height: 130px;
 
   overflow: auto;
-  padding-top: 10px;
+  padding-top: 20px;
   ul {
     list-style-type: none;
     padding: 0px;
@@ -773,4 +777,6 @@ div.img-list .lee:hover span.text-content {
 
 .contact-box {
   margin-top: 20px;
-}
+}.sep-right {
+  border-right: 1px solid #eeeeee;
+ }
