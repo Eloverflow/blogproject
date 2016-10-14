@@ -22,6 +22,14 @@ angular.module('starter.controllers')
     animate();
 
     $scope.$on("$destroy", function(){
+        $('.wrapper-boxed').animate({
+            'background-color': 'rgba(255,255,255,1)'
+        }, 150);
+
+        $('.main-footer').animate({
+            'background-color': 'rgba(39,39,39,1)'
+        }, 150);
+
         destroy();
     });
 
@@ -33,8 +41,15 @@ angular.module('starter.controllers')
         }
 
         function init() {
-            $('.wrapper-boxed').addClass('services')
-            $('.main-footer').addClass('services')
+            $('.main-footer').animate({
+                'background-color': 'rgba(39,39,39,0.9)'
+            }, 400)
+
+            $('.wrapper-boxed').animate({
+                'background-color': 'rgba(255,255,255,0.9)'
+            }, 400);
+            //$('.main-footer').fadeTo(0.5, 0.9);
+
 
             if (screen.width > 480) {
 

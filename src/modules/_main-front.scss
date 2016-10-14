@@ -136,15 +136,6 @@
   }/*
 }*/
 
-.wrapper-boxed.services{/*
-  position: relative;*/
-  background-color: rgba(255,255,255,0.9)!important;
-}
-.main-footer.services{/*
-  position: relative;*/
-  background-color: rgba(39,39,39,0.9)!important;
-}
-
 .panel-desc{
   margin-top: 8px;
   .label{
@@ -633,10 +624,6 @@ a:hover, .navbar .navbar-nav > .active > a:focus {
 // End tools section
 
 .wrapper-boxed {
-
-  transition: background-color 0.5s ease;
-
-
   margin-top: 50px;
   min-height: 650px;
   background-color: white;
@@ -745,9 +732,14 @@ div.img-list .lee:hover span.text-content {
 }
 
 .main-footer {
-  transition: background-color 0.5s ease;
   background-color: #272727;
   min-height: 130px;
+
+  /*
+  -moz-box-shadow: 0 0 3px #ccc;
+  -webkit-box-shadow: 0 0 3px #ccc;
+  box-shadow: 0 0 3px #ccc;
+  */
 
   margin-bottom: 50px;
   overflow: auto;
