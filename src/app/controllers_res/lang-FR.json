@@ -58,7 +58,9 @@
   "INVALID-EMAIL-IN-FIELD" : "Addresse email invalide",
   "NO-EMAIL-IN-FIELD" : "Le champ email est vide",
   "NO-NAME-IN-FIELD" : "Le champ nom est vide",
-  "PLEASE-CAPTCHA" : "Veuillez répondre au captcha, merci!"
+  "PLEASE-CAPTCHA" : "Veuillez répondre au captcha, merci!",
+  "ERROR-SUBMIT" : "<strong>Oops,</strong> Il y a eu une erreur avec votre soumission :",
+  "SUCCESS-SUBMIT" : "Succès, "
 
 
 }
