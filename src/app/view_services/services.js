@@ -127,9 +127,6 @@ angular.module('starter.controllers')
             //
 
             window.addEventListener('resize', onWindowResize, false);
-            /*}else {
-             $('#canvas').remove();
-             }*/
 
         }
 
@@ -157,21 +154,13 @@ angular.module('starter.controllers')
         }
 
         function onDocumentScroll(event) {
-
-            //mouseX = (event.clientX - windowHalfX) * 0.05 * 3;
             mouseY = (document.body.scrollTop - windowHalfY) * 0.2 * 2+120;
-
         }
 
         function onDocumentTouchStart( event ) {
 
             if ( event.touches.length > 1 ) {
-
-                //event.preventDefault();
-
                 mouseX = (event.touches[ 0 ].pageX - windowHalfX) * 0.4;
-                //mouseY = (event.touches[ 0 ].pageY - windowHalfY) * 0.4;
-
             }
 
         }
@@ -179,12 +168,7 @@ angular.module('starter.controllers')
         function onDocumentTouchMove( event ) {
 
             if ( event.touches.length == 1 ) {
-
-                //event.preventDefault();
-
                 mouseX = event.touches[ 0 ].pageX - windowHalfX;
-                //mouseY = event.touches[ 0 ].pageY - windowHalfY;
-
             }
 
         }
