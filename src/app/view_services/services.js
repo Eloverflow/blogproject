@@ -4,6 +4,7 @@ angular.module('starter.controllers')
 
 .controller('PageServicesCtrl', function($scope, getReq, delReq, $location, API_ENDPOINT, postReq) {
     var scale = 4;
+    var opacity = 0.3;
     var mouseX = 0, mouseY = 0,
 
         windowHalfX = window.innerWidth / 2,
@@ -50,6 +51,7 @@ angular.module('starter.controllers')
             else {
                 nbrLine = 120;
                 scale = 10;
+                opacity = 0.8;
             }
 
             /*
@@ -113,7 +115,7 @@ angular.module('starter.controllers')
              *   Lines
              */
 
-            var line = new THREE.Line(geometry, new THREE.LineBasicMaterial({color: color, opacity: 0.3}));
+            var line = new THREE.Line(geometry, new THREE.LineBasicMaterial({color: color, opacity: opacity}));
             scene.add(line);
 
             if (screen.width > 480)
