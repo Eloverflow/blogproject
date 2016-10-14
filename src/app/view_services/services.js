@@ -3,6 +3,7 @@
 angular.module('starter.controllers')
 
 .controller('PageServicesCtrl', function($scope, getReq, delReq, $location, API_ENDPOINT, postReq) {
+
     var scale = 4;
     var opacity = 0.3;
     var mouseX = 0, mouseY = 0,
@@ -32,6 +33,8 @@ angular.module('starter.controllers')
         }
 
         function init() {
+            $('.wrapper-boxed').addClass('services')
+            $('.main-footer').addClass('services')
 
             if (screen.width > 480) {
 
