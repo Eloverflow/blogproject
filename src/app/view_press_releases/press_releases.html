@@ -16,13 +16,13 @@
   <div class="row">
     <div ng-repeat="post in posts | orderBy:'created_at':true" class="wrapper post panel panel-default">
       <header class="header">
-        <a class="posts-title" href="#/press-release/{{post._id}}"><h3>{{ post.title }}</h3></a>
         <ul class="posts-info">
           <li ng-show="sesUser.is_admin"> <i ng-click="deletePost(post)" class="fa fa-trash link" aria-hidden="true"></i></li>
           <li ng-show="sesUser.is_admin"> <i ng-click="editPost(post._id)" class="fa fa-edit link" aria-hidden="true"></i></li>
           <li class=""><em translate="WRITTEN-BY">Écrit par</em> <a href="#/profile/{{post.user_id._id}}">{{post.user_id.username ? post.user_id.username : post.user_id.name}}</a></li>
           <li class=""><i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp;<!--August, 27, 2016  -->{{ post.createdAt | date:'MMM d, y'}}</li>
         </ul>
+        <a class="posts-title" href="#/press-release/{{post._id}}"><h3>{{ post.title }}</h3></a>
       </header>
       <article ng-bind-html="getCurrentLanguage() == 'FR' ? toTrustedHTML(post.content_fr) :  toTrustedHTML(post.content_en)" class="posts-content">
       </article>
