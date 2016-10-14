@@ -140,6 +140,7 @@
   margin-top: 8px;
   .label{
     margin-right: 4px;
+    display: inline-block;
   }
 }
 
@@ -168,8 +169,6 @@
     }
   }
 }
-
-
 
 .img-portfolio{
   img.img-responsive{
@@ -633,7 +632,7 @@ a:hover, .navbar .navbar-nav > .active > a:focus {
   background-color: white;
   padding: 0px 20px;
 
-  
+
 
   -moz-box-shadow: 0 0 3px #ccc;
   -webkit-box-shadow: 0 0 3px #ccc;
