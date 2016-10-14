@@ -203,6 +203,10 @@
   .panel{
     text-align: justify;
 
+    .panel-body{
+      min-height: 260px;
+    }
+
     .btn{
       position: absolute;
       bottom: 35px;
