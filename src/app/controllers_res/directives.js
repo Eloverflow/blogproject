@@ -21,9 +21,6 @@ angular.module('starter.services')
                 currentText = $scope.text;
             }
         }
-        if (typeof $scope.start === 'undefined' || $scope.start) {
-            typewrite();
-        }
 
         function typewrite() {
             timer = $timeout(function () {
