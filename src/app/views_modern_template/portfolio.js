@@ -5,11 +5,11 @@ angular.module('starter.controllers')
     $scope.greetings = "ahahah";
 
     $scope.slides = [
-        {image: 'img/projects/blogproject/bp_content.jpg', description: 'Image 00'},
-        {image: 'img/projects/blogproject/bp_menu.jpg', description: 'Image 01'},
-        {image: 'img/projects/blogproject/bp_newpost.jpg', description: 'Image 02'},
-        {image: 'img/projects/blogproject/bp_profile.jpg', description: 'Image 03'},
-        {image: 'img/projects/blogproject/bp_userlist.jpg', description: 'Image 04'}
+        {image: 'img/projects/blogproject/bp_content.png', description: 'Image 00'},
+        {image: 'img/projects/blogproject/bp_menu.png', description: 'Image 01'},
+        {image: 'img/projects/blogproject/bp_newpost.png', description: 'Image 02'},
+        {image: 'img/projects/blogproject/bp_profile.png', description: 'Image 03'},
+        {image: 'img/projects/blogproject/bp_userlist.png', description: 'Image 04'}
     ];
 
     $scope.direction = 'left';
