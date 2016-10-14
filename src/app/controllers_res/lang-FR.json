@@ -48,6 +48,17 @@
   "WRITTEN-BY" : "Écrit par",
   "READ-MORE" : "LIRE LA SUITE",
   "TERMS-OF-SERVICE" : "Conditions d'utilisation",
-  "BLOG-PROJECT-DESC" : "Blogproject est un projet libre de droit, "
+  "BLOG-PROJECT-DESC" : "Blogproject est un projet libre de droit, ",
+  "MAIL-FAILED" : "Votre message n'a pu être acheminé à cette adresse courriel!",
+  "MAIL-SUCCESS" : "Votre message a bien été acheminé!",
+  "MAIL-SUCCESS2" : "Votre message a bien été acheminé! Vous devriez recevoir un email de confirmation.",
+  "CAPTCHA-FAILED" : "Échec de la validation du captcha. Veuillez répondre au captcha, merci!",
+  "CAPTCHA-INVALID-HOSTNAME" : "Échec de la validation du hostname pour le captcha.",
+  "NO-MESSAGE-IN-FIELD" : "Le champ message est vide",
+  "INVALID-EMAIL-IN-FIELD" : "Addresse email invalide",
+  "NO-EMAIL-IN-FIELD" : "Le champ email est vide",
+  "NO-NAME-IN-FIELD" : "Le champ nom est vide",
+  "PLEASE-CAPTCHA" : "Veuillez répondre au captcha, merci!"
+
 
 }

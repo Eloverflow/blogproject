@@ -47,7 +47,17 @@
     "CONTACT-UR-NAME" : "Your name",
     "WRITTEN-BY" : "Written by",
     "READ-MORE" : "READ MORE",
-    "TERMS-OF-SERVICE" : "Terms of Service"
+    "TERMS-OF-SERVICE" : "Terms of Service",
+    "MAIL-FAILED" : "Your message could not be sent to this email address!",
+    "MAIL-SUCCESS" : "Your message has been sent!",
+    "MAIL-SUCCESS2" : "Your message has been sent! You should receive a confirmation email.",
+    "CAPTCHA-FAILED" : "Failed to validate the captcha. Please answer the captcha, thank you!",
+    "CAPTCHA-INVALID-HOSTNAME" : "Failed to validate the hostname for the captcha.",
+    "NO-MESSAGE-IN-FIELD" : "The message field is empty",
+    "INVALID-EMAIL-IN-FIELD" : "Invalid email address",
+    "NO-EMAIL-IN-FIELD" : "The email field is empty",
+    "NO-NAME-IN-FIELD" : "The name field is empty",
+    "PLEASE-CAPTCHA" : "Please answer the captcha, thank you!"
 
 }
 

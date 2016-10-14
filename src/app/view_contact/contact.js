@@ -38,11 +38,11 @@ angular.module('starter.controllers')
 
       if(response.success){
         $scope.contact = {};
-        $scope.successMsg = response.msg;
+        $scope.successObj = response;
       }
       else {
         console.log(response.msg)
-        $scope.errorList.push(response.msg);
+        $scope.errorList.push(response);
 
 
         // In case of a failed validation you need to reload the captcha

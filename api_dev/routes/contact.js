@@ -16,7 +16,7 @@ var recaptcha = new Recaptcha({
 router.post('/', function(req, res, next) {
 
   if (!req.body.captcha) {
-    return res.status(400).json({success: false, msg: 'Please answer the captcha'});
+    return res.status(400).json({success: false, msg: 'Please answer the captcha', translate: 'PLEASE-CAPTCHA'});
   }
   var userResponse = req.body.captcha;
 
@@ -31,13 +31,15 @@ router.post('/', function(req, res, next) {
 
     if(response.success){
       if (!req.body.contact.name) {
-        res.status(400).json({success: false, msg: 'No name was found in the contact fields'});
+        res.status(400).json({success: false, msg: 'No name was found in the contact fields', translate: 'NO-NAME-IN-FIELD'});
       } else if (!req.body.contact.email) {
-        res.status(400).json({success: false, msg: 'No email was found in the contact fields'});
+        res.status(400).json({success: false, msg: 'No email was found in the contact fields', translate: 'NO-EMAIL-IN-FIELD'});
+      } else if(!(req.body.contact.email).match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm)){
+        res.status(400).json({success: false, msg: 'Please pass a valid email', translate: 'INVALID-EMAIL-IN-FIELD'});
       } else if (!req.body.contact.message) {
-        res.status(400).json({success: false, msg: 'No message was found in the contact fields'});
+        res.status(400).json({success: false, msg: 'No message was found in the contact fields', translate: 'NO-MESSAGE-IN-FIELD'});
       } else if (response.hostname != "mirageflow.com") {
-        res.status(400).json({success: false, msg: 'Captcha invalid hostname', response:response});
+        res.status(400).json({success: false, msg: 'Captcha invalid hostname', translate: 'CAPTCHA-INVALID-HOSTNAME', response:response});
       }
       else{
         var transporter = nodemailer.createTransport(config.smtpConfig);
@@ -62,18 +64,18 @@ router.post('/', function(req, res, next) {
         };
 
         // send mail with defined transport object
-        transporter.sendMail(mailOptions, function(error, info){
+        transporter.sendMail(mailAdminOptions, function(error, info){
           if(error){
-            res.json({success: false, msg: 'Unsuccessful sent contact message', info: info});
+            res.json({success: false, msg: 'Unsuccessful sent admin message', translate: 'MAIL-FAILED', info: info});
           }
           else{
-            transporter.sendMail(mailAdminOptions, function(error, info) {
+            transporter.sendMail(mailOptions, function(error, info) {
               if (error) {
-                res.json({success: false, msg: 'Unsuccessful sent contact message & Unsuccessful sent admin message', info: info});
+                res.json({success: true, msg: 'Successful sent admin message & Unsuccessful sent contact message', translate: 'MAIL-SUCCESS', info: info});
               }
               else {
 
-                res.json({success: true, msg: 'Successful sent contact message & Successful sent admin message', info: info});
+                res.json({success: true, msg: 'Successful sent admin message & Successful sent contact message', translate: 'MAIL-SUCCESS2', info: info});
               }
             })
           }
@@ -83,7 +85,7 @@ router.post('/', function(req, res, next) {
 
       }
     }else{
-      res.status(400).json({success: false, msg: 'Captcha validation failed'});
+      res.status(400).json({success: false, msg: 'Captcha validation failed', translate: 'CAPTCHA-FAILED'});
     }
   });
 

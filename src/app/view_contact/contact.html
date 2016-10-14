@@ -18,11 +18,11 @@
             <div ng-show="errorList.length > 0" class="alert alert-danger" role="alert">
                 <strong>Oops,</strong> Il y a eu une erreur avec votre soumission :
                 <ul class="error-list">
-                    <li ng-repeat="n in errorList">{{ n }}</li>
+                    <li ng-repeat="n in errorList" >{{ n.translate ? (n.translate | translate) : n.msg }}</li>
                 </ul>
             </div>
-            <div ng-show="successMsg" class="alert alert-success" role="alert">
-                <strong>Success, </strong>{{ successMsg }}
+            <div ng-show="successObj" class="alert alert-success" role="alert">
+                <strong>Success, </strong><span>{{ successObj.translate ? (successObj.translate | translate) : successObj.msg }}</span>
             </div>
             <div class="form-group">
                 <input ng-model="contact.name" id="name" class="form-control" type="text" placeholder="{{'CONTACT-UR-NAME' | translate}}" name="name" required>
