@@ -26,9 +26,9 @@ angular.module('starter.controllers')
             'background-color': 'rgba(255,255,255,1)'
         }, 150);
 
-        $('.main-footer').animate({
+        /*$('.main-footer').animate({
             'background-color': 'rgba(39,39,39,1)'
-        }, 150);
+        }, 150);*/
 
         destroy();
     });
@@ -41,9 +41,9 @@ angular.module('starter.controllers')
         }
 
         function init() {
-            $('.main-footer').animate({
+            /*$('.main-footer').animate({
                 'background-color': 'rgba(39,39,39,0.9)'
-            }, 400)
+            }, 400)*/
 
             $('.wrapper-boxed').animate({
                 'background-color': 'rgba(255,255,255,0.9)'

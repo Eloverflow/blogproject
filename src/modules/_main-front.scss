@@ -3,6 +3,20 @@
   src: url("fonts/adam.cgpro.otf") format("opentype");
 }
 
+@font-face {
+  font-family: "ArchivoBlack";
+  src: url("fonts/ArchivoBlack.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "ArchivoNarrowBold";
+  src: url("fonts/ArchivoNarrow-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "ArchivoNarrowRegular";
+  src: url("fonts/ArchivoNarrow-Regular.otf") format("opentype");
+}
 
 // Post css section ---
 
@@ -426,15 +440,23 @@
   /*border: 1px solid #cccccc;*/
   /*background-color: #f2f2f2;*/
   min-height: 380px;
-  margin-top: 20px;
-  .box-logo {
+  /*margin-top: 20px;*/
+  margin-bottom: 20px;
+
+  /*.box-logo {
     width:200px;
     height:200px;
     border-radius: 50%;
     margin-left: auto;
     margin-right: auto;
-  }
+  }*/
 
+  h3 {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.1;
+    margin: 0px;
+  }
 
   .terms {
     background: url('img/terms.png') center center no-repeat;
@@ -472,7 +494,7 @@
   }
 
   .box-terms{
-    text-align: center;
+    /*text-align: center;*/
   }
 }
 
@@ -522,7 +544,10 @@ a:hover, .navbar .navbar-nav > .active > a:focus {
 
 
 .navbar .navbar-nav > li > a {
-  font-weight: bold;
+  /*font-weight: bold;*/
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: ArchivoNarrowBold;
   color: #C9C9C9;
 
 }
@@ -643,6 +668,9 @@ body {
 }
 
 .page-title {
+  font-family: ArchivoNarrowRegular;
+  text-transform: uppercase;
+  letter-spacing: 2px;
   padding: 0px 0px 10px 0px;
   margin: 16px 0px 8px 0px;
   border-bottom: 1px solid #eeeeee;
@@ -775,7 +803,7 @@ div.img-list .lee:hover span.text-content {
   }
 
   .list-section {
-    font-family: AdamCG;
+    font-family: ArchivoNarrowRegular;
     text-transform: uppercase;
     font-size: 14px;
     font-weight: 200;
@@ -793,4 +821,8 @@ div.img-list .lee:hover span.text-content {
   margin-top: 20px;
 }.sep-right {
   border-right: 1px solid #eeeeee;
+ }
+
+ .container {
+   font-family: Arial, sans-serif;
  }
