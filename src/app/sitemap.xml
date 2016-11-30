@@ -1,0 +1,32 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>http://mirageflow.com/#!/home</loc>
+        <changefreq>Home</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>http://mirageflow.com/#!/services</loc>
+        <changefreq>Services</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>http://mirageflow.com/#!/portfolio</loc>
+        <changefreq>Portfolio</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>http://mirageflow.com/#!/press-releases</loc>
+        <changefreq>Press Releases</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>http://mirageflow.com/#!/about</loc>
+        <changefreq>About</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>http://mirageflow.com/#!/contact</loc>
+        <changefreq>Contact</changefreq>
+        <priority>1.0</priority>
+    </url>
+</urlset>
