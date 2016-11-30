@@ -3,7 +3,7 @@
 var app  = angular.module('starter', ['starter.templates', 'starter.controllers','starter.services','starter.constants','ngRoute']);
 
 app.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-  //$locationProvider.hashPrefix('!');
+  $locationProvider.hashPrefix('!');
 
 
   // Main template mirageflow routes ---

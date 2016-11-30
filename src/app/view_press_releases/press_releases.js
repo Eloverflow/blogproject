@@ -21,7 +21,7 @@ angular.module('starter.controllers')
     $scope.textSearch = {};
 
     $scope.editPost = function (post_id) {
-        document.location.href  = '/dashboard.html#/press-release-edit/'+post_id;
+        document.location.href  = '/dashboard.html#!/press-release-edit/'+post_id;
     };
 
     $scope.callRestService= function() {

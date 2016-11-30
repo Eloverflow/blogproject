@@ -28,7 +28,7 @@ describe('Blogproject', function() {
     describe('view_profile', function() {
 
         beforeEach(function() {
-            browser.get('dashboard.html.old/#/profile/57deff1a5e9c7b023b87e96b');
+            browser.get('dashboard.html.old/#!/profile/57deff1a5e9c7b023b87e96b');
         });
 
 

@@ -16,7 +16,7 @@ angular.module('starter.controllers')
     $scope.getPost();
 
     $scope.editPost = function (post_id) {
-        $location.path('/press-release-edit/'+post_id)
+        document.location.href = '/dashboard.html#!/press-release-edit/'+post_id;
     };
 
 
