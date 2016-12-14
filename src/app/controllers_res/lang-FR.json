@@ -61,7 +61,8 @@
   "NO-NAME-IN-FIELD" : "Le champ nom est vide",
   "PLEASE-CAPTCHA" : "Veuillez répondre au captcha, merci!",
   "ERROR-SUBMIT" : "<strong>Oops,</strong> Il y a eu une erreur avec votre soumission :",
-  "SUCCESS-SUBMIT" : "Succès, "
+  "SUCCESS-SUBMIT" : "Succès, ",
+  "COMING-SOON" : "Bientôt disponible!"
 
 
 }

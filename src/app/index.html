@@ -9,11 +9,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="A turnkey service of consultation in information technology">
     <meta name="keywords" content="Web,Development,Consultation,Node.js,HTML5,SASS,CSS,JavaScript,Angular.js">
     <meta name="author" content="Mirageflow Inc.">
     <meta name="fragment" content="!">
-    <title>Welcome - Mirageflow</title>
+    <title>Mirageflow  {{ getTitle() !== 'Home' ? ' - ' + getTitle() : ' | Web development | Website | Consulting service' }}</title>
     <link href="index.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -94,7 +93,7 @@
                 <span class="list-section" translate="MENU-ABOUT">About</span>
                 <ul>
                     <li><a href="#!/about" translate="MENU-ABOUT-MORE">À Propos</a></li>
-                    <li><a href="#!/press-releases">News Feed</a></li>
+                    <li><a href="#!/press-releases" translate="MENU-NEWSFEED">News Feed</a></li>
                     <li><a href="#!/terms-of-service" translate="TERMS-OF-SERVICE">Conditions d'utilisation</a></li>
                 </ul>
             </div>

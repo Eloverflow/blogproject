@@ -157,6 +157,11 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService, $sce, DEBUG, $loca
 
   openFB.init({appId: '1112318545481460'});
 
+  $rootScope.getTitle = function () {
+    var page = $location.path().substring(1);
+
+    return page.charAt(0).toUpperCase() + page.slice(1);
+  };
 
   $rootScope.getInfo = function () {
     $http.get(API_ENDPOINT.url + '/auth/memberinfo').success(function (result) {
