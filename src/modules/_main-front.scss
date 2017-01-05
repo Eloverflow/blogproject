@@ -827,3 +827,58 @@ div.img-list .lee:hover span.text-content {
  .container {
    font-family: Arial, sans-serif;
  }
+
+ .call-to-action .modal-dialog{
+   margin-top:25%;
+
+   .modal-content{
+     border-radius: 0;
+     border: none;
+
+     -moz-box-shadow: 0 0 3px #ccc;
+     -webkit-box-shadow: 0 0 3px #ccc;
+     box-shadow: 0 0 3px #ccc;
+
+     .input-group{
+       button{
+         height: 34px;
+       }
+     }
+
+     .modal-msg{
+       padding-bottom: 4px;
+     }
+
+     .small-note{
+       padding-top: 20px;
+       font-size: 12px;
+       text-align: center;
+     }
+   }
+
+   .modal-header{
+     .img-container{
+       top: -20%;
+       left: 50%;
+       position: absolute;
+       transform: translate(-50%, 0);
+       background-color: white;
+       border-radius: 50%;
+       width: auto;
+       padding: 2px 10px 30px 10px;
+     }
+
+     .title-container{
+       position: absolute;
+       width: 100%;
+       left: 0;
+       z-index: 4;
+       .modal-title{
+         text-align: center;
+       }
+     }
+   }
+
+
+
+ }

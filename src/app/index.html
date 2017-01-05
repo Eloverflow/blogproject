@@ -9,6 +9,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Mirageflow est une compagnie spécialisé en développement d\'application Web et Mobile. Peu importe l\'empleur ou le type de dévelopement nécessaire nous serons à la hauteur!">
     <meta name="keywords" content="Web,Development,Consultation,Node.js,HTML5,SASS,CSS,JavaScript,Angular.js">
     <meta name="author" content="Mirageflow Inc.">
     <meta name="fragment" content="!">
@@ -61,7 +62,7 @@
                 </li>
                 </li>
                 <li>
-                    <a style="cursor: pointer" translate="MENU-OTHER-LANG" ng-click="changeLanguage('MENU-OTHER-LANG' | translate)">EN</a>
+                    <a style="cursor: pointer" translate="MENU-OTHER-LANG" ng-click="changeLanguage('MENU-OTHER-LANG' | translate)" hreflang="{{'MENU-OTHER-LANG' | translate}}">EN</a>
                 </li>
             </ul>
         </div>
@@ -140,6 +141,34 @@
 
 </div>
 <!-- /.container -->
+
+
+<!-- Modal -->
+<div class="modal fade call-to-action" id="callToActionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="img-container"><img src="img/logoSmall.png" alt="Mirageflow Logo" width="80"/></div>
+                <div class="title-container">  <h4 class="modal-title" id="myModalLabel">Need software development ?</h4></div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-msg">
+                    Give us your email and we'll contact you.
+                </div>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Your email...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Get in touch!</button>
+                    </span>
+                </div>
+                <div class="small-note">*You can go to the <a href="#!/contact" data-toggle="modal" data-target="#callToActionModal">contact</a> section to write us a message.</div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- jQuery -->
 <script src="lib/jquery/dist/jquery.js"></script>
