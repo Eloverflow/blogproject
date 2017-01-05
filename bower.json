@@ -26,7 +26,8 @@
     "angular-translate-loader-static-files": "*",
     "angular-translate": "*",
     "angular-animate": "*",
-    "angular-touch": "*"
+    "angular-touch": "*",
+    "angular-permission": "*"
   },
   "private": false
 }

@@ -44,76 +44,14 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
 
   // End main template ---
 
-  $routeProvider.when('/sign-in', {
-    templateUrl: 'templates/view_user/sign_in.html',
-    controller: 'UserCtrl'
-  });
-
-  $routeProvider.when('/sign-up', {
-    templateUrl: 'templates/view_user/sign_up.html',
-    controller: 'UserCtrl'
-  });
-
-  $routeProvider.when('/new-user', {
-    templateUrl: 'templates/view_user/create-new.html',
-    controller: 'UserCtrl'
-  });
-
-  $routeProvider.when('/edit-user/:id', {
-    templateUrl: 'templates/view_user/edit.html',
-    controller: 'UserCtrl'
-  });
-
-  $routeProvider.when('/forgot-password', {
-    templateUrl: 'templates/view_user/forgot_pass.html',
-    controller: 'UserCtrl'
-  });
-
-  $routeProvider.when('/new-password/:token', {
-    templateUrl: 'templates/view_user/new_pass.html',
-    controller: 'UserCtrl'
-  });
-
-  $routeProvider.when('/user-list', {
-    templateUrl: 'templates/view_user/list.html',
-    controller: 'UserListCtrl'
-  });
-
   $routeProvider.when('/profile/:id', {
     templateUrl: 'templates/view_profile/profile.html',
     controller: 'ProfileCtrl'
   });
 
-
-  $routeProvider.when('/post/:id', {
-    templateUrl: 'templates/view_post/post.html',
-    controller: 'PostCtrl'
-  });
-  $routeProvider.when('/post-create', {
-    templateUrl: 'templates/view_post/create.html',
-    controller: 'PostCreateCtrl'
-  });
-  $routeProvider.when('/post-edit/:id', {
-    templateUrl: 'templates/view_post/edit.html',
-    controller: 'PostEditCtrl'
-  });
-  $routeProvider.when('/posts', {
-    templateUrl: 'templates/view_posts/posts.html',
-    controller: 'PostsCtrl'
-  });
-
-
   $routeProvider.when('/press-release/:id', {
     templateUrl: 'templates/view_press_release/press_release.html',
     controller: 'PressReleaseCtrl'
-  });
-  $routeProvider.when('/press-release-create', {
-    templateUrl: 'templates/view_press_release/create.html',
-    controller: 'PressReleaseCreateCtrl'
-  });
-  $routeProvider.when('/press-release-edit/:id', {
-    templateUrl: 'templates/view_press_release/edit.html',
-    controller: 'PressReleaseEditCtrl'
   });
   $routeProvider.when('/press-releases', {
     templateUrl: 'templates/view_press_releases/press_releases.html',
@@ -164,15 +102,15 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService, $sce, DEBUG, $loca
   };
 
   $rootScope.getInfo = function () {
-    $http.get(API_ENDPOINT.url + '/auth/memberinfo').success(function (result) {
+    $http.get(API_ENDPOINT.url + '/auth/memberinfo').then(function (result) {
 
-      if(result.success) $rootScope.sesUser = result.user;
+      if(result.data.success) $rootScope.sesUser = result.data.user;
 
       if(DEBUG.isEnabled){
         console.log('User:');
         console.log(result);
       }
-    }).error(function (result, status) {
+    },function (result, status) {
       if(status == 403){
         if(DEBUG.isEnabled) {
           console.log('Emptying the token and redirecting to login')
