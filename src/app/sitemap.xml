@@ -1,36 +1,36 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>http://mirageflow.com/#!/home</loc>
+        <loc>http://mirageflow.com/home</loc>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>http://mirageflow.com/#!/services</loc>
+        <loc>http://mirageflow.com/services</loc>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>http://mirageflow.com/#!/portfolio</loc>
+        <loc>http://mirageflow.com/portfolio</loc>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>http://mirageflow.com/#!/blogproject</loc>
+        <loc>http://mirageflow.com/blogproject</loc>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>http://mirageflow.com/#!/press-releases</loc>
+        <loc>http://mirageflow.com/press-releases</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>http://mirageflow.com/#!/about</loc>
+        <loc>http://mirageflow.com/about</loc>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>http://mirageflow.com/#!/contact</loc>
+        <loc>http://mirageflow.com/contact</loc>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>

@@ -13,7 +13,7 @@
     <meta name="keywords" content="Web,Development,Consultation,Node.js,HTML5,SASS,CSS,JavaScript,Angular.js">
     <meta name="author" content="Mirageflow Inc.">
     <meta name="fragment" content="!">
-    <title>Mirageflow  {{ getTitle() !== 'Home' ? ' - ' + getTitle() : ' | Web development | Website | Consulting service' }}</title>
+    <title ng-bind="pageTitle">Mirageflow | Web development | Website | Consulting service</title>
     <link href="index.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -21,7 +21,7 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <base href="/">
 </head>
 
 <body>
@@ -37,28 +37,28 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand nav-title" href="#">Mirage<span class="title-blue">flow</span></a>
+            <a class="navbar-brand nav-title" href="/">Mirage<span class="title-blue">flow</span></a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a ng-class="{ active: isActive('/home')}" href="#!/home" translate="MENU-HOME">Accueil</a>
+                    <a ng-class="{ active: isActive('/home')}" href="/home" translate="MENU-HOME">Accueil</a>
                 </li>
                 <li>
-                    <a ng-class="{ active: isActive('/services')}" href="#!/services" translate="MENU-SERVICES">Services</a>
+                    <a ng-class="{ active: isActive('/services')}" href="/services" translate="MENU-SERVICES">Services</a>
                 </li>
                 <li>
-                    <a ng-class="{ active: isActive('/portfolio')}" href="#!/portfolio" translate="MENU-PORTFOLIO">Portfolio</a>
+                    <a ng-class="{ active: isActive('/portfolio')}" href="/portfolio" translate="MENU-PORTFOLIO">Portfolio</a>
                 </li>
                 <li>
-                    <a ng-class="{ active: isActive('/press-releases') || isActive('/press-release')}" href="#!/press-releases" translate="MENU-NEWSFEED">Fil d'actualités</a>
+                    <a ng-class="{ active: isActive('/press-releases') || isActive('/press-release')}" href="/press-releases" translate="MENU-NEWSFEED">Fil d'actualités</a>
                 </li>
                 <li>
-                    <a ng-class="{ active: isActive('/about')}" href="#!/about" translate="MENU-ABOUT">À propos</a>
+                    <a ng-class="{ active: isActive('/about')}" href="/about" translate="MENU-ABOUT">À propos</a>
                 </li>
                 <li>
-                    <a ng-class="{ active: isActive('/contact')}" href="#!/contact" translate="MENU-CONTACT">Contact</a>
+                    <a ng-class="{ active: isActive('/contact')}" href="/contact" translate="MENU-CONTACT">Contact</a>
                 </li>
                 </li>
                 <li>
@@ -83,9 +83,9 @@
             <div class="col-block">
                 <span class="list-section">Mirageflow</span>
                 <ul>
-                    <li><a href="#!/home" translate="MENU-HOME">Accueil</a></li>
-                    <li><a href="#!/services">Services</a></li>
-                    <li><a href="#!/portfolio">Portfolio</a></li>
+                    <li><a href="/home" translate="MENU-HOME">Accueil</a></li>
+                    <li><a href="/services">Services</a></li>
+                    <li><a href="/portfolio">Portfolio</a></li>
                 </ul>
             </div>
         </div>
@@ -93,9 +93,9 @@
             <div class="col-block">
                 <span class="list-section" translate="MENU-ABOUT">About</span>
                 <ul>
-                    <li><a href="#!/about" translate="MENU-ABOUT-MORE">À Propos</a></li>
-                    <li><a href="#!/press-releases" translate="MENU-NEWSFEED">News Feed</a></li>
-                    <li><a href="#!/terms-of-service" translate="TERMS-OF-SERVICE">Conditions d'utilisation</a></li>
+                    <li><a href="/about" translate="MENU-ABOUT-MORE">À Propos</a></li>
+                    <li><a href="/press-releases" translate="MENU-NEWSFEED">News Feed</a></li>
+                    <li><a href="/terms-of-service" translate="TERMS-OF-SERVICE">Conditions d'utilisation</a></li>
                 </ul>
             </div>
         </div>
@@ -103,12 +103,12 @@
             <div class="col-block">
                 <span class="list-section" translate="MENU-HELP">Aide</span>
                 <ul>
-                    <li><a href="#!/contact" translate="MENU-CONTACT-US">Contactez-nous</a></li>
+                    <li><a href="/contact" translate="MENU-CONTACT-US">Contactez-nous</a></li>
                 </ul>
 
                 <span class="list-section">Administration</span>
                 <ul>
-                    <li><a href="dashboard.html"><em>Panel</em></a></li>
+                    <li><a href="#" ng-click="goToPanel()"><em>Panel</em></a></li>
                 </ul>
             </div>
         </div>
@@ -164,7 +164,7 @@
                         <button class="btn btn-default" type="button">Get in touch!</button>
                     </span>
                 </div>
-                <div class="small-note">*You can go to the <a href="#!/contact" data-toggle="modal" data-target="#callToActionModal">contact</a> section to write us a message.</div>
+                <div class="small-note">*You can go to the <a href="/contact" data-toggle="modal" data-target="#callToActionModal">contact</a> section to write us a message.</div>
             </div>
         </div>
     </div>
