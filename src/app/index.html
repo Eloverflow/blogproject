@@ -153,22 +153,22 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                <!-- <div class="img-container"><img src="img/logoSmall.png" alt="Mirageflow Logo" width="80"/></div>-->
-                <div class="title-container">  <h4 class="modal-title" id="myModalLabel">Need software development ?</h4></div>
+                <div class="title-container">  <h4 class="modal-title" id="myModalLabel" translate="CALL-TO-ACTION-TITLE">Need software development ?</h4></div>
             </div>
             <div class="modal-body">
                 <div ng-show="callToActionSuccessObj" class="alert alert-success" role="alert">
                     <strong translate="SUCCESS-SUBMIT">Success, </strong><span>{{ callToActionSuccessObj.translate ? (callToActionSuccessObj.translate | translate) : callToActionSuccessObj.msg }}</span>
                 </div>
-                <div class="modal-msg">
+                <div class="modal-msg"  translate="CALL-TO-ACTION-CONTENT">
                     Give us your email and we'll contact you.
                 </div>
                 <div class="input-group">
-                    <input type="email" ng-model="callToActionContact" class="form-control" placeholder="Your email...">
+                    <input type="email" ng-model="callToActionContact" class="form-control" placeholder="{{'CALL-TO-ACTION-EMAIL' | translate}}">
                     <span class="input-group-btn">
-                        <button ng-click="callToActionSubmit()" class="btn btn-primary" type="button">Get in touch!</button>
+                        <button ng-click="callToActionSubmit()" class="btn btn-primary" type="button"  translate="CALL-TO-ACTION-BTN">Get in touch!</button>
                     </span>
                 </div>
-                <div class="small-note">*You can go to the <a href="/contact" data-toggle="modal" data-target="#callToActionModal">contact</a> section to write us a message.</div>
+                <div class="small-note" translate="CALL-TO-ACTION-CONTACT-REF">*You can go to the <a href="/contact" data-toggle="modal" data-target="#callToActionModal">contact</a> section to write us a message.</div>
             </div>
         </div>
     </div>

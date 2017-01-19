@@ -61,7 +61,12 @@
     "PLEASE-CAPTCHA" : "Please answer the captcha, thank you!",
     "ERROR-SUBMIT" : "<strong>Oops,</strong> There was an error with your submission:",
     "SUCCESS-SUBMIT" : "Success, ",
-    "COMING-SOON" : "Coming soon!"
+    "COMING-SOON" : "Coming soon!",
+    "CALL-TO-ACTION-TITLE" : "Need software development ?",
+    "CALL-TO-ACTION-CONTENT" : "Give us your email and we'll contact you.",
+    "CALL-TO-ACTION-EMAIL" : "Your email...",
+    "CALL-TO-ACTION-BTN" : "Get in touch!",
+    "CALL-TO-ACTION-CONTACT-REF" : "*You can go to the <a href=\"/contact\" data-toggle=\"modal\" data-target=\"#callToActionModal\">contact</a> section to write us a message."
 
 }
 
