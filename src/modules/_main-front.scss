@@ -152,6 +152,11 @@
 
 .panel-desc{
   margin-top: 8px;
+}
+
+.tags-container {
+  padding: 20px 6px;
+  text-align: center;
   .label{
     margin-right: 4px;
     display: inline-block;
@@ -677,6 +682,27 @@ body {
   border-bottom: 1px solid #eeeeee;
 }
 
+.project-title {
+  font-family: ArchivoNarrowRegular;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 0px 0px 4px 0px;
+  margin: 16px 0px 8px 0px;
+}
+
+.page-separator {
+  height: 1px;
+  margin: 6px 0px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.project-lang {
+  margin-top: 4px;
+  height: 60px;
+  width: 60px;
+}
+
 div.img-list {
   list-style-type: none;
   margin: 0;
@@ -827,3 +853,20 @@ div.img-list .lee:hover span.text-content {
  .container {
    font-family: Arial, sans-serif;
  }
+
+ .btn-pf {
+   text-transform: none;
+   font-weight: 300;
+ }
+
+  .btn-pf-left {
+    margin: 8px 0px 0px 8px;
+  }
+
+  .btn-pf-right {
+    margin: 8px 8px 0px 0px;
+  }
+
+  .project-description {
+    padding: 16px 0px;
+  }

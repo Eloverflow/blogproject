@@ -1,9 +1,21 @@
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-title">Blog Project</h1>
+        <h1 class="project-title">Blog Project</h1>
+        <div class="project-lang pull-right">
+            <svg viewBox="0 0 128 128">
+                <path fill="#E6E6E6" d="M52.864 64h23.28l-12.375-25.877zM63.81 1.026l-59.257 20.854 9.363 77.637 49.957 27.457 50.214-27.828 9.36-77.635-59.637-20.485zm-15.766 73.974l-7.265 18.176-13.581.056 36.608-81.079-.07-.153h-.064l.001-.133.063.133h.14100000000000001l.123-.274v.274h-.124l-.069.153 38.189 81.417-13.074-.287-8.042-18.58-17.173.082"></path>
+            </svg>
+        </div>
+        <div class="page-separator"></div>
     </div>
 </div>
 
+<div class="row">
+<div class="col-lg-12">
+    <a href="http://blogproject.net" target="_blank"><button class="btn btn-primary btn-md btn-pf btn-pf-left pull-left"><i class="fa fa-globe"></i> <span translate="PORTFOLIO-BLOGPROJECT-BTN-PREVIEW">Voir un aperçu</span></button></a>
+    <a href="https://github.com/mirageflow/blogproject" target="_blank"><button class="btn btn-primary btn-pf btn-md btn-pf-right pull-right"><i class="fa fa-github"></i> <span translate="PORTFOLIO-BLOGPROJECT-BTN-GITHUB">Voir sur Github</span></button></a>
+</div>
+</div>
 <!-- Projects Row -->
 <div class="row">
     <div class="container slider">
@@ -23,26 +35,21 @@
             </div>
         </nav>
     </div>
-    <hr>
+    <div class="col-lg-12">
+        <h2 class="page-title">Description</h2>
+    </div>
     <div class="col-md-12">
-        <div class="row text-center">
-            <a href="https://github.com/mirageflow/blogproject" target="_blank"><button class="btn btn-default"><i class="fa fa-github"></i> <span translate="PORTFOLIO-BLOGPROJECT-BTN-GITHUB">Voir sur Github</span></button></a>
-            <a href="http://blogproject.net" target="_blank"><button class="btn btn-default"><i class="fa fa-globe"></i> <span translate="PORTFOLIO-BLOGPROJECT-BTN-PREVIEW">Voir un aperçu</span></button></a>
-        </div>
-        <div class="panel panel-default text-center panel-desc">
-            <div class="panel-heading" translate="PORTFOLIO-BLOGPROJECT-DESC-TITLE">
-               Description du projet
+
+            <div class="project-description" translate="PORTFOLIO-BLOGPROJECT-DESC-CONTENT">
+                <p>Celui-ci se veut comme étant une plateforme de blogue, sur laquelle il est possible d’effectuer toutes les interactions que ce type de plateforme sous-entend : créer un nouveau sujet, commenter, « like », etc. Comme ce programme est principalement destiné aux programmeurs de ce monde, il sera impossible pour le commun des mortels de l’utiliser immédiatement. Cependant, comme il est libre de droits, nous avons bon espoir qu’il sera intégré à de nombreux sites web et que vous pourrez l’utiliser un jour ou l’autre! En attendant, voici le lien pour avoir un aperçu du squelette de ce premier programme open source : <a href="http://blogproject.net">http://blogproject.net/</a></p>
+                <p>Pour les programmeurs de cette planète, vous trouverez, en cliquant sur le lien ci-haut, la page GitHub du projet. Surtout, sentez-vous à l’aise et faites comme chez vous! Modifiez ce programme comme bon vous semble et intégrez-le à vos projets.</p>
+                <p>Pour ce qui est des technologies utilisées dans le projet, cette application utilise <b>MongoDB</b> comme système de base de données. Un Framework <b>ExpressJS</b> comme Back-End (Server). Et du côté Front-End (Navigateur Web), le Framework <b>AngularJS</b> nous permet d’utiliser la structure objet de la base de données combinée avec l’API en Back-End qui nous permet de récupérer ou modifier ces objets à l’aide de requête. Ces technologies ont pour but de viser la <b>performance et la fluidité</b>.</p>
             </div>
-            <div class="panel-body">
-                <div translate="PORTFOLIO-BLOGPROJECT-DESC-CONTENT">
-                    <p>Celui-ci se veut comme étant une plateforme de blogue, sur laquelle il est possible d’effectuer toutes les interactions que ce type de plateforme sous-entend : créer un nouveau sujet, commenter, « like », etc. Comme ce programme est principalement destiné aux programmeurs de ce monde, il sera impossible pour le commun des mortels de l’utiliser immédiatement. Cependant, comme il est libre de droits, nous avons bon espoir qu’il sera intégré à de nombreux sites web et que vous pourrez l’utiliser un jour ou l’autre! En attendant, voici le lien pour avoir un aperçu du squelette de ce premier programme open source : <a href="http://blogproject.net">http://blogproject.net/</a></p>
-                    <p>Pour les programmeurs de cette planète, vous trouverez, en cliquant sur le lien ci-haut, la page GitHub du projet. Surtout, sentez-vous à l’aise et faites comme chez vous! Modifiez ce programme comme bon vous semble et intégrez-le à vos projets.</p>
-                    <p>Pour ce qui est des technologies utilisées dans le projet, cette application utilise <b>MongoDB</b> comme système de base de données. Un Framework <b>ExpressJS</b> comme Back-End (Server). Et du côté Front-End (Navigateur Web), le Framework <b>AngularJS</b> nous permet d’utiliser la structure objet de la base de données combinée avec l’API en Back-End qui nous permet de récupérer ou modifier ces objets à l’aide de requête. Ces technologies ont pour but de viser la <b>performance et la fluidité</b>.</p>
-                </div>
-            </div>
-            <div class="panel-footer">
+
+            <div class="tags-container">
                 <span class="label label-info" ng-repeat="technologie in ['MongoDB', 'ExpressJS', 'AngularJS', 'Gulp', 'SASS', 'CSS', 'HTML', 'Node.js', 'Karma', 'Protractor', 'Travis-CI', 'Git', 'Mail Services']">{{technologie}}</span>
             </div>
-        </div>
+
+
       </div>
 </div>
