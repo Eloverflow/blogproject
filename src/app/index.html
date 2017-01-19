@@ -9,11 +9,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="A turnkey service of consultation in information technology">
+    <meta name="description" content="Mirageflow est une compagnie spécialisé en développement d'application Web et Mobile. Peu importe l'empleur ou le type de dévelopement nécessaire nous serons à la hauteur!">
     <meta name="keywords" content="Web,Development,Consultation,Node.js,HTML5,SASS,CSS,JavaScript,Angular.js">
     <meta name="author" content="Mirageflow Inc.">
     <meta name="fragment" content="!">
-    <title>Welcome - Mirageflow</title>
+    <title ng-bind="pageTitle">Mirageflow | Web development | Website | Consulting service</title>
     <link href="index.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="devicon.min.css">
 
     <![endif]-->
-
+    <base href="/">
 </head>
 
 <body>
@@ -39,32 +39,32 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand nav-title" href="#">Mirage<span class="title-blue">flow</span></a>
+            <a class="navbar-brand nav-title" href="/">Mirage<span class="title-blue">flow</span></a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a ng-class="{ active: isActive('/home')}" href="#!/home" translate="MENU-HOME">Accueil</a>
+                    <a ng-class="{ active: isActive('/home')}" href="/home" translate="MENU-HOME">Accueil</a>
                 </li>
                 <li>
-                    <a ng-class="{ active: isActive('/services')}" href="#!/services" translate="MENU-SERVICES">Services</a>
+                    <a ng-class="{ active: isActive('/services')}" href="/services" translate="MENU-SERVICES">Services</a>
                 </li>
                 <li>
-                    <a ng-class="{ active: isActive('/portfolio')}" href="#!/portfolio" translate="MENU-PORTFOLIO">Portfolio</a>
+                    <a ng-class="{ active: isActive('/portfolio')}" href="/portfolio" translate="MENU-PORTFOLIO">Portfolio</a>
                 </li>
                 <li>
-                    <a ng-class="{ active: isActive('/press-releases') || isActive('/press-release')}" href="#!/press-releases" translate="MENU-NEWSFEED">Fil d'actualités</a>
+                    <a ng-class="{ active: isActive('/press-releases') || isActive('/press-release')}" href="/press-releases" translate="MENU-NEWSFEED">Fil d'actualités</a>
                 </li>
                 <li>
-                    <a ng-class="{ active: isActive('/about')}" href="#!/about" translate="MENU-ABOUT">À propos</a>
+                    <a ng-class="{ active: isActive('/about')}" href="/about" translate="MENU-ABOUT">À propos</a>
                 </li>
                 <li>
-                    <a ng-class="{ active: isActive('/contact')}" href="#!/contact" translate="MENU-CONTACT">Contact</a>
+                    <a ng-class="{ active: isActive('/contact')}" href="/contact" translate="MENU-CONTACT">Contact</a>
                 </li>
                 </li>
                 <li>
-                    <a style="cursor: pointer" translate="MENU-OTHER-LANG" ng-click="changeLanguage('MENU-OTHER-LANG' | translate)">EN</a>
+                    <a style="cursor: pointer" translate="MENU-OTHER-LANG" ng-click="changeLanguage('MENU-OTHER-LANG' | translate)" hreflang="{{'MENU-OTHER-LANG' | translate}}">EN</a>
                 </li>
             </ul>
         </div>
@@ -85,9 +85,9 @@
             <div class="col-block">
                 <span class="list-section">Mirageflow</span>
                 <ul>
-                    <li><a href="#!/home" translate="MENU-HOME">Accueil</a></li>
-                    <li><a href="#!/services">Services</a></li>
-                    <li><a href="#!/portfolio">Portfolio</a></li>
+                    <li><a href="/home" translate="MENU-HOME">Accueil</a></li>
+                    <li><a href="/services">Services</a></li>
+                    <li><a href="/portfolio">Portfolio</a></li>
                 </ul>
             </div>
         </div>
@@ -95,9 +95,9 @@
             <div class="col-block">
                 <span class="list-section" translate="MENU-ABOUT">About</span>
                 <ul>
-                    <li><a href="#!/about" translate="MENU-ABOUT-MORE">À Propos</a></li>
-                    <li><a href="#!/press-releases">News Feed</a></li>
-                    <li><a href="#!/terms-of-service" translate="TERMS-OF-SERVICE">Conditions d'utilisation</a></li>
+                    <li><a href="/about" translate="MENU-ABOUT-MORE">À Propos</a></li>
+                    <li><a href="/press-releases" translate="MENU-NEWSFEED">News Feed</a></li>
+                    <li><a href="/terms-of-service" translate="TERMS-OF-SERVICE">Conditions d'utilisation</a></li>
                 </ul>
             </div>
         </div>
@@ -105,12 +105,12 @@
             <div class="col-block">
                 <span class="list-section" translate="MENU-HELP">Aide</span>
                 <ul>
-                    <li><a href="#!/contact" translate="MENU-CONTACT-US">Contactez-nous</a></li>
+                    <li><a href="/contact" translate="MENU-CONTACT-US">Contactez-nous</a></li>
                 </ul>
 
                 <span class="list-section">Administration</span>
                 <ul>
-                    <li><a href="dashboard.html"><em>Panel</em></a></li>
+                    <li><a href="#" ng-click="goToPanel()"><em>Panel</em></a></li>
                 </ul>
             </div>
         </div>
@@ -143,6 +143,34 @@
 
 </div>
 <!-- /.container -->
+
+
+<!-- Modal -->
+<div class="modal fade call-to-action" id="callToActionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="img-container"><img src="img/logoSmall.png" alt="Mirageflow Logo" width="80"/></div>
+                <div class="title-container">  <h4 class="modal-title" id="myModalLabel">Need software development ?</h4></div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-msg">
+                    Give us your email and we'll contact you.
+                </div>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Your email...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Get in touch!</button>
+                    </span>
+                </div>
+                <div class="small-note">*You can go to the <a href="/contact" data-toggle="modal" data-target="#callToActionModal">contact</a> section to write us a message.</div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- jQuery -->
 <script src="lib/jquery/dist/jquery.js"></script>

@@ -60,7 +60,8 @@
     "NO-NAME-IN-FIELD" : "The name field is empty",
     "PLEASE-CAPTCHA" : "Please answer the captcha, thank you!",
     "ERROR-SUBMIT" : "<strong>Oops,</strong> There was an error with your submission:",
-    "SUCCESS-SUBMIT" : "Success, "
+    "SUCCESS-SUBMIT" : "Success, ",
+    "COMING-SOON" : "Coming soon!"
 
 }
 

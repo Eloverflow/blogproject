@@ -3,124 +3,73 @@
 var app  = angular.module('starter', ['starter.templates', 'starter.controllers','starter.services','starter.constants','ngRoute']);
 
 app.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-  $locationProvider.hashPrefix('!');
-
+  //$locationProvider.hashPrefix('!');
+  $locationProvider.html5Mode(true);
 
   // Main template mirageflow routes ---
 
   $routeProvider.when('/home', {
     templateUrl: 'templates/view_home/home.html',
-    controller: 'HomeCtrl'
+    controller: 'HomeCtrl',
+    title: 'Web development | Website | Consulting service'
   });
 
   $routeProvider.when('/services', {
     templateUrl: 'templates/view_services/services.html',
-    controller: 'PageServicesCtrl'
+    controller: 'PageServicesCtrl',
+    title: 'Services'
   });
 
   $routeProvider.when('/portfolio', {
     templateUrl: 'templates/views_modern_template/portfolio.html',
-    controller: 'PortfolioCtrl'
+    controller: 'PortfolioCtrl',
+    title: 'Portfolio'
   });
 
   $routeProvider.when('/blogproject', {
     templateUrl: 'templates/views_modern_template/portfolio-blogproject.html',
-    controller: 'PortfolioCtrl'
+    controller: 'PortfolioCtrl',
+    title: 'Portfolio | Blogproject'
   });
 
   $routeProvider.when('/portfolio/posio', {
     templateUrl: 'templates/views_modern_template/portfolio-posio.html',
-    controller: 'PortfolioCtrl'
+    controller: 'PortfolioCtrl',
+    title: 'Portfolio | POSIO'
   });
 
   $routeProvider.when('/about', {
-    templateUrl: 'templates/views_modern_template/about.html'
+    templateUrl: 'templates/views_modern_template/about.html',
+    title: 'About'
   });
   
   $routeProvider.when('/contact', {
     templateUrl: 'templates/view_contact/contact.html',
-    controller: 'ContactCtrl'
+    controller: 'ContactCtrl',
+    title: 'Contact'
   });
 
   // End main template ---
 
-  $routeProvider.when('/sign-in', {
-    templateUrl: 'templates/view_user/sign_in.html',
-    controller: 'UserCtrl'
-  });
-
-  $routeProvider.when('/sign-up', {
-    templateUrl: 'templates/view_user/sign_up.html',
-    controller: 'UserCtrl'
-  });
-
-  $routeProvider.when('/new-user', {
-    templateUrl: 'templates/view_user/create-new.html',
-    controller: 'UserCtrl'
-  });
-
-  $routeProvider.when('/edit-user/:id', {
-    templateUrl: 'templates/view_user/edit.html',
-    controller: 'UserCtrl'
-  });
-
-  $routeProvider.when('/forgot-password', {
-    templateUrl: 'templates/view_user/forgot_pass.html',
-    controller: 'UserCtrl'
-  });
-
-  $routeProvider.when('/new-password/:token', {
-    templateUrl: 'templates/view_user/new_pass.html',
-    controller: 'UserCtrl'
-  });
-
-  $routeProvider.when('/user-list', {
-    templateUrl: 'templates/view_user/list.html',
-    controller: 'UserListCtrl'
-  });
-
   $routeProvider.when('/profile/:id', {
     templateUrl: 'templates/view_profile/profile.html',
-    controller: 'ProfileCtrl'
+    controller: 'ProfileCtrl',
+    title: 'Profile'
   });
-
-
-  $routeProvider.when('/post/:id', {
-    templateUrl: 'templates/view_post/post.html',
-    controller: 'PostCtrl'
-  });
-  $routeProvider.when('/post-create', {
-    templateUrl: 'templates/view_post/create.html',
-    controller: 'PostCreateCtrl'
-  });
-  $routeProvider.when('/post-edit/:id', {
-    templateUrl: 'templates/view_post/edit.html',
-    controller: 'PostEditCtrl'
-  });
-  $routeProvider.when('/posts', {
-    templateUrl: 'templates/view_posts/posts.html',
-    controller: 'PostsCtrl'
-  });
-
 
   $routeProvider.when('/press-release/:id', {
     templateUrl: 'templates/view_press_release/press_release.html',
-    controller: 'PressReleaseCtrl'
-  });
-  $routeProvider.when('/press-release-create', {
-    templateUrl: 'templates/view_press_release/create.html',
-    controller: 'PressReleaseCreateCtrl'
-  });
-  $routeProvider.when('/press-release-edit/:id', {
-    templateUrl: 'templates/view_press_release/edit.html',
-    controller: 'PressReleaseEditCtrl'
+    controller: 'PressReleaseCtrl',
+    title: 'Press-release'
   });
   $routeProvider.when('/press-releases', {
     templateUrl: 'templates/view_press_releases/press_releases.html',
-    controller: 'PressReleasesCtrl'
+    controller: 'PressReleasesCtrl',
+    title: 'Press-releases'
   });
   $routeProvider.when('/terms-of-service', {
-    templateUrl: 'templates/views_modern_template/terms-of-service.html'
+    templateUrl: 'templates/views_modern_template/terms-of-service.html',
+    title: 'Terms-of-service'
   });
 
   $routeProvider.otherwise({redirectTo: '/home'});
@@ -135,6 +84,18 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService, $sce, DEBUG, $loca
       localStorage.setItem("language", langKey);
       initMsgInteractive();
     }, 100)
+  };
+
+  $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
+
+    if (current.hasOwnProperty('$$route')) {
+
+      $rootScope.pageTitle = 'Mirageflow | ' + current.$$route.title;
+    }
+  });
+
+  $rootScope.goToPanel = function () {
+    window.location = 'http://mirageflow.com/dashboard.html';
   };
 
 
@@ -157,17 +118,22 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService, $sce, DEBUG, $loca
 
   openFB.init({appId: '1112318545481460'});
 
+  $rootScope.getTitle = function () {
+    var page = $location.path().substring(1);
+
+    return page.charAt(0).toUpperCase() + page.slice(1);
+  };
 
   $rootScope.getInfo = function () {
-    $http.get(API_ENDPOINT.url + '/auth/memberinfo').success(function (result) {
+    $http.get(API_ENDPOINT.url + '/auth/memberinfo').then(function (result) {
 
-      if(result.success) $rootScope.sesUser = result.user;
+      if(result.data.success) $rootScope.sesUser = result.data.user;
 
       if(DEBUG.isEnabled){
         console.log('User:');
         console.log(result);
       }
-    }).error(function (result, status) {
+    },function (result, status) {
       if(status == 403){
         if(DEBUG.isEnabled) {
           console.log('Emptying the token and redirecting to login')

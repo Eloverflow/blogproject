@@ -124,7 +124,12 @@ app.use(function(req, res, next) {
 });
 
 //app.use('/api/sendColor', color);
-app.use('/', index);
+//app.use('/*', express.static(__dirname + "/../app/index.html"));
+app.use("/js", express.static(__dirname + "/../app/js"));
+app.use("/img", express.static(__dirname + "/../app/img"));
+app.use("/css", express.static(__dirname + "/../app/css"));
+app.use("/assets", express.static(__dirname + "/../app/assets"));
+app.use('/api', index);
 app.use('/api/auth', user);
 app.use('/api/press-release', pressRelease);
 app.use('/api/post', post);
@@ -132,7 +137,12 @@ app.use('/api/comment', comment);
 app.use('/api/subComment', subComment);
 app.use('/api/vote', vote);
 app.use('/api/contact', contact);
-
+app.all('/*', function ( req, res ) {
+    console.log('All');
+    res.status( 200 )
+        .set( { 'content-type': 'text/html; charset=utf-8' } )
+        .sendfile(path.resolve(__dirname + '/../src/app/index.html'));
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

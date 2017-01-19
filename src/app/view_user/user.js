@@ -196,62 +196,19 @@ angular.module('starter.controllers')
 
         };
 
-
-        $scope.fbLoginBrowser = function() {
-            openFB.login(
-                function(response) {
-                    if (response.status === 'connected') {
-                        console.log('Facebook login succeeded');
-
-                        if (!response.authResponse) {
-                            console.log("Cannot find the authResponse");
-                        } else {
-
-                            var authResponse = response.authResponse;
-                            $scope.getFacebookProfileInfo(authResponse, function(data) {
-                                if (data.id != null) {
-                                    AuthService.loginFacebook({
-                                        userID: data.id,
-                                        name: data.name,
-                                        email: data.email,
-                                        picture: "http://graph.facebook.com/" + data.id + "/picture?type=large"
-                                    }).then(function(msg) {
-                                        AuthService.startupAuthenticate();
-                                        $rootScope.getInfo();
-                                        $location.path('/')
-                                    }, function(errMsg) {});
-                                } else {
-                                    console.log('No facebook profile info')
-                                }
-                            });
-                        }
-
-                    } else {
-                        alert('Facebook login failed');
-                    }
-                }, {
-                    scope: 'public_profile,email,publish_actions,user_friends'
-                })
-        };
-
-
         $scope.login = function() {
             $scope.errorList = [];
 
             AuthService.login($scope.user).then(function(msg) {
                 AuthService.startupAuthenticate();
                 $rootScope.getInfo();
-                $location.path('/')
+                $location.path('/press-releases');
             }, function(errMsg) {
                 if (!errMsg.success)
                     $scope.errorList.push(errMsg.msg);
             });
         };
 
-        //This method is executed when the user press the "Login with facebook" button
-        $scope.facebookSignIn = function() {
-            $scope.fbLoginBrowser();
-        };
 
         $scope.logout = function() {
             AuthService.logout();

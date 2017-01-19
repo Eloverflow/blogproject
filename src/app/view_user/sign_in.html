@@ -3,13 +3,7 @@
         <div class="panel panel-default">
             <div class="panel-heading"><strong>Welcome,</strong>&nbsp;Please login...</div>
             <div class="panel-body">
-                <div class="social-wrap b">
-                    <button ng-click="facebookSignIn()" class="facebook">Sign in with Facebook</button>
-                </div>
-
                 <form>
-
-                    <hr class="or-hr">
 
                     <div ng-show="errorList.length > 0" class="alert alert-danger" role="alert">
                         <strong>Oops,</strong> There was an error with your submission :
@@ -36,14 +30,14 @@
                                     <input ng-model="user.remember_me" type="checkbox"> Remember me
                                 </label>
                             </div>
-                            <span><a href="#/forgot-password">Forgot  password?</a></span>
+                            <span><a href="#!/forgot-password">Forgot  password?</a></span>
                         </div>
                     </div>
 
                 </form>
             </div>
         </div>
-        <span class="bottom-link"><a href="#/sign-up">No account yet ? <strong> Create one now ! </strong></a></span>
+        <span class="bottom-link"><a href="#!/sign-up">No account yet ? <strong> Create one now ! </strong></a></span>
 
     </div>
 </div>

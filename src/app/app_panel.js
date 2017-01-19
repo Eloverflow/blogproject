@@ -1,6 +1,6 @@
 'use strict';
 // Declare app level module which depends on views, and components
-var app  = angular.module('starter', ['starter.templates', 'starter.controllers','starter.services','starter.constants','ngRoute']);
+var app  = angular.module('starter', ['starter.templates', 'starter.controllers','starter.services','starter.constants','ngRoute', 'permission', 'permission.ng']);
 
 app.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
@@ -19,12 +19,24 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
 
   $routeProvider.when('/new-user', {
     templateUrl: 'templates/view_user/create-new.html',
-    controller: 'UserCtrl'
+    controller: 'UserCtrl',
+    data: {
+      permissions: {
+        only: 'isAuthorized',
+        redirectTo: 'sign-in'
+      }
+    }
   });
 
   $routeProvider.when('/edit-user/:id', {
     templateUrl: 'templates/view_user/edit.html',
-    controller: 'UserCtrl'
+    controller: 'UserCtrl',
+    data: {
+      permissions: {
+        only: 'isAuthorized',
+        redirectTo: 'sign-in'
+      }
+    }
   });
 
   $routeProvider.when('/forgot-password', {
@@ -34,12 +46,24 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
 
   $routeProvider.when('/new-password/:token', {
     templateUrl: 'templates/view_user/new_pass.html',
-    controller: 'UserCtrl'
+    controller: 'UserCtrl',
+    data: {
+      permissions: {
+        only: 'isAuthorized',
+        redirectTo: 'sign-in'
+      }
+    }
   });
 
   $routeProvider.when('/user-list', {
     templateUrl: 'templates/view_user/list.html',
-    controller: 'UserListCtrl'
+    controller: 'UserListCtrl',
+    data: {
+      permissions: {
+        only: 'isAuthorized',
+        redirectTo: 'sign-in'
+      }
+    }
   });
 
   $routeProvider.when('/profile/:id', {
@@ -48,49 +72,43 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
   });
 
 
-  $routeProvider.when('/post/:id', {
-    templateUrl: 'templates/view_post/post.html',
-    controller: 'PostCtrl'
-  });
-  $routeProvider.when('/post-create', {
-    templateUrl: 'templates/view_post/create.html',
-    controller: 'PostCreateCtrl'
-  });
-  $routeProvider.when('/post-edit/:id', {
-    templateUrl: 'templates/view_post/edit.html',
-    controller: 'PostEditCtrl'
-  });
-  $routeProvider.when('/posts', {
-    templateUrl: 'templates/view_posts/posts.html',
-    controller: 'PostsCtrl'
-  });
-
-
   $routeProvider.when('/press-release/:id', {
     templateUrl: 'templates/view_press_release/press_release.html',
     controller: 'PressReleaseCtrl'
   });
+
   $routeProvider.when('/press-release-create', {
     templateUrl: 'templates/view_press_release/create.html',
-    controller: 'PressReleaseCreateCtrl'
+    controller: 'PressReleaseCreateCtrl',
+    data: {
+      permissions: {
+        only: 'isAuthorized',
+        redirectTo: 'sign-in'
+      }
+    }
   });
+
   $routeProvider.when('/press-release-edit/:id', {
     templateUrl: 'templates/view_press_release/edit.html',
-    controller: 'PressReleaseEditCtrl'
+    controller: 'PressReleaseEditCtrl',
+    data: {
+      permissions: {
+        only: 'isAuthorized',
+        redirectTo: 'sign-in'
+      }
+    }
   });
+
   $routeProvider.when('/press-releases', {
     templateUrl: 'templates/view_press_releases/press_releases.html',
     controller: 'PressReleasesCtrl'
-  });
-  $routeProvider.when('/terms-of-service', {
-    templateUrl: 'templates/views_modern_template/terms-of-service.html'
   });
 
   $routeProvider.otherwise({redirectTo: '/sign-in'});
 }]);
 
 
-app.run(function($rootScope,$http, API_ENDPOINT, AuthService, $sce, DEBUG, $location, Fullscreen, $translate) {
+app.run(function($rootScope,$http, API_ENDPOINT, AuthService, $sce, DEBUG, $location, Fullscreen, $translate, PermPermissionStore) {
 
   $rootScope.changeLanguage = function (langKey) {
     $translate.use(langKey);
@@ -120,17 +138,28 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService, $sce, DEBUG, $loca
 
   openFB.init({appId: '1112318545481460'});
 
+  PermPermissionStore
+  // Define user permission calling back-end
+      .definePermission('isAuthorized', /*@ngInject*/function () {
+        // Let's assume that Session service calls backend API via $http and return promise:
+        // -- $q.resolve() means that session is active
+        // -- $q.reject() means that session expired
+        return AuthService.isAuthenticated();
+      });
+  
 
   $rootScope.getInfo = function () {
-    $http.get(API_ENDPOINT.url + '/auth/memberinfo').success(function (result) {
+    $http.get(API_ENDPOINT.url + '/auth/memberinfo').then(function (result) {
 
-      if(result.success) $rootScope.sesUser = result.user;
+      if(result.data.success){
+        $rootScope.sesUser = result.data.user;
+      }
 
       if(DEBUG.isEnabled){
         console.log('User:');
         console.log(result);
       }
-    }).error(function (result, status) {
+    },function (result, status) {
       if(status == 403){
         if(DEBUG.isEnabled) {
           console.log('Emptying the token and redirecting to login')
