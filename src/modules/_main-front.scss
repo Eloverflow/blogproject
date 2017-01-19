@@ -872,11 +872,12 @@ div.img-list .lee:hover span.text-content {
   }
 
  .call-to-action .modal-dialog{
-   margin-top:25%;
+   margin-top:15%;
 
    .modal-content{
      border-radius: 0;
      border: none;
+     font-weight: bold;
 
      -moz-box-shadow: 0 0 3px #ccc;
      -webkit-box-shadow: 0 0 3px #ccc;
@@ -889,7 +890,7 @@ div.img-list .lee:hover span.text-content {
      }
 
      .modal-msg{
-       padding-bottom: 4px;
+       padding-bottom: 8px;
      }
 
      .small-note{
@@ -900,7 +901,8 @@ div.img-list .lee:hover span.text-content {
    }
 
    .modal-header{
-     .img-container{
+   /*  .img-container{
+       visibility: hidden;
        top: -20%;
        left: 50%;
        position: absolute;
@@ -909,13 +911,19 @@ div.img-list .lee:hover span.text-content {
        border-radius: 50%;
        width: auto;
        padding: 2px 10px 30px 10px;
-     }
+     }*/
 
      .title-container{
-       position: absolute;
+       h4.modal-title{
+         font-family: ArchivoNarrowRegular;
+         text-transform: uppercase;
+         letter-spacing: 2px;
+         font-weight: bold;
+       }
+      /* position: absolute;
        width: 100%;
        left: 0;
-       z-index: 4;
+       z-index: 4;*/
        .modal-title{
          text-align: center;
        }

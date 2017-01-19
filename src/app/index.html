@@ -152,17 +152,20 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <div class="img-container"><img src="img/logoSmall.png" alt="Mirageflow Logo" width="80"/></div>
+               <!-- <div class="img-container"><img src="img/logoSmall.png" alt="Mirageflow Logo" width="80"/></div>-->
                 <div class="title-container">  <h4 class="modal-title" id="myModalLabel">Need software development ?</h4></div>
             </div>
             <div class="modal-body">
+                <div ng-show="callToActionSuccessObj" class="alert alert-success" role="alert">
+                    <strong translate="SUCCESS-SUBMIT">Success, </strong><span>{{ callToActionSuccessObj.translate ? (callToActionSuccessObj.translate | translate) : callToActionSuccessObj.msg }}</span>
+                </div>
                 <div class="modal-msg">
                     Give us your email and we'll contact you.
                 </div>
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Your email...">
+                    <input type="email" ng-model="callToActionContact" class="form-control" placeholder="Your email...">
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">Get in touch!</button>
+                        <button ng-click="callToActionSubmit()" class="btn btn-primary" type="button">Get in touch!</button>
                     </span>
                 </div>
                 <div class="small-note">*You can go to the <a href="/contact" data-toggle="modal" data-target="#callToActionModal">contact</a> section to write us a message.</div>

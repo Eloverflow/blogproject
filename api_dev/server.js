@@ -15,6 +15,7 @@ var comment = require('./routes/comment');
 var subComment = require('./routes/subComment');
 var vote = require('./routes/vote');
 var contact = require('./routes/contact');
+var callToActionContact = require('./routes/callToActionContact');
 var nodemailer = require('nodemailer');
 
 var config = require('./config/database.js');
@@ -137,6 +138,7 @@ app.use('/api/comment', comment);
 app.use('/api/subComment', subComment);
 app.use('/api/vote', vote);
 app.use('/api/contact', contact);
+app.use('/api/callToActionContact', callToActionContact);
 app.all('/*', function ( req, res ) {
     console.log('All');
     res.status( 200 )

@@ -84,7 +84,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
 }]);
 
 
-app.run(function($rootScope,$http, API_ENDPOINT, AuthService, $sce, DEBUG, $location, Fullscreen, $translate) {
+app.run(function($rootScope,$http, API_ENDPOINT, AuthService, $sce, DEBUG, $location, Fullscreen, $translate, postReq, $timeout) {
 
   $rootScope.changeLanguage = function (langKey) {
     $translate.use(langKey);
@@ -275,6 +275,34 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService, $sce, DEBUG, $loca
 
     return viewLocation === path;
   };
+
+
+  $rootScope.callToActionSubmit = function () {
+
+    $rootScope.callToActionErrorList = [];
+    var $url = API_ENDPOINT.url + '/callToActionContact';
+    var $data = {callToActionContact: $rootScope.callToActionContact};
+
+    var $callbackfunction = function (response) {
+
+      if(response.success){
+        $rootScope.callToActionContact = '';
+        $rootScope.callToActionSuccessObj = response;
+        $timeout(function () {
+          $('#callToActionModal').modal('hide');
+        },1500);
+      }
+      else {
+        console.log(response.msg);
+        $rootScope.callToActionErrorList.push(response);
+      }
+
+    };
+
+    postReq.send($url, $data, null, $callbackfunction)
+
+  };
+
 
 });
 
