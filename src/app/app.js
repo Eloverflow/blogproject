@@ -11,42 +11,50 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
   $routeProvider.when('/home', {
     templateUrl: 'templates/view_home/home.html',
     controller: 'HomeCtrl',
-    title: 'Web development | Website | Consulting service'
+    title: 'Web development | Website | Consulting service',
+    descFR: 'Mirageflow est une compagnie spécialisée en développement d\'application Web et Mobile. Peu importe l\'ampleur ou le type de développement nécessaire, nous serons à la hauteur!'
   });
 
   $routeProvider.when('/services', {
     templateUrl: 'templates/view_services/services.html',
     controller: 'PageServicesCtrl',
-    title: 'Services'
+    title: 'Services',
+    descFR: 'Nous offrons des services orientés Web et Mobile.'
+
   });
 
   $routeProvider.when('/portfolio', {
     templateUrl: 'templates/views_modern_template/portfolio.html',
     controller: 'PortfolioCtrl',
-    title: 'Portfolio'
+    title: 'Portfolio',
+    descFR: 'Jetez un oeil à nos projets antérieurs ainsi qu\'à nos projets Open Source.'
   });
 
   $routeProvider.when('/blogproject', {
     templateUrl: 'templates/views_modern_template/portfolio-blogproject.html',
     controller: 'PortfolioCtrl',
-    title: 'Portfolio | Blogproject'
+    title: 'Portfolio | Blogproject',
+    descFR: 'Un projet de blog open source utilisant des technologies qui vise la performance.'
   });
 
   $routeProvider.when('/portfolio/posio', {
     templateUrl: 'templates/views_modern_template/portfolio-posio.html',
     controller: 'PortfolioCtrl',
-    title: 'Portfolio | POSIO'
+    title: 'Portfolio | POSIO',
+    descFR: ''
   });
 
   $routeProvider.when('/about', {
     templateUrl: 'templates/views_modern_template/about.html',
-    title: 'About'
+    title: 'About',
+    descFR: 'Chez Mirageflow une équipe impliquée et dynamique vous accompagnera dans vos projets.'
   });
   
   $routeProvider.when('/contact', {
     templateUrl: 'templates/view_contact/contact.html',
     controller: 'ContactCtrl',
-    title: 'Contact'
+    title: 'Contact',
+    descFR: 'Prenez contacte avec nous, nous donnerons un suivi.'
   });
 
   // End main template ---
@@ -91,6 +99,7 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService, $sce, DEBUG, $loca
     if (current.hasOwnProperty('$$route')) {
 
       $rootScope.pageTitle = 'Mirageflow | ' + current.$$route.title;
+      $rootScope.pageDesc = current.$$route.descFR;
     }
   });
 
