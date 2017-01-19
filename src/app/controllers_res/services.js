@@ -122,22 +122,6 @@ angular.module('starter.services', [])
     };
 
 
-    var loginFacebook = function(user) {
-        return $q(function(resolve, reject) {
-            $http.post(API_ENDPOINT.url + '/auth/facebook', user).then(function(result) {
-                if (result.data.success) {
-                    storeUserCredentials(result.data.token);
-                    resolve(result.data.msg);
-                } else {
-                    reject(result.data.msg);
-                }
-            },
-            function (result) {
-                reject(result.data);
-            });
-        });
-    };
-
     var changePwd = function(user) {
         return $q(function(resolve, reject) {
             $http.put(API_ENDPOINT.url + '/auth/changePwd', user).then(function(result) {
@@ -176,7 +160,6 @@ angular.module('starter.services', [])
 
     return {
         login: login,
-        loginFacebook: loginFacebook,
         register: register,
         logout: logout,
         changePwd: changePwd,

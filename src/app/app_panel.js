@@ -101,7 +101,13 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
 
   $routeProvider.when('/press-releases', {
     templateUrl: 'templates/view_press_releases/press_releases.html',
-    controller: 'PressReleasesCtrl'
+    controller: 'PressReleasesCtrl',
+    data: {
+      permissions: {
+        only: 'isAuthorized',
+        redirectTo: 'sign-in'
+      }
+    }
   });
 
   $routeProvider.otherwise({redirectTo: '/sign-in'});
@@ -243,33 +249,6 @@ app.run(function($rootScope,$http, API_ENDPOINT, AuthService, $sce, DEBUG, $loca
 
   $rootScope.afterLogin = function () {
     $location.path('/')
-  };
-
-  // This method is to get the user profile info from the facebook api
-  $rootScope.getFacebookProfileInfo = function (authResponse, callback) {
-
-    openFB.api({
-      path: '/me',
-      params: {fields: 'id,name,email,verified,gender,friends'},
-      success: function(data) {
-
-        if(DEBUG.isEnabled){
-            console.log('Facebook User:');
-            console.log(data);
-        }
-
-
-        $rootScope.$apply(function() {
-
-          if(callback)
-            callback(data);
-          
-        });
-        
-      },
-      error: errorHandler});
-
-
   };
 
   $rootScope.showLogOutMenu = function() {
