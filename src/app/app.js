@@ -30,19 +30,19 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
     descFR: 'Jetez un oeil à nos projets antérieurs ainsi qu\'à nos projets Open Source.'
   });
 
-      $routeProvider.when('/blogproject', {
-        templateUrl: 'templates/view_portfolio/portfolio-blogproject.html',
-        controller: 'PortfolioCtrl',
-        title: 'Portfolio | Blogproject',
-        descFR: 'Un projet de blog open source utilisant des technologies qui vise la performance.'
-      });
+  $routeProvider.when('/blogproject', {
+    templateUrl: 'templates/view_portfolio/portfolio-blogproject.html',
+    controller: 'PortfolioCtrl',
+    title: 'Portfolio | Blogproject',
+    descFR: 'Un projet de blog open source utilisant des technologies qui vise la performance.'
+  });
 
-      $routeProvider.when('/portfolio/posio', {
-        templateUrl: 'templates/view_portfolio/portfolio-posio.html',
-        controller: 'PortfolioCtrl',
-        title: 'Portfolio | POSIO',
-        descFR: ''
-      });
+  $routeProvider.when('/portfolio/posio', {
+    templateUrl: 'templates/view_portfolio/portfolio-posio.html',
+    controller: 'PortfolioCtrl',
+    title: 'Portfolio | POSIO',
+    descFR: ''
+  });
 
   $routeProvider.when('/about', {
     templateUrl: 'templates/view_about/about.html',
