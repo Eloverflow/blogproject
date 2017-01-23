@@ -24,28 +24,28 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
   });
 
   $routeProvider.when('/portfolio', {
-    templateUrl: 'templates/views_modern_template/portfolio.html',
+    templateUrl: 'templates/view_portfolio/portfolio.html',
     controller: 'PortfolioCtrl',
     title: 'Portfolio',
     descFR: 'Jetez un oeil à nos projets antérieurs ainsi qu\'à nos projets Open Source.'
   });
 
   $routeProvider.when('/blogproject', {
-    templateUrl: 'templates/views_modern_template/portfolio-blogproject.html',
+    templateUrl: 'templates/view_portfolio/portfolio-blogproject.html',
     controller: 'PortfolioCtrl',
     title: 'Portfolio | Blogproject',
     descFR: 'Un projet de blog open source utilisant des technologies qui vise la performance.'
   });
 
   $routeProvider.when('/portfolio/posio', {
-    templateUrl: 'templates/views_modern_template/portfolio-posio.html',
+    templateUrl: 'templates/view_portfolio/portfolio-posio.html',
     controller: 'PortfolioCtrl',
     title: 'Portfolio | POSIO',
     descFR: ''
   });
 
   $routeProvider.when('/about', {
-    templateUrl: 'templates/views_modern_template/about.html',
+    templateUrl: 'templates/view_about/about.html',
     title: 'About',
     descFR: 'Chez Mirageflow une équipe impliquée et dynamique vous accompagnera dans vos projets.'
   });
@@ -76,7 +76,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
     title: 'Press-releases'
   });
   $routeProvider.when('/terms-of-service', {
-    templateUrl: 'templates/views_modern_template/terms-of-service.html',
+    templateUrl: 'templates/view_terms/terms-of-service.html',
     title: 'Terms-of-service'
   });
 
