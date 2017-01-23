@@ -101,7 +101,7 @@
   "scripts": {
     "postinstall": "bower install",
     "prestart": "npm install",
-    "start": "http-server -a localhost -p 3000 ./src/app",
+    "start": "http-server -a localhost -p 8000 ./src/app",
     "pretest": "npm install",
     "test-single-run": "karma start karma.conf.js --single-run",
     "preupdate-webdriver": "npm install",
