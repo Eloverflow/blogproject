@@ -38,18 +38,18 @@ $inputs:            email, number, password, search, tel, text, url, color, date
 //
 // Modules
 //
-@import 'modules/angler';
-@import 'modules/_breakpoints';
-@import 'modules/_flexmenu';
-@import 'modules/_forms';
-@import 'modules/_hamburger';
-@import 'modules/_icons';
-@import 'modules/_images';
-@import 'modules/_lists';
-@import 'modules/_pseudo-shift';
-@import 'modules/_responsive-type';
-@import 'modules/_type';
-@import 'modules/_utility';
+@import 'scss/modules/angler';
+@import 'scss/modules/_breakpoints';
+@import 'scss/modules/_flexmenu';
+@import 'scss/modules/_forms';
+@import 'scss/modules/_hamburger';
+@import 'scss/modules/_icons';
+@import 'scss/modules/_images';
+@import 'scss/modules/_lists';
+@import 'scss/modules/_pseudo-shift';
+@import 'scss/modules/_responsive-type';
+@import 'scss/modules/_type';
+@import 'scss/modules/_utility';
 
 
 $icon-font-path:  "../assets/fonts/bootstrap"!default;
@@ -62,7 +62,7 @@ $fa-font-path:   "../assets/fonts/fontawesome"!default;
 
 
 
-@import 'modules/_press-release';
+@import 'scss/private/_press-release';
 /*@import 'modules/_modern-business';*/
 
 

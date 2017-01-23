@@ -38,18 +38,18 @@ $inputs:            email, number, password, search, tel, text, url, color, date
 //
 // Modules
 //
-@import 'modules/angler';
-@import 'modules/_breakpoints';
-@import 'modules/_flexmenu';
-@import 'modules/_forms';
-@import 'modules/_hamburger';
-@import 'modules/_icons';
-@import 'modules/_images';
-@import 'modules/_lists';
-@import 'modules/_pseudo-shift';
-@import 'modules/_responsive-type';
-@import 'modules/_type';
-@import 'modules/_utility';
+@import 'scss/modules/angler';
+@import 'scss/modules/_breakpoints';
+@import 'scss/modules/_flexmenu';
+@import 'scss/modules/_forms';
+@import 'scss/modules/_hamburger';
+@import 'scss/modules/_icons';
+@import 'scss/modules/_images';
+@import 'scss/modules/_lists';
+@import 'scss/modules/_pseudo-shift';
+@import 'scss/modules/_responsive-type';
+@import 'scss/modules/_type';
+@import 'scss/modules/_utility';
 
 
 $icon-font-path:  "../assets/fonts/bootstrap"!default;
@@ -63,8 +63,15 @@ $fa-font-path:   "../assets/fonts/fontawesome"!default;
 @import "app/lib/angular-typewrite/dist/angular-typewrite";
 
 
-@import 'modules/_main-front';
-@import 'modules/_modern-business';
-@import 'modules/_angular-swiper';
+@import 'scss/public/_main-front';
+@import 'scss/public/_modern-business';
+@import 'scss/public/_section-home';
+@import 'scss/public/_section-services';
+@import 'scss/public/_section-portfolio';
+@import 'scss/public/_section-press-release';
+@import 'scss/public/_section-about';
+@import 'scss/public/_section-contact';
+
+@import 'scss/modules/_angular-swiper';
 
 
