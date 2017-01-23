@@ -5,7 +5,7 @@ var app  = angular.module('starter', ['starter.templates', 'starter.controllers'
 app.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   //$locationProvider.hashPrefix('!');
   $locationProvider.html5Mode(true);
-
+  
   // Main template mirageflow routes ---
 
   $routeProvider.when('/home', {
