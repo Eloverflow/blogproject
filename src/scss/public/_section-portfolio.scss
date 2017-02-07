@@ -1,0 +1,95 @@
+.canvas-container{
+  z-index: -1;
+
+  height: 0px;
+
+  #canvas{
+    top: 0;
+    bottom:0;
+    left: 0;
+    height: 100%;
+    z-index: -1;
+    width:100%;
+    position: absolute;
+    canvas{
+
+      top: 0;
+      bottom:0;
+      left: 0;
+      height: 100%!important;
+      z-index: -1;
+      width:100%!important;
+      position: fixed;
+    }
+  }
+}
+
+.project-lang {
+  margin-top: 4px;
+  height: 60px;
+  width: 60px;
+}
+
+div.img-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+div.img-list .lee {
+  display: inline-block;
+  height: 250px;
+  position: relative;
+
+}
+
+span.text-content {
+
+  background: rgba(0,0,0,0.5);
+
+  font-size: 28px;
+  font-weight: bold;
+  color: white;
+
+  cursor: pointer;
+  display: table;
+  height: 250px;
+  left: 15px;
+  position: absolute;
+  top: 0;
+  width: calc(100% - 30px);
+  opacity: 0;
+  -webkit-transition: opacity 500ms;
+  -moz-transition: opacity 500ms;
+  -o-transition: opacity 500ms;
+  transition: opacity 500ms;
+}
+
+span.text-content span {
+
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+
+div.img-list .lee:hover span.text-content {
+  opacity: 1;
+}
+
+.btn-pf {
+  text-transform: none;
+  font-weight: 300;
+}
+
+.btn-pf-left {
+  margin: 8px 0px 0px 8px;
+}
+
+.btn-pf-right {
+  margin: 8px 8px 0px 0px;
+}
+
+.project-description {
+  padding: 16px 0px;
+}
