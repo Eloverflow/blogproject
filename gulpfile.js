@@ -12,7 +12,7 @@ const hub = new HubRegistry(['gulp_tasks/*.js']);
 gulp.registry(hub);
 
 gulp.task('serve', gulp.series('watch', sassCompile, templateCompile, 'webServer'));
-gulp.task('serve:api', gulp.series('api:watch'));
+gulp.task('serve:api', gulp.series('api:watch', sassCompile, templateCompile));
 gulp.task('watch', watch);
 
 function watch(done) {

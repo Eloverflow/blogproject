@@ -18,6 +18,76 @@
   src: url("fonts/ArchivoNarrow-Regular.otf") format("opentype");
 }
 
+.btn, .panel {
+  border-radius: 0px !important;
+}
+
+.demo-box {
+
+  /*border: 1px solid #cccccc;*/
+  /*background-color: #f2f2f2;*/
+  min-height: 380px;
+  /*margin-top: 20px;*/
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  .box-logo {
+    width:200px;
+    height:200px;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+  h3 {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.1;
+    margin: 0px;
+  }
+
+  .terms {
+    background: url('img/terms.png') center center no-repeat;
+    background-size: 100px 100px;
+    background-color: #f2f2f2;
+  }
+
+  .mission {
+    background: url('img/startup.png') center center no-repeat;
+    background-size: 100px 100px;
+    background-color: #f2f2f2;
+  }
+
+  .engagement {
+    background: url('img/handshake.png') center center no-repeat;
+    background-size: 100px 100px;
+    background-color: #f2f2f2;
+  }
+
+  .success {
+    background: url('img/laptop.png') center center no-repeat;
+    background-size: 100px 100px;
+    background-color: #f2f2f2;
+  }
+
+  .box-title {
+    font-weight: bold;
+    text-align: center;
+    padding: 0;
+    margin: 20px 0 !important;
+  }
+
+  .box-text {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+  .box-terms{
+    /*text-align: center;*/
+  }
+}
+
 /*
 .row-canvas{
   left: 0;
@@ -84,10 +154,6 @@
      text-align: center;
     }
   }
-}
-
-.row-about{
-  text-align: justify;
 }
 
 .nav-title {
@@ -182,15 +248,6 @@ body {
 }
 
 .page-title {
-  font-family: ArchivoNarrowRegular;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  padding: 0px 0px 10px 0px;
-  margin: 16px 0px 8px 0px;
-  border-bottom: 1px solid #eeeeee;
-}
-
-.project-title {
   font-family: ArchivoNarrowRegular;
   display: inline-block;
   text-transform: uppercase;

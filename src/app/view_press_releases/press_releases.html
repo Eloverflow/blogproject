@@ -16,6 +16,7 @@
   <div class="row">
     <div ng-if="posts == null || posts.length == 0">
       <h2 class="page-title" translate="COMING-SOON">Coming soon!</h2>
+      <div class="page-separator"></div>
     </div>
     <div ng-repeat="post in posts | orderBy:'created_at':true" class="wrapper post panel panel-default">
       <header class="header">
