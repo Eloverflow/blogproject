@@ -18,6 +18,10 @@
   src: url("fonts/ArchivoNarrow-Regular.otf") format("opentype");
 }
 
+html, body {
+  height:100%;
+}
+
 .btn, .panel {
   border-radius: 0px !important;
 }
