@@ -3,7 +3,7 @@
         <h1 class="page-title">Contact</h1>
         <div class="page-separator"></div>
     </div>
-    <div class="col-lg-4 contact-box sep-right">
+    <div class="col-lg-4 contact-box sep">
         <ul class="contact-info">
             <li class="marker">2089 Avenue Chapdelaine, #3, Quebec, QC, G1V 1M7</li>
             <li class="phone">(581)&nbsp;991-5326</li>
@@ -13,6 +13,10 @@
             <iframe class="embed-responsive-item" frameborder="" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=2089%20Avenue%20Chapdelaine%2C%20%2C%20Ville%20de%20Qu%C3%A9bec%2C%20QC%2C%20Canada&key=AIzaSyCxPEipixekVPZMTll3TaiDimX2V5l0NXc" allowfullscreen></iframe>
         </div>
 
+    </div>
+    <div class="col-lg-12 col-send-message">
+        <h1 class="page-title" translate="CONTACT-SEND-HEAD">Envoyez un message</h1>
+        <div class="page-separator"></div>
     </div>
     <div class="col-lg-8 contact-box">
         <form ng-submit="submit()">
@@ -34,7 +38,8 @@
             <div class="form-group">
                 <textarea ng-model="contact.message" id="message" class="form-control" rows="5" placeholder="Message" name="message" required></textarea>
             </div>
-            <div class="form-group">
+
+            <div class="form-group validate">
                 <div
                         vc-recaptcha
                         theme="'light'"
@@ -42,11 +47,18 @@
                         on-create="setWidgetId(widgetId)"
                         on-success="setResponse(response)"
                         on-expire="cbExpiration()"
+                        class="rc-captcha-cust"
                 ></div>
+
+
+                <button class="btn btn-default btn-send-message" type="submit" translate="CONTACT-SEND">Envoyer</button>
             </div>
+
+            <!--<div class="form-group">
+
             <div class="form-group">
-                <button class="btn theme-btn" type="submit" translate="CONTACT-SEND">Envoyer</button>
-            </div>
+
+            </div>-->
         </form>
 
     </div>

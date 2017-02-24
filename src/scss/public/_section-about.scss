@@ -11,22 +11,6 @@
   min-height: 120px;
 }
 
-.col-about {
+.col-img {
   vertical-align:middle;
-
-}
-
-.about-img {
-  /*width: 400px;
-  height: 300px;*/
-}
-
-@media only screen and (min-width : 768px) {
-  .is-table-row {
-    display: table;
-  }
-  .is-table-row [class*="col-"] {
-    float: none;
-    display: table-cell;
-  }
 }

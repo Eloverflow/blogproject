@@ -62,8 +62,8 @@
                     <a ng-class="{ active: isActive('/contact')}" href="/contact" translate="MENU-CONTACT">Contact</a>
                 </li>
                 </li>
-                <li>
-                    <a style="cursor: pointer" translate="MENU-OTHER-LANG" ng-click="changeLanguage('MENU-OTHER-LANG' | translate)" hreflang="{{'MENU-OTHER-LANG' | translate}}">EN</a>
+                <li class="lang-tool">
+                    <a translate="MENU-OTHER-LANG" ng-click="changeLanguage('MENU-OTHER-LANG' | translate)" hreflang="{{'MENU-OTHER-LANG' | translate}}">EN</a>
                 </li>
             </ul>
         </div>
@@ -80,64 +80,58 @@
 
     <!-- Footer -->
     <footer class="main-footer">
-        <div class="col-lg-3">
-            <div class="col-block">
-                <span class="list-section">Mirageflow</span>
-                <ul>
-                    <li><a href="/home" translate="MENU-HOME">Accueil</a></li>
-                    <li><a href="/services">Services</a></li>
-                    <li><a href="/portfolio">Portfolio</a></li>
-                </ul>
+        <div class="row">
+            <div class="col-lg-3 col-sm-6">
+                <div class="col-block">
+                    <span class="list-section">Mirageflow</span>
+                    <ul>
+                        <li><a href="/home" translate="MENU-HOME">Accueil</a></li>
+                        <li><a href="/services">Services</a></li>
+                        <li><a href="/portfolio">Portfolio</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3">
-            <div class="col-block">
-                <span class="list-section" translate="MENU-ABOUT">About</span>
-                <ul>
-                    <li><a href="/about" translate="MENU-ABOUT-MORE">À Propos</a></li>
-                    <li><a href="/press-releases" translate="MENU-NEWSFEED">News Feed</a></li>
-                    <li><a href="/terms-of-service" translate="TERMS-OF-SERVICE">Conditions d'utilisation</a></li>
-                </ul>
+            <div class="col-lg-3 col-sm-6">
+                <div class="col-block">
+                    <span class="list-section" translate="MENU-ABOUT">About</span>
+                    <ul>
+                        <li><a href="/about" translate="MENU-ABOUT-MORE">À Propos</a></li>
+                        <li><a href="/press-releases" translate="MENU-NEWSFEED">News Feed</a></li>
+                        <li><a href="/terms-of-service" translate="TERMS-OF-SERVICE">Conditions d'utilisation</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3">
-            <div class="col-block">
-                <span class="list-section" translate="MENU-HELP">Aide</span>
-                <ul>
-                    <li><a href="/contact" translate="MENU-CONTACT-US">Contactez-nous</a></li>
-                </ul>
+            <div class="col-lg-3 col-sm-6">
+                <div class="col-block">
+                    <span class="list-section" translate="MENU-HELP">Aide</span>
+                    <ul>
+                        <li><a href="/contact" translate="MENU-CONTACT-US">Contactez-nous</a></li>
+                    </ul>
 
-                <span class="list-section">Administration</span>
-                <ul>
-                    <li><a href="#" ng-click="goToPanel()"><em>Panel</em></a></li>
-                </ul>
+                    <span class="list-section">Administration</span>
+                    <ul>
+                        <li><a href="#" ng-click="goToPanel()"><em>Panel</em></a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3">
-            <div class="col-block">
-                <span class="list-section">Connect</span>
-                <ul>
-                    <li><a href="https://www.facebook.com/FLUXMIRAGE/">Facebook</a></li>
-                    <li><a href="https://twitter.com/mirageflow">Twitter</a></li>
-                </ul>
+            <div class="col-lg-3 col-sm-6">
+                <div class="col-block">
+                    <span class="list-section">Connect</span>
+                    <ul>
+                        <li><a href="https://www.facebook.com/FLUXMIRAGE/">Facebook</a></li>
+                        <li><a href="https://twitter.com/mirageflow">Twitter</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
 
-        <!--<div class="col-lg-3">
-            <span class="list-section">Administration</span>
-            <ul>
-                <li><a href="dashboard.html"><em>Panel</em></a></li>
-            </ul>
-        </div>-->
 
-        <div class="col-lg-12">
-            <p class="copyright-foot">Copyright &copy; Mirageflow Inc. 2016</p>
-        </div>
-        <!--<div class="row">
+        <div class="row">
             <div class="col-lg-12">
-                <p>Copyright &copy; Mirageflow Inc. 2016</p>
+                <p class="copyright-foot">Copyright &copy; Mirageflow Inc. 2016</p>
             </div>
-        </div>-->
+        </div>
+
     </footer>
 
 </div>

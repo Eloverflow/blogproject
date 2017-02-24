@@ -92,6 +92,7 @@ html, body {
   }
 }
 
+
 /*
 .row-canvas{
   left: 0;
@@ -173,14 +174,35 @@ html, body {
   }
 }
 
+.lang-tool {
+  background-color: #464646;
+}
+
+.navbar {
+  border: 0px !important;
+}
+
+.navbar .navbar-nav > li:not(.lang-tool) > a:hover {
+  border-bottom: 3px solid #419ce8;
+  padding-bottom: 12px;
+}
+
 .navbar .navbar-nav > li > a:hover, .navbar .navbar-nav > li > a:focus {
   color: white;
 }
 
-.navbar .navbar-nav > .active > a, .navbar .navbar-nav > .active >
+.navbar-nav .active {
+  color: white !important;
+  border-bottom: 3px solid #419ce8;
+  padding-bottom: 12px;
+}
+
+/*.navbar .navbar-nav > .active > a, .navbar .navbar-nav > .active >
 a:hover, .navbar .navbar-nav > .active > a:focus {
   color: #DBDBDB;
-}
+  border-bottom: 3px solid #419ce8;
+  padding-bottom: 12px;
+}*/
 
 
 .dropdown-menu > li > a:hover,
@@ -201,11 +223,9 @@ a:hover, .navbar .navbar-nav > .active > a:focus {
   text-transform: uppercase;
   letter-spacing: 1px;
   font-family: ArchivoNarrowBold;
-  color: #C9C9C9;
+  color: #8a8a8a;
 
 }
-
-
 
 
 // Tools section ---
@@ -281,7 +301,7 @@ body {
   */
 
   margin-bottom: 50px;
-  overflow: auto;
+  overflow: hidden;
   padding-top: 20px;
   ul {
     list-style-type: none;
@@ -306,6 +326,7 @@ body {
   }
 
   .copyright-foot {
+    width: 100%;
     border-top: 1px solid #2e2e2e;
     text-align: center;
     color: #5c5c5c;
@@ -331,6 +352,8 @@ body {
  .container {
    font-family: Arial, sans-serif;
  }
+
+
 
  .call-to-action .modal-dialog{
    margin-top:15%;

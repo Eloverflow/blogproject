@@ -64,13 +64,27 @@ $fa-font-path:   "../assets/fonts/fontawesome"!default;
 
 
 @import 'scss/public/_main-front';
+@import 'scss/public/_main-front-mqueries';
+
 @import 'scss/public/_modern-business';
+
 @import 'scss/public/_section-home';
+@import 'scss/public/_section-home-mqueries';
+
 @import 'scss/public/_section-services';
+@import 'scss/public/_section-services-mqueries';
+
 @import 'scss/public/_section-portfolio';
+@import 'scss/public/_section-portfolio-mqueries';
+
 @import 'scss/public/_section-press-release';
+
 @import 'scss/public/_section-about';
+@import 'scss/public/_section-about-mqueries';
+
 @import 'scss/public/_section-contact';
+@import 'scss/public/_section-contact-mqueries';
+
 
 @import 'scss/modules/_angular-swiper';
 

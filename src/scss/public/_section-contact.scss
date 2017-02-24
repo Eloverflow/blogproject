@@ -2,6 +2,7 @@
 .contact-info {
 
   padding-left: 30px;
+  margin-bottom: 20px !important;
   li {
     list-style-type: none;
     text-decoration: none;
@@ -68,8 +69,40 @@
 
 .contact-box {
   margin-top: 20px;
-}.sep-right {
-   border-right: 1px solid #eeeeee;
- }
+}
+
+/*@media only screen  and (min-width : 1224px) {
+
+  .contact-box.sep {
+    border-right: 1px solid #eeeeee;
+  }
+
+  .col-send-message {
+    display: none;
+  }
+
+}*/
+
+/*@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+  .col-send-message {
+    display: initial;
+  }
+}*/
+
+.form-group.validate {
+
+  position: relative;
+
+  .rc-captcha-cust {
+    width: 304px;
+    display: inline-block;
+  }
+
+  .btn-send-message {
+    position: absolute;
+    bottom:7px;
+    right:0;
+  }
+}
 
 // End Contact css section
