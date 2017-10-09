@@ -27,7 +27,8 @@
     "angular-translate": "*",
     "angular-animate": "*",
     "angular-touch": "*",
-    "angular-permission": "*"
+    "angular-permission": "*",
+    "angular-typewrite": "*"
   },
   "private": false
 }
