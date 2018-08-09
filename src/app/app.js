@@ -36,12 +36,17 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
     title: 'Portfolio | Blogproject',
     descFR: 'Un projet de blog open source utilisant des technologies qui vise la performance.'
   });
-
-  $routeProvider.when('/portfolio/posio', {
+  $routeProvider.when('/posio', {
     templateUrl: 'templates/view_portfolio/portfolio-posio.html',
     controller: 'PortfolioCtrl',
     title: 'Portfolio | POSIO',
-    descFR: ''
+    descFR: 'Un projet de blog open source utilisant des technologies qui vise la performance.'
+  });
+  $routeProvider.when('/web-bot-generator', {
+    templateUrl: 'templates/view_portfolio/portfolio-web_bot_generator.html',
+    controller: 'PortfolioCtrl',
+    title: 'Portfolio | Web bot generator',
+    descFR: 'Un projet de blog open source utilisant des technologies qui vise la performance.'
   });
 
   $routeProvider.when('/about', {
